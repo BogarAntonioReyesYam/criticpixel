@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '', // ESTO HACE QUE TODAS LAS RUTAS SEAN RELATIVAS (PORTABILIDAD TOTAL)
+  base: '/criticpixel/', // REQUERIDO PARA REPOSITORIOS QUE NO SON .github.io PUROS
 })

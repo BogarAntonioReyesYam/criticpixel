@@ -1,5 +1,89 @@
 export const mockGames = [
   {
+    id: 12,
+    title: "Grand Theft Auto VI",
+    image: "https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 10,
+    platforms: ["PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,799.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,799.00", availability: "Xbox" }
+    ],
+    breakdown: {
+      jugabilidad: 10,
+      gráficos: 10,
+      historia: 10
+    },
+    description: "Grand Theft Auto VI viaja al estado de Leonida, hogar de las calles bañadas en neón de Vice City y más allá, en la evolución más grande y envolvente de la serie Grand Theft Auto hasta la fecha.",
+    reviews: [
+      { id: 1201, user: "ViceCityKing", text: "La espera de 12 años valió la pena. El nivel de detalle es absurdo.", score: 10 },
+      { id: 1202, user: "RockstarFan", text: "Simplemente el juego más ambicioso de la historia. Insuperable.", score: 10 }
+    ]
+  },
+  {
+    id: 13,
+    title: "Ghost of Yotei",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    globalScore: 9.6,
+    platforms: ["PS5"],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
+    ],
+    breakdown: {
+      jugabilidad: 9.7,
+      gráficos: 10,
+      historia: 9.2
+    },
+    description: "En 1603, una nueva Ghost, Atsu, emprende un viaje por las tierras que rodean el monte Yotei, una zona llena de extensas praderas, tundras nevadas y peligros inesperados.",
+    reviews: [
+      { id: 1301, user: "RoninAtsu", text: "Visualmente es lo más hermoso que he visto en PS5. El sistema de combate ha evolucionado genial.", score: 9.5 },
+      { id: 1302, user: "TsushimaLover", text: "Una secuela espiritual que se siente fresca y familiar a la vez.", score: 9.8 }
+    ]
+  },
+  {
+    id: 14,
+    title: "Death Stranding 2: On The Beach",
+    image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",
+    globalScore: 9.4,
+    platforms: ["PS5"],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
+    ],
+    breakdown: {
+      jugabilidad: 8.9,
+      gráficos: 10,
+      historia: 10
+    },
+    description: "Embárcate en una misión inspiradora de conexión humana más allá de las UCA. Sam y sus compañeros inician un nuevo viaje para salvar a la humanidad de la extinción.",
+    reviews: [
+      { id: 1401, user: "KojimaGenius", text: "Nadie hace juegos como Hideo. Es una experiencia cinematográfica sin igual.", score: 10 },
+      { id: 1402, user: "PorterEx", text: "Más extraño y más bello que el primero. Una obra de arte.", score: 9 }
+    ]
+  },
+  {
+    id: 15,
+    title: "The Witcher 4: Polaris",
+    image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.8,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "Steam", price: "$1,399.00", availability: "PC" },
+      { store: "Epic Games", price: "$1,399.00", availability: "PC" },
+      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,549.00", availability: "Xbox" }
+    ],
+    breakdown: {
+      jugabilidad: 9.6,
+      gráficos: 9.8,
+      historia: 10
+    },
+    description: "Una nueva saga comienza. Explora un mundo vasto y peligroso en el inicio de una nueva trilogía épica de RPG de CD PROJEKT RED.",
+    reviews: [
+      { id: 1501, user: "WitcherLegacy", text: "El salto al Unreal Engine 5 se nota. La narrativa sigue siendo la mejor de la industria.", score: 10 },
+      { id: 1502, user: "GeraltFan", text: "Aunque extrañamos a Geralt, el nuevo protagonista y la escuela del lince son fascinantes.", score: 9.5 }
+    ]
+  },
+  {
     id: 1,
     title: "Elden Ring: Shadow of the Erdtree",
     image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",

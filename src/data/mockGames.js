@@ -6,359 +6,300 @@ export const mockGames = [
     globalScore: 10,
     platforms: ["PS5", "Xbox Series X"],
     editions: [
-      { 
-        id: 'std', 
-        name: 'Standard Edition', 
-        price: '$1,899.00', 
-        perks: [
-          { title: 'Juego Base', description: 'Acceso completo a la historia de Lucía y Jason.' },
-          { title: 'Bono de Reserva', description: 'Pack de dinero digital para el modo historia.' }
-        ] 
-      },
-      { 
-        id: 'dlx', 
-        name: 'Deluxe Edition', 
-        price: '$2,299.00', 
-        perks: [
-          { title: 'Juego Base', description: 'Acceso completo a la historia principal.' },
-          { title: 'Pack de Ropa Vice', description: 'Conjuntos exclusivos inspirados en los años 80.' },
-          { title: '500k GTA Online', description: 'Impulso económico inmediato para tu imperio criminal.' }
-        ] 
-      },
-      { 
-        id: 'ult', 
-        name: 'Ultimate Edition', 
-        price: '$2,799.00', 
-        perks: [
-          { title: 'Todo lo anterior', description: 'Incluye beneficios de las ediciones Standard y Deluxe.' },
-          { title: 'Acceso anticipado', description: 'Juega 3 días antes del lanzamiento oficial.' },
-          { title: 'Pase de Temporada', description: 'Acceso a los primeros 3 DLCs de historia planeados.' }
-        ] 
-      }
+      { id: 'std', name: 'Standard Edition', price: '$1,899.00', perks: [{ title: 'Juego Base', description: 'Historia completa de Lucia y Jason.' }] },
+      { id: 'ult', name: 'Ultimate Edition', price: '$2,799.00', perks: [{ title: 'Pase de Temporada', description: 'Acceso a futuros DLCs.' }] }
     ],
-    marketPrices: [
-      { store: "PlayStation Store", price: "$1,899.00", availability: "PS5" },
-      { store: "Microsoft Store", price: "$1,899.00", availability: "Xbox Series X" }
-    ],
+    marketPrices: [{ store: "PlayStation Store", price: "$1,899.00", availability: "PS5" }],
     breakdown: { jugabilidad: 10, gráficos: 10, historia: 10 },
-    description: "La culminación de una década de espera. GTA VI no es solo un juego; es el simulador definitivo de la vida moderna y el crimen organizado.",
-    about: "Grand Theft Auto VI viaja al estado de Leonida, hogar de las calles bañadas en neón de Vice City y más allá, en la evolución más grande y envolvente de la serie hasta la fecha.",
-    specs: {
-      desarrollador: "Rockstar North",
-      editor: "Rockstar Games",
-      genero: "Acción / Mundo Abierto",
-      lanzamiento: "2025/2026",
-      multijugador: "Sí (GTA Online 2)",
-      clasificación: "M (17+)"
-    },
-    languages: [
-      { lang: "Español (España)", interface: true, voices: true, subs: true },
-      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: true, subs: true },
-      { lang: "Portugués (Brasil)", interface: true, voices: true, subs: true },
-      { lang: "Japonés", interface: true, voices: true, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Chino simplificado", interface: true, voices: false, subs: true },
-      { lang: "Chino tradicional", interface: true, voices: false, subs: true },
-      { lang: "Ruso", interface: true, voices: false, subs: true },
-      { lang: "Polaco", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 1201, user: "Rockstar_Loyalist_99", text: "¡EL REY HA VUELTO!", score: 10 },
-      { id: 1202, user: "JuanitoGamer_MX", text: "La ciudad se siente viva.", score: 9.5 }
-    ]
+    description: "La culminación de una década de espera. GTA VI no es solo un juego; es el simulador definitivo.",
+    about: "Grand Theft Auto VI viaja al estado de Leonida, hogar de Vice City.",
+    specs: { desarrollador: "Rockstar North", editor: "Rockstar Games", genero: "Acción", lanzamiento: "2025", multijugador: "Sí", clasificación: "M (17+)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }, { lang: "Inglés", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 1201, user: "ViceCityKing", text: "¡EL REY HA VUELTO!", score: 10 }]
   },
   {
     id: 5,
     title: "Baldur's Gate 3",
     image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
     globalScore: 9.9,
-    platforms: ["PC", "PS5", "Xbox Series X"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Experiencia completa.' }] },
-      { id: 'dlx', name: 'Digital Deluxe', price: '$1,499.00', perks: [{ title: 'Pack Deluxe', description: 'Contenido estético adicional.' }] }
-    ],
-    marketPrices: [
-      { store: "Steam", price: "$1,299.00", availability: "PC" },
-      { store: "PlayStation Store", price: "$1,449.00", availability: "PS5" }
-    ],
+    platforms: ["PC", "PS5"],
+    editions: [{ id: 'std', name: 'Standard', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Acceso completo.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,299.00", availability: "PC" }],
     breakdown: { jugabilidad: 10, gráficos: 9.4, historia: 10 },
-    description: "Una obra maestra sin precedentes en el género del RPG.",
-    about: "Baldur's Gate 3 es un RPG de nueva generación, ambientado en el mundo de Dungeons & Dragons.",
-    specs: {
-      desarrollador: "Larian Studios",
-      editor: "Larian Studios",
-      genero: "RPG / Estrategia",
-      lanzamiento: "2023",
-      multijugador: "Cooperativo Online/Local",
-      clasificación: "M (17+)"
-    },
-    languages: [
-      { lang: "Español", interface: true, voices: false, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: false, subs: true },
-      { lang: "Chino simplificado", interface: true, voices: false, subs: true },
-      { lang: "Ruso", interface: true, voices: false, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Polaco", interface: true, voices: false, subs: true },
-      { lang: "Portugués (Brasil)", interface: true, voices: false, subs: true },
-      { lang: "Ucraniano", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 501, user: "D&D_Master_Ultra", text: "La profundidad es abrumadora.", score: 10 },
-      { id: 502, user: "RTX_3090_Sweat", text: "La historia es de 10.", score: 8.5 }
-    ]
+    description: "Una obra maestra sin precedentes en el RPG.",
+    about: "Regresa a los Reinos Olvidados en una historia de compañerismo y traición.",
+    specs: { desarrollador: "Larian Studios", editor: "Larian Studios", genero: "RPG", lanzamiento: "2023", multijugador: "Sí", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }, { lang: "Inglés", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 501, user: "D&D_Master", text: "Profundidad infinita.", score: 10 }]
   },
   {
-    id: 1,
-    title: "Elden Ring: Shadow of the Erdtree",
-    image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",
-    globalScore: 9.8,
-    platforms: ["PC", "PS5", "Xbox Series X"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$859.00', perks: [{ title: 'DLC', description: 'Shadow of the Erdtree.' }] }
-    ],
-    marketPrices: [
-      { store: "Steam", price: "$859.00", availability: "PC" },
-      { store: "PlayStation Store", price: "$999.00", availability: "PS5" }
-    ],
-    breakdown: { jugabilidad: 10, gráficos: 9.5, historia: 9.8 },
-    description: "Miyazaki lo ha vuelto a hacer.",
-    about: "La expansión presenta una historia completamente nueva ambientada en la Tierra de las Sombras.",
-    specs: {
-      desarrollador: "FromSoftware",
-      editor: "Bandai Namco",
-      genero: "Action RPG",
-      lanzamiento: "2024",
-      multijugador: "Cooperativo / Invasiones",
-      clasificación: "M (17+)"
-    },
-    languages: [
-      { lang: "Español", interface: true, voices: false, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Japonés", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: false, subs: true },
-      { lang: "Alemán", interface: true, voices: false, subs: true },
-      { lang: "Italiano", interface: true, voices: false, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Chino simplificado", interface: true, voices: false, subs: true },
-      { lang: "Tailandés", interface: true, voices: false, subs: true },
-      { lang: "Ruso", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 101, user: "Souls_Addict", text: "Monumento al diseño.", score: 10 },
-      { id: 102, user: "Casual_C", text: "Muy difícil pero justo.", score: 9.0 }
-    ]
+    id: 21,
+    title: "Black Myth: Wukong",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.4,
+    platforms: ["PC", "PS5"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'La leyenda de Wukong.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,299.00", availability: "PC" }],
+    breakdown: { jugabilidad: 9.5, gráficos: 10, historia: 8.8 },
+    description: "Una oda visual a la mitología china con un combate frenético.",
+    about: "Explora la mitología china como el Predestinado en este action RPG.",
+    specs: { desarrollador: "Game Science", editor: "Game Science", genero: "Action RPG", lanzamiento: "2024", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }, { lang: "Chino", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 2101, user: "MythHunter", text: "Visualmente imbatible.", score: 10 }]
   },
   {
-    id: 15,
-    title: "The Witcher 4: Polaris",
+    id: 23,
+    title: "Silent Hill 2 Remake",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    globalScore: 9.5,
+    platforms: ["PC", "PS5"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,149.00', perks: [{ title: 'Juego Base', description: 'Regresa a Silent Hill.' }] }],
+    marketPrices: [{ store: "PlayStation Store", price: "$1,149.00", availability: "PS5" }],
+    breakdown: { jugabilidad: 9.2, gráficos: 9.8, historia: 10 },
+    description: "Una pesadilla hermosa que respeta el legado original.",
+    about: "James Sunderland regresa al pueblo donde todo empezó tras recibir una carta de su difunta esposa.",
+    specs: { desarrollador: "Bloober Team", editor: "Konami", genero: "Horror", lanzamiento: "2024", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }, { lang: "Japonés", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 2301, user: "JamesS", text: "Atmósfera increíble.", score: 10 }]
+  },
+  {
+    id: 24,
+    title: "Metaphor: ReFantazio",
     image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=2070&auto=format&fit=crop",
-    globalScore: 9.8,
+    globalScore: 9.7,
     platforms: ["PC", "PS5", "Xbox Series X"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Historia completa.' }] }
-    ],
-    marketPrices: [
-      { store: "Steam", price: "$1,399.00", availability: "PC" },
-      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
-    ],
-    breakdown: { jugabilidad: 9.6, gráficos: 9.8, historia: 10 },
-    description: "El inicio de una nueva era para los brujos.",
-    about: "Polaris inicia una nueva trilogía épica de fantasía oscura.",
-    specs: {
-      desarrollador: "CD Projekt RED",
-      editor: "CD Projekt RED",
-      genero: "RPG de Acción",
-      lanzamiento: "2026",
-      multijugador: "No",
-      clasificación: "M (17+)"
-    },
-    languages: [
-      { lang: "Español", interface: true, voices: true, subs: true },
-      { lang: "Polaco", interface: true, voices: true, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: true, subs: true },
-      { lang: "Portugués (Brasil)", interface: true, voices: true, subs: true },
-      { lang: "Japonés", interface: true, voices: false, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Ruso", interface: true, voices: true, subs: true },
-      { lang: "Chino simplificado", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 1501, user: "Geralt_F", text: "Pura magia.", score: 10 },
-      { id: 1502, user: "MasterRace", text: "Brutal.", score: 9.0 }
-    ]
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Reclama el trono.' }] }],
+    marketPrices: [{ store: "Microsoft Store", price: "$1,299.00", availability: "Xbox" }],
+    breakdown: { jugabilidad: 10, gráficos: 9.5, historia: 10 },
+    description: "De los creadores de Persona, un nuevo estándar para el JRPG.",
+    about: "Participa en un torneo real en un mundo de fantasía lleno de intriga política.",
+    specs: { desarrollador: "Studio Zero", editor: "Atlus", genero: "JRPG", lanzamiento: "2024", multijugador: "No", clasificación: "T (Teen)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }, { lang: "Japonés", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 2401, user: "AtlusFan", text: "La interfaz es arte puro.", score: 10 }]
   },
   {
-    id: 9,
-    title: "Resident Evil 4 Remake",
-    image: "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=2070&auto=format&fit=crop",
+    id: 26,
+    title: "Astro Bot",
+    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.8,
+    platforms: ["PS5"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Aventura de Astro.' }] }],
+    marketPrices: [{ store: "PlayStation Store", price: "$1,399.00", availability: "PS5" }],
+    breakdown: { jugabilidad: 10, gráficos: 9.6, historia: 8.5 },
+    description: "Pura magia de plataformas que celebra el legado de PlayStation.",
+    about: "Acompaña a Astro en una aventura masiva a través de galaxias mecánicas.",
+    specs: { desarrollador: "Team Asobi", editor: "Sony", genero: "Plataformas", lanzamiento: "2024", multijugador: "No", clasificación: "E (Everyone)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 2601, user: "AstroFan", text: "El mejor plataformas en años.", score: 10 }]
+  },
+  {
+    id: 27,
+    title: "Monster Hunter Wilds",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    globalScore: 9.6,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Caza en Tierras Prohibidas.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,549.00", availability: "PC" }],
+    breakdown: { jugabilidad: 9.8, gráficos: 9.7, historia: 8.2 },
+    description: "La evolución definitiva de la cacería de monstruos.",
+    about: "Explora ecosistemas dinámicos y caza bestias imponentes con amigos.",
+    specs: { desarrollador: "Capcom", editor: "Capcom", genero: "Acción", lanzamiento: "2025", multijugador: "Sí (Online)", clasificación: "T (Teen)" },
+    languages: [{ lang: "Español", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 2701, user: "HunterX", text: "La escala es inmensa.", score: 10 }]
+  },
+  {
+    id: 28,
+    title: "Metroid Prime 4: Beyond",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.7,
+    platforms: ["Switch"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Samus regresa.' }] }],
+    marketPrices: [{ store: "Nintendo eShop", price: "$1,399.00", availability: "Switch" }],
+    breakdown: { jugabilidad: 10, gráficos: 9.4, historia: 9.0 },
+    description: "El regreso triunfal de Samus Aran en primera persona.",
+    about: "Explora nuevos mundos alienígenas y enfrenta amenazas cósmicas.",
+    specs: { desarrollador: "Retro Studios", editor: "Nintendo", genero: "Aventura", lanzamiento: "2025", multijugador: "No", clasificación: "T (Teen)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }],
+    reviews: [{ id: 2801, user: "SamusStan", text: "Valió la pena la espera.", score: 10 }]
+  },
+  {
+    id: 29,
+    title: "DOOM: The Dark Ages",
+    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
     globalScore: 9.5,
     platforms: ["PC", "PS5", "Xbox Series X"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$799.00', perks: [{ title: 'Juego Base', description: 'Historia completa.' }] }
-    ],
-    marketPrices: [
-      { store: "Steam", price: "$799.00", availability: "PC" },
-      { store: "PlayStation Store", price: "$1,149.00", availability: "PS5" }
-    ],
-    breakdown: { jugabilidad: 9.8, gráficos: 9.6, historia: 9.0 },
-    description: "Leon S. Kennedy regresa.",
-    about: "Leon S. Kennedy ha sido enviado a rescatar a la hija del presidente.",
-    specs: {
-      desarrollador: "Capcom",
-      editor: "Capcom",
-      genero: "Survival Horror",
-      lanzamiento: "2023",
-      multijugador: "No",
-      clasificación: "M (17+)"
-    },
-    languages: [
-      { lang: "Español (España)", interface: true, voices: true, subs: true },
-      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Japonés", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: true, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Ruso", interface: true, voices: false, subs: true },
-      { lang: "Chino simplificado", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 901, user: "Leon_V", text: "Perfecto.", score: 10 },
-      { id: 902, user: "RE_Fan", text: "El mejor remake.", score: 9.5 }
-    ]
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Destrucción medieval.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,399.00", availability: "PC" }],
+    breakdown: { jugabilidad: 10, gráficos: 9.6, historia: 8.0 },
+    description: "El Slayer viaja al pasado en una guerra brutal.",
+    about: "Descubre el origen del Slayer en este shooter frenético de ambientación oscura.",
+    specs: { desarrollador: "id Software", editor: "Bethesda", genero: "Shooter", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 2901, user: "RipAndTear", text: "Brutalidad medieval pura.", score: 10 }]
   },
   {
-    id: 3,
-    title: "The Legend of Zelda: Tears of the Kingdom",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop",
+    id: 31,
+    title: "Fable (2025)",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    globalScore: 9.1,
+    platforms: ["PC", "Xbox Series X"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Regresa a Albion.' }] }],
+    marketPrices: [{ store: "Microsoft Store", price: "$1,399.00", availability: "Xbox" }],
+    breakdown: { jugabilidad: 9.0, gráficos: 9.8, historia: 9.2 },
+    description: "El regreso del cuento de hadas retorcido de Albion.",
+    about: "Sé el héroe (o villano) que elijas en este RPG de mundo abierto lleno de humor.",
+    specs: { desarrollador: "Playground Games", editor: "Xbox Game Studios", genero: "RPG", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 3101, user: "AlbionHero", text: "Visualmente es un sueño.", score: 10 }]
+  },
+  {
+    id: 33,
+    title: "Borderlands 4",
+    image: "https://images.unsplash.com/photo-1605898960710-90da34597473?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.2,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Looteo infinito.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,399.00", availability: "PC" }],
+    breakdown: { jugabilidad: 9.8, gráficos: 9.0, historia: 8.5 },
+    description: "El looter-shooter definitivo regresa con más armas que nunca.",
+    about: "Busca tesoros en nuevos planetas peligrosos con amigos en este shooter cooperativo.",
+    specs: { desarrollador: "Gearbox Software", editor: "2K", genero: "Shooter", lanzamiento: "2025", multijugador: "Sí (Coop)", clasificación: "M (17+)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 3301, user: "VaultHunter", text: "¡Millones de armas!", score: 10 }]
+  },
+  {
+    id: 34,
+    title: "Mafia: The Old Country",
+    image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.0,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Orígenes de la mafia.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,299.00", availability: "PC" }],
+    breakdown: { jugabilidad: 8.5, gráficos: 9.6, historia: 9.8 },
+    description: "Descubre los orígenes del crimen organizado en Sicilia.",
+    about: "Una historia de lealtad y traición en los inicios de la Cosa Nostra.",
+    specs: { desarrollador: "Hangar 13", editor: "2K", genero: "Acción", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 3401, user: "DonCorleone", text: "Narrativa de cine.", score: 10 }]
+  },
+  {
+    id: 35,
+    title: "Gears of War: E-Day",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1957&auto=format&fit=crop",
     globalScore: 9.6,
-    platforms: ["Switch"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Hyrule completo.' }] }
-    ],
-    marketPrices: [
-      { store: "Nintendo eShop", price: "$1,399.00", availability: "Switch" }
-    ],
-    breakdown: { jugabilidad: 10, gráficos: 8.5, historia: 9.0 },
-    description: "La ingeniería hecha videojuego.",
-    about: "Decidirás tu propio camino a través de los extensos paisajes de Hyrule.",
-    specs: {
-      desarrollador: "Nintendo EPD",
-      editor: "Nintendo",
-      genero: "Aventura",
-      lanzamiento: "2023",
-      multijugador: "No",
-      clasificación: "E10+"
-    },
-    languages: [
-      { lang: "Español (España)", interface: true, voices: false, subs: true },
-      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Japonés", interface: true, voices: true, subs: true },
-      { lang: "Francés (Francia)", interface: true, voices: true, subs: true },
-      { lang: "Francés (Canadá)", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: true, subs: true },
-      { lang: "Holandés", interface: true, voices: false, subs: true },
-      { lang: "Ruso", interface: true, voices: false, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Chino simplificado", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 301, user: "Link_H", text: "Magistral.", score: 10 },
-      { id: 302, user: "Zelda_Fan", text: "Pura libertad.", score: 9.5 }
-    ]
+    platforms: ["PC", "Xbox Series X"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'El día de la emergencia.' }] }],
+    marketPrices: [{ store: "Microsoft Store", price: "$1,399.00", availability: "Xbox" }],
+    breakdown: { jugabilidad: 10, gráficos: 10, historia: 9.5 },
+    description: "Vuelve al origen del horror en el Día de la Emergencia.",
+    about: "Marcus Fenix y Dominic Santiago enfrentan el inicio de la guerra Locust.",
+    specs: { desarrollador: "The Coalition", editor: "Xbox Game Studios", genero: "Shooter", lanzamiento: "2025/2026", multijugador: "Sí (Coop)", clasificación: "M (17+)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 3501, user: "MarcusF", text: "El hype es real.", score: 10 }]
   },
   {
-    id: 14,
-    title: "Death Stranding 2: On The Beach",
+    id: 40,
+    title: "Death Stranding 2",
     image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",
     globalScore: 9.4,
     platforms: ["PS5"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Historia completa.' }] }
-    ],
-    marketPrices: [
-      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
-    ],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Conecta de nuevo.' }] }],
+    marketPrices: [{ store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }],
     breakdown: { jugabilidad: 8.9, gráficos: 10, historia: 10 },
     description: "Hideo Kojima nos invita a un nuevo viaje.",
     about: "Sam Porter Bridges se embarca en un nuevo viaje para salvar a la humanidad.",
-    specs: {
-      desarrollador: "Kojima Productions",
-      editor: "Sony",
-      genero: "Acción",
-      lanzamiento: "2025",
-      multijugador: "Social Asíncrono",
-      clasificación: "M (17+)"
-    },
-    languages: [
-      { lang: "Español", interface: true, voices: true, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Japonés", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: true, subs: true },
-      { lang: "Portugués", interface: true, voices: true, subs: true },
-      { lang: "Ruso", interface: true, voices: false, subs: true },
-      { lang: "Coreano", interface: true, voices: false, subs: true },
-      { lang: "Griego", interface: true, voices: false, subs: true }
-    ],
-    reviews: [
-      { id: 1401, user: "Kojima_G", text: "Cine interactivo.", score: 10 },
-      { id: 1402, user: "Porter", text: "Visualmente arrebatador.", score: 9.0 }
-    ]
+    specs: { desarrollador: "Kojima Productions", editor: "Sony", genero: "Acción", lanzamiento: "2025", multijugador: "Sí", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 4001, user: "KojimaG", text: "Arte puro.", score: 10 }]
   },
   {
-    id: 7,
-    title: "Marvel's Spider-Man 2",
-    image: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=2080&auto=format&fit=crop",
-    globalScore: 9.3,
+    id: 41,
+    title: "Little Nightmares III",
+    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
+    globalScore: 8.8,
+    platforms: ["PC", "PS5", "Xbox Series X", "Switch"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$799.00', perks: [{ title: 'Juego Base', description: 'Escapa de la Nada.' }] }],
+    marketPrices: [{ store: "Steam", price: "$799.00", availability: "PC" }],
+    breakdown: { jugabilidad: 8.5, gráficos: 9.2, historia: 8.8 },
+    description: "Enfréntate a tus miedos de la infancia con un amigo.",
+    about: "Ayuda a Low y Alone a navegar por el Espiral y encontrar una salida.",
+    specs: { desarrollador: "Supermassive Games", editor: "Bandai Namco", genero: "Aventura", lanzamiento: "2025", multijugador: "Sí (Coop)", clasificación: "T (Teen)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: false, subs: true }],
+    reviews: [{ id: 4101, user: "MonoFan", text: "Aterradoramente bello.", score: 9.0 }]
+  },
+  {
+    id: 42,
+    title: "Ghost of Yotei",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    globalScore: 9.6,
     platforms: ["PS5"],
-    editions: [
-      { id: 'std', name: 'Standard Edition', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Historia completa.' }] }
-    ],
-    marketPrices: [
-      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
-    ],
-    breakdown: { jugabilidad: 9.5, gráficos: 9.8, historia: 9.0 },
-    description: "Dos Spider-Men, una amenaza colosal.",
-    about: "Explora la Nueva York de Marvel expandida como Peter Parker y Miles Morales.",
-    specs: {
-      desarrollador: "Insomniac Games",
-      editor: "Sony",
-      genero: "Acción",
-      lanzamiento: "2023",
-      multijugador: "No",
-      clasificación: "T (Teen)"
-    },
-    languages: [
-      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
-      { lang: "Español (España)", interface: true, voices: true, subs: true },
-      { lang: "Inglés", interface: true, voices: true, subs: true },
-      { lang: "Francés", interface: true, voices: true, subs: true },
-      { lang: "Alemán", interface: true, voices: true, subs: true },
-      { lang: "Italiano", interface: true, voices: true, subs: true },
-      { lang: "Portugués (Brasil)", interface: true, voices: true, subs: true },
-      { lang: "Portugués (Portugal)", interface: true, voices: true, subs: true },
-      { lang: "Polaco", interface: true, voices: true, subs: true },
-      { lang: "Ruso", interface: true, voices: true, subs: true },
-      { lang: "Árabe", interface: true, voices: true, subs: true }
-    ],
-    reviews: [
-      { id: 701, user: "Spidey", text: "Espectacular.", score: 10 },
-      { id: 702, user: "WebSlinger", text: "Combate fluido.", score: 9.5 }
-    ]
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'La leyenda de Atsu.' }] }],
+    marketPrices: [{ store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }],
+    breakdown: { jugabilidad: 9.7, gráficos: 10, historia: 9.2 },
+    description: "Una nueva Ghost surge en las tierras del monte Yotei.",
+    about: "En 1603, Atsu emprende un viaje por extensas praderas y tundras nevadas.",
+    specs: { desarrollador: "Sucker Punch", editor: "Sony", genero: "Acción", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: true, subs: true }, { lang: "Japonés", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 4201, user: "RoninAtsu", text: "Gráficos de infarto.", score: 10 }]
+  },
+  {
+    id: 43,
+    title: "Light No Fire",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.1,
+    platforms: ["PC"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$999.00', perks: [{ title: 'Juego Base', description: 'Un planeta entero.' }] }],
+    marketPrices: [{ store: "Steam", price: "$999.00", availability: "PC" }],
+    breakdown: { jugabilidad: 9.0, gráficos: 9.5, historia: 8.0 },
+    description: "Un juego sobre aventura, construcción y supervivencia en un planeta real.",
+    about: "Explora una tierra abierta de fantasía, tan grande como la Tierra misma.",
+    specs: { desarrollador: "Hello Games", editor: "Hello Games", genero: "Sandbox", lanzamiento: "2025/2026", multijugador: "Sí", clasificación: "T (Teen)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }],
+    reviews: [{ id: 4301, user: "NoManSkyFan", text: "Inmenso y mágico.", score: 9.0 }]
+  },
+  {
+    id: 44,
+    title: "Kingdom Come: Deliverance II",
+    image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.4,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'La saga de Henry.' }] }],
+    marketPrices: [{ store: "Steam", price: "$1,399.00", availability: "PC" }],
+    breakdown: { jugabilidad: 9.5, gráficos: 9.6, historia: 9.8 },
+    description: "Un RPG de acción realista ambientado en el caos de la guerra civil.",
+    about: "Henry de Skalitz busca venganza en la Bohemia del siglo XV.",
+    specs: { desarrollador: "Warhorse Studios", editor: "Deep Silver", genero: "RPG", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }],
+    reviews: [{ id: 4401, user: "HenryS", text: "Inmersión total.", score: 10 }]
+  },
+  {
+    id: 45,
+    title: "Hollow Knight: Silksong",
+    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
+    globalScore: 9.9,
+    platforms: ["PC", "PS5", "Xbox Series X", "Switch"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$599.00', perks: [{ title: 'Juego Base', description: 'La aventura de Hornet.' }] }],
+    marketPrices: [{ store: "Steam", price: "$599.00", availability: "PC" }],
+    breakdown: { jugabilidad: 10, gráficos: 9.8, historia: 9.7 },
+    description: "Explora un vasto reino encantado en la esperada secuela de Hollow Knight.",
+    about: "Hornet viaja a través de un reino de seda y canción.",
+    specs: { desarrollador: "Team Cherry", editor: "Team Cherry", genero: "Metroidvania", lanzamiento: "2025/2026", multijugador: "No", clasificación: "E10+" },
+    languages: [{ lang: "Español", interface: true, voices: false, subs: true }],
+    reviews: [{ id: 4501, user: "Shaw", text: "¡Finalmente!", score: 10 }]
+  },
+  {
+    id: 46,
+    title: "Marvel's Wolverine",
+    image: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=2080&auto=format&fit=crop",
+    globalScore: 9.5,
+    platforms: ["PS5"],
+    editions: [{ id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Logan desencadenado.' }] }],
+    marketPrices: [{ store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }],
+    breakdown: { jugabilidad: 9.8, gráficos: 9.7, historia: 9.0 },
+    description: "Insomniac Games presenta una aventura cruda de Logan.",
+    about: "Vive la violencia y el drama del mutante más famoso en esta aventura para adultos.",
+    specs: { desarrollador: "Insomniac Games", editor: "Sony", genero: "Acción", lanzamiento: "2026", multijugador: "No", clasificación: "M (17+)" },
+    languages: [{ lang: "Español (Latam)", interface: true, voices: true, subs: true }],
+    reviews: [{ id: 4601, user: "XMenFan", text: "Garras y sangre.", score: 10 }]
   }
 ];

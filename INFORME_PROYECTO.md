@@ -1,57 +1,51 @@
 # INFORME DE ESTADO DEL PROYECTO: PIXELVERDICT
 **Fecha:** 5 de Junio de 2026
-**Estado:** Beta Temprana / Versión 2.1
+**Estado:** Beta Temprana / Versión 2.2
 **Tecnología:** React 19 + Vite + Tailwind CSS + Lucide Icons
 
 ---
 
 ## 1. RESUMEN EJECUTIVO
-PixelVerdict ha evolucionado de una estructura básica a una plataforma de reseñas dinámica y altamente interactiva. Se han implementado sistemas complejos de filtrado, gestión de ediciones y una arquitectura de datos enriquecida que emula una tienda de videojuegos profesional.
+PixelVerdict ha escalado masivamente su volumen de contenido y profundidad técnica. El catálogo ha pasado de una selección limitada a una base de datos robusta de 20+ títulos, integrando lanzamientos actuales de 2026 y clásicos modernos. Se han refinado las interfaces de usuario para manejar datos complejos de manera fluida y dinámica.
 
 ---
 
 ## 2. NUEVAS FUNCIONALIDADES (PÁGINA WEB)
 
-### A. Gestión de Ediciones Detallada
-- **Desglose de Contenido:** Se ha rediseñado la sección "¿Qué incluye esta edición?" para ofrecer información pormenorizada. Ahora, cada elemento del paquete (DLC, cosméticos, pases) cuenta con su propio título y una descripción explicativa.
-- **Interfaz de Tarjetas:** El contenido de las ediciones se presenta en una cuadrícula de tarjetas con iconos de verificación, mejorando la legibilidad y el valor percibido.
+### A. Expansión Masiva del Catálogo (+16 Juegos)
+- **Diversidad de Géneros:** Se han añadido 16 títulos nuevos incluyendo blockbusters como *Black Myth: Wukong*, *Ghost of Yotei*, *Silksong*, y *Marvel's Wolverine*.
+- **Contenido 2026:** Integración de lanzamientos proyectados para el año en curso con datos de mercado realistas.
 
-### B. Sistema de Filtrado por Plataformas
-- **Filtros Dinámicos:** Implementación de una barra de categorías (Todo, PC, PlayStation, Xbox, Nintendo).
-- **Reactividad:** La cuadrícula de juegos se actualiza instantáneamente sin recargar la página.
-
-### C. Selector de Ediciones y Paquetes (Packs)
-- **Selector de Versiones:** Ubicado debajo de la imagen del juego, permite elegir entre Standard, Deluxe y Ultimate.
-- **Actualización Dinámica de Precios:** Los precios del mercado se ajustan según la edición seleccionada.
-
-### D. Matriz de Idiomas Interactiva
-- **Modal de Soporte:** Un botón "Ver idiomas disponibles" abre una ventana emergente con una matriz técnica de Interfaz, Voces y Subtítulos.
-- **Expansión Global:** Se ha aumentado la base de datos de idiomas a más de 12 variantes por juego, incluyendo localizaciones regionales (Latam vs. España, Portugal vs. Brasil) y mercados asiáticos (Coreano, Chino, Japonés).
+### B. Interactividad Dinámica de Idiomas
+- **Buscador en Tiempo Real:** El modal de idiomas ahora cuenta con un filtro predictivo que permite localizar localizaciones específicas instantáneamente.
+- **Animaciones de Interfaz:** Implementación de efectos de entrada (*fade/zoom*) y transiciones de hover en la cuadrícula de idiomas y galería de imágenes.
 
 ---
 
 ## 3. MEJORAS EN EL CÓDIGO Y ARQUITECTURA
 
 ### Estructura de Datos (Data Layer)
-- **Esquema de Ediciones Expandido:** Los objetos en `mockGames.js` ahora incluyen un arreglo de `perks` con estructura `{ title, description }`, permitiendo descripciones ricas para cada beneficio.
-- **Localización de Moneda:** Sincronización de todos los precios a Pesos Mexicanos (MXN).
+- **Refactorización de `mockGames.js`:** 
+    - Optimización de objetos para incluir descripciones de paquetes detalladas.
+    - Expansión de la matriz de idiomas (promedio de 15 variantes por juego).
+    - Inclusión de metadatos técnicos avanzados (Desarrollador, Clasificación ESRB, Multijugador).
 
-### Lógica de Componentes (UI Layer)
-- **Componentes Reactivos:** Mejora en el uso de `useState` para reflejar cambios inmediatos en el mercado y descripciones al cambiar de edición.
-- **Diseño Visual:** Uso de `hover:border-gamingOrange/50` y sombras dinámicas para mejorar la interactividad en las tarjetas de contenido.
+### Lógica de UI (React)
+- **Filtrado Avanzado:** Mejora del sistema de filtrado por plataformas (Nintendo, Xbox, PlayStation, PC) con lógica de persistencia de ordenamiento.
+- **Estados Reactivos:** Uso de `useMemo` para gestionar el filtrado de idiomas sin impacto en el rendimiento.
 
 ---
 
 ## 4. INTEGRACIÓN Y DESPLIEGUE (CI/CD)
-- **Automatización con Vercel:** Gestión de rutas SPA mediante `vercel.json`.
-- **Sincronización Git:** Seguimiento riguroso de cada incremento funcional.
+- **Sincronización Automática:** Cada incremento de contenido se despliega directamente a Vercel mediante el flujo de trabajo de GitHub.
+- **Localización:** Todos los precios y descripciones siguen el estándar de moneda y tono del mercado mexicano.
 
 ---
 
 ## 5. PRÓXIMOS PASOS
 1. **Galería Multimedia:** Implementar un carrusel de capturas de pantalla para cada juego.
 2. **Requisitos de Sistema:** Añadir tablas de requisitos mínimos y recomendados para juegos de PC.
-3. **Optimización SEO:** Mejorar los meta-tags dinámicos para cada vista de juego.
+3. **Persistencia Local:** Guardado de juegos favoritos mediante LocalStorage.
 
 ---
 **Elaborado por:** Veredicto Crítico v2.6 (Gemini CLI Agent)

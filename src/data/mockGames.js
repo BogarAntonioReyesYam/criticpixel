@@ -104,5 +104,112 @@ export const mockGames = [
       { id: 601, user: "DarkPlace", text: "Una obra maestra visual con una historia que te volará la cabeza.", score: 9 },
       { id: 602, user: "RemedyFan", text: "A fuego lento pero vale muchísimo la pena al final.", score: 8.5 }
     ]
+  },
+  {
+    id: 7,
+    title: "Marvel's Spider-Man 2",
+    image: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=2080&auto=format&fit=crop",
+    globalScore: 9.3,
+    platforms: ["PS5"],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
+    ],
+    breakdown: {
+      jugabilidad: 9.5,
+      gráficos: 9.8,
+      historia: 9.0
+    },
+    description: "Los Spider-Men Peter Parker y Miles Morales regresan para una nueva y emocionante aventura en la aclamada franquicia de Marvel's Spider-Man para PS5.",
+    reviews: [
+      { id: 701, user: "WebSlinger", text: "El balanceo por la ciudad nunca se sintió tan bien. La historia de Venom es increíble.", score: 9.5 },
+      { id: 702, user: "SpideyFan", text: "Gráficos de infarto y una jugabilidad muy pulida. Imprescindible.", score: 9 }
+    ]
+  },
+  {
+    id: 8,
+    title: "Cyberpunk 2077: Ultimate Edition",
+    image: "https://images.unsplash.com/photo-1605898960710-90da34597473?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.2,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "Steam", price: "$1,299.00", availability: "PC" },
+      { store: "Epic Games", price: "$1,299.00", availability: "PC" },
+      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,299.00", availability: "Xbox" }
+    ],
+    breakdown: {
+      jugabilidad: 9.0,
+      gráficos: 10,
+      historia: 9.5
+    },
+    description: "Cyberpunk 2077 es un RPG de acción y aventura en mundo abierto ambientado en Night City, una megalópolis obsesionada con el poder, el glamour y la modificación corporal.",
+    reviews: [
+      { id: 801, user: "NightCityGhost", text: "Después de las actualizaciones, es el juego que siempre prometieron. Increíble.", score: 9.5 },
+      { id: 802, user: "SilverhandFan", text: "La expansión Phantom Liberty es de lo mejor que he jugado.", score: 10 }
+    ]
+  },
+  {
+    id: 9,
+    title: "Resident Evil 4 Remake",
+    image: "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.5,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "Steam", price: "$799.00", availability: "PC" },
+      { store: "PlayStation Store", price: "$1,149.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,149.00", availability: "Xbox" }
+    ],
+    breakdown: {
+      jugabilidad: 9.8,
+      gráficos: 9.6,
+      historia: 9.0
+    },
+    description: "Resident Evil 4 es un remake del Resident Evil 4 original de 2005. Conserva la esencia del juego original, a la vez que introduce una jugabilidad modernizada.",
+    reviews: [
+      { id: 901, user: "LeonS", text: "El mejor remake que se ha hecho jamás. Acción pura y tensión.", score: 10 },
+      { id: 902, user: "Survivor99", text: "Han mejorado cada aspecto del original. Una joya.", score: 9.5 }
+    ]
+  },
+  {
+    id: 10,
+    title: "Forza Horizon 5",
+    image: "https://images.unsplash.com/photo-1614294149010-950b698f72c0?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.1,
+    platforms: ["PC", "Xbox Series X", "Xbox One"],
+    marketPrices: [
+      { store: "Steam", price: "$1,199.00", availability: "PC" },
+      { store: "Microsoft Store", price: "$1,199.00", availability: "PC / Xbox" }
+    ],
+    breakdown: {
+      jugabilidad: 9.5,
+      gráficos: 10,
+      historia: 7.0
+    },
+    description: "Tu aventura Horizon definitiva te espera! Explora los vibrantes paisajes de mundo abierto de México en constante evolución con una acción de conducción ilimitada.",
+    reviews: [
+      { id: 1001, user: "SpeedDemon", text: "Gráficamente es lo mejor que existe en conducción. México se ve increíble.", score: 10 },
+      { id: 1002, user: "CarLover", text: "Divertido, enorme y con cientos de coches. Un paraíso.", score: 9 }
+    ]
+  },
+  {
+    id: 11,
+    title: "Hades II",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+    globalScore: 9.7,
+    platforms: ["PC"],
+    marketPrices: [
+      { store: "Steam", price: "$549.00", availability: "PC" },
+      { store: "Epic Games", price: "$549.00", availability: "PC" }
+    ],
+    breakdown: {
+      jugabilidad: 10,
+      gráficos: 9.8,
+      historia: 9.5
+    },
+    description: "La primera secuela de Supergiant Games se basa en los mejores aspectos del roguelike original de mazmorras en una experiencia totalmente nueva y llena de acción.",
+    reviews: [
+      { id: 1101, user: "ZagreusBro", text: "Si el primero era perfecto, este lo supera. Melinoë es genial.", score: 10 },
+      { id: 1102, user: "RogueLover", text: "El sistema de combate y la dirección de arte son de otro mundo.", score: 9.5 }
+    ]
   }
 ];

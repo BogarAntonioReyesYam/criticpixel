@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Globe } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
 
 const GameDetails = () => {
@@ -24,12 +24,13 @@ const GameDetails = () => {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        {/* Columna Izquierda: Imagen y Desglose */}
+        {/* Columna Izquierda: Imagen, Desglose y Especificaciones */}
         <div className="lg:col-span-1 space-y-8">
           <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
             <img src={game.image} alt={game.title} className="w-full h-auto" />
           </div>
 
+          {/* Sección: Desglose Técnico */}
           <div className="bg-gamingCard rounded-2xl p-6 space-y-6">
             <h3 className="text-xl font-bold uppercase tracking-wider border-b border-white/5 pb-4">
               Puntaje Técnico
@@ -51,9 +52,25 @@ const GameDetails = () => {
               ))}
             </div>
           </div>
+
+          {/* NUEVA SECCIÓN: Especificaciones (Estilo Instant-Gaming) */}
+          <div className="bg-gamingCard rounded-2xl p-6 space-y-6">
+            <div className="flex items-center gap-2 text-xl font-bold uppercase tracking-wider border-b border-white/5 pb-4">
+              <Settings className="w-5 h-5 text-gamingOrange" />
+              Especificaciones
+            </div>
+            <div className="space-y-4">
+              {Object.entries(game.specs).map(([key, value]) => (
+                <div key={key} className="flex justify-between items-center text-sm border-b border-white/5 pb-2 last:border-0">
+                  <span className="text-gray-500 font-bold uppercase text-[10px] tracking-widest">{key}</span>
+                  <span className="text-gray-200 font-medium">{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Columna Derecha: Título, Desc, Valor de Mercado y Reseñas */}
+        {/* Columna Derecha: Título, Acerca de, Mercado y Reseñas */}
         <div className="lg:col-span-2 space-y-10">
           <header>
             <div className="flex items-center gap-4 mb-2">
@@ -71,12 +88,23 @@ const GameDetails = () => {
             <h1 className="text-5xl font-black tracking-tighter uppercase italic leading-none mb-6">
               {game.title}
             </h1>
-            <p className="text-xl text-gray-400 leading-relaxed">
+            <p className="text-xl text-gray-400 leading-relaxed italic border-l-4 border-gamingOrange pl-6 bg-white/5 py-4 rounded-r-xl">
               {game.description}
             </p>
           </header>
 
-          {/* NUEVA SECCIÓN: Valor de Mercado */}
+          {/* NUEVA SECCIÓN: Acerca de */}
+          <section className="space-y-6">
+            <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
+              <Info className="text-gamingOrange" />
+              Acerca de este juego
+            </div>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              {game.about}
+            </p>
+          </section>
+
+          {/* Sección: Valor de Mercado */}
           <section className="space-y-6">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <ShoppingBag className="text-gamingOrange" />
@@ -97,6 +125,7 @@ const GameDetails = () => {
             </div>
           </section>
 
+          {/* Sección: Reseñas */}
           <section className="space-y-6">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <MessageSquare className="text-gamingOrange" />

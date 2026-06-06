@@ -10,10 +10,17 @@ export const mockGames = [
       { store: "Microsoft Store", price: "$1,899.00", availability: "Xbox Series X" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 10, historia: 10 },
-    description: "La culminación de una década de espera. GTA VI no es solo un juego; es el simulador definitivo de la vida moderna y el crimen organizado. Un despliegue técnico que redefine lo que creíamos posible en hardware actual. Una oda épica al exceso y la libertad absoluta en las calles bañadas por el neón de Vice City.",
+    description: "La culminación de una década de espera. GTA VI no es solo un juego; es el simulador definitivo de la vida moderna y el crimen organizado.",
+    about: "Grand Theft Auto VI viaja al estado de Leonida, hogar de las calles bañadas en neón de Vice City y más allá, en la evolución más grande y envolvente de la serie hasta la fecha. Con una narrativa centrada en el dúo de Lucia y Jason, el juego promete un realismo nunca antes visto en un mundo abierto.",
+    specs: {
+      desarrollador: "Rockstar North",
+      editor: "Rockstar Games",
+      genero: "Acción / Mundo Abierto",
+      lanzamiento: "2025/2026"
+    },
     reviews: [
-      { id: 1201, user: "Rockstar_Loyalist_99", text: "¡EL REY HA VUELTO! No puedo creer el nivel de detalle en cada rincón. ¡Es simplemente perfecto, 10 años de espera valieron cada segundo!", score: 10 },
-      { id: 1202, user: "JuanitoGamer_MX", text: "Me la paso horas solo manejando y escuchando la radio. La diversión es pura y la ciudad se siente viva.", score: 9.5 }
+      { id: 1201, user: "Rockstar_Loyalist_99", text: "¡EL REY HA VUELTO! No puedo creer el nivel de detalle en cada rincón. ¡Es simplemente perfecto!", score: 10 },
+      { id: 1202, user: "JuanitoGamer_MX", text: "Me la paso horas solo manejando y escuchando la radio. La ciudad se siente viva.", score: 9.5 }
     ]
   },
   {
@@ -27,10 +34,17 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$1,449.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 9.4, historia: 10 },
-    description: "Una obra maestra sin precedentes en el género del RPG. Larian Studios ha forjado una leyenda donde cada elección tuya resuena en la eternidad. Es la libertad absoluta hecha código, una narrativa tan densa y ramificada que hará que olvides la realidad. Simplemente, la perfección del rol clásico modernizado.",
+    description: "Una obra maestra sin precedentes en el género del RPG. Larian Studios ha forjado una leyenda donde cada elección tuya resuena en la eternidad.",
+    about: "Baldur's Gate 3 es un RPG de nueva generación, ambientado en el mundo de Dungeons & Dragons. Reúne a tu grupo y regresa a los Reinos Olvidados en una historia de compañerismo y traición, sacrificio y supervivencia, y la atracción del poder absoluto.",
+    specs: {
+      desarrollador: "Larian Studios",
+      editor: "Larian Studios",
+      genero: "RPG / Estrategia",
+      lanzamiento: "2023"
+    },
     reviews: [
-      { id: 501, user: "D&D_Master_Ultra", text: "La profundidad de las mecánicas es abrumadora. Finalmente un juego que respeta la inteligencia del jugador. Imprescindible.", score: 10 },
-      { id: 502, user: "RTX_3090_Sweat", text: "La historia es de 10, pero en el Acto 3 los FPS caen de 120 a 45 en ciudades densas. Necesita un parche de optimización urgente para PC de gama alta.", score: 8.5 }
+      { id: 501, user: "D&D_Master_Ultra", text: "La profundidad de las mecánicas es abrumadora. Finalmente un juego que respeta la inteligencia del jugador.", score: 10 },
+      { id: 502, user: "RTX_3090_Sweat", text: "La historia es de 10, pero necesita un parche de optimización para PC de gama alta en ciudades densas.", score: 8.5 }
     ]
   },
   {
@@ -44,10 +58,17 @@ export const mockGames = [
       { store: "Epic Games", price: "$1,499.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 9.6, gráficos: 9.8, historia: 10 },
-    description: "El inicio de una nueva era para los brujos. Polaris nos sumerge en una atmósfera gélida y despiadada con un despliegue visual en Unreal Engine 5 que quita el aliento. CD Projekt RED recupera su corona narrativa entregando una historia que te atrapará desde el primer contrato. Una carta de amor a la fantasía oscura.",
+    description: "El inicio de una nueva era para los brujos. Polaris nos sumerge en una atmósfera gélida y despiadada con Unreal Engine 5.",
+    about: "Polaris inicia una nueva trilogía épica de fantasía oscura de la mano de CD PROJEKT RED. Abandonando el motor REDengine por Unreal Engine 5, el juego explora nuevas regiones del continente y una nueva escuela de brujos: la Escuela del Lince.",
+    specs: {
+      desarrollador: "CD Projekt RED",
+      editor: "CD Projekt RED",
+      genero: "RPG de Acción",
+      lanzamiento: "2026"
+    },
     reviews: [
-      { id: 1501, user: "Geralt_Enjoyer_Forever", text: "¡BRUTAL! No creí que pudieran superar a Wild Hunt, pero la nueva escuela del lince es fascinante. ¡Pura magia!", score: 10 },
-      { id: 1502, user: "MasterRace_Enthusiast", text: "Visualmente imbatible, aunque el Ray Tracing Overdrive todavía pone de rodillas a mi 5090. Esperaba más estabilidad en el lanzamiento.", score: 9.0 }
+      { id: 1501, user: "Geralt_Enjoyer_Forever", text: "¡BRUTAL! La nueva escuela del lince es fascinante. ¡Pura magia!", score: 10 },
+      { id: 1502, user: "MasterRace_Enthusiast", text: "Visualmente imbatible, aunque el Ray Tracing Overdrive todavía pone de rodillas a mi 5090.", score: 9.0 }
     ]
   },
   {
@@ -61,10 +82,17 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$999.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 9.5, historia: 9.8 },
-    description: "Miyazaki lo ha vuelto a hacer. Shadow of the Erdtree no es una expansión, es un monumento al diseño de niveles y a la dificultad gratificante. Una odisea oscura en la Tierra de las Sombras que expande el lore de Elden Ring de formas inimaginables. Prepárate para morir, aprender y finalmente, triunfar de forma épica.",
+    description: "Miyazaki lo ha vuelto a hacer. Shadow of the Erdtree no es una expansión, es un monumento al diseño de niveles.",
+    about: "La expansión Shadow of the Erdtree presenta una historia completamente nueva ambientada en la Tierra de las Sombras, llena de misterios, mazmorras peligrosas y nuevos enemigos, armas y equipo. Descubre el lado oscuro del lore de Miquella.",
+    specs: {
+      desarrollador: "FromSoftware",
+      editor: "Bandai Namco",
+      genero: "Action RPG / Soulslike",
+      lanzamiento: "2024"
+    },
     reviews: [
-      { id: 101, user: "SoulsBorne_Addict", text: "Mejor que muchos juegos completos. Los jefes son una pesadilla hermosa. 10/10.", score: 10 },
-      { id: 102, user: "Casual_Carlos", text: "Es muy difícil, pero la sensación de explorar este mundo nuevo es increíblemente divertida. ¡Lo logré vencer!", score: 9.0 }
+      { id: 101, user: "SoulsBorne_Addict", text: "Mejor que muchos juegos completos. Los jefes son una pesadilla hermosa.", score: 10 },
+      { id: 102, user: "Casual_Carlos", text: "Es muy difícil, pero explorar este mundo nuevo es increíblemente divertido.", score: 9.0 }
     ]
   },
   {
@@ -78,9 +106,16 @@ export const mockGames = [
       { store: "Epic Games", price: "$549.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 9.8, historia: 9.5 },
-    description: "Melinoë toma la antorcha en esta secuela que perfecciona la fórmula de la perfección. Supergiant Games demuestra que se puede hacer un roguelike con alma, estilo y una adicción infinita. Cada 'run' es una danza de hechizos y narrativa que te mantendrá despierto hasta el amanecer. Una joya divina en todos sus apartados.",
+    description: "Melinoë toma la antorcha en esta secuela que perfecciona la fórmula de la perfección.",
+    about: "Lucha más allá del Inframundo usando magia negra para enfrentarte al Titán del Tiempo en esta secuela fascinante. Como Melinoë, la princesa inmortal del Inframundo, explorarás un mundo mitológico más grande y profundo.",
+    specs: {
+      desarrollador: "Supergiant Games",
+      editor: "Supergiant Games",
+      genero: "Roguelike",
+      lanzamiento: "2024 (Early Access)"
+    },
     reviews: [
-      { id: 1101, user: "Zagreus_Simp", text: "¡Dios mío, la dirección de arte es de otro mundo! Supera al primero en todo. ¡Larga vida a Melinoë!", score: 10 },
+      { id: 1101, user: "Zagreus_Simp", text: "¡Dios mío, la dirección de arte es de otro mundo! Supera al primero en todo.", score: 10 },
       { id: 1102, user: "IndieLover88", text: "Diversión pura desde el minuto uno. No puedo dejar de jugar 'una partida más'.", score: 9.5 }
     ]
   },
@@ -95,10 +130,17 @@ export const mockGames = [
       { store: "Amazon MX", price: "$1,199.00", availability: "Físico" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 8.5, historia: 9.0 },
-    description: "La ingeniería hecha videojuego. Hyrule se expande hacia los cielos y las profundidades en una aventura que desafía las leyes de la física y la imaginación. Tears of the Kingdom es un patio de recreo infinito donde tu creatividad es la única herramienta necesaria para salvar un reino. Una experiencia mágica y transformadora.",
+    description: "La ingeniería hecha videojuego. Hyrule se expande hacia los cielos y las profundidades.",
+    about: "En esta secuela de Breath of the Wild, decidirás tu propio camino a través de los extensos paisajes de Hyrule y las misteriosas islas que flotan en los cielos. Aprovecha el poder de las nuevas habilidades de Link para luchar contra las fuerzas malévolas.",
+    specs: {
+      desarrollador: "Nintendo EPD",
+      editor: "Nintendo",
+      genero: "Aventura / Mundo Abierto",
+      lanzamiento: "2023"
+    },
     reviews: [
-      { id: 301, user: "Hylian_Architect", text: "¡Las mecánicas de construcción son revolucionarias! He pasado 50 horas solo haciendo vehículos locos. ¡Obra maestra!", score: 10 },
-      { id: 302, user: "Gamer_Relajado", text: "Me encanta perderme en el mapa. Siempre hay algo nuevo que descubrir y es muy entretenido.", score: 9.0 }
+      { id: 301, user: "Hylian_Architect", text: "¡Las mecánicas de construcción son revolucionarias! He pasado 50 horas haciendo vehículos locos.", score: 10 },
+      { id: 302, user: "Gamer_Relajado", text: "Me encanta perderme en el mapa. Siempre hay algo nuevo que descubrir.", score: 9.0 }
     ]
   },
   {
@@ -112,10 +154,17 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$1,149.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 9.8, gráficos: 9.6, historia: 9.0 },
-    description: "Leon S. Kennedy regresa en el que es, posiblemente, el mejor remake de la historia. Capcom ha logrado equilibrar la nostalgia con la modernidad, entregando una experiencia de acción y terror que te mantendrá al borde del asiento. Cada disparo se siente real, cada sombra es un peligro. Un clásico redefinido para una nueva generación.",
+    description: "Leon S. Kennedy regresa en el que es, posiblemente, el mejor remake de la historia.",
+    about: "Seis años después de la catástrofe biológica en Raccoon City, Leon S. Kennedy ha sido enviado a rescatar a la hija del presidente, a quien han secuestrado. La búsqueda le lleva a una aldea europea aislada donde algo terrible les ocurre a sus habitantes.",
+    specs: {
+      desarrollador: "Capcom",
+      editor: "Capcom",
+      genero: "Survival Horror",
+      lanzamiento: "2023"
+    },
     reviews: [
-      { id: 901, user: "Resident_Evil_Veteran", text: "¡Increíble! Han respetado la esencia y mejorado todo lo que se podía mejorar. ¡GOTY material!", score: 10 },
-      { id: 902, user: "PC_Performance_Nerd", text: "Excelente remake, pero el Denuvo y algunos problemas de stuttering al inicio empañan un poco la versión de PC. Aun así, juegazo.", score: 8.5 }
+      { id: 901, user: "Resident_Evil_Veteran", text: "¡Increíble! Han respetado la esencia y mejorado todo lo que se podía mejorar.", score: 10 },
+      { id: 902, user: "PC_Performance_Nerd", text: "Excelente remake, pero el Denuvo empaña un poco la versión de PC. Aun así, juegazo.", score: 8.5 }
     ]
   },
   {
@@ -128,10 +177,17 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 8.9, gráficos: 10, historia: 10 },
-    description: "Hideo Kojima nos invita a un nuevo viaje introspectivo y visualmente arrebatador. On The Beach eleva la narrativa cinematográfica a niveles nunca vistos en el medio. Es extraño, es hermoso y es profundamente conmovedor. Una experiencia que solo Kojima podría imaginar y que te dejará reflexionando mucho después de los créditos.",
+    description: "Hideo Kojima nos invita a un nuevo viaje introspectivo y visualmente arrebatador.",
+    about: "Sam Porter Bridges se embarca en un nuevo viaje para salvar a la humanidad de la extinción. En Death Stranding 2, el mundo se enfrenta a nuevas amenazas cataclísmicas mientras Sam busca reconectar a las personas aisladas.",
+    specs: {
+      desarrollador: "Kojima Productions",
+      editor: "Sony Interactive Ent.",
+      genero: "Acción / Exploración",
+      lanzamiento: "2025"
+    },
     reviews: [
-      { id: 1401, user: "Kojima_Is_God", text: "Nadie entiende su genio. Es arte puro, cine interactivo en su máxima expresión. ¡Brillante!", score: 10 },
-      { id: 1402, user: "Curioso_Gamer", text: "No entiendo la mitad de lo que pasa, pero los paisajes son tan bonitos y la música tan buena que no puedo dejarlo.", score: 8.5 }
+      { id: 1401, user: "Kojima_Is_God", text: "Nadie entiende su genio. Es arte puro, cine interactivo en su máxima expresión.", score: 10 },
+      { id: 1402, user: "Curioso_Gamer", text: "No entiendo la mitad de lo que pasa, pero los paisajes son tan bonitos que no puedo dejarlo.", score: 8.5 }
     ]
   },
   {
@@ -144,10 +200,17 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 9.5, gráficos: 9.8, historia: 9.0 },
-    description: "Dos Spider-Men, una amenaza colosal. Insomniac Games entrega la aventura definitiva del trepamuros con un balanceo veloz y un combate coreografiado a la perfección. Nueva York nunca se vio tan detallada ni se sintió tan peligrosa. Una historia emocional sobre la responsabilidad y el peso de ser un héroe. ¡Simplemente espectacular!",
+    description: "Dos Spider-Men, una amenaza colosal. La aventura definitiva del trepamuros.",
+    about: "Explora la Nueva York de Marvel expandida como Peter Parker y Miles Morales. Cambia entre ambos para vivir historias diferentes y nuevos poderes épicos mientras el icónico villano Venom amenaza con destruir sus vidas y su ciudad.",
+    specs: {
+      desarrollador: "Insomniac Games",
+      editor: "Sony Interactive Ent.",
+      genero: "Acción / Aventura",
+      lanzamiento: "2023"
+    },
     reviews: [
-      { id: 701, user: "WebHead_Fanatic", text: "¡El mejor juego de superhéroes! Jugar con Peter y Miles es un sueño hecho realidad. ¡10 absoluto!", score: 10 },
-      { id: 702, user: "Pura_Diversion_24", text: "Súper divertido, la acción no para nunca. Me encanta cómo se siente volar por la ciudad.", score: 9.5 }
+      { id: 701, user: "WebHead_Fanatic", text: "¡El mejor juego de superhéroes! Jugar con Peter y Miles es un sueño hecho realidad.", score: 10 },
+      { id: 702, user: "Pura_Diversion_24", text: "Súper divertido, la acción no para nunca. Me encanta volar por la ciudad.", score: 9.5 }
     ]
   },
   {
@@ -161,10 +224,17 @@ export const mockGames = [
       { store: "Microsoft Store", price: "$1,299.00", availability: "Xbox Series X" }
     ],
     breakdown: { jugabilidad: 9.0, gráficos: 10, historia: 9.5 },
-    description: "Night City finalmente brilla como siempre debió hacerlo. La Ultimate Edition es la redención total de una visión distópica fascinante. Con Phantom Liberty, la narrativa alcanza picos de thriller de espionaje magistrales. Sumérgete en el cromo, el neón y la decadencia de una metrópolis que te devorará vivo si no eres lo suficientemente rápido.",
+    description: "Night City finalmente brilla como siempre debió hacerlo. La redención total.",
+    about: "Cyberpunk 2077 es un RPG de acción y aventura en mundo abierto ambientado en la megalópolis de Night City. Conviértete en un mercenario cyberpunk y enfréntate a las fuerzas más poderosas de la ciudad en busca de la inmortalidad.",
+    specs: {
+      desarrollador: "CD Projekt RED",
+      editor: "CD Projekt RED",
+      genero: "RPG de Acción",
+      lanzamiento: "2020/2023"
+    },
     reviews: [
-      { id: 801, user: "Choomba_V", text: "¡Finalmente es el juego que nos prometieron! La expansión es mejor que el juego base. ¡Increíble!", score: 10 },
-      { id: 802, user: "Optimization_Police", text: "El Path Tracing es increíble, pero necesitas una central eléctrica para correrlo a 60fps. Fuera de eso, la ciudad es asombrosa.", score: 8.0 }
+      { id: 801, user: "Choomba_V", text: "¡Finalmente es el juego que nos prometieron! La expansión es mejor que el juego base.", score: 10 },
+      { id: 802, user: "Optimization_Police", text: "El Path Tracing es increíble, pero necesitas una central eléctrica para correrlo a 60fps.", score: 8.0 }
     ]
   },
   {
@@ -178,10 +248,17 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$1,149.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 8.5, gráficos: 10, historia: 9.2 },
-    description: "Una pesadilla lúcida donde la realidad y la ficción se entrelazan de forma aterradora. Remedy ha creado un thriller psicológico que desafía las convenciones del medio, usando el apartado visual más vanguardista hasta la fecha. Acompaña a Alan y Saga en un descenso a la locura que te mantendrá cuestionando cada sombra. Un viaje inolvidable.",
+    description: "Una pesadilla lúcida donde la realidad y la ficción se entrelazan de forma aterradora.",
+    about: "Atrapado en una dimensión alternativa, el escritor Alan Wake intenta escapar escribiendo una historia de terror. Mientras tanto, en el mundo real, la agente del FBI Saga Anderson investiga una serie de asesinatos rituales en Bright Falls.",
+    specs: {
+      desarrollador: "Remedy Entertainment",
+      editor: "Epic Games Publishing",
+      genero: "Survival Horror / Misterio",
+      lanzamiento: "2023"
+    },
     reviews: [
-      { id: 601, user: "Remedy_Scholar", text: "Una narrativa compleja y fascinante. Visualmente es lo más avanzado que existe hoy. ¡Arte!", score: 9.5 },
-      { id: 602, user: "FrameRate_Watcher", text: "La carga técnica es altísima. Si no tienes una tarjeta con Mesh Shaders, ni lo intentes. Pero la historia vale la pena.", score: 8.0 }
+      { id: 601, user: "Remedy_Scholar", text: "Una narrativa compleja y fascinante. Visualmente es lo más avanzado hoy. ¡Arte!", score: 9.5 },
+      { id: 602, user: "FrameRate_Watcher", text: "La carga técnica es altísima. Si no tienes Mesh Shaders, ni lo intentes.", score: 8.0 }
     ]
   },
   {
@@ -195,10 +272,17 @@ export const mockGames = [
       { store: "Keys Sites", price: "$1,999.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 2.0, gráficos: 5.0, historia: 1.0 },
-    description: "Un monumento a las promesas vacías y al marketing engañoso. 'The Day Before' es más un experimento sociológico sobre el hype que un videojuego funcional. Entre bugs que rompen la realidad y mecánicas inexistentes, este título es la guía definitiva de cómo NO lanzar un juego. Una experiencia tan vacía como sus servidores.",
+    description: "Un monumento a las promesas vacías y al marketing engañoso.",
+    about: "The Day Before era un MMO de supervivencia de mundo abierto ambientado en una América post-pandémica plagada de infectados y supervivientes que se matan entre sí por comida, armas y coches. Fue retirado de las tiendas días después de su lanzamiento.",
+    specs: {
+      desarrollador: "Fntastic",
+      editor: "Mytona",
+      genero: "Survival MMO",
+      lanzamiento: "2023"
+    },
     reviews: [
-      { id: 2001, user: "Scam_Survivor", text: "¡CUIDADO! Es una estafa total, no hay nada de lo que prometieron en los trailers. Dinero a la basura.", score: 1 },
-      { id: 2002, user: "MasterRace_Cynic", text: "Los assets son de tienda, la optimización es un chiste y el gameplay es aburrido. El peor 'lanzamiento' de la década.", score: 3 }
+      { id: 2001, user: "Scam_Survivor", text: "¡CUIDADO! Es una estafa total, no hay nada de lo que prometieron. Dinero a la basura.", score: 1 },
+      { id: 2002, user: "MasterRace_Cynic", text: "Assets de tienda y gameplay aburrido. El peor lanzamiento de la década.", score: 3 }
     ]
   }
 ];

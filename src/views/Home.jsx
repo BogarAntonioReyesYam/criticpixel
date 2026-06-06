@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
-import { ChevronDown, SortAsc, SortDesc, Type } from 'lucide-react';
+import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 
 const Home = () => {
   const [sortOrder, setSortOrder] = useState('score-desc');
+  const [platformFilter, setPlatformFilter] = useState('all');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const sortOptions = [
@@ -14,8 +15,26 @@ const Home = () => {
     { id: 'alpha-desc', label: 'Z-A (Nombre)', icon: <Type className="w-4 h-4" /> },
   ];
 
-  const sortedGames = useMemo(() => {
-    return [...mockGames].sort((a, b) => {
+  const platforms = [
+    { id: 'all', label: 'Todo', icon: <LayoutGrid className="w-4 h-4" /> },
+    { id: 'PC', label: 'PC', icon: <Monitor className="w-4 h-4" /> },
+    { id: 'PS5', label: 'PlayStation', icon: <Gamepad2 className="w-4 h-4" /> },
+    { id: 'Xbox', label: 'Xbox', icon: <Laptop className="w-4 h-4" /> },
+    { id: 'Switch', label: 'Switch', icon: <Disc className="w-4 h-4" /> },
+  ];
+
+  const filteredAndSortedGames = useMemo(() => {
+    let result = [...mockGames];
+
+    // Filtrado por plataforma
+    if (platformFilter !== 'all') {
+      result = result.filter(game => 
+        game.platforms.some(p => p.includes(platformFilter))
+      );
+    }
+
+    // Ordenamiento
+    return result.sort((a, b) => {
       switch (sortOrder) {
         case 'score-desc':
           return b.globalScore - a.globalScore;
@@ -29,60 +48,86 @@ const Home = () => {
           return 0;
       }
     });
-  }, [sortOrder]);
+  }, [sortOrder, platformFilter]);
 
-  const currentOption = sortOptions.find(opt => opt.id === sortOrder);
+  const currentSortOption = sortOptions.find(opt => opt.id === sortOrder);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2">
-            Reseñas <span className="text-gamingOrange">Populares</span>
-          </h1>
-          <p className="text-gray-400">Las calificaciones más esperadas por la comunidad.</p>
+      <header className="mb-10 space-y-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2">
+              Reseñas <span className="text-gamingOrange">Populares</span>
+            </h1>
+            <p className="text-gray-400">Explora los títulos más destacados de la industria.</p>
+          </div>
+
+          {/* Selector de Orden */}
+          <div className="relative">
+            <button 
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center gap-2 bg-gamingCard border border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[220px] justify-between"
+            >
+              <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
+                {currentSortOption.icon}
+                {currentSortOption.label}
+              </div>
+              <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-full bg-gamingCard border border-white/10 rounded-lg shadow-xl z-20 overflow-hidden">
+                {sortOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    onClick={() => {
+                      setSortOrder(option.id);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white/5 transition-colors text-left ${
+                      sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-400'
+                    }`}
+                  >
+                    {option.icon}
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Selector de Orden */}
-        <div className="relative">
-          <button 
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center gap-2 bg-gamingCard border border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[220px] justify-between"
-          >
-            <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
-              {currentOption.icon}
-              {currentOption.label}
-            </div>
-            <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-          </button>
-
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-full bg-gamingCard border border-white/10 rounded-lg shadow-xl z-10 overflow-hidden">
-              {sortOptions.map((option) => (
-                <button
-                  key={option.id}
-                  onClick={() => {
-                    setSortOrder(option.id);
-                    setIsDropdownOpen(false);
-                  }}
-                  className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white/5 transition-colors text-left ${
-                    sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-400'
-                  }`}
-                >
-                  {option.icon}
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          )}
+        {/* Filtros de Plataforma estilo Instant-Gaming */}
+        <div className="flex flex-wrap gap-2 p-1 bg-gamingCard/50 border border-white/5 rounded-xl w-fit">
+          {platforms.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => setPlatformFilter(p.id)}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-black uppercase tracking-widest transition-all duration-300 ${
+                platformFilter === p.id 
+                ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20' 
+                : 'text-gray-500 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {p.icon}
+              {p.label}
+            </button>
+          ))}
         </div>
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {sortedGames.map((game) => (
-          <GameCard key={game.id} game={game} />
-        ))}
-      </div>
+      {filteredAndSortedGames.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredAndSortedGames.map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-20 bg-gamingCard/30 rounded-3xl border border-dashed border-white/10">
+          <p className="text-gray-500 text-xl font-bold italic">No hay juegos disponibles para esta plataforma.</p>
+        </div>
+      )}
     </div>
   );
 };

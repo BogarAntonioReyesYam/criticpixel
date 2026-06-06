@@ -1,18 +1,23 @@
 # INFORME DE ESTADO DEL PROYECTO: PIXELVERDICT
 **Fecha:** 5 de Junio de 2026
-**Estado:** Beta Temprana / Versión 2.2
+**Estado:** Beta Temprana / Versión 2.3
 **Tecnología:** React 19 + Vite + Tailwind CSS + Lucide Icons
 
 ---
 
 ## 1. RESUMEN EJECUTIVO
-PixelVerdict ha escalado masivamente su volumen de contenido y profundidad técnica. El catálogo ha pasado de una selección limitada a una base de datos robusta de 20+ títulos, integrando lanzamientos actuales de 2026 y clásicos modernos. Se han refinado las interfaces de usuario para manejar datos complejos de manera fluida y dinámica.
+PixelVerdict ha escalado masivamente su volumen de contenido y profundidad técnica. La plataforma ahora cuenta con un sistema de persistencia de datos del lado del cliente, permitiendo a los usuarios gestionar su propia experiencia a través de una lista de deseos personalizada.
 
 ---
 
 ## 2. NUEVAS FUNCIONALIDADES (PÁGINA WEB)
 
-### A. Expansión Masiva del Catálogo (+16 Juegos)
+### A. Sistema de Lista de Deseos (Wishlist)
+- **Interactividad Persistente:** Se ha implementado un icono de corazón en cada tarjeta de juego. Al activarlo, se ilumina en rojo con un efecto de brillo (*glow*) y guarda el juego en la memoria del navegador.
+- **Persistencia con LocalStorage:** Las elecciones del usuario se mantienen incluso después de cerrar o refrescar la página, simulando un sistema de cuenta de usuario.
+- **Feedback Visual:** Animaciones de escala y transiciones de color suaves para confirmar la acción del usuario.
+
+### B. Expansión Masiva del Catálogo (+16 Juegos)
 - **Diversidad de Géneros:** Se han añadido 16 títulos nuevos incluyendo blockbusters como *Black Myth: Wukong*, *Ghost of Yotei*, *Silksong*, y *Marvel's Wolverine*.
 - **Contenido 2026:** Integración de lanzamientos proyectados para el año en curso con datos de mercado realistas.
 

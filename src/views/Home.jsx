@@ -20,7 +20,7 @@ const Home = () => {
     { id: 'PC', label: 'PC', icon: <Monitor className="w-4 h-4" /> },
     { id: 'PS5', label: 'PlayStation', icon: <Gamepad2 className="w-4 h-4" /> },
     { id: 'Xbox', label: 'Xbox', icon: <Laptop className="w-4 h-4" /> },
-    { id: 'Switch', label: 'Switch', icon: <Disc className="w-4 h-4" /> },
+    { id: 'Switch', label: 'Nintendo', icon: <Disc className="w-4 h-4" /> },
   ];
 
   const filteredAndSortedGames = useMemo(() => {

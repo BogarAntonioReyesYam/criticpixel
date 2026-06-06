@@ -16,7 +16,10 @@ export const mockGames = [
       desarrollador: "Rockstar North",
       editor: "Rockstar Games",
       genero: "Acción / Mundo Abierto",
-      lanzamiento: "2025/2026"
+      lanzamiento: "2025/2026",
+      multijugador: "Sí (GTA Online 2)",
+      idiomas: "Español (Latam), Inglés",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 1201, user: "Rockstar_Loyalist_99", text: "¡EL REY HA VUELTO! No puedo creer el nivel de detalle en cada rincón. ¡Es simplemente perfecto!", score: 10 },
@@ -40,7 +43,10 @@ export const mockGames = [
       desarrollador: "Larian Studios",
       editor: "Larian Studios",
       genero: "RPG / Estrategia",
-      lanzamiento: "2023"
+      lanzamiento: "2023",
+      multijugador: "Cooperativo Online/Local",
+      idiomas: "Español, Inglés, Francés",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 501, user: "D&D_Master_Ultra", text: "La profundidad de las mecánicas es abrumadora. Finalmente un juego que respeta la inteligencia del jugador.", score: 10 },
@@ -64,7 +70,10 @@ export const mockGames = [
       desarrollador: "CD Projekt RED",
       editor: "CD Projekt RED",
       genero: "RPG de Acción",
-      lanzamiento: "2026"
+      lanzamiento: "2026",
+      multijugador: "No (Single Player)",
+      idiomas: "Español, Inglés, Polaco",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 1501, user: "Geralt_Enjoyer_Forever", text: "¡BRUTAL! La nueva escuela del lince es fascinante. ¡Pura magia!", score: 10 },
@@ -88,7 +97,10 @@ export const mockGames = [
       desarrollador: "FromSoftware",
       editor: "Bandai Namco",
       genero: "Action RPG / Soulslike",
-      lanzamiento: "2024"
+      lanzamiento: "2024",
+      multijugador: "Cooperativo / Invasiones",
+      idiomas: "Español, Inglés, Japonés",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 101, user: "SoulsBorne_Addict", text: "Mejor que muchos juegos completos. Los jefes son una pesadilla hermosa.", score: 10 },
@@ -112,7 +124,10 @@ export const mockGames = [
       desarrollador: "Supergiant Games",
       editor: "Supergiant Games",
       genero: "Roguelike",
-      lanzamiento: "2024 (Early Access)"
+      lanzamiento: "2024",
+      multijugador: "No",
+      idiomas: "Español, Inglés",
+      clasificación: "T (Teen)"
     },
     reviews: [
       { id: 1101, user: "Zagreus_Simp", text: "¡Dios mío, la dirección de arte es de otro mundo! Supera al primero en todo.", score: 10 },
@@ -136,7 +151,10 @@ export const mockGames = [
       desarrollador: "Nintendo EPD",
       editor: "Nintendo",
       genero: "Aventura / Mundo Abierto",
-      lanzamiento: "2023"
+      lanzamiento: "2023",
+      multijugador: "No",
+      idiomas: "Español (Latam), Inglés, Japonés",
+      clasificación: "E10+ (Everyone 10+)"
     },
     reviews: [
       { id: 301, user: "Hylian_Architect", text: "¡Las mecánicas de construcción son revolucionarias! He pasado 50 horas haciendo vehículos locos.", score: 10 },
@@ -160,7 +178,10 @@ export const mockGames = [
       desarrollador: "Capcom",
       editor: "Capcom",
       genero: "Survival Horror",
-      lanzamiento: "2023"
+      lanzamiento: "2023",
+      multijugador: "No (Modo Mercenarios Online)",
+      idiomas: "Español, Inglés, Japonés",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 901, user: "Resident_Evil_Veteran", text: "¡Increíble! Han respetado la esencia y mejorado todo lo que se podía mejorar.", score: 10 },
@@ -183,7 +204,10 @@ export const mockGames = [
       desarrollador: "Kojima Productions",
       editor: "Sony Interactive Ent.",
       genero: "Acción / Exploración",
-      lanzamiento: "2025"
+      lanzamiento: "2025",
+      multijugador: "Social Asíncrono",
+      idiomas: "Español, Inglés, Japonés",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 1401, user: "Kojima_Is_God", text: "Nadie entiende su genio. Es arte puro, cine interactivo en su máxima expresión.", score: 10 },
@@ -206,7 +230,10 @@ export const mockGames = [
       desarrollador: "Insomniac Games",
       editor: "Sony Interactive Ent.",
       genero: "Acción / Aventura",
-      lanzamiento: "2023"
+      lanzamiento: "2023",
+      multijugador: "No",
+      idiomas: "Español (Latam), Inglés",
+      clasificación: "T (Teen)"
     },
     reviews: [
       { id: 701, user: "WebHead_Fanatic", text: "¡El mejor juego de superhéroes! Jugar con Peter y Miles es un sueño hecho realidad.", score: 10 },
@@ -230,7 +257,10 @@ export const mockGames = [
       desarrollador: "CD Projekt RED",
       editor: "CD Projekt RED",
       genero: "RPG de Acción",
-      lanzamiento: "2020/2023"
+      lanzamiento: "2020/2023",
+      multijugador: "No",
+      idiomas: "Español, Inglés, Alemán",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 801, user: "Choomba_V", text: "¡Finalmente es el juego que nos prometieron! La expansión es mejor que el juego base.", score: 10 },
@@ -254,7 +284,10 @@ export const mockGames = [
       desarrollador: "Remedy Entertainment",
       editor: "Epic Games Publishing",
       genero: "Survival Horror / Misterio",
-      lanzamiento: "2023"
+      lanzamiento: "2023",
+      multijugador: "No",
+      idiomas: "Español, Inglés",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 601, user: "Remedy_Scholar", text: "Una narrativa compleja y fascinante. Visualmente es lo más avanzado hoy. ¡Arte!", score: 9.5 },
@@ -278,7 +311,10 @@ export const mockGames = [
       desarrollador: "Fntastic",
       editor: "Mytona",
       genero: "Survival MMO",
-      lanzamiento: "2023"
+      lanzamiento: "2023",
+      multijugador: "Sí (Servidores cerrados)",
+      idiomas: "Inglés, Ruso",
+      clasificación: "M (17+)"
     },
     reviews: [
       { id: 2001, user: "Scam_Survivor", text: "¡CUIDADO! Es una estafa total, no hay nada de lo que prometieron. Dinero a la basura.", score: 1 },

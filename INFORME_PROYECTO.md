@@ -26,6 +26,7 @@ PixelVerdict ha evolucionado de una estructura básica a una plataforma de rese�
 
 ### D. Matriz de Idiomas Interactiva
 - **Modal de Soporte:** Un botón "Ver idiomas disponibles" abre una ventana emergente con una matriz técnica de Interfaz, Voces y Subtítulos.
+- **Expansión Global:** Se ha aumentado la base de datos de idiomas a más de 12 variantes por juego, incluyendo localizaciones regionales (Latam vs. España, Portugal vs. Brasil) y mercados asiáticos (Coreano, Chino, Japonés).
 
 ---
 

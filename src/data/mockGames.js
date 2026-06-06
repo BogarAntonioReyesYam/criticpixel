@@ -70,7 +70,6 @@ export const mockGames = [
     platforms: ["PC", "PS5", "Xbox Series X"],
     marketPrices: [
       { store: "Steam", price: "$1,299.00", availability: "PC" },
-      { store: "GOG", price: "$1,299.00", availability: "PC" },
       { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox" }
     ],
     breakdown: {

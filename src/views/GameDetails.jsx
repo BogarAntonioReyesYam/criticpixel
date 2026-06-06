@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
 
 const GameDetails = () => {
   const { id } = useParams();
   const [isLangModalOpen, setIsLangModalOpen] = useState(false);
+  const [langSearch, setLangModalSearch] = useState('');
   const game = mockGames.find((g) => g.id === parseInt(id));
   
   // Estado para la edición seleccionada (por defecto la primera)
   const [selectedEditionId, setSelectedEditionId] = useState(game?.editions?.[0]?.id || 'std');
+
+  // Filtrado dinámico de idiomas
+  const filteredLanguages = useMemo(() => {
+    if (!game?.languages) return [];
+    return game.languages.filter(l => 
+      l.lang.toLowerCase().includes(langSearch.toLowerCase())
+    );
+  }, [game, langSearch]);
 
   if (!game) {
     return (
@@ -34,13 +43,13 @@ const GameDetails = () => {
         {/* Columna Izquierda: Imagen, Selector de Ediciones, Desglose y Specs */}
         <div className="lg:col-span-1 space-y-8">
           <div className="space-y-4">
-            <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <img src={game.image} alt={game.title} className="w-full h-auto" />
+            <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group">
+              <img src={game.image} alt={game.title} className="w-full h-auto group-hover:scale-105 transition-transform duration-700" />
             </div>
 
             {/* SELECTOR DE EDICIONES (Debajo de la imagen) */}
             {game.editions && game.editions.length > 0 && (
-              <div className="bg-gamingCard rounded-2xl p-4 border border-white/5 space-y-3">
+              <div className="bg-gamingCard rounded-2xl p-4 border border-white/5 space-y-3 shadow-2xl">
                 <h4 className="text-xs font-black uppercase tracking-tighter text-gray-500 flex items-center gap-2">
                   <Box className="w-3 h-3" /> Seleccionar Edición
                 </h4>
@@ -71,7 +80,7 @@ const GameDetails = () => {
           </div>
 
           {/* Sección: Desglose Técnico */}
-          <div className="bg-gamingCard rounded-2xl p-6 space-y-6">
+          <div className="bg-gamingCard rounded-2xl p-6 space-y-6 shadow-2xl border border-white/5">
             <h3 className="text-xl font-bold uppercase tracking-wider border-b border-white/5 pb-4">
               Puntaje Técnico
             </h3>
@@ -94,7 +103,7 @@ const GameDetails = () => {
           </div>
 
           {/* Sección: Especificaciones (Estilo Instant-Gaming) */}
-          <div className="bg-gamingCard rounded-2xl p-6 space-y-6">
+          <div className="bg-gamingCard rounded-2xl p-6 space-y-6 shadow-2xl border border-white/5">
             <div className="flex items-center gap-2 text-xl font-bold uppercase tracking-wider border-b border-white/5 pb-4">
               <Settings className="w-5 h-5 text-gamingOrange" />
               Especificaciones
@@ -124,9 +133,9 @@ const GameDetails = () => {
 
         {/* Columna Derecha: Título, Acerca de, Mercado y Reseñas */}
         <div className="lg:col-span-2 space-y-10">
-          <header>
+          <header className="animate-in fade-in slide-in-from-top duration-700">
             <div className="flex items-center gap-4 mb-2">
-              <span className="bg-gamingOrange px-3 py-1 rounded-full font-black text-xl">
+              <span className="bg-gamingOrange px-3 py-1 rounded-full font-black text-xl shadow-lg shadow-gamingOrange/20">
                 {game.globalScore}
               </span>
               <div className="flex flex-wrap gap-2">
@@ -147,7 +156,7 @@ const GameDetails = () => {
 
           {/* SECCIÓN DETALLADA: Contenido de la Edición */}
           {selectedEdition && selectedEdition.perks && (
-            <section className="space-y-6">
+            <section className="space-y-6 animate-in fade-in slide-in-from-bottom duration-700 delay-100">
               <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                 <Box className="text-gamingOrange" />
                 Contenido de la {selectedEdition.name}
@@ -175,7 +184,7 @@ const GameDetails = () => {
           )}
 
           {/* Sección: Acerca de */}
-          <section className="space-y-6">
+          <section className="space-y-6 delay-200">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <Info className="text-gamingOrange" />
               Acerca de este juego
@@ -186,14 +195,14 @@ const GameDetails = () => {
           </section>
 
           {/* Sección: Valor de Mercado */}
-          <section className="space-y-6">
+          <section className="space-y-6 delay-300">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <ShoppingBag className="text-gamingOrange" />
               Valor del Mercado (Edición Seleccionada)
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {game.marketPrices.map((market, idx) => (
-                <div key={idx} className="bg-gamingCard border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/5 transition-colors group">
+                <div key={idx} className="bg-gamingCard border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/5 transition-colors group shadow-lg">
                   <div>
                     <div className="text-xs font-bold text-gray-500 uppercase mb-1">{market.availability}</div>
                     <div className="font-black text-lg group-hover:text-gamingOrange transition-colors">{market.store}</div>
@@ -207,7 +216,7 @@ const GameDetails = () => {
           </section>
 
           {/* Sección: Reseñas */}
-          <section className="space-y-6">
+          <section className="space-y-6 delay-400">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <MessageSquare className="text-gamingOrange" />
               Reseñas de Usuarios
@@ -215,7 +224,7 @@ const GameDetails = () => {
 
             <div className="space-y-4">
               {game.reviews.map((review) => (
-                <div key={review.id} className="bg-gamingCard rounded-xl p-6 border border-white/5 hover:border-white/10 transition-colors">
+                <div key={review.id} className="bg-gamingCard rounded-xl p-6 border border-white/5 hover:border-white/10 transition-colors shadow-lg">
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gamingOrange/20 rounded-full flex items-center justify-center font-bold text-gamingOrange">
@@ -236,64 +245,96 @@ const GameDetails = () => {
         </div>
       </div>
 
-      {/* MODAL DE IDIOMAS */}
+      {/* MODAL DE IDIOMAS DINÁMICO */}
       {isLangModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
           <div 
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-            onClick={() => setIsLangModalOpen(false)}
+            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+            onClick={() => {
+              setIsLangModalOpen(false);
+              setLangModalSearch('');
+            }}
           ></div>
-          <div className="relative bg-gamingCard border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl">
-            <header className="p-6 border-b border-white/5 flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                <Globe className="text-gamingOrange" />
-                <h3 className="text-xl font-bold uppercase tracking-tighter italic">Idiomas Soportados</h3>
+          <div className="relative bg-gamingCard border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
+            <header className="p-6 border-b border-white/5">
+              <div className="flex justify-between items-center mb-6">
+                <div className="flex items-center gap-3">
+                  <Globe className="text-gamingOrange" />
+                  <h3 className="text-xl font-bold uppercase tracking-tighter italic">Idiomas Soportados</h3>
+                  <span className="bg-gamingOrange/10 text-gamingOrange text-[10px] font-black px-2 py-0.5 rounded-md">
+                    {game.languages?.length} TOTAL
+                  </span>
+                </div>
+                <button 
+                  onClick={() => {
+                    setIsLangModalOpen(false);
+                    setLangModalSearch('');
+                  }}
+                  className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white"
+                >
+                  <X className="w-6 h-6" />
+                </button>
               </div>
-              <button 
-                onClick={() => setIsLangModalOpen(false)}
-                className="p-2 hover:bg-white/5 rounded-full transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
+
+              {/* BARRA DE BÚSQUEDA DINÁMICA */}
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <input 
+                  type="text"
+                  placeholder="Buscar idioma..."
+                  value={langSearch}
+                  onChange={(e) => setLangModalSearch(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-sm font-bold focus:outline-none focus:border-gamingOrange transition-colors"
+                />
+              </div>
             </header>
             
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="bg-white/5 text-[10px] uppercase font-black tracking-widest text-gray-400">
-                    <th className="px-6 py-4">Idioma</th>
-                    <th className="px-6 py-4 text-center">Interfaz</th>
-                    <th className="px-6 py-4 text-center">Voces</th>
-                    <th className="px-6 py-4 text-center">Subtítulos</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/5">
-                  {game.languages?.map((l, idx) => (
-                    <tr key={idx} className="hover:bg-white/5 transition-colors">
-                      <td className="px-6 py-4 font-bold text-gray-200">{l.lang}</td>
-                      <td className="px-6 py-4 text-center">
-                        <div className="flex justify-center">
-                          {l.interface ? <Check className="text-green-500 w-5 h-5" /> : <X className="text-red-500 w-5 h-5" />}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <div className="flex justify-center">
-                          {l.voices ? <Check className="text-green-500 w-5 h-5" /> : <X className="text-red-500 w-5 h-5" />}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <div className="flex justify-center">
-                          {l.subs ? <Check className="text-green-500 w-5 h-5" /> : <X className="text-red-500 w-5 h-5" />}
-                        </div>
-                      </td>
+            <div className="overflow-y-auto max-h-[60vh] custom-scrollbar">
+              {filteredLanguages.length > 0 ? (
+                <table className="w-full text-left">
+                  <thead className="sticky top-0 bg-gamingCard z-10">
+                    <tr className="bg-white/5 text-[10px] uppercase font-black tracking-widest text-gray-400">
+                      <th className="px-6 py-4">Idioma</th>
+                      <th className="px-6 py-4 text-center">Interfaz</th>
+                      <th className="px-6 py-4 text-center">Voces</th>
+                      <th className="px-6 py-4 text-center">Subtítulos</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                    {filteredLanguages.map((l, idx) => (
+                      <tr key={idx} className="hover:bg-white/5 transition-colors group">
+                        <td className="px-6 py-4 font-bold text-gray-200 group-hover:text-gamingOrange transition-colors">
+                          {l.lang}
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <div className="flex justify-center">
+                            {l.interface ? <Check className="text-green-500 w-5 h-5 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" /> : <X className="text-red-500 w-5 h-5 opacity-30" />}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <div className="flex justify-center">
+                            {l.voices ? <Check className="text-green-500 w-5 h-5 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" /> : <X className="text-red-500 w-5 h-5 opacity-30" />}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <div className="flex justify-center">
+                            {l.subs ? <Check className="text-green-500 w-5 h-5 drop-shadow-[0_0_8px_rgba(34,197,94,0.3)]" /> : <X className="text-red-500 w-5 h-5 opacity-30" />}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div className="py-20 text-center space-y-4">
+                  <Globe className="w-12 h-12 text-gray-700 mx-auto" />
+                  <p className="text-gray-500 font-bold italic">No se encontró el idioma "{langSearch}"</p>
+                </div>
+              )}
             </div>
             
-            <footer className="p-6 bg-white/5 text-center text-xs text-gray-500 font-medium">
-              * La disponibilidad de idiomas puede variar según la región de compra.
+            <footer className="p-6 bg-white/5 text-center text-[10px] text-gray-500 font-black uppercase tracking-widest">
+              * Base de datos actualizada al 2026
             </footer>
           </div>
         </div>

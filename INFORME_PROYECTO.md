@@ -1,67 +1,60 @@
 # INFORME DE ESTADO DEL PROYECTO: PIXELVERDICT
 **Fecha:** 5 de Junio de 2026
-**Estado:** Alpha / Fase Beta Temprana
-**Tecnología:** React 19 + Vite + Tailwind CSS
+**Estado:** Beta Temprana / Versión 2.0
+**Tecnología:** React 19 + Vite + Tailwind CSS + Lucide Icons
 
 ---
 
 ## 1. RESUMEN EJECUTIVO
-PixelVerdict es una plataforma de reseñas de videojuegos diseñada con una estética de alta densidad informativa y contraste visual. El proyecto ha completado su fase de estructura básica y ahora cuenta con navegación dinámica, gestión de datos simulados y un sistema de ordenamiento funcional.
+PixelVerdict ha evolucionado de una estructura básica a una plataforma de reseñas dinámica y altamente interactiva. Se han implementado sistemas complejos de filtrado, gestión de ediciones y una arquitectura de datos enriquecida que emula una tienda de videojuegos profesional (estilo Instant-Gaming).
 
 ---
 
-## 2. COMPONENTES AGREGADOS Y DESARROLLADOS
+## 2. NUEVAS FUNCIONALIDADES (PÁGINA WEB)
 
-### A. Capa de Interfaz (UI)
-- **Navbar.jsx**: Cabecera persistente con soporte para "Glassmorphism" (desenfoque de fondo) y branding personalizado.
-- **GameCard.jsx**: Componente de visualización de juegos. Implementa:
-    - Relación de aspecto 3:4 (estilo carátula).
-    - Micro-interacciones en hover (escala 105% y brillo).
-    - Badge de puntaje dinámico.
+### A. Sistema de Filtrado por Plataformas
+- **Filtros Dinámicos:** Implementación de una barra de categorías (Todo, PC, PlayStation, Xbox, Nintendo).
+- **Reactividad:** La cuadrícula de juegos se actualiza instantáneamente sin recargar la página.
+- **Identidad Visual:** Iconografía personalizada y estados activos con el naranja característico de la marca.
 
-### B. Vistas Principales (Pages)
-- **Home.jsx**:
-    - Implementación de `useMemo` para filtrado de datos sin latencia.
-    - Selector de ordenamiento (Mayor puntaje, Menor puntaje, A-Z, Z-A).
-    - Diseño de cuadrícula (Grid) responsive (1 a 4 columnas).
-- **GameDetails.jsx**:
-    - Uso de `useParams` para carga dinámica de datos.
-    - Barras de progreso interactivas para el desglose técnico (Jugabilidad, Gráficos, Historia).
-    - Feed de reseñas de usuarios con avatares generados dinámicamente.
+### B. Selector de Ediciones y Paquetes (Packs)
+- **Selector de Versiones:** Ubicado debajo de la imagen del juego, permite elegir entre Standard, Deluxe y Ultimate.
+- **Actualización Dinámica de Precios:** Los precios del mercado se ajustan según la edición seleccionada.
+- **Sección de Contenido:** Panel que detalla qué incluye cada edición (perks, DLCs, bonos) con indicadores visuales de disponibilidad.
+
+### C. Matriz de Idiomas Interactiva
+- **Modal de Soporte:** Un nuevo botón "Ver idiomas disponibles" abre una ventana emergente detallada.
+- **Tabla de Compatibilidad:** Matriz técnica que separa el soporte de Interfaz, Voces y Subtítulos por cada idioma mediante iconos de verificación (✅) y error (❌).
 
 ---
 
-## 3. MODIFICACIONES Y AJUSTES TÉCNICOS
+## 3. MEJORAS EN EL CÓDIGO Y ARQUITECTURA
 
-### Gestión de Datos
-Se implementó `src/data/mockGames.js` como base de datos local, permitiendo iterar rápidamente en el diseño sin depender de un backend. Los juegos actuales incluyen:
-- Elden Ring: Shadow of the Erdtree
-- The Legend of Zelda: Tears of the Kingdom
-- God of War Ragnarök
-- Baldur's Gate 3
-- Alan Wake 2
+### Estructura de Datos (Data Layer)
+- **Enriquecimiento de `mockGames.js`:** Se añadieron nuevos esquemas para manejar:
+    - Arreglos de `editions` con precios y beneficios únicos.
+    - Objetos de `specs` extendidos (Clasificación ESRB, Multijugador).
+    - Mapas de `languages` detallados.
+- **Localización de Moneda:** Conversión total de valores de mercado a Pesos Mexicanos (MXN) con formato `$X,XXX.00`.
 
-### Optimización de Despliegue (Git History)
-Se realizaron modificaciones críticas para garantizar la compatibilidad con servidores de hosting:
-1. **Rutas Universales**: Cambio de rutas absolutas a relativas para evitar errores 404 en subdirectorios.
-2. **Base Path**: Configuración de `vite.config.js` para apuntar a `/criticpixel/`.
-3. **Indicadores de Carga**: Implementación de estados de carga para mejorar la percepción de velocidad.
+### Lógica de Componentes (UI Layer)
+- **Gestión de Estados en `GameDetails.jsx`:** Uso de `useState` para manejar la edición seleccionada y la visibilidad del modal de idiomas.
+- **Filtrado Avanzado en `Home.jsx`:** Optimización del hook `useMemo` para combinar el filtrado por plataforma con el ordenamiento por puntaje/nombre.
+- **Componentes Atómicos:** Integración de nuevos iconos de `lucide-react` para representar hardware, software y logística.
 
 ---
 
-## 4. ESPECIFICACIONES DE DISEÑO (Design Tokens)
-- **Fondo Principal**: `#121212` (gamingBg)
-- **Tarjetas/Contenedores**: `#1e1e24` (gamingCard)
-- **Color de Acento**: `#ff6b00` (gamingOrange)
-- **Tipografía**: Inter / System Sans-Serif con pesos Bold y Black para títulos.
+## 4. INTEGRACIÓN Y DESPLIEGUE (CI/CD)
+- **Automatización con Vercel:** Se creó el archivo `vercel.json` para gestionar el enrutamiento de la SPA y evitar errores 404 al navegar entre rutas.
+- **Sincronización Git:** Todo el historial de cambios (precios, filtros, motores de contenido) está versionado y respaldado en GitHub.
 
 ---
 
-## 5. PRÓXIMOS PASOS RECOMENDADOS
-1. **Persistencia**: Implementar almacenamiento local (LocalStorage) para que el usuario pueda "guardar" favoritos.
-2. **Animaciones**: Integrar `Framer Motion` para transiciones entre la lista y los detalles.
-3. **Buscador Real**: Conectar la barra de búsqueda del Navbar con el estado del Home para filtrar la lista.
+## 5. PRÓXIMOS PASOS
+1. **Galería Multimedia:** Implementar un carrusel de capturas de pantalla para cada juego.
+2. **Requisitos de Sistema:** Añadir tablas de requisitos mínimos y recomendados para juegos de PC.
+3. **Optimización SEO:** Mejorar los meta-tags dinámicos para cada vista de juego.
 
 ---
-**Elaborado por:** Gemini CLI Agent
-**Repositorio:** criticpixel
+**Elaborado por:** Veredicto Crítico v2.6 (Gemini CLI Agent)
+**Repositorio:** BogarAntonioReyesYam/criticpixel

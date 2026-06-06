@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Globe } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
 
 const GameDetails = () => {
@@ -32,7 +32,7 @@ const GameDetails = () => {
 
           <div className="bg-gamingCard rounded-2xl p-6 space-y-6">
             <h3 className="text-xl font-bold uppercase tracking-wider border-b border-white/5 pb-4">
-              Desglose
+              Puntaje Técnico
             </h3>
             <div className="space-y-4">
               {Object.entries(game.breakdown).map(([key, value]) => (
@@ -53,7 +53,7 @@ const GameDetails = () => {
           </div>
         </div>
 
-        {/* Columna Derecha: Título, Desc y Reseñas */}
+        {/* Columna Derecha: Título, Desc, Valor de Mercado y Reseñas */}
         <div className="lg:col-span-2 space-y-10">
           <header>
             <div className="flex items-center gap-4 mb-2">
@@ -62,7 +62,7 @@ const GameDetails = () => {
               </span>
               <div className="flex flex-wrap gap-2">
                 {game.platforms.map((p) => (
-                  <span key={p} className="text-[10px] bg-white/5 border border-white/10 px-2 py-0.5 rounded uppercase font-bold text-gray-400">
+                  <span key={p} className="text-[10px] bg-gamingOrange/10 border border-gamingOrange/30 text-gamingOrange px-3 py-1 rounded-md uppercase font-black">
                     {p}
                   </span>
                 ))}
@@ -75,6 +75,27 @@ const GameDetails = () => {
               {game.description}
             </p>
           </header>
+
+          {/* NUEVA SECCIÓN: Valor de Mercado */}
+          <section className="space-y-6">
+            <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
+              <ShoppingBag className="text-gamingOrange" />
+              Valor del Mercado
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {game.marketPrices.map((market, idx) => (
+                <div key={idx} className="bg-gamingCard border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/5 transition-colors group">
+                  <div>
+                    <div className="text-xs font-bold text-gray-500 uppercase mb-1">{market.availability}</div>
+                    <div className="font-black text-lg group-hover:text-gamingOrange transition-colors">{market.store}</div>
+                  </div>
+                  <div className="text-2xl font-black text-gamingOrange">
+                    {market.price}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
           <section className="space-y-6">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">

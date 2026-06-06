@@ -5,6 +5,11 @@ export const mockGames = [
     image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",
     globalScore: 9.8,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "Steam", price: "$859.00", availability: "PC" },
+      { store: "Epic Games", price: "$859.00", availability: "PC" },
+      { store: "Microsoft Store", price: "$859.00", availability: "PC / Xbox" }
+    ],
     breakdown: {
       jugabilidad: 10,
       gráficos: 9.5,
@@ -22,6 +27,9 @@ export const mockGames = [
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop",
     globalScore: 9.6,
     platforms: ["Switch"],
+    marketPrices: [
+      { store: "Nintendo eShop", price: "$1,399.00", availability: "Switch" }
+    ],
     breakdown: {
       jugabilidad: 10,
       gráficos: 8.5,
@@ -39,6 +47,10 @@ export const mockGames = [
     image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop",
     globalScore: 9.4,
     platforms: ["PS4", "PS5"],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" },
+      { store: "Steam", price: "$1,149.00", availability: "PC" }
+    ],
     breakdown: {
       jugabilidad: 9.2,
       gráficos: 9.8,
@@ -56,6 +68,11 @@ export const mockGames = [
     image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
     globalScore: 9.9,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "Steam", price: "$1,299.00", availability: "PC" },
+      { store: "GOG", price: "$1,299.00", availability: "PC" },
+      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox" }
+    ],
     breakdown: {
       jugabilidad: 10,
       gráficos: 9.4,
@@ -73,6 +90,11 @@ export const mockGames = [
     image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1957&auto=format&fit=crop",
     globalScore: 8.9,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    marketPrices: [
+      { store: "Epic Games", price: "$949.00", availability: "PC" },
+      { store: "PlayStation Store", price: "$1,149.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,149.00", availability: "Xbox" }
+    ],
     breakdown: {
       jugabilidad: 8.5,
       gráficos: 10,

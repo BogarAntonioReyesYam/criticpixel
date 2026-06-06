@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
 
 const GameDetails = () => {
   const { id } = useParams();
+  const [isLangModalOpen, setIsLangModalOpen] = useState(false);
   const game = mockGames.find((g) => g.id === parseInt(id));
 
   if (!game) {
@@ -53,7 +55,7 @@ const GameDetails = () => {
             </div>
           </div>
 
-          {/* NUEVA SECCIÓN: Especificaciones (Estilo Instant-Gaming) */}
+          {/* Sección: Especificaciones (Estilo Instant-Gaming) */}
           <div className="bg-gamingCard rounded-2xl p-6 space-y-6">
             <div className="flex items-center gap-2 text-xl font-bold uppercase tracking-wider border-b border-white/5 pb-4">
               <Settings className="w-5 h-5 text-gamingOrange" />
@@ -66,6 +68,18 @@ const GameDetails = () => {
                   <span className="text-gray-200 font-medium">{value}</span>
                 </div>
               ))}
+              
+              {/* Botón Ver Idiomas */}
+              <div className="flex justify-between items-center text-sm pt-2">
+                <span className="text-gray-500 font-bold uppercase text-[10px] tracking-widest">Idiomas</span>
+                <button 
+                  onClick={() => setIsLangModalOpen(true)}
+                  className="text-gamingOrange hover:text-white transition-colors font-bold flex items-center gap-1 group"
+                >
+                  Ver idiomas disponibles
+                  <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -93,7 +107,7 @@ const GameDetails = () => {
             </p>
           </header>
 
-          {/* NUEVA SECCIÓN: Acerca de */}
+          {/* Sección: Acerca de */}
           <section className="space-y-6">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <Info className="text-gamingOrange" />
@@ -154,6 +168,69 @@ const GameDetails = () => {
           </section>
         </div>
       </div>
+
+      {/* MODAL DE IDIOMAS */}
+      {isLangModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsLangModalOpen(false)}
+          ></div>
+          <div className="relative bg-gamingCard border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl">
+            <header className="p-6 border-b border-white/5 flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <Globe className="text-gamingOrange" />
+                <h3 className="text-xl font-bold uppercase tracking-tighter italic">Idiomas Soportados</h3>
+              </div>
+              <button 
+                onClick={() => setIsLangModalOpen(false)}
+                className="p-2 hover:bg-white/5 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </header>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="bg-white/5 text-[10px] uppercase font-black tracking-widest text-gray-400">
+                    <th className="px-6 py-4">Idioma</th>
+                    <th className="px-6 py-4 text-center">Interfaz</th>
+                    <th className="px-6 py-4 text-center">Voces</th>
+                    <th className="px-6 py-4 text-center">Subtítulos</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {game.languages.map((l, idx) => (
+                    <tr key={idx} className="hover:bg-white/5 transition-colors">
+                      <td className="px-6 py-4 font-bold text-gray-200">{l.lang}</td>
+                      <td className="px-6 py-4 text-center">
+                        <div className="flex justify-center">
+                          {l.interface ? <Check className="text-green-500 w-5 h-5" /> : <X className="text-red-500 w-5 h-5" />}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <div className="flex justify-center">
+                          {l.voices ? <Check className="text-green-500 w-5 h-5" /> : <X className="text-red-500 w-5 h-5" />}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <div className="flex justify-center">
+                          {l.subs ? <Check className="text-green-500 w-5 h-5" /> : <X className="text-red-500 w-5 h-5" />}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
+            <footer className="p-6 bg-white/5 text-center text-xs text-gray-500 font-medium">
+              * La disponibilidad de idiomas puede variar según la región de compra.
+            </footer>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

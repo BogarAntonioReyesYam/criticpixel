@@ -18,9 +18,17 @@ export const mockGames = [
       genero: "Acción / Mundo Abierto",
       lanzamiento: "2025/2026",
       multijugador: "Sí (GTA Online 2)",
-      idiomas: "Español (Latam), Inglés",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español (España)", interface: true, voices: true, subs: true },
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Francés", interface: true, voices: true, subs: true },
+      { lang: "Alemán", interface: true, voices: true, subs: true },
+      { lang: "Italiano", interface: true, voices: false, subs: true },
+      { lang: "Japonés", interface: true, voices: false, subs: true }
+    ],
     reviews: [
       { id: 1201, user: "Rockstar_Loyalist_99", text: "¡EL REY HA VUELTO! No puedo creer el nivel de detalle en cada rincón. ¡Es simplemente perfecto!", score: 10 },
       { id: 1202, user: "JuanitoGamer_MX", text: "Me la paso horas solo manejando y escuchando la radio. La ciudad se siente viva.", score: 9.5 }
@@ -45,9 +53,16 @@ export const mockGames = [
       genero: "RPG / Estrategia",
       lanzamiento: "2023",
       multijugador: "Cooperativo Online/Local",
-      idiomas: "Español, Inglés, Francés",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: false, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Francés", interface: true, voices: true, subs: true },
+      { lang: "Alemán", interface: true, voices: true, subs: true },
+      { lang: "Chino", interface: true, voices: false, subs: true },
+      { lang: "Ruso", interface: true, voices: false, subs: true }
+    ],
     reviews: [
       { id: 501, user: "D&D_Master_Ultra", text: "La profundidad de las mecánicas es abrumadora. Finalmente un juego que respeta la inteligencia del jugador.", score: 10 },
       { id: 502, user: "RTX_3090_Sweat", text: "La historia es de 10, pero necesita un parche de optimización para PC de gama alta en ciudades densas.", score: 8.5 }
@@ -72,9 +87,15 @@ export const mockGames = [
       genero: "RPG de Acción",
       lanzamiento: "2026",
       multijugador: "No (Single Player)",
-      idiomas: "Español, Inglés, Polaco",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Polaco", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Alemán", interface: true, voices: true, subs: true },
+      { lang: "Italiano", interface: true, voices: false, subs: true }
+    ],
     reviews: [
       { id: 1501, user: "Geralt_Enjoyer_Forever", text: "¡BRUTAL! La nueva escuela del lince es fascinante. ¡Pura magia!", score: 10 },
       { id: 1502, user: "MasterRace_Enthusiast", text: "Visualmente imbatible, aunque el Ray Tracing Overdrive todavía pone de rodillas a mi 5090.", score: 9.0 }
@@ -99,9 +120,14 @@ export const mockGames = [
       genero: "Action RPG / Soulslike",
       lanzamiento: "2024",
       multijugador: "Cooperativo / Invasiones",
-      idiomas: "Español, Inglés, Japonés",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: false, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true },
+      { lang: "Francés", interface: true, voices: false, subs: true }
+    ],
     reviews: [
       { id: 101, user: "SoulsBorne_Addict", text: "Mejor que muchos juegos completos. Los jefes son una pesadilla hermosa.", score: 10 },
       { id: 102, user: "Casual_Carlos", text: "Es muy difícil, pero explorar este mundo nuevo es increíblemente divertido.", score: 9.0 }
@@ -126,9 +152,13 @@ export const mockGames = [
       genero: "Roguelike",
       lanzamiento: "2024",
       multijugador: "No",
-      idiomas: "Español, Inglés",
       clasificación: "T (Teen)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: false, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Francés", interface: true, voices: false, subs: true }
+    ],
     reviews: [
       { id: 1101, user: "Zagreus_Simp", text: "¡Dios mío, la dirección de arte es de otro mundo! Supera al primero en todo.", score: 10 },
       { id: 1102, user: "IndieLover88", text: "Diversión pura desde el minuto uno. No puedo dejar de jugar 'una partida más'.", score: 9.5 }
@@ -153,9 +183,13 @@ export const mockGames = [
       genero: "Aventura / Mundo Abierto",
       lanzamiento: "2023",
       multijugador: "No",
-      idiomas: "Español (Latam), Inglés, Japonés",
       clasificación: "E10+ (Everyone 10+)"
     },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: false, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 301, user: "Hylian_Architect", text: "¡Las mecánicas de construcción son revolucionarias! He pasado 50 horas haciendo vehículos locos.", score: 10 },
       { id: 302, user: "Gamer_Relajado", text: "Me encanta perderme en el mapa. Siempre hay algo nuevo que descubrir.", score: 9.0 }
@@ -180,9 +214,13 @@ export const mockGames = [
       genero: "Survival Horror",
       lanzamiento: "2023",
       multijugador: "No (Modo Mercenarios Online)",
-      idiomas: "Español, Inglés, Japonés",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 901, user: "Resident_Evil_Veteran", text: "¡Increíble! Han respetado la esencia y mejorado todo lo que se podía mejorar.", score: 10 },
       { id: 902, user: "PC_Performance_Nerd", text: "Excelente remake, pero el Denuvo empaña un poco la versión de PC. Aun así, juegazo.", score: 8.5 }
@@ -206,9 +244,13 @@ export const mockGames = [
       genero: "Acción / Exploración",
       lanzamiento: "2025",
       multijugador: "Social Asíncrono",
-      idiomas: "Español, Inglés, Japonés",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 1401, user: "Kojima_Is_God", text: "Nadie entiende su genio. Es arte puro, cine interactivo en su máxima expresión.", score: 10 },
       { id: 1402, user: "Curioso_Gamer", text: "No entiendo la mitad de lo que pasa, pero los paisajes son tan bonitos que no puedo dejarlo.", score: 8.5 }
@@ -232,9 +274,13 @@ export const mockGames = [
       genero: "Acción / Aventura",
       lanzamiento: "2023",
       multijugador: "No",
-      idiomas: "Español (Latam), Inglés",
       clasificación: "T (Teen)"
     },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Portugués", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 701, user: "WebHead_Fanatic", text: "¡El mejor juego de superhéroes! Jugar con Peter y Miles es un sueño hecho realidad.", score: 10 },
       { id: 702, user: "Pura_Diversion_24", text: "Súper divertido, la acción no para nunca. Me encanta volar por la ciudad.", score: 9.5 }
@@ -259,9 +305,13 @@ export const mockGames = [
       genero: "RPG de Acción",
       lanzamiento: "2020/2023",
       multijugador: "No",
-      idiomas: "Español, Inglés, Alemán",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Alemán", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 801, user: "Choomba_V", text: "¡Finalmente es el juego que nos prometieron! La expansión es mejor que el juego base.", score: 10 },
       { id: 802, user: "Optimization_Police", text: "El Path Tracing es increíble, pero necesitas una central eléctrica para correrlo a 60fps.", score: 8.0 }
@@ -286,9 +336,12 @@ export const mockGames = [
       genero: "Survival Horror / Misterio",
       lanzamiento: "2023",
       multijugador: "No",
-      idiomas: "Español, Inglés",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 601, user: "Remedy_Scholar", text: "Una narrativa compleja y fascinante. Visualmente es lo más avanzado hoy. ¡Arte!", score: 9.5 },
       { id: 602, user: "FrameRate_Watcher", text: "La carga técnica es altísima. Si no tienes Mesh Shaders, ni lo intentes.", score: 8.0 }
@@ -313,9 +366,12 @@ export const mockGames = [
       genero: "Survival MMO",
       lanzamiento: "2023",
       multijugador: "Sí (Servidores cerrados)",
-      idiomas: "Inglés, Ruso",
       clasificación: "M (17+)"
     },
+    languages: [
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Ruso", interface: true, voices: true, subs: true }
+    ],
     reviews: [
       { id: 2001, user: "Scam_Survivor", text: "¡CUIDADO! Es una estafa total, no hay nada de lo que prometieron. Dinero a la basura.", score: 1 },
       { id: 2002, user: "MasterRace_Cynic", text: "Assets de tienda y gameplay aburrido. El peor lanzamiento de la década.", score: 3 }

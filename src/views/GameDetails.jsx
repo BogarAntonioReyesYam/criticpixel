@@ -145,18 +145,29 @@ const GameDetails = () => {
             </p>
           </header>
 
-          {/* NUEVA SECCIÓN: Contenido de la Edición (Paquetes) */}
+          {/* SECCIÓN DETALLADA: Contenido de la Edición */}
           {selectedEdition && selectedEdition.perks && (
             <section className="space-y-6">
               <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                 <Box className="text-gamingOrange" />
-                ¿Qué incluye esta edición?
+                Contenido de la {selectedEdition.name}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {selectedEdition.perks.map((perk, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <Check className="text-green-500 w-5 h-5 flex-shrink-0" />
-                    <span className="text-gray-200 font-bold">{perk}</span>
+                  <div key={idx} className="group bg-gamingCard border border-white/5 p-5 rounded-2xl hover:border-gamingOrange/50 transition-all duration-300 shadow-lg hover:shadow-gamingOrange/5">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gamingOrange/10 p-2 rounded-lg mt-1 group-hover:bg-gamingOrange/20 transition-colors">
+                        <Check className="text-gamingOrange w-5 h-5" />
+                      </div>
+                      <div>
+                        <h5 className="font-black text-white uppercase tracking-tight text-lg mb-1 group-hover:text-gamingOrange transition-colors">
+                          {perk.title}
+                        </h5>
+                        <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                          {perk.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

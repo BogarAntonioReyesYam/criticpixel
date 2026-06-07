@@ -1,49 +1,38 @@
 # INFORME DE ESTADO DEL PROYECTO: PIXELVERDICT
 **Fecha:** 5 de Junio de 2026
-**Estado:** Beta Temprana / Versión 2.6 (Restauración y Alta Fidelidad)
-**Tecnología:** React 19 + Vite + Tailwind CSS + Lucide Icons
+**Estado:** Beta / Versión 3.0 (Infraestructura Cloud)
+**Tecnología:** React 19 + Supabase (PostgreSQL) + Vite + Tailwind
 
 ---
 
 ## 1. RESUMEN EJECUTIVO
-PixelVerdict ha alcanzado su mayor hito de fidelidad de datos hasta la fecha. Tras una fase de reestructuración masiva, se ha restaurado y blindado toda la información técnica, comercial y narrativa del catálogo. La plataforma ahora gestiona una base de datos de 20+ títulos con información pormenorizada que emula una plataforma de e-commerce de videojuegos de primer nivel.
+PixelVerdict ha iniciado su transición de una arquitectura estática (basada en archivos locales) a una infraestructura **Cloud-Native**. Se ha seleccionado **Supabase** como proveedor de base de datos PostgreSQL para garantizar la disponibilidad global de los datos y permitir el escalado de la plataforma en entornos de producción como Vercel.
 
 ---
 
-## 2. NUEVAS FUNCIONALIDADES Y RESTAURACIONES
+## 2. NUEVAS FUNCIONALIDADES Y ARQUITECTURA
 
-### A. Restauración de Datos de Alta Fidelidad
-- **Acerca de este Juego:** Se han reintegrado las descripciones extendidas de cada título, ofreciendo contexto narrativo y técnico profundo.
-- **Valores de Mercado Blindados:** Sincronización total de precios en **Pesos Mexicanos (MXN)** para múltiples tiendas (Steam, Epic, PlayStation, Microsoft).
-- **Sistema de Ediciones Dinámico:** Restauración del selector de versiones (Standard, Deluxe, Ultimate) con desglose de paquetes y beneficios específicos por edición.
-- **Matriz de Idiomas Global:** Se ha recuperado la lista extendida de más de 12 localizaciones por juego, incluyendo soporte para Interfaz, Voces y Subtítulos.
+### A. Capa de Datos Persistente (SQL)
+- **Migración a Cloud:** Se ha diseñado e implementado el esquema de base de datos relacional en PostgreSQL para sustituir el archivo `mockGames.js`.
+- **Estructura Normalizada:** El nuevo esquema separa los juegos, sus ediciones, los beneficios por paquete, la matriz de idiomas y las reseñas en tablas independientes, optimizando la integridad de los datos.
+- **Seguridad de Credenciales:** Implementación de un sistema de variables de entorno mediante `.env` para proteger las llaves de API y URLs de conexión.
 
-### B. Vista Dedicada: Mi Lista de Deseos
-- **Gestión de Favoritos:** Implementación de la ruta `/wishlist` para visualizar juegos guardados mediante el icono de corazón.
-- **Interactividad Contextual:** El sistema de guardado ahora reside en la vista de detalles para una mejor experiencia de usuario.
-
----
-
-## 3. MEJORAS EN EL CÓDIGO Y ARQUITECTURA
-
-### Estructura de Datos (Data Layer)
-- **Blindaje de `mockGames.js`:** Reconstrucción del esquema de datos para evitar pérdida de información en futuras expansiones. Cada objeto ahora cumple con el estándar de fidelidad v2.6.
-
-### Lógica de UI (React)
-- **Buscador de Idiomas Dinámico:** Integración de filtrado en tiempo real dentro del modal de idiomas.
-- **Animaciones Premium:** Efectos de carga, transiciones de escala en imágenes y modal de idiomas con desenfoque dinámico.
+### B. Integración con Supabase
+- **Cliente de Conexión:** Creación de `src/lib/supabase.js`, un módulo centralizado que gestiona la comunicación entre el frontend de React y el servidor de base de datos.
+- **Infraestructura como Código:** Generación del archivo `SCHEMA.sql` que contiene la lógica de creación de tablas y relaciones para facilitar futuras migraciones.
 
 ---
 
-## 4. INTEGRACIÓN Y DESPLIEGUE (CI/CD)
-- **Despliegue Continuo:** Sincronización total con GitHub y Vercel. Cada cambio en el catálogo se refleja en tiempo real en la web.
+## 3. MEJORAS EN EL CÓDIGO
+- **Instalación de Dependencias:** Incorporación del paquete `@supabase/supabase-js`.
+- **Plantilla de Entorno:** Creación de `.env.example` para estandarizar la configuración del equipo de desarrollo.
 
 ---
 
-## 5. PRÓXIMOS PASOS
-1. **Galería Multimedia:** Carrusel de capturas de pantalla para cada ficha de juego.
-2. **Requisitos de Sistema:** Tablas de hardware mínimo y recomendado para PC.
-3. **Filtros de Búsqueda Global:** Implementación de la barra de búsqueda del Navbar para filtrar el catálogo principal.
+## 4. PRÓXIMOS PASOS
+1. **Sincronización de Datos:** Ejecutar la carga de los 20+ juegos actuales en las nuevas tablas de Supabase.
+2. **Refactorización de Fetching:** Sustituir las importaciones de `mockGames.js` por llamadas asíncronas `supabase.from('games').select('*')`.
+3. **Galería Multimedia:** Implementar el almacenamiento de imágenes de capturas de pantalla en un bucket de Supabase Storage.
 
 ---
 **Elaborado por:** Veredicto Crítico v2.6 (Gemini CLI Agent)

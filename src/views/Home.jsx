@@ -1,12 +1,36 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc } from 'lucide-react';
-import { mockGames } from '../data/mockGames';
+import { supabase } from '../lib/supabase';
 import GameCard from '../components/GameCard';
 
 const Home = () => {
+  const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('score-desc');
   const [platformFilter, setPlatformFilter] = useState('all');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Cargar juegos desde Supabase
+  useEffect(() => {
+    const fetchGames = async () => {
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from('games')
+        .select('*');
+      
+      if (!error && data) {
+        // Mapeamos los datos para que coincidan con los nombres usados en el frontend
+        const formattedData = data.map(g => ({
+          ...g,
+          globalScore: parseFloat(g.global_score)
+        }));
+        setGames(formattedData);
+      }
+      setIsLoading(false);
+    };
+
+    fetchGames();
+  }, []);
 
   const sortOptions = [
     { id: 'score-desc', label: 'Mayor a Menor (Puntaje)', icon: <SortDesc className="w-4 h-4" /> },
@@ -24,12 +48,12 @@ const Home = () => {
   ];
 
   const filteredAndSortedGames = useMemo(() => {
-    let result = [...mockGames];
+    let result = [...games];
 
     // Filtrado por plataforma
     if (platformFilter !== 'all') {
       result = result.filter(game => 
-        game.platforms.some(p => p.includes(platformFilter))
+        game.platforms?.some(p => p.includes(platformFilter))
       );
     }
 
@@ -48,19 +72,27 @@ const Home = () => {
           return 0;
       }
     });
-  }, [sortOrder, platformFilter]);
+  }, [sortOrder, platformFilter, games]);
 
   const currentSortOption = sortOptions.find(opt => opt.id === sortOrder);
 
+  if (isLoading) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-gamingOrange shadow-[0_0_15px_rgba(255,107,0,0.4)]"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <header className="mb-10 space-y-8">
+      <header className="mb-10 space-y-8 animate-in fade-in slide-in-from-top-4 duration-700">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2">
               Reseñas <span className="text-gamingOrange">Populares</span>
             </h1>
-            <p className="text-gray-400">Explora los títulos más destacados de la industria.</p>
+            <p className="text-gray-400">Explora los títulos más destacados de la industria desde la nube.</p>
           </div>
 
           {/* Selector de Orden */}
@@ -118,7 +150,7 @@ const Home = () => {
       </header>
 
       {filteredAndSortedGames.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
           {filteredAndSortedGames.map((game) => (
             <GameCard key={game.id} game={game} />
           ))}

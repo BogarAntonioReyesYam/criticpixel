@@ -1,4 +1,4 @@
-import { Search, User, Gamepad2 } from 'lucide-react';
+import { Search, User, Gamepad2, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -23,8 +23,15 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Perfil */}
-        <div className="flex items-center gap-4">
+        {/* Acciones */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <Link 
+            to="/wishlist" 
+            className="p-2 hover:bg-white/5 rounded-full transition-colors relative group"
+            title="Mi lista de deseos"
+          >
+            <Heart className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors" />
+          </Link>
           <button className="p-2 hover:bg-white/5 rounded-full transition-colors">
             <User className="w-6 h-6" />
           </button>

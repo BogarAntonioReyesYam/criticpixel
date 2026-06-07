@@ -34,7 +34,29 @@ CREATE TABLE edition_perks (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- 4. Tabla de matriz de idiomas
+-- 4. Tabla de precios por tienda (Mercado)
+CREATE TABLE market_prices (
+  id              SERIAL PRIMARY KEY,
+  game_id         INTEGER REFERENCES games(id) ON DELETE CASCADE,
+  store           TEXT NOT NULL,
+  platform        TEXT NOT NULL,
+  price           NUMERIC(10,2) NOT NULL,
+  original_price  NUMERIC(10,2),
+  discount_pct    INTEGER,
+  store_url       TEXT,
+  updated_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. Tabla de puntaje técnico detallado
+CREATE TABLE score_breakdown (
+  id          SERIAL PRIMARY KEY,
+  game_id     INTEGER REFERENCES games(id) ON DELETE CASCADE UNIQUE,
+  jugabilidad NUMERIC(3,1),
+  graficos    NUMERIC(3,1),
+  historia    NUMERIC(3,1)
+);
+
+-- 6. Tabla de matriz de idiomas
 CREATE TABLE game_languages (
     id SERIAL PRIMARY KEY,
     game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
@@ -45,7 +67,7 @@ CREATE TABLE game_languages (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- 5. Tabla de reseñas de usuarios
+-- 7. Tabla de reseñas de usuarios
 CREATE TABLE game_reviews (
     id SERIAL PRIMARY KEY,
     game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
@@ -54,3 +76,20 @@ CREATE TABLE game_reviews (
     score DECIMAL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- Políticas RLS (Lectura Pública)
+ALTER TABLE games ENABLE ROW LEVEL SECURITY;
+ALTER TABLE editions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE edition_perks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE market_prices ENABLE ROW LEVEL SECURITY;
+ALTER TABLE score_breakdown ENABLE ROW LEVEL SECURITY;
+ALTER TABLE game_languages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE game_reviews ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Lectura pública" ON games FOR SELECT USING (true);
+CREATE POLICY "Lectura pública" ON editions FOR SELECT USING (true);
+CREATE POLICY "Lectura pública" ON edition_perks FOR SELECT USING (true);
+CREATE POLICY "Lectura pública" ON market_prices FOR SELECT USING (true);
+CREATE POLICY "Lectura pública" ON score_breakdown FOR SELECT USING (true);
+CREATE POLICY "Lectura pública" ON game_languages FOR SELECT USING (true);
+CREATE POLICY "Lectura pública" ON game_reviews FOR SELECT USING (true);

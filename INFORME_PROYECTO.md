@@ -1,38 +1,45 @@
 # INFORME DE ESTADO DEL PROYECTO: PIXELVERDICT
 **Fecha:** 5 de Junio de 2026
-**Estado:** Beta / Versión 3.2 (Datos Dinámicos en la Nube)
+**Estado:** Beta / Versión 3.3 (Normalización y Seguridad RLS)
 **Tecnología:** React 19 + Supabase (PostgreSQL) + Vite + Tailwind
 
 ---
 
 ## 1. RESUMEN EJECUTIVO
-PixelVerdict ha completado con éxito su migración a una arquitectura de datos dinámica. La plataforma ha dejado de depender de archivos locales estáticos para consumir información en tiempo real desde una base de datos PostgreSQL alojada en la nube (Supabase). Esto permite una gestión de contenido escalable y una persistencia de datos profesional.
+Se ha completado una reestructuración crítica de la base de datos para alcanzar un modelo relacional normalizado. Esta actualización mejora la precisión de los datos técnicos y comerciales, integrando políticas de seguridad (RLS) que permiten una lectura pública segura desde cualquier parte del mundo.
 
 ---
 
-## 2. NUEVAS FUNCIONALIDADES Y ARQUITECTURA
+## 2. MEJORAS EN LA BASE DE DATOS (POSTGRESQL)
 
-### A. Integración Total con Backend (Cloud-Native)
-- **Home Dinámico:** La lista de juegos ahora se recupera mediante consultas asíncronas a la tabla `games` de Supabase, manteniendo todas las capacidades de filtrado y ordenamiento.
-- **Detalles Enriquecidos:** La vista de cada juego realiza peticiones multitanbla (Joins) para extraer ediciones, paquetes de contenido (perks), matriz de idiomas y reseñas de usuarios directamente desde la base de datos.
-- **Sincronización Exitosa:** Se ha ejecutado la carga masiva de los 20+ títulos iniciales, garantizando la integridad de cada veredicto generado por el motor v2.6.
+### A. Normalización de Datos
+- **Nueva Tabla `market_prices`:** Gestión granular de precios por tienda y plataforma, permitiendo descuentos y enlaces directos en el futuro.
+- **Nueva Tabla `score_breakdown`:** Almacenamiento independiente de los puntajes técnicos (Jugabilidad, Gráficos, Historia), permitiendo una analítica más precisa por juego.
+- **Integridad Referencial:** Implementación de claves foráneas con eliminación en cascada para mantener la base de datos limpia.
 
-### B. Mejoras en la Experiencia de Usuario (UX)
-- **Estados de Carga:** Implementación de indicadores visuales animados (*spinners*) que informan al usuario mientras los datos se recuperan de la nube.
-- **Persistencia Híbrida:** Combinación de `LocalStorage` para la lista de deseos con una base de datos centralizada para el contenido maestro.
-
----
-
-## 3. MEJORAS EN EL CÓDIGO
-- **Refactorización de Vistas:** `Home.jsx` y `GameDetails.jsx` han sido reescritos para manejar el ciclo de vida asíncrono (`useEffect`) y la gestión de estados para datos externos.
-- **Capa de Abstracción:** Uso del cliente de Supabase centralizado en `src/lib/supabase.js`.
+### B. Seguridad RLS (Row Level Security)
+- **Políticas de Lectura Pública:** Se han habilitado políticas que permiten a la aplicación de React consultar todas las tablas sin restricciones, mientras se mantiene protegida la escritura.
 
 ---
 
-## 4. PRÓXIMOS PASOS
-1. **Galería Multimedia:** Implementar el carrusel de capturas de pantalla usando Supabase Storage.
-2. **Sistema de Reseñas Real:** Permitir a los usuarios escribir sus propias reseñas y guardarlas en la base de datos.
-3. **Búsqueda Global:** Conectar el input del Navbar con una búsqueda de texto completo en Postgres.
+## 3. MEJORAS EN EL FRONTEND (REACT)
+
+### A. Refactorización de Fetching Dinámico
+- **Consultas Multi-tabla:** `GameDetails.jsx` ahora realiza peticiones paralelas y uniones (Joins) para reconstruir el objeto del juego en tiempo real.
+- **Formateo de Moneda:** Integración de `Intl.NumberFormat` para asegurar que todos los precios de la tabla `market_prices` se muestren correctamente en el estándar mexicano (`es-MX`).
+
+---
+
+## 4. INTEGRACIÓN Y DESPLIEGUE
+- **Esquema Local Sincronizado:** El archivo `SCHEMA.sql` ha sido actualizado para reflejar fielmente el estado actual de la nube.
+- **Actualización de Vercel:** Los cambios en la lógica de obtención de datos han sido desplegados y ya consumen la nueva estructura de tablas.
+
+---
+
+## 5. PRÓXIMOS PASOS
+1. **Galería Multimedia:** Implementar la tabla de imágenes y carrusel visual.
+2. **Dashboard de Admin:** Crear una interfaz para insertar nuevos juegos directamente desde la web (usando la Service Role Key).
+3. **Optimización de Consultas:** Implementar vistas de Postgres para simplificar el fetching en el frontend.
 
 ---
 **Elaborado por:** Veredicto Crítico v2.6 (Gemini CLI Agent)

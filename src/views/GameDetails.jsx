@@ -29,32 +29,45 @@ const GameDetails = () => {
         return;
       }
 
-      // 2. Obtener ediciones y sus perks
+      // 2. Obtener puntuación técnica desde la nueva tabla
+      const { data: scoreData } = await supabase
+        .from('score_breakdown')
+        .select('jugabilidad, graficos, historia')
+        .eq('game_id', id)
+        .single();
+
+      // 3. Obtener precios de mercado detallados
+      const { data: marketData } = await supabase
+        .from('market_prices')
+        .select('*')
+        .eq('game_id', id);
+
+      // 4. Obtener ediciones y sus perks
       const { data: editionsData } = await supabase
         .from('editions')
         .select('*, edition_perks(*)')
         .eq('game_id', id);
 
-      // 3. Obtener idiomas
+      // 5. Obtener idiomas
       const { data: langsData } = await supabase
         .from('game_languages')
         .select('*')
         .eq('game_id', id);
 
-      // 4. Obtener reseñas
+      // 6. Obtener reseñas
       const { data: reviewsData } = await supabase
         .from('game_reviews')
         .select('*')
         .eq('game_id', id);
 
-      // Construir objeto unificado
+      // Construir objeto unificado con la nueva estructura
       const fullGame = {
         ...gameData,
         globalScore: parseFloat(gameData.global_score),
         breakdown: {
-          jugabilidad: 10, // Por ahora estático hasta añadir columnas en DB
-          gráficos: 9.5,
-          historia: 9.8
+          jugabilidad: parseFloat(scoreData?.jugabilidad || 0),
+          gráficos: parseFloat(scoreData?.graficos || 0),
+          historia: parseFloat(scoreData?.historia || 0)
         },
         specs: {
           desarrollador: gameData.developer,
@@ -75,15 +88,16 @@ const GameDetails = () => {
           text: r.text,
           score: r.score
         })) || [],
-        marketPrices: [
-          { store: "Store Digital", price: editionsData?.[0]?.price || "$0.00", availability: "Digital" }
-        ]
+        marketPrices: marketData?.map(m => ({
+          store: m.store,
+          price: new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(m.price),
+          availability: m.platform
+        })) || []
       };
 
       setGame(fullGame);
       setSelectedEditionId(fullGame.editions?.[0]?.id);
       
-      // Cargar estado de deseados
       const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
       setIsWishlisted(wishlist.includes(fullGame.id));
       

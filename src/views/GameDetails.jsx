@@ -1,13 +1,37 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
 
 const GameDetails = () => {
   const { id } = useParams();
   const [isLangModalOpen, setIsLangModalOpen] = useState(false);
   const [langSearch, setLangModalSearch] = useState('');
+  const [isWishlisted, setIsWishlisted] = useState(false);
   const game = mockGames.find((g) => g.id === parseInt(id));
+
+  // Cargar estado inicial de deseados
+  useEffect(() => {
+    if (game) {
+      const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
+      setIsWishlisted(wishlist.includes(game.id));
+    }
+  }, [game]);
+
+  // Manejar toggle de deseados
+  const toggleWishlist = () => {
+    const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
+    let newWishlist;
+    
+    if (isWishlisted) {
+      newWishlist = wishlist.filter(itemId => itemId !== game.id);
+    } else {
+      newWishlist = [...wishlist, game.id];
+    }
+    
+    localStorage.setItem('pixelVerdict_wishlist', JSON.stringify(newWishlist));
+    setIsWishlisted(!isWishlisted);
+  };
   
   // Estado para la edición seleccionada (por defecto la primera)
   const [selectedEditionId, setSelectedEditionId] = useState(game?.editions?.[0]?.id || 'std');
@@ -134,18 +158,41 @@ const GameDetails = () => {
         {/* Columna Derecha: Título, Acerca de, Mercado y Reseñas */}
         <div className="lg:col-span-2 space-y-10">
           <header className="animate-in fade-in slide-in-from-top duration-700">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="bg-gamingOrange px-3 py-1 rounded-full font-black text-xl shadow-lg shadow-gamingOrange/20">
-                {game.globalScore}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {game.platforms.map((p) => (
-                  <span key={p} className="text-[10px] bg-gamingOrange/10 border border-gamingOrange/30 text-gamingOrange px-3 py-1 rounded-md uppercase font-black">
-                    {p}
+            <div className="flex justify-between items-start mb-4">
+              <div className="space-y-2">
+                <div className="flex items-center gap-4">
+                  <span className="bg-gamingOrange px-3 py-1 rounded-full font-black text-xl shadow-lg shadow-gamingOrange/20">
+                    {game.globalScore}
                   </span>
-                ))}
+                  <div className="flex flex-wrap gap-2">
+                    {game.platforms.map((p) => (
+                      <span key={p} className="text-[10px] bg-gamingOrange/10 border border-gamingOrange/30 text-gamingOrange px-3 py-1 rounded-md uppercase font-black">
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
+              
+              {/* CORAZÓN DE DESEADOS EN DETALLES */}
+              <button 
+                onClick={toggleWishlist}
+                className={`p-3 rounded-full border transition-all duration-300 group shadow-xl ${
+                  isWishlisted 
+                  ? 'bg-red-500/10 border-red-500 shadow-red-500/5' 
+                  : 'bg-white/5 border-white/10 hover:border-white/30'
+                }`}
+              >
+                <Heart 
+                  className={`w-6 h-6 transition-all duration-300 ${
+                    isWishlisted 
+                    ? 'fill-red-500 text-red-500 drop-shadow-[0_0_12px_rgba(239,68,68,0.6)]' 
+                    : 'text-gray-400 group-hover:scale-110'
+                  }`} 
+                />
+              </button>
             </div>
+
             <h1 className="text-5xl font-black tracking-tighter uppercase italic leading-none mb-6">
               {game.title}
             </h1>

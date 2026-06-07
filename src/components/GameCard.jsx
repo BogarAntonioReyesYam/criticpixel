@@ -1,34 +1,6 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart } from 'lucide-react';
 
 const GameCard = ({ game }) => {
-  const [isWishlisted, setIsWishlisted] = useState(false);
-
-  // Cargar estado inicial desde LocalStorage
-  useEffect(() => {
-    const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
-    setIsWishlisted(wishlist.includes(game.id));
-  }, [game.id]);
-
-  // Manejar toggle de deseados
-  const toggleWishlist = (e) => {
-    e.preventDefault(); // Evita navegar al juego al hacer clic en el corazón
-    e.stopPropagation();
-    
-    const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
-    let newWishlist;
-    
-    if (isWishlisted) {
-      newWishlist = wishlist.filter(id => id !== game.id);
-    } else {
-      newWishlist = [...wishlist, game.id];
-    }
-    
-    localStorage.setItem('pixelVerdict_wishlist', JSON.stringify(newWishlist));
-    setIsWishlisted(!isWishlisted);
-  };
-
   return (
     <Link 
       to={`/game/${game.id}`}
@@ -48,21 +20,6 @@ const GameCard = ({ game }) => {
         <div className="absolute top-2 left-2 bg-gamingOrange text-white font-black px-2 py-0.5 rounded-sm text-sm shadow-lg skew-x-[-10deg]">
           {game.globalScore}
         </div>
-
-        {/* BOTÓN DE DESEADOS (Corazón) */}
-        <button 
-          onClick={toggleWishlist}
-          className="absolute top-2 right-2 p-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 transition-all duration-300 hover:scale-110 active:scale-90 group/heart"
-          title={isWishlisted ? "Quitar de deseados" : "Añadir a deseados"}
-        >
-          <Heart 
-            className={`w-4 h-4 transition-colors duration-300 ${
-              isWishlisted 
-              ? 'fill-red-500 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]' 
-              : 'text-gray-400 group-hover/heart:text-white'
-            }`} 
-          />
-        </button>
       </div>
 
       {/* Información Compacta */}

@@ -1,23 +1,24 @@
 # INFORME DE ESTADO DEL PROYECTO: PIXELVERDICT
 **Fecha:** 5 de Junio de 2026
-**Estado:** Beta Temprana / Versión 2.3
+**Estado:** Beta Temprana / Versión 2.4
 **Tecnología:** React 19 + Vite + Tailwind CSS + Lucide Icons
 
 ---
 
 ## 1. RESUMEN EJECUTIVO
-PixelVerdict ha escalado masivamente su volumen de contenido y profundidad técnica. La plataforma ahora cuenta con un sistema de persistencia de datos del lado del cliente, permitiendo a los usuarios gestionar su propia experiencia a través de una lista de deseos personalizada.
+PixelVerdict ha refinado su experiencia de usuario (UX) al integrar el sistema de personalización directamente en la narrativa del juego. Se ha movido la gestión de la lista de deseos a la vista de detalles para priorizar la densidad informativa en el catálogo principal y fomentar una decisión de guardado más informada.
 
 ---
 
 ## 2. NUEVAS FUNCIONALIDADES (PÁGINA WEB)
 
-### A. Sistema de Lista de Deseos (Wishlist)
-- **Interactividad Persistente:** Se ha implementado un icono de corazón en cada tarjeta de juego. Al activarlo, se ilumina en rojo con un efecto de brillo (*glow*) y guarda el juego en la memoria del navegador.
-- **Persistencia con LocalStorage:** Las elecciones del usuario se mantienen incluso después de cerrar o refrescar la página, simulando un sistema de cuenta de usuario.
-- **Feedback Visual:** Animaciones de escala y transiciones de color suaves para confirmar la acción del usuario.
+### A. Refactorización de Lista de Deseos (Wishlist)
+- **Ubicación Contextual:** El botón de corazón se ha movido de las tarjetas del catálogo a la cabecera de la vista de detalles de cada juego.
+- **Limpieza Visual:** Se eliminaron elementos distractores de la cuadrícula principal (`Home`), mejorando la estética minimalista y profesional.
+- **Persistencia Mantenida:** Se conserva el uso de `LocalStorage` para guardar las preferencias del usuario de forma indefinida.
 
-### B. Expansión Masiva del Catálogo (+16 Juegos)
+### B. Sistema de Lista de Deseos (Wishlist) - Depreciado en Grid
+- El sistema de guardado ahora requiere que el usuario explore el juego antes de añadirlo a sus deseados.
 - **Diversidad de Géneros:** Se han añadido 16 títulos nuevos incluyendo blockbusters como *Black Myth: Wukong*, *Ghost of Yotei*, *Silksong*, y *Marvel's Wolverine*.
 - **Contenido 2026:** Integración de lanzamientos proyectados para el año en curso con datos de mercado realistas.
 

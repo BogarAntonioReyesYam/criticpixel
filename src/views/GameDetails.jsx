@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 const GameDetails = () => {
@@ -91,7 +91,8 @@ const GameDetails = () => {
         marketPrices: marketData?.map(m => ({
           store: m.store,
           price: new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(m.price),
-          availability: m.platform
+          availability: m.platform,
+          url: m.store_url // NUEVO: URL de la tienda
         })) || []
       };
 
@@ -333,24 +334,34 @@ const GameDetails = () => {
             </p>
           </section>
 
-          {/* Sección: Valor de Mercado */}
+          {/* Sección: Valor de Mercado (Interactiva con URLs) */}
           <section className="space-y-6 delay-300">
             <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
               <ShoppingBag className="text-gamingOrange" />
-              Valor del Mercado (Cloud Real-Time)
+              Valor del Mercado (Ir a la tienda)
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Simulamos varias tiendas para mantener la estética, usando el precio de la edición */}
-              {['Epic Games Store', 'Steam'].map((store, idx) => (
-                <div key={idx} className="bg-gamingCard border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/5 transition-colors group shadow-lg">
-                  <div>
-                    <div className="text-xs font-bold text-gray-500 uppercase mb-1">Digital</div>
-                    <div className="font-black text-lg group-hover:text-gamingOrange transition-colors">{store}</div>
+              {game.marketPrices.map((market, idx) => (
+                <a 
+                  key={idx} 
+                  href={market.url || '#'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-gamingCard border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/5 hover:border-gamingOrange/50 transition-all group shadow-lg"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="bg-gamingOrange/10 p-2 rounded-lg group-hover:bg-gamingOrange/20 transition-colors">
+                      <ExternalLink className="w-5 h-5 text-gamingOrange" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-black text-gray-500 uppercase mb-0.5 tracking-widest">{market.availability}</div>
+                      <div className="font-black text-lg group-hover:text-gamingOrange transition-colors uppercase italic">{market.store}</div>
+                    </div>
                   </div>
                   <div className="text-2xl font-black text-gamingOrange">
-                    {selectedEdition?.price || "$1,399.00"}
+                    {market.price}
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </section>

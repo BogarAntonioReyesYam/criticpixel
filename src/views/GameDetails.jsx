@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Share2, Copy, CheckCircle, Users } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Users } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
@@ -13,7 +13,7 @@ const GameDetails = () => {
   const [langSearch, setLangModalSearch] = useState('');
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [selectedEditionId, setSelectedEditionId] = useState(null);
-  const [copied, setCopied] = useState(false);
+
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -122,17 +122,6 @@ const GameDetails = () => {
 
     localStorage.setItem('pixelVerdict_wishlist', JSON.stringify(newWishlist));
     setIsWishlisted(!isWishlisted);
-  };
-
-  const handleShare = async () => {
-    const url = window.location.href;
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
   };
 
   const filteredLanguages = useMemo(() => {
@@ -250,13 +239,6 @@ const GameDetails = () => {
 
             {/* Acciones */}
             <div className="flex-shrink-0 flex gap-3">
-              <button
-                onClick={handleShare}
-                className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all"
-                title="Compartir"
-              >
-                {copied ? <CheckCircle className="w-5 h-5 text-green-400" /> : <Share2 className="w-5 h-5 text-white" />}
-              </button>
               <button
                 onClick={toggleWishlist}
                 className={`p-3 rounded-full backdrop-blur-sm border transition-all ${

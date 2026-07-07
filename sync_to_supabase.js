@@ -45,12 +45,15 @@ async function sync() {
       continue;
     }
 
-    // 2. Insertar Ediciones
+    // 2. Limpiar ediciones previas del juego para evitar duplicados
+    await supabase.from('editions').delete().eq('game_id', game.id);
+
+    // 3. Insertar Ediciones
     if (game.editions) {
       for (const ed of game.editions) {
         const { data: edData, error: edError } = await supabase
           .from('editions')
-          .upsert({
+          .insert({
             game_id: game.id,
             name: ed.name,
             price: ed.price
@@ -63,7 +66,7 @@ async function sync() {
           continue;
         }
 
-        // 3. Insertar Perks de la edición
+        // 4. Insertar Perks de la edición
         if (ed.perks) {
           const perksToInsert = ed.perks.map(p => ({
             edition_id: edData.id,
@@ -71,7 +74,7 @@ async function sync() {
             description: p.description
           }));
           
-          await supabase.from('edition_perks').upsert(perksToInsert);
+          await supabase.from('edition_perks').insert(perksToInsert);
         }
       }
     }

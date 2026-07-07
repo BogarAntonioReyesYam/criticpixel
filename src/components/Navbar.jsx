@@ -47,11 +47,6 @@ const Navbar = ({ searchQuery, onSearch }) => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const clearSearch = () => {
-    setLocalQuery('');
-    onSearch('');
-  };
-
   return (
     <nav className="bg-gamingBg border-b border-white/10 sticky top-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">

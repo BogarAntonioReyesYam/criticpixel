@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Gamepad2, Heart, ExternalLink, MessageCircle, Mail } from 'lucide-react';
+import { Gamepad2, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="border-t border-white/5 mt-20">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
@@ -30,22 +30,6 @@ const Footer = () => {
                 Mi Lista de Deseados
               </Link>
             </nav>
-          </div>
-
-          {/* Social */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400">Comunidad</h4>
-            <div className="flex gap-3">
-              <a href="#" className="p-2.5 bg-white/5 rounded-lg hover:bg-gamingOrange/20 hover:text-gamingOrange text-gray-500 transition-all" title="Twitter">
-                <MessageCircle className="w-4 h-4" />
-              </a>
-              <a href="#" className="p-2.5 bg-white/5 rounded-lg hover:bg-gamingOrange/20 hover:text-gamingOrange text-gray-500 transition-all" title="GitHub">
-                <ExternalLink className="w-4 h-4" />
-              </a>
-              <a href="#" className="p-2.5 bg-white/5 rounded-lg hover:bg-gamingOrange/20 hover:text-gamingOrange text-gray-500 transition-all" title="Email">
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
 

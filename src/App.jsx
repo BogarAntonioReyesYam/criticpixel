@@ -1,16 +1,25 @@
-import { Routes, Route } from 'react-router-dom';
+import { useState, useCallback } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './views/Home';
 import GameDetails from './views/GameDetails';
 import Wishlist from './views/Wishlist';
 
 function App() {
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = useCallback((q) => {
+    setSearchQuery(q);
+    if (q) navigate('/');
+  }, [navigate]);
+
   return (
     <div className="min-h-screen bg-gamingBg text-gamingText">
-      <Navbar />
+      <Navbar searchQuery={searchQuery} onSearch={handleSearch} />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home searchQuery={searchQuery} />} />
           <Route path="/game/:id" element={<GameDetails />} />
           <Route path="/wishlist" element={<Wishlist />} />
         </Routes>

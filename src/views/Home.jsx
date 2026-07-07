@@ -1,9 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
-import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc } from 'lucide-react';
+import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc, Search as SearchIcon } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 
-const Home = () => {
+const Home = ({ searchQuery }) => {
+
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('score-desc');
@@ -18,13 +20,15 @@ const Home = () => {
         .from('games')
         .select('*');
       
-      if (!error && data) {
-        // Mapeamos los datos para que coincidan con los nombres usados en el frontend
+      if (!error && data && data.length > 0) {
         const formattedData = data.map(g => ({
           ...g,
           globalScore: parseFloat(g.global_score)
         }));
         setGames(formattedData);
+      } else {
+        if (error) console.error('Supabase error:', error);
+        setGames(mockGames);
       }
       setIsLoading(false);
     };
@@ -50,6 +54,21 @@ const Home = () => {
   const filteredAndSortedGames = useMemo(() => {
     let result = [...games];
 
+    // Filtrado por búsqueda de texto
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(game =>
+        game.title?.toLowerCase().includes(q) ||
+        game.description?.toLowerCase().includes(q) ||
+        game.about?.toLowerCase().includes(q) ||
+        game.platforms?.some(p => p.toLowerCase().includes(q)) ||
+        game.genre?.toLowerCase().includes(q) ||
+        game.developer?.toLowerCase().includes(q) ||
+        game.specs?.genero?.toLowerCase().includes(q) ||
+        game.specs?.desarrollador?.toLowerCase().includes(q)
+      );
+    }
+
     // Filtrado por plataforma
     if (platformFilter !== 'all') {
       result = result.filter(game => 
@@ -72,7 +91,7 @@ const Home = () => {
           return 0;
       }
     });
-  }, [sortOrder, platformFilter, games]);
+  }, [sortOrder, platformFilter, games, searchQuery]);
 
   const currentSortOption = sortOptions.find(opt => opt.id === sortOrder);
 
@@ -157,7 +176,12 @@ const Home = () => {
         </div>
       ) : (
         <div className="text-center py-20 bg-gamingCard/30 rounded-3xl border border-dashed border-white/10">
-          <p className="text-gray-500 text-xl font-bold italic">No hay juegos disponibles para esta plataforma.</p>
+          <SearchIcon className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+          {searchQuery ? (
+            <p className="text-gray-500 text-xl font-bold italic">No se encontraron resultados para "<span className="text-gamingOrange">{searchQuery}</span>".</p>
+          ) : (
+            <p className="text-gray-500 text-xl font-bold italic">No hay juegos disponibles para esta plataforma.</p>
+          )}
         </div>
       )}
     </div>

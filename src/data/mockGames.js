@@ -2,7 +2,7 @@ export const mockGames = [
   {
     id: 12,
     title: "Grand Theft Auto VI",
-    image: "https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=2070&auto=format&fit=crop",
+    image: "https://www.igrandtheftauto.com/content/images/large/gta-vi-key-3840x2160.jpg",
     globalScore: 10,
     platforms: ["PS5", "Xbox Series X"],
     editions: [
@@ -39,7 +39,7 @@ export const mockGames = [
   {
     id: 5,
     title: "Baldur's Gate 3",
-    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg",
     globalScore: 9.9,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -71,7 +71,7 @@ export const mockGames = [
   {
     id: 21,
     title: "Black Myth: Wukong",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg",
     globalScore: 9.4,
     platforms: ["PC", "PS5"],
     editions: [
@@ -99,7 +99,7 @@ export const mockGames = [
   {
     id: 1,
     title: "Elden Ring: Shadow of the Erdtree",
-    image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778580/header.jpg",
     globalScore: 9.8,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -127,7 +127,7 @@ export const mockGames = [
   {
     id: 23,
     title: "Silent Hill 2 Remake",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2124490/header.jpg",
     globalScore: 9.5,
     platforms: ["PC", "PS5"],
     editions: [
@@ -138,7 +138,7 @@ export const mockGames = [
       { store: "PlayStation Store", price: "$1,149.00", availability: "PS5" },
       { store: "Steam", price: "$1,149.00", availability: "PC" }
     ],
-    breakdown: { jugabilidad: 9.2, gráficos: 9.8, historia: 10 },
+    breakdown: { jugabilidad: 9.2, graphics: 9.8, historia: 10 },
     description: "Una pesadilla hermosa que respeta el legado original de terror psicológico.",
     about: "James Sunderland regresa al pueblo donde todo empezó tras recibir una carta de su difunta esposa.",
     specs: { desarrollador: "Bloober Team", editor: "Konami", genero: "Horror", lanzamiento: "2024", multijugador: "No", clasificación: "M (17+)" },
@@ -155,7 +155,7 @@ export const mockGames = [
   {
     id: 11,
     title: "Hades II",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/header.jpg",
     globalScore: 9.7,
     platforms: ["PC"],
     editions: [
@@ -181,7 +181,7 @@ export const mockGames = [
   {
     id: 24,
     title: "Metaphor: ReFantazio",
-    image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=2070&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2124800/header.jpg",
     globalScore: 9.7,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -208,7 +208,7 @@ export const mockGames = [
   {
     id: 15,
     title: "The Witcher 4: Polaris",
-    image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=2070&auto=format&fit=crop",
+    image: "https://press.cdn.cdpr.app/news/e84f93bf4a4c3d451282614323ccc7942d0e5250_q90_900x900.jpeg",
     globalScore: 9.8,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -236,7 +236,7 @@ export const mockGames = [
   {
     id: 26,
     title: "Astro Bot",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop",
+    image: "https://upload.wikimedia.org/wikipedia/en/a/a9/Astro_Bot_cover_art.jpg",
     globalScore: 9.8,
     platforms: ["PS5"],
     editions: [
@@ -261,7 +261,7 @@ export const mockGames = [
   {
     id: 27,
     title: "Monster Hunter Wilds",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg",
     globalScore: 9.6,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -287,11 +287,11 @@ export const mockGames = [
   {
     id: 28,
     title: "Metroid Prime 4: Beyond",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+    image: "https://upload.wikimedia.org/wikipedia/en/4/48/Metroid_Prime_4_Beyond_cover_art.png",
     globalScore: 9.7,
     platforms: ["Switch"],
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Samus Aran regresa.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Samus Aran regresa.' , description: 'Samus Aran regresa.' }] }
     ],
     marketPrices: [
       { store: "Nintendo eShop", price: "$1,399.00", availability: "Switch" }
@@ -312,7 +312,7 @@ export const mockGames = [
   {
     id: 29,
     title: "DOOM: The Dark Ages",
-    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2084&auto=format&fit=crop",
+    image: "https://upload.wikimedia.org/wikipedia/en/5/5e/Doom_The_Dark_Ages_key_art.jpg",
     globalScore: 9.5,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -338,7 +338,7 @@ export const mockGames = [
   {
     id: 31,
     title: "Fable (2025)",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1616430/header.jpg",
     globalScore: 9.1,
     platforms: ["PC", "Xbox Series X"],
     editions: [
@@ -363,7 +363,7 @@ export const mockGames = [
   {
     id: 33,
     title: "Borderlands 4",
-    image: "https://images.unsplash.com/photo-1605898960710-90da34597473?q=80&w=2070&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2235701/header.jpg",
     globalScore: 9.2,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -388,7 +388,7 @@ export const mockGames = [
   {
     id: 35,
     title: "Gears of War: E-Day",
-    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1957&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2350780/header.jpg",
     globalScore: 9.6,
     platforms: ["PC", "Xbox Series X"],
     editions: [
@@ -413,7 +413,7 @@ export const mockGames = [
   {
     id: 40,
     title: "Death Stranding 2: On The Beach",
-    image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=2071&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/header.jpg",
     globalScore: 9.4,
     platforms: ["PS5"],
     editions: [
@@ -425,7 +425,7 @@ export const mockGames = [
     ],
     breakdown: { jugabilidad: 8.9, gráficos: 10, historia: 10 },
     description: "Hideo Kojima nos invita a un nuevo viaje cinematográfico y emocional.",
-    about: "Sam Porter Bridges se embarca en un nuevo viaje para salvar a la humanidad de la extinción definitiva.",
+    about: "Sam Porter Bridges se embarca en un nuevo viaje para salvar a la humanity de la extinción definitiva.",
     specs: { desarrollador: "Kojima Productions", editor: "Sony", genero: "Acción / Exploración", lanzamiento: "2025", multijugador: "Sí", clasificación: "M (17+)" },
     languages: [
       { lang: "Español", interface: true, voices: true, subs: true },
@@ -439,7 +439,7 @@ export const mockGames = [
   {
     id: 9,
     title: "Resident Evil 4 Remake",
-    image: "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=2070&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg",
     globalScore: 9.5,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -467,11 +467,11 @@ export const mockGames = [
   {
     id: 3,
     title: "The Legend of Zelda: Tears of the Kingdom",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop",
+    image: "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
     globalScore: 9.6,
     platforms: ["Switch"],
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Hyrule completo.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Hyrule completo.' , description: 'Hyrule completo.' }] }
     ],
     marketPrices: [
       { store: "Nintendo eShop", price: "$1,399.00", availability: "Switch" }
@@ -493,7 +493,7 @@ export const mockGames = [
   {
     id: 7,
     title: "Marvel's Spider-Man 2",
-    image: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=2080&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/header.jpg",
     globalScore: 9.3,
     platforms: ["PS5"],
     editions: [
@@ -518,7 +518,7 @@ export const mockGames = [
   {
     id: 8,
     title: "Cyberpunk 2077: Ultimate Edition",
-    image: "https://images.unsplash.com/photo-1605898960710-90da34597473?q=80&w=2070&auto=format&fit=crop",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg",
     globalScore: 9.2,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
@@ -544,7 +544,7 @@ export const mockGames = [
   {
     id: 6,
     title: "Alan Wake 2",
-    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=1957&auto=format&fit=crop",
+    image: "https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg",
     globalScore: 8.9,
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [

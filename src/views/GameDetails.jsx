@@ -163,7 +163,16 @@ const GameDetails = () => {
         <div className="lg:col-span-1 space-y-8">
           <div className="space-y-4">
             <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group">
-              <img src={game.image} alt={game.title} className="w-full h-auto group-hover:scale-105 transition-transform duration-700" />
+              <img 
+                src={game.image} 
+                alt={game.title} 
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.target.onerror = null; 
+                  e.target.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop";
+                }}
+                className="w-full h-auto group-hover:scale-105 transition-transform duration-700" 
+              />
             </div>
 
             {/* SELECTOR DE EDICIONES (Debajo de la imagen) */}

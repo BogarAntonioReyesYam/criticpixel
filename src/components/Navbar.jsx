@@ -5,6 +5,12 @@ import { useState } from 'react';
 const Navbar = ({ searchQuery, onSearch }) => {
   const [localQuery, setLocalQuery] = useState(searchQuery || '');
 
+  const handleChange = (e) => {
+    const val = e.target.value;
+    setLocalQuery(val);
+    onSearch(val.trim());
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(localQuery.trim());
@@ -37,7 +43,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
           <input
             type="text"
             value={localQuery}
-            onChange={(e) => setLocalQuery(e.target.value)}
+            onChange={handleChange}
             placeholder="Buscar juegos, reseñas..."
             className="w-full bg-gamingCard border border-white/5 rounded-lg py-2 pl-10 pr-10 focus:outline-none focus:border-gamingOrange transition-colors"
           />

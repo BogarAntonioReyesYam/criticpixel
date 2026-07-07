@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc, Search as SearchIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
@@ -12,7 +13,6 @@ const Home = ({ searchQuery }) => {
   const [platformFilter, setPlatformFilter] = useState('all');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Cargar juegos desde Supabase
   useEffect(() => {
     const fetchGames = async () => {
       setIsLoading(true);
@@ -54,7 +54,6 @@ const Home = ({ searchQuery }) => {
   const filteredAndSortedGames = useMemo(() => {
     let result = [...games];
 
-    // Filtrado por búsqueda de texto
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       result = result.filter(game =>
@@ -70,14 +69,12 @@ const Home = ({ searchQuery }) => {
       );
     }
 
-    // Filtrado por plataforma
     if (platformFilter !== 'all') {
       result = result.filter(game => 
         game.platforms?.some(p => p.includes(platformFilter))
       );
     }
 
-    // Ordenamiento
     return result.sort((a, b) => {
       switch (sortOrder) {
         case 'score-desc':
@@ -106,7 +103,12 @@ const Home = ({ searchQuery }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <header className="mb-10 space-y-8 animate-in fade-in slide-in-from-top-4 duration-700">
+      <motion.header 
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="mb-10 space-y-8"
+      >
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2">
@@ -155,7 +157,7 @@ const Home = ({ searchQuery }) => {
           </div>
         </div>
 
-        {/* Filtros de Plataforma estilo Instant-Gaming */}
+        {/* Filtros de Plataforma */}
         <div className="flex flex-wrap gap-2 p-1 bg-gamingCard/50 border border-white/5 rounded-xl w-fit">
           {platforms.map((p) => (
             <button
@@ -172,23 +174,27 @@ const Home = ({ searchQuery }) => {
             </button>
           ))}
         </div>
-      </header>
+      </motion.header>
 
       {filteredAndSortedGames.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          {filteredAndSortedGames.map((game) => (
-            <GameCard key={game.id} game={game} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredAndSortedGames.map((game, i) => (
+            <GameCard key={game.id} game={game} index={i} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-gamingCard/30 rounded-3xl border border-dashed border-white/10">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center py-20 bg-gamingCard/30 rounded-3xl border border-dashed border-white/10"
+        >
           <SearchIcon className="w-12 h-12 text-gray-600 mx-auto mb-4" />
           {searchQuery ? (
             <p className="text-gray-500 text-xl font-bold italic">No se encontraron resultados para "<span className="text-gamingOrange">{searchQuery}</span>".</p>
           ) : (
             <p className="text-gray-500 text-xl font-bold italic">No hay juegos disponibles para esta plataforma.</p>
           )}
-        </div>
+        </motion.div>
       )}
     </div>
   );

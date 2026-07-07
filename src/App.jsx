@@ -1,12 +1,33 @@
 import { useState, useCallback } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './views/Home';
 import GameDetails from './views/GameDetails';
 import Wishlist from './views/Wishlist';
 
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+};
+
+const PageTransition = ({ children }) => (
+  <motion.div
+    variants={pageVariants}
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    transition={{ duration: 0.25, ease: 'easeOut' }}
+  >
+    {children}
+  </motion.div>
+);
+
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = useCallback((q) => {
@@ -17,18 +38,14 @@ function App() {
   return (
     <div className="min-h-screen bg-gamingBg text-gamingText">
       <Navbar searchQuery={searchQuery} onSearch={handleSearch} />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home searchQuery={searchQuery} />} />
-          <Route path="/game/:id" element={<GameDetails />} />
-          <Route path="/wishlist" element={<Wishlist />} />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
+          <Route path="/game/:id" element={<PageTransition><GameDetails /></PageTransition>} />
+          <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
         </Routes>
-      </main>
-      
-      {/* Footer Placeholder */}
-      <footer className="border-t border-white/5 py-10 text-center text-gray-500 text-sm mt-20">
-        <p>&copy; 2026 PIXELVERDICT. ALPHA VERSION.</p>
-      </footer>
+      </AnimatePresence>
+      <Footer />
     </div>
   );
 }

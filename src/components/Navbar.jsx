@@ -1,11 +1,13 @@
 import { Search, User, Gamepad2, Heart, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useWishlist } from '../context/WishlistContext';
 
 const Navbar = ({ searchQuery, onSearch }) => {
   const [localQuery, setLocalQuery] = useState(searchQuery || '');
   const inputRef = useRef(null);
   const debounceRef = useRef(null);
+  const { count } = useWishlist();
 
   const debouncedSearch = useCallback((val) => {
     clearTimeout(debounceRef.current);
@@ -48,7 +50,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
   }, []);
 
   return (
-    <nav className="bg-gamingBg border-b border-white/10 sticky top-0 z-50 px-4 py-3">
+    <nav className="bg-gamingBg/80 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" onClick={clearSearch}>
@@ -93,6 +95,11 @@ const Navbar = ({ searchQuery, onSearch }) => {
             title="Mi lista de deseos"
           >
             <Heart className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors" />
+            {count > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 bg-gamingOrange text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {count}
+              </span>
+            )}
           </Link>
           <button className="p-2 hover:bg-white/5 rounded-full transition-colors">
             <User className="w-6 h-6" />

@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
+import { useWishlist } from '../context/WishlistContext';
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -11,8 +13,8 @@ const GameDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLangModalOpen, setIsLangModalOpen] = useState(false);
   const [langSearch, setLangModalSearch] = useState('');
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [selectedEditionId, setSelectedEditionId] = useState(null);
+  const { isWishlisted, toggleWishlist } = useWishlist();
 
 
   useEffect(() => {
@@ -101,28 +103,11 @@ const GameDetails = () => {
       setGame(fullGame);
       setSelectedEditionId(fullGame.editions?.[0]?.id);
 
-      const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
-      setIsWishlisted(wishlist.includes(fullGame.id));
-
       setIsLoading(false);
     };
 
     fetchGameDetails();
   }, [id]);
-
-  const toggleWishlist = () => {
-    const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
-    let newWishlist;
-
-    if (isWishlisted) {
-      newWishlist = wishlist.filter(itemId => itemId !== game.id);
-    } else {
-      newWishlist = [...wishlist, game.id];
-    }
-
-    localStorage.setItem('pixelVerdict_wishlist', JSON.stringify(newWishlist));
-    setIsWishlisted(!isWishlisted);
-  };
 
   const filteredLanguages = useMemo(() => {
     if (!game?.languages) return [];
@@ -179,7 +164,12 @@ const GameDetails = () => {
   return (
     <div className="min-h-screen">
       {/* HERO SECTION */}
-      <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative h-[60vh] min-h-[400px] overflow-hidden"
+      >
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{ backgroundImage: `url(${game.image})` }}
@@ -239,24 +229,30 @@ const GameDetails = () => {
 
             {/* Acciones */}
             <div className="flex-shrink-0 flex gap-3">
-              <button
-                onClick={toggleWishlist}
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                onClick={() => toggleWishlist(game.id)}
                 className={`p-3 rounded-full backdrop-blur-sm border transition-all ${
-                  isWishlisted
+                  isWishlisted(game.id)
                     ? 'bg-red-500/20 border-red-500/50'
                     : 'bg-white/10 border-white/20 hover:bg-white/20'
                 }`}
                 title="Añadir a deseados"
               >
-                <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-white'}`} />
-              </button>
+                <Heart className={`w-5 h-5 ${isWishlisted(game.id) ? 'fill-red-500 text-red-500' : 'text-white'}`} />
+              </motion.button>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* CONTENIDO PRINCIPAL */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="max-w-7xl mx-auto px-4 py-12"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Columna Izquierda */}
           <div className="lg:col-span-1 space-y-8">
@@ -497,7 +493,7 @@ const GameDetails = () => {
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* MODAL DE IDIOMAS */}
       {isLangModalOpen && (

@@ -1,20 +1,51 @@
 import { Search, User, Gamepad2, Heart, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const Navbar = ({ searchQuery, onSearch }) => {
   const [localQuery, setLocalQuery] = useState(searchQuery || '');
+  const inputRef = useRef(null);
+  const debounceRef = useRef(null);
+
+  const debouncedSearch = useCallback((val) => {
+    clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      onSearch(val.trim());
+    }, 300);
+  }, [onSearch]);
 
   const handleChange = (e) => {
     const val = e.target.value;
     setLocalQuery(val);
-    onSearch(val.trim());
+    debouncedSearch(val);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    clearTimeout(debounceRef.current);
     onSearch(localQuery.trim());
   };
+
+  const clearSearch = () => {
+    setLocalQuery('');
+    clearTimeout(debounceRef.current);
+    onSearch('');
+    inputRef.current?.focus();
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.key === '/' || (e.ctrlKey && e.key === 'k')) && document.activeElement !== inputRef.current) {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+      if (e.key === 'Escape') {
+        inputRef.current?.blur();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const clearSearch = () => {
     setLocalQuery('');
@@ -41,10 +72,11 @@ const Navbar = ({ searchQuery, onSearch }) => {
             <Search className="w-4 h-4" />
           </button>
           <input
+            ref={inputRef}
             type="text"
             value={localQuery}
             onChange={handleChange}
-            placeholder="Buscar juegos, reseñas..."
+            placeholder="Buscar juegos... (/)"
             className="w-full bg-gamingCard border border-white/5 rounded-lg py-2 pl-10 pr-10 focus:outline-none focus:border-gamingOrange transition-colors"
           />
           {localQuery && (

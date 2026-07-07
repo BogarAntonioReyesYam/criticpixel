@@ -62,10 +62,11 @@ const Home = ({ searchQuery }) => {
         game.description?.toLowerCase().includes(q) ||
         game.about?.toLowerCase().includes(q) ||
         game.platforms?.some(p => p.toLowerCase().includes(q)) ||
-        game.genre?.toLowerCase().includes(q) ||
-        game.developer?.toLowerCase().includes(q) ||
         game.specs?.genero?.toLowerCase().includes(q) ||
-        game.specs?.desarrollador?.toLowerCase().includes(q)
+        game.specs?.desarrollador?.toLowerCase().includes(q) ||
+        game.specs?.editor?.toLowerCase().includes(q) ||
+        game.editions?.some(e => e.name?.toLowerCase().includes(q)) ||
+        game.reviews?.some(r => r.text?.toLowerCase().includes(q) || r.user?.toLowerCase().includes(q))
       );
     }
 
@@ -112,6 +113,11 @@ const Home = ({ searchQuery }) => {
               Reseñas <span className="text-gamingOrange">Populares</span>
             </h1>
             <p className="text-gray-400">Explora los títulos más destacados de la industria desde la nube.</p>
+            {searchQuery && (
+              <p className="text-sm text-gamingOrange font-bold mt-1">
+                {filteredAndSortedGames.length} resultado{filteredAndSortedGames.length !== 1 ? 's' : ''} para "<span className="text-white">{searchQuery}</span>"
+              </p>
+            )}
           </div>
 
           {/* Selector de Orden */}

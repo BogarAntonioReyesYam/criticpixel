@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
+import ShareButtons from '../components/ShareButtons';
+import EditionCompare from '../components/EditionCompare';
+import PriceAlert from '../components/PriceAlert';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
 import { GameDetailsSkeleton } from '../components/Skeletons';
@@ -246,6 +249,7 @@ const GameDetails = () => {
               >
                 <Heart className={`w-5 h-5 ${isWishlisted(game.id) ? 'fill-red-500 text-red-500' : 'text-white'}`} />
               </motion.button>
+              <ShareButtons game={game} />
             </div>
           </div>
         </div>
@@ -318,8 +322,12 @@ const GameDetails = () => {
                     </button>
                   ))}
                 </div>
+                <EditionCompare editions={game.editions} />
               </div>
             )}
+
+            {/* Alerta de precio */}
+            <PriceAlert game={game} />
 
             {/* Desglose técnico */}
             <div className="bg-gamingCard rounded-2xl p-6 space-y-6 shadow-2xl border border-white/5">

@@ -6,6 +6,9 @@ export const mockGames = [
     globalScore: 10,
     trailer: "QdBZY2fkU-0",
     platforms: ["PS5", "Xbox Series X"],
+    price: 1899,
+    releaseDate: "2026-09-17",
+    genre: "Mundo Abierto",
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,899.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia de Lucía y Jason.' }, { title: 'Bono de Reserva', description: 'Pack de dinero digital para el modo historia.' }] },
       { id: 'dlx', name: 'Deluxe Edition', price: '$2,299.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia principal.' }, { title: 'Pack de Ropa Vice', description: 'Conjuntos exclusivos inspirados en los años 80.' }, { title: '500k GTA Online', description: 'Impulso económico inmediato para tu imperio criminal.' }] },
@@ -43,6 +46,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg",
     globalScore: 9.9,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1299,
+    releaseDate: "2023-08-03",
+    genre: "RPG",
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'La experiencia completa de Baldur\'s Gate 3.' }] },
       { id: 'dlx', name: 'Digital Deluxe', price: '$1,499.00', perks: [{ title: 'Pack de canciones', description: 'Nuevas melodías de bardo.' }, { title: 'Pinturas de Rivellon', description: 'Arte exclusivo.' }, { title: 'Bolsa de aventurero', description: 'Suministros de inicio.' }] }
@@ -75,6 +81,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg",
     globalScore: 9.4,
     platforms: ["PC", "PS5"],
+    price: 1299,
+    releaseDate: "2024-08-20",
+    genre: "Action RPG",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'La leyenda de Wukong.' }] },
       { id: 'dlx', name: 'Deluxe Edition', price: '$1,599.00', perks: [{ title: 'Banda Sonora', description: 'Música épica digital.' }, { title: 'Armadura de Bronce', description: 'Set cosmético exclusivo.' }] }
@@ -103,6 +112,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778580/header.jpg",
     globalScore: 9.8,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 859,
+    releaseDate: "2024-06-21",
+    genre: "Action RPG",
     editions: [
       { id: 'std', name: 'Expansion', price: '$859.00', perks: [{ title: 'Shadow of the Erdtree', description: 'La mayor expansión de FromSoft.' }] },
       { id: 'pre', name: 'Premium Bundle', price: '$1,099.00', perks: [{ title: 'Expansión', description: ' Shadow of the Erdtree.' }, { title: 'Libro de arte', description: 'Arte conceptual digital.' }] }
@@ -131,6 +143,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2124490/header.jpg",
     globalScore: 9.5,
     platforms: ["PC", "PS5"],
+    price: 1149,
+    releaseDate: "2024-10-08",
+    genre: "Horror",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,149.00', perks: [{ title: 'Juego Base', description: 'Regresa a Silent Hill.' }] },
       { id: 'dlx', name: 'Deluxe', price: '$1,399.00', perks: [{ title: 'Máscara de Pyramid Head', description: 'Cosmético exclusivo.' }, { title: 'Libro de arte', description: 'Diseños de monstruos.' }] }
@@ -159,6 +174,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/header.jpg",
     globalScore: 9.7,
     platforms: ["PC"],
+    price: 549,
+    releaseDate: "2024-05-06",
+    genre: "Roguelike",
     editions: [
       { id: 'std', name: 'Early Access', price: '$549.00', perks: [{ title: 'Game Access', description: 'Acceso inmediato al desarrollo.' }] }
     ],
@@ -185,6 +203,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2124800/header.jpg",
     globalScore: 9.7,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1299,
+    releaseDate: "2024-10-11",
+    genre: "JRPG",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Reclama el trono.' }] }
     ],
@@ -213,6 +234,9 @@ export const mockGames = [
     globalScore: 9.8,
     trailer: "yWMu6JeT2g8",
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2026-12-15",
+    genre: "RPG de Acción",
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Nueva saga del brujo.' }] },
       { id: 'ult', name: 'Ursine Edition', price: '$1,999.00', perks: [{ title: 'Expansión 1', description: 'Pase para el primer DLC.' }, { title: 'Armadura Real', description: 'Set cosmético exclusivo.' }] }
@@ -241,6 +265,9 @@ export const mockGames = [
     image: "https://upload.wikimedia.org/wikipedia/en/a/a9/Astro_Bot_cover_art.jpg",
     globalScore: 9.8,
     platforms: ["PS5"],
+    price: 1399,
+    releaseDate: "2024-09-06",
+    genre: "Plataformas",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Aventura masiva de plataformas.' }] }
     ],
@@ -266,6 +293,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg",
     globalScore: 9.6,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1549,
+    releaseDate: "2025-02-28",
+    genre: "Acción",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Caza en Tierras Prohibidas.' }] }
     ],
@@ -292,6 +322,9 @@ export const mockGames = [
     image: "https://upload.wikimedia.org/wikipedia/en/4/48/Metroid_Prime_4_Beyond_cover_art.png",
     globalScore: 9.7,
     platforms: ["Switch"],
+    price: 1399,
+    releaseDate: "2025-12-04",
+    genre: "Aventura / FPS",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Samus Aran regresa.' , description: 'Samus Aran regresa.' }] }
     ],
@@ -317,6 +350,9 @@ export const mockGames = [
     image: "https://upload.wikimedia.org/wikipedia/en/5/5e/Doom_The_Dark_Ages_key_art.jpg",
     globalScore: 9.5,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2025-05-15",
+    genre: "Shooter",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Destrucción medieval masiva.' }] }
     ],
@@ -343,6 +379,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1616430/header.jpg",
     globalScore: 9.1,
     platforms: ["PC", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2025-10-22",
+    genre: "RPG",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Regresa a Albion.' }] }
     ],
@@ -368,6 +407,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2235701/header.jpg",
     globalScore: 9.2,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2025-09-12",
+    genre: "Shooter",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Looteo infinito.' }] }
     ],
@@ -393,6 +435,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2350780/header.jpg",
     globalScore: 9.6,
     platforms: ["PC", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2026-03-15",
+    genre: "Shooter",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'El origen del horror.' }] }
     ],
@@ -419,6 +464,9 @@ export const mockGames = [
     globalScore: 9.4,
     trailer: "DNvGx4nAN2U",
     platforms: ["PS5"],
+    price: 1549,
+    releaseDate: "2025-04-15",
+    genre: "Acción / Exploración",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Conecta de nuevo.' }] },
       { id: 'dlx', name: 'Digital Deluxe', price: '$1,849.00', perks: [{ title: 'Trajes Dorados', description: 'Lujo estético.' }, { title: 'Gafas de sol', description: 'Cosmético in-game.' }] }
@@ -445,6 +493,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg",
     globalScore: 9.5,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 799,
+    releaseDate: "2023-03-24",
+    genre: "Survival Horror",
     editions: [
       { id: 'std', name: 'Estándar', price: '$799.00', perks: [{ title: 'Juego Base', description: 'Misión completa.' }] },
       { id: 'dlx', name: 'Deluxe', price: '$1,149.00', perks: [{ title: 'Pack de Trajes', description: 'Sets exclusivos.' }, { title: 'Armas Deluxe', description: 'Sentinel Nine.' }] }
@@ -474,6 +525,9 @@ export const mockGames = [
     globalScore: 9.6,
     trailer: "uHGShqcAHlQ",
     platforms: ["Switch"],
+    price: 1399,
+    releaseDate: "2023-05-12",
+    genre: "Aventura",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Hyrule completo.' , description: 'Hyrule completo.' }] }
     ],
@@ -501,6 +555,9 @@ export const mockGames = [
     globalScore: 9.3,
     trailer: "9fVYKsEmuRo",
     platforms: ["PS5"],
+    price: 1549,
+    releaseDate: "2023-10-20",
+    genre: "Acción",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Doble de héroes.' }] }
     ],
@@ -526,6 +583,9 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg",
     globalScore: 9.2,
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1299,
+    releaseDate: "2023-09-21",
+    genre: "RPG de Acción",
     editions: [
       { id: 'ult', name: 'Ultimate Edition', price: '$1,299.00', perks: [{ title: 'Phantom Liberty', description: 'Expansión de espionaje.' }, { title: 'Juego Base', description: 'Actualización 2.0.' }] }
     ],
@@ -553,6 +613,9 @@ export const mockGames = [
     globalScore: 8.9,
     trailer: "dlQ3FeNu5Yw",
     platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 949,
+    releaseDate: "2023-10-27",
+    genre: "Survival Horror / Misterio",
     editions: [
       { id: 'std', name: 'Estándar', price: '$949.00', perks: [{ title: 'Juego Base', description: 'Investiga la oscuridad.' }] }
     ],

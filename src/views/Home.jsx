@@ -1,9 +1,14 @@
 import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
-import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc, Search as SearchIcon, Loader2 } from 'lucide-react';
+import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, List, Monitor, Laptop, Gamepad2, Disc, Search as SearchIcon, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
+import GameListItem from '../components/GameListItem';
+import AdvancedFilters from '../components/AdvancedFilters';
+import TrendingNow from '../components/TrendingNow';
+import RandomGame from '../components/RandomGame';
+import TrailerSection from '../components/TrailerSection';
 import { GameGridSkeleton } from '../components/Skeletons';
 
 const ITEMS_PER_PAGE = 8;
@@ -16,6 +21,8 @@ const Home = ({ searchQuery }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [viewMode, setViewMode] = useState('grid');
+  const [filters, setFilters] = useState({ genre: 'Todos', priceRange: 'all', dateRange: 'all' });
   const loaderRef = useRef(null);
 
   useEffect(() => {
@@ -80,6 +87,38 @@ const Home = ({ searchQuery }) => {
       );
     }
 
+    // Advanced Filters
+    if (filters.genre !== 'Todos') {
+      result = result.filter(game =>
+        game.genre?.toLowerCase().includes(filters.genre.toLowerCase()) ||
+        game.specs?.genero?.toLowerCase().includes(filters.genre.toLowerCase())
+      );
+    }
+
+    if (filters.priceRange !== 'all') {
+      result = result.filter(game => {
+        const price = game.price || 0;
+        switch (filters.priceRange) {
+          case '0-800': return price < 800;
+          case '800-1200': return price >= 800 && price <= 1200;
+          case '1200-1500': return price >= 1200 && price <= 1500;
+          case '1500+': return price > 1500;
+          default: return true;
+        }
+      });
+    }
+
+    if (filters.dateRange !== 'all') {
+      result = result.filter(game => {
+        if (!game.releaseDate) return false;
+        const year = new Date(game.releaseDate).getFullYear();
+        if (filters.dateRange === 'future') {
+          return new Date(game.releaseDate) > new Date();
+        }
+        return year === parseInt(filters.dateRange);
+      });
+    }
+
     return result.sort((a, b) => {
       switch (sortOrder) {
         case 'score-desc':
@@ -94,7 +133,7 @@ const Home = ({ searchQuery }) => {
           return 0;
       }
     });
-  }, [sortOrder, platformFilter, games, searchQuery]);
+  }, [sortOrder, platformFilter, games, searchQuery, filters]);
 
   const visibleGames = useMemo(() => {
     return filteredAndSortedGames.slice(0, visibleCount);
@@ -130,7 +169,9 @@ const Home = ({ searchQuery }) => {
 
   useEffect(() => {
     setVisibleCount(ITEMS_PER_PAGE);
-  }, [searchQuery, platformFilter, sortOrder]);
+  }, [searchQuery, platformFilter, sortOrder, filters]);
+
+  const activeFilterCount = (filters.genre !== 'Todos' ? 1 : 0) + (filters.priceRange !== 'all' ? 1 : 0) + (filters.dateRange !== 'all' ? 1 : 0);
 
   const currentSortOption = sortOptions.find(opt => opt.id === sortOrder);
 
@@ -177,37 +218,56 @@ const Home = ({ searchQuery }) => {
             )}
           </div>
 
-          <div className="relative">
-            <button 
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-2 bg-gamingCard border border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[220px] justify-between"
-            >
-              <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
-                {currentSortOption.icon}
-                {currentSortOption.label}
-              </div>
-              <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-            </button>
+          <div className="flex items-center gap-3">
+            <AdvancedFilters filters={filters} onFilterChange={setFilters} activeFilterCount={activeFilterCount} />
 
-            {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-full bg-gamingCard border border-white/10 rounded-lg shadow-xl z-20 overflow-hidden">
-                {sortOptions.map((option) => (
-                  <button
-                    key={option.id}
-                    onClick={() => {
-                      setSortOrder(option.id);
-                      setIsDropdownOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white/5 transition-colors text-left ${
-                      sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-400'
-                    }`}
-                  >
-                    {option.icon}
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            )}
+            <div className="flex items-center gap-1 bg-gamingCard/50 border border-white/5 rounded-lg p-1">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`p-2 rounded-md transition-all ${viewMode === 'grid' ? 'bg-gamingOrange text-white' : 'text-gray-400 hover:text-white'}`}
+              >
+                <LayoutGrid className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`p-2 rounded-md transition-all ${viewMode === 'list' ? 'bg-gamingOrange text-white' : 'text-gray-400 hover:text-white'}`}
+              >
+                <List className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="relative">
+              <button 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center gap-2 bg-gamingCard border border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[220px] justify-between"
+              >
+                <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
+                  {currentSortOption.icon}
+                  {currentSortOption.label}
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-full bg-gamingCard border border-white/10 rounded-lg shadow-xl z-20 overflow-hidden">
+                  {sortOptions.map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => {
+                        setSortOrder(option.id);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white/5 transition-colors text-left ${
+                        sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-400'
+                      }`}
+                    >
+                      {option.icon}
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -229,13 +289,25 @@ const Home = ({ searchQuery }) => {
         </div>
       </motion.header>
 
+      {!searchQuery && <TrendingNow games={games} />}
+      {!searchQuery && <RandomGame games={games} />}
+      {!searchQuery && <TrailerSection games={games} />}
+
       {visibleGames.length > 0 ? (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {visibleGames.map((game, i) => (
-              <GameCard key={game.id} game={game} index={i} />
-            ))}
-          </div>
+          {viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {visibleGames.map((game, i) => (
+                <GameCard key={game.id} game={game} index={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {visibleGames.map((game, i) => (
+                <GameListItem key={game.id} game={game} index={i} />
+              ))}
+            </div>
+          )}
 
           {hasMore && (
             <div ref={loaderRef} className="flex justify-center py-8">

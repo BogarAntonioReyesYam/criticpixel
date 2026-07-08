@@ -1,4 +1,4 @@
-import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon } from 'lucide-react';
+import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, BarChart3, BookOpen, Film } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useWishlist } from '../context/WishlistContext';
@@ -116,6 +116,20 @@ const Navbar = ({ searchQuery, onSearch }) => {
             title="Acerca de"
           >
             <Info className={`w-5 h-5 group-hover:text-gamingOrange transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
+          </Link>
+          <Link 
+            to="/releases" 
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
+            title="Calendario"
+          >
+            <Calendar className={`w-5 h-5 group-hover:text-gamingOrange transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
+          </Link>
+          <Link 
+            to="/trailers" 
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
+            title="Tráilers"
+          >
+            <Film className={`w-5 h-5 group-hover:text-gamingOrange transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
           </Link>
           <button
             onClick={toggleTheme}

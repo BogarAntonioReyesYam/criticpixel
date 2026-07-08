@@ -9,6 +9,10 @@ import Wishlist from './views/Wishlist';
 import About from './views/About';
 import Blog from './views/Blog';
 import Rankings from './views/Rankings';
+import ReleasesCalendar from './views/ReleasesCalendar';
+import BuyingGuide from './views/BuyingGuide';
+import UserStats from './views/UserStats';
+import TrailersPage from './views/TrailersPage';
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -49,6 +53,10 @@ function App() {
           <Route path="/about" element={<PageTransition><About /></PageTransition>} />
           <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
           <Route path="/rankings" element={<PageTransition><Rankings /></PageTransition>} />
+          <Route path="/releases" element={<PageTransition><ReleasesCalendar /></PageTransition>} />
+          <Route path="/guides" element={<PageTransition><BuyingGuide /></PageTransition>} />
+          <Route path="/stats" element={<PageTransition><UserStats /></PageTransition>} />
+          <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
         </Routes>
       </AnimatePresence>
       <Footer />

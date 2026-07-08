@@ -251,32 +251,6 @@ const GameDetails = () => {
         </div>
       </motion.div>
 
-      {/* TRAILER */}
-      {game.trailer && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="max-w-4xl mx-auto px-4 -mt-6 mb-8 relative z-10"
-        >
-          <div className="bg-gamingCard rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-            <div className="p-4 border-b border-white/5 flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <span className="text-xs font-black uppercase tracking-widest text-gray-500">Trailer Oficial</span>
-            </div>
-            <div className="aspect-video">
-              <iframe
-                src={`https://www.youtube.com/embed/${game.trailer}`}
-                title={`${game.title} Trailer`}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </motion.div>
-      )}
-
       {/* CONTENIDO PRINCIPAL */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -300,6 +274,21 @@ const GameDetails = () => {
                 className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
               />
             </div>
+
+            {/* Trailer */}
+            {game.trailer && (
+              <div className="rounded-xl overflow-hidden border border-white/5">
+                <div className="aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${game.trailer}`}
+                    title={`${game.title} Trailer`}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Selector de ediciones */}
             {game.editions && game.editions.length > 0 && (

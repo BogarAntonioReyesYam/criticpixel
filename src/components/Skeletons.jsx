@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
-const shimmer = 'animate-pulse bg-white/5';
+const shimmer = 'animate-pulse bg-gray-200 dark:bg-white/5';
 
 export const GameCardSkeleton = () => (
-  <div className="bg-gamingCard rounded-xl overflow-hidden border border-white/5">
+  <div className="bg-white dark:bg-[#1d1d1d] rounded-xl overflow-hidden border border-gray-200 dark:border-white/5">
     <div className={`aspect-[3/4] ${shimmer}`} />
     <div className="p-3 space-y-2">
       <div className={`h-4 ${shimmer} rounded w-3/4`} />
@@ -26,7 +26,7 @@ export const GameGridSkeleton = ({ count = 8 }) => (
 export const GameDetailsSkeleton = () => (
   <div className="min-h-screen">
     {/* Hero skeleton */}
-    <div className="relative h-[60vh] min-h-[400px] bg-gamingCard animate-pulse" />
+    <div className="relative h-[60vh] min-h-[400px] bg-white dark:bg-[#1d1d1d] animate-pulse" />
     
     {/* Content skeleton */}
     <div className="max-w-7xl mx-auto px-4 py-12">

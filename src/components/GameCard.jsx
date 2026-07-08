@@ -21,7 +21,7 @@ const GameCard = ({ game, index = 0 }) => {
     >
       <Link 
         to={`/game/${game.id}`}
-        className="group relative bg-gamingCard rounded-xl shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-gamingOrange/10 block border border-transparent hover:border-gamingOrange/30 overflow-hidden"
+        className="group relative bg-white dark:bg-[#1d1d1d] rounded-xl shadow-lg dark:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-gamingOrange/10 block border border-gray-200 dark:border-transparent hover:border-gamingOrange/30 overflow-hidden"
       >
         {/* Contenedor de Imagen */}
         <div className="aspect-[3/4] relative overflow-hidden">
@@ -54,14 +54,14 @@ const GameCard = ({ game, index = 0 }) => {
 
         {/* Información Compacta */}
         <div className="p-3 space-y-2">
-          <h3 className="font-bold text-sm leading-tight line-clamp-2 h-9 group-hover:text-gamingOrange transition-colors">
+          <h3 className="font-bold text-sm leading-tight line-clamp-2 h-9 group-hover:text-gamingOrange transition-colors text-gray-900 dark:text-white">
             {game.title}
           </h3>
           
           <div className="flex items-center justify-between">
             <div className="flex gap-1">
               {game.platforms.slice(0, 2).map((p) => (
-                <span key={p} className="text-[9px] bg-white/5 px-1.5 py-0.5 rounded-md text-gamingMuted border border-white/5 uppercase font-medium">
+                <span key={p} className="text-[9px] bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded-md text-gray-500 dark:text-gamingMuted border border-gray-200 dark:border-white/5 uppercase font-medium">
                   {p === "Xbox Series X" ? "XSX" : p}
                 </span>
               ))}

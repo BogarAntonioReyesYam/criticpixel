@@ -10,7 +10,7 @@ const About = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gamingOrange transition-colors mb-8">
           <ChevronLeft className="w-5 h-5" />
           Volver al catálogo
         </Link>
@@ -23,7 +23,7 @@ const About = () => {
           <h1 className="text-5xl font-black italic tracking-tighter uppercase">
             Sobre <span className="text-gamingOrange">PixelVerdict</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Resenas honestas, scores reales. Tu guia definitiva para elegir el proximo juego.
           </p>
         </div>
@@ -52,20 +52,20 @@ const About = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-gamingCard rounded-2xl p-6 border border-white/5 space-y-4"
+              className="bg-white dark:bg-[#1d1d1d] rounded-2xl p-6 border border-gray-200 dark:border-white/5 space-y-4"
             >
               <div className="bg-gamingOrange/10 w-fit p-3 rounded-xl">
                 {item.icon}
               </div>
-              <h3 className="font-bold text-lg">{item.title}</h3>
+              <h3 className="font-bold text-lg text-gray-900 dark:text-white">{item.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{item.text}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Como funciona */}
-        <div className="bg-gamingCard rounded-3xl p-8 md:p-12 border border-white/5 space-y-8">
-          <h2 className="text-2xl font-black italic tracking-tighter uppercase text-center">
+        <div className="bg-white dark:bg-[#1d1d1d] rounded-3xl p-8 md:p-12 border border-gray-200 dark:border-white/5 space-y-8">
+          <h2 className="text-2xl font-black italic tracking-tighter uppercase text-center text-gray-900 dark:text-white">
             Como Funciona el <span className="text-gamingOrange">Score</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -73,25 +73,25 @@ const About = () => {
               <div className="bg-gamingOrange/10 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto">
                 <span className="text-2xl font-black text-gamingOrange">J</span>
               </div>
-              <h4 className="font-bold">Jugabilidad</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Jugabilidad</h4>
               <p className="text-gray-500 text-sm">Mecanicas, controles, diseno de niveles y sensacion general del juego.</p>
             </div>
             <div className="text-center space-y-3">
               <div className="bg-gamingOrange/10 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto">
                 <span className="text-2xl font-black text-gamingOrange">G</span>
               </div>
-              <h4 className="font-bold">Graficos</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Graficos</h4>
               <p className="text-gray-500 text-sm"> apartado visual, arte, direccion artistica y rendimiento tecnico.</p>
             </div>
             <div className="text-center space-y-3">
               <div className="bg-gamingOrange/10 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto">
                 <span className="text-2xl font-black text-gamingOrange">H</span>
               </div>
-              <h4 className="font-bold">Historia</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white">Historia</h4>
               <p className="text-gray-500 text-sm">Narrativa, personajes, dialogos y impacto emocional de la historia.</p>
             </div>
           </div>
-          <div className="text-center pt-4 border-t border-white/5">
+          <div className="text-center pt-4 border-t border-gray-200 dark:border-white/5">
             <p className="text-gray-500 text-sm">
               El <span className="text-gamingOrange font-bold">Global Score</span> es un promedio ponderado de las tres categorias, calibrado por nuestro equipo editorial.
             </p>
@@ -111,7 +111,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.3 + i * 0.08 }}
-              className="bg-gamingCard rounded-2xl p-5 border border-white/5 text-center"
+              className="bg-white dark:bg-[#1d1d1d] rounded-2xl p-5 border border-gray-200 dark:border-white/5 text-center"
             >
               <div className="text-3xl font-black text-gamingOrange">{stat.value}</div>
               <div className="text-xs text-gray-500 uppercase tracking-widest font-bold mt-1">{stat.label}</div>

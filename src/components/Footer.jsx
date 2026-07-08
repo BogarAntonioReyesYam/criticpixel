@@ -3,7 +3,7 @@ import { Gamepad2, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="border-t border-white/5 mt-20">
+    <footer className="border-t border-gray-200 dark:border-white/5 mt-20">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Brand */}
@@ -43,11 +43,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-600 text-xs">
+        <div className="mt-10 pt-6 border-t border-gray-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-600 dark:text-gray-600 text-xs">
             &copy; 2026 PixelVerdict. Todos los derechos reservados.
           </p>
-          <p className="text-gray-700 text-xs flex items-center gap-1">
+          <p className="text-gray-700 dark:text-gray-700 text-xs flex items-center gap-1">
             Hecho con <Heart className="w-3 h-3 text-red-500 fill-red-500" /> para gamers
           </p>
         </div>

@@ -51,12 +51,12 @@ const Wishlist = () => {
     return (
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-10 space-y-4">
-          <div className="h-5 w-40 bg-white/5 rounded animate-pulse" />
+          <div className="h-5 w-40 bg-gray-200 dark:bg-white/5 rounded animate-pulse" />
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-white/5 rounded-2xl animate-pulse" />
+            <div className="w-14 h-14 bg-gray-200 dark:bg-white/5 rounded-2xl animate-pulse" />
             <div className="space-y-2">
-              <div className="h-8 w-64 bg-white/5 rounded animate-pulse" />
-              <div className="h-4 w-48 bg-white/5 rounded animate-pulse" />
+              <div className="h-8 w-64 bg-gray-200 dark:bg-white/5 rounded animate-pulse" />
+              <div className="h-4 w-48 bg-gray-200 dark:bg-white/5 rounded animate-pulse" />
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ const Wishlist = () => {
         transition={{ duration: 0.4 }}
         className="mb-10 space-y-4"
       >
-        <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4">
+        <Link to="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gamingOrange transition-colors mb-4">
           <ChevronLeft className="w-5 h-5" />
           Volver al catálogo
         </Link>
@@ -85,7 +85,7 @@ const Wishlist = () => {
             <h1 className="text-4xl font-black italic tracking-tighter uppercase">
               Mi Lista de <span className="text-red-500">Deseados</span>
             </h1>
-            <p className="text-gray-400">
+            <p className="text-gray-500 dark:text-gray-400">
               {wishlistGames.length === 0
                 ? 'Tu lista esta vacia.'
                 : `Tienes ${wishlistGames.length} juego${wishlistGames.length !== 1 ? 's' : ''} guardado${wishlistGames.length !== 1 ? 's' : ''}.`}
@@ -113,14 +113,14 @@ const Wishlist = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="text-center py-32 bg-gamingCard/30 rounded-[3rem] border border-dashed border-white/5 flex flex-col items-center justify-center space-y-6"
+            className="text-center py-32 bg-gray-50 dark:bg-white/5 rounded-[3rem] border border-dashed border-gray-200 dark:border-white/5 flex flex-col items-center justify-center space-y-6"
           >
-            <div className="bg-white/5 p-6 rounded-full">
-              <Gamepad2 className="w-16 h-12 text-gray-700" />
+            <div className="bg-gray-100 dark:bg-white/5 p-6 rounded-full">
+              <Gamepad2 className="w-16 h-12 text-gray-300 dark:text-gray-700" />
             </div>
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-gray-400">Tu lista esta vacia</h2>
-              <p className="text-gray-600 max-w-xs mx-auto">
+              <h2 className="text-2xl font-bold text-gray-500 dark:text-gray-400">Tu lista esta vacia</h2>
+              <p className="text-gray-400 dark:text-gray-600 max-w-xs mx-auto">
                 Explora el catalogo y marca tus juegos favoritos con el corazon para verlos aqui.
               </p>
             </div>

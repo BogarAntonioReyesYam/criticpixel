@@ -25,10 +25,10 @@ const getScoreColor = (score) => {
 };
 
 const getRankBadge = (rank) => {
-  if (rank === 1) return { bg: 'bg-yellow-500/20', border: 'border-yellow-500/50', text: 'text-yellow-400' };
-  if (rank === 2) return { bg: 'bg-gray-300/20', border: 'border-gray-300/50', text: 'text-gray-300' };
-  if (rank === 3) return { bg: 'bg-orange-700/20', border: 'border-orange-700/50', text: 'text-orange-400' };
-  return { bg: 'bg-white/5', border: 'border-white/10', text: 'text-gray-500' };
+  if (rank === 1) return { bg: 'bg-yellow-500/20', border: 'border-yellow-500/50', text: 'text-yellow-600 dark:text-yellow-400' };
+  if (rank === 2) return { bg: 'bg-gray-200 dark:bg-gray-300/20', border: 'border-gray-300 dark:border-gray-300/50', text: 'text-gray-600 dark:text-gray-300' };
+  if (rank === 3) return { bg: 'bg-orange-100 dark:bg-orange-700/20', border: 'border-orange-300 dark:border-orange-700/50', text: 'text-orange-600 dark:text-orange-400' };
+  return { bg: 'bg-gray-100 dark:bg-white/5', border: 'border-gray-200 dark:border-white/10', text: 'text-gray-500' };
 };
 
 const Rankings = () => {
@@ -56,7 +56,7 @@ const Rankings = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gamingOrange transition-colors mb-8">
           <ChevronLeft className="w-5 h-5" />
           Volver al catalogo
         </Link>
@@ -70,7 +70,7 @@ const Rankings = () => {
               <h1 className="text-4xl font-black italic tracking-tighter uppercase">
                 Top <span className="text-gamingOrange">Rankings</span>
               </h1>
-              <p className="text-gray-400">Los juegos mejor calificados de nuestro catalogo.</p>
+              <p className="text-gray-500 dark:text-gray-400">Los juegos mejor calificados de nuestro catalogo.</p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ const Rankings = () => {
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${
                 platformFilter === f.id
                   ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20'
-                  : 'bg-gamingCard text-gray-500 hover:text-white border border-white/5'
+                  : 'bg-white dark:bg-[#1d1d1d] text-gray-500 hover:text-gamingOrange border border-gray-200 dark:border-white/5'
               }`}
             >
               {f.icon}
@@ -101,8 +101,8 @@ const Rankings = () => {
               onClick={() => setGenreFilter(g)}
               className={`px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all ${
                 genreFilter === g
-                  ? 'bg-white/10 text-white border border-white/20'
-                  : 'text-gray-600 hover:text-gray-400'
+                  ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white border border-gray-300 dark:border-white/20'
+                  : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-400'
               }`}
             >
               {g}
@@ -126,7 +126,7 @@ const Rankings = () => {
               >
                 <Link
                   to={`/game/${game.id}`}
-                  className="group flex items-center gap-4 bg-gamingCard rounded-xl p-4 border border-white/5 hover:border-gamingOrange/30 transition-all duration-300 hover:-translate-y-0.5"
+                  className="group flex items-center gap-4 bg-white dark:bg-[#1d1d1d] rounded-xl p-4 border border-gray-200 dark:border-white/5 hover:border-gamingOrange/30 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   {/* Rank */}
                   <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border ${badge.bg} ${badge.border}`}>
@@ -140,10 +140,10 @@ const Rankings = () => {
 
                   {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold group-hover:text-gamingOrange transition-colors truncate">{game.title}</h3>
+                    <h3 className="font-bold text-gray-900 dark:text-white group-hover:text-gamingOrange transition-colors truncate">{game.title}</h3>
                     <div className="flex items-center gap-2 mt-1">
                       {game.platforms?.slice(0, 3).map(p => (
-                        <span key={p} className="text-[8px] bg-white/5 px-1.5 py-0.5 rounded text-gray-500 uppercase font-medium">
+                        <span key={p} className="text-[8px] bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded text-gray-500 uppercase font-medium">
                           {p === 'Xbox Series X' ? 'XSX' : p}
                         </span>
                       ))}
@@ -156,7 +156,7 @@ const Rankings = () => {
                   {/* Score */}
                   <div className="flex-shrink-0 text-right">
                     <div className="text-2xl font-black" style={{ color }}>{game.globalScore}</div>
-                    <div className="text-[9px] text-gray-600 uppercase tracking-widest font-bold">/ 10</div>
+                    <div className="text-[9px] text-gray-400 dark:text-gray-600 uppercase tracking-widest font-bold">/ 10</div>
                   </div>
                 </Link>
               </motion.div>
@@ -164,8 +164,8 @@ const Rankings = () => {
           })}
 
           {rankedGames.length === 0 && (
-            <div className="text-center py-20 bg-gamingCard/30 rounded-3xl border border-dashed border-white/10">
-              <TrendingUp className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+            <div className="text-center py-20 bg-gray-50 dark:bg-white/5 rounded-3xl border border-dashed border-gray-200 dark:border-white/10">
+              <TrendingUp className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
               <p className="text-gray-500 text-lg font-bold italic">No hay juegos para estos filtros.</p>
             </div>
           )}

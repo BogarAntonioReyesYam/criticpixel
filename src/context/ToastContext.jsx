@@ -38,13 +38,13 @@ export const ToastProvider = ({ children }) => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="pointer-events-auto bg-gamingCard border border-white/10 rounded-xl px-4 py-3 shadow-2xl flex items-center gap-3 min-w-[220px]"
+              className="pointer-events-auto bg-white dark:bg-[#1d1d1d] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 shadow-xl dark:shadow-2xl flex items-center gap-3 min-w-[220px]"
             >
               {icons[toast.type] || icons.success}
-              <span className="text-sm font-medium text-gray-200">{toast.message}</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{toast.message}</span>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="ml-auto text-gray-500 hover:text-white transition-colors"
+                className="ml-auto text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>

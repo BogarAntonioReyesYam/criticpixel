@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Users, Share2 } from 'lucide-react';
+import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
@@ -234,30 +234,6 @@ const GameDetails = () => {
 
             {/* Acciones */}
             <div className="flex-shrink-0 flex gap-3">
-              <motion.button
-                whileTap={{ scale: 0.85 }}
-                onClick={async () => {
-                  const shareData = {
-                    title: game.title,
-                    text: `Mira la reseña de ${game.title} en PixelVerdict - Score: ${game.globalScore}/10`,
-                    url: window.location.href
-                  };
-                  try {
-                    if (navigator.share) {
-                      await navigator.share(shareData);
-                    } else {
-                      await navigator.clipboard.writeText(window.location.href);
-                      addToast('Link copiado al portapapeles', 'share');
-                    }
-                  } catch {
-                    // user cancelled
-                  }
-                }}
-                className="p-3 rounded-full backdrop-blur-sm border bg-white/10 border-white/20 hover:bg-white/20 transition-all"
-                title="Compartir"
-              >
-                <Share2 className="w-5 h-5 text-white" />
-              </motion.button>
               <motion.button
                 whileTap={{ scale: 0.85 }}
                 onClick={() => toggleWishlist(game.id)}

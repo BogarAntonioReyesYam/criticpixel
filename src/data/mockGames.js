@@ -4,7 +4,7 @@ export const mockGames = [
     title: "Grand Theft Auto VI",
     image: "https://www.igrandtheftauto.com/content/images/large/gta-vi-key-3840x2160.jpg",
     globalScore: 10,
-    trailer: "QdBZY2lkUes",
+    trailer: "QdBZY2fkU-0",
     platforms: ["PS5", "Xbox Series X"],
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,899.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia de Lucía y Jason.' }, { title: 'Bono de Reserva', description: 'Pack de dinero digital para el modo historia.' }] },
@@ -211,7 +211,7 @@ export const mockGames = [
     title: "The Witcher 4: Polaris",
     image: "https://press.cdn.cdpr.app/news/e84f93bf4a4c3d451282614323ccc7942d0e5250_q90_900x900.jpeg",
     globalScore: 9.8,
-    trailer: "s2VxK9V0cXg",
+    trailer: "yWMu6JeT2g8",
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Nueva saga del brujo.' }] },
@@ -417,7 +417,7 @@ export const mockGames = [
     title: "Death Stranding 2: On The Beach",
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/header.jpg",
     globalScore: 9.4,
-    trailer: "FzKvZ5zamX0",
+    trailer: "DNvGx4nAN2U",
     platforms: ["PS5"],
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Conecta de nuevo.' }] },
@@ -472,7 +472,7 @@ export const mockGames = [
     title: "The Legend of Zelda: Tears of the Kingdom",
     image: "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
     globalScore: 9.6,
-    trailer: "uHG9HvGteYc",
+    trailer: "uHGShqcAHlQ",
     platforms: ["Switch"],
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Hyrule completo.' , description: 'Hyrule completo.' }] }
@@ -499,7 +499,7 @@ export const mockGames = [
     title: "Marvel's Spider-Man 2",
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/header.jpg",
     globalScore: 9.3,
-    trailer: "_tduwWcFCAQ",
+    trailer: "9fVYKsEmuRo",
     platforms: ["PS5"],
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Doble de héroes.' }] }
@@ -551,7 +551,7 @@ export const mockGames = [
     title: "Alan Wake 2",
     image: "https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg",
     globalScore: 8.9,
-    trailer: "8sA1HNOdMFU",
+    trailer: "dlQ3FeNu5Yw",
     platforms: ["PC", "PS5", "Xbox Series X"],
     editions: [
       { id: 'std', name: 'Estándar', price: '$949.00', perks: [{ title: 'Juego Base', description: 'Investiga la oscuridad.' }] }

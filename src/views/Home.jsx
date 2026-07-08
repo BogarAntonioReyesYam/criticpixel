@@ -203,14 +203,14 @@ const Home = ({ searchQuery }) => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="mb-10 space-y-8"
+        className="mb-8"
       >
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2">
+            <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-1">
               Reseñas <span className="text-gamingOrange">Populares</span>
             </h1>
-            <p className="text-gray-400">Explora los títulos más destacados de la industria desde la nube.</p>
+            <p className="text-gray-400 text-sm">Explora los títulos más destacados de la industria.</p>
             {searchQuery && (
               <p className="text-sm text-gamingOrange font-bold mt-1">
                 {filteredAndSortedGames.length} resultado{filteredAndSortedGames.length !== 1 ? 's' : ''} para "<span className="text-white">{searchQuery}</span>"
@@ -218,10 +218,59 @@ const Home = ({ searchQuery }) => {
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="relative">
+            <button 
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center gap-2 bg-gamingCard border border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[200px] justify-between"
+            >
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
+                {currentSortOption.icon}
+                {currentSortOption.label}
+              </div>
+              <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-full bg-gamingCard border border-white/10 rounded-lg shadow-xl z-20 overflow-hidden">
+                {sortOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    onClick={() => { setSortOrder(option.id); setIsDropdownOpen(false); }}
+                    className={`w-full flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider hover:bg-white/5 transition-colors text-left ${
+                      sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-400'
+                    }`}
+                  >
+                    {option.icon}
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex flex-wrap gap-1.5 p-1 bg-gamingCard/50 border border-white/5 rounded-xl">
+            {platforms.map((p) => (
+              <button
+                key={p.id}
+                onClick={() => setPlatformFilter(p.id)}
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+                  platformFilter === p.id 
+                  ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20' 
+                  : 'text-gray-500 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {p.icon}
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2 ml-auto">
             <AdvancedFilters filters={filters} onFilterChange={setFilters} activeFilterCount={activeFilterCount} />
 
-            <div className="flex items-center gap-1 bg-gamingCard/50 border border-white/5 rounded-lg p-1">
+            <div className="flex items-center gap-0.5 bg-gamingCard/50 border border-white/5 rounded-lg p-0.5">
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-md transition-all ${viewMode === 'grid' ? 'bg-gamingOrange text-white' : 'text-gray-400 hover:text-white'}`}
@@ -235,62 +284,21 @@ const Home = ({ searchQuery }) => {
                 <List className="w-4 h-4" />
               </button>
             </div>
-
-            <div className="relative">
-              <button 
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 bg-gamingCard border border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[220px] justify-between"
-              >
-                <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
-                  {currentSortOption.icon}
-                  {currentSortOption.label}
-                </div>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-full bg-gamingCard border border-white/10 rounded-lg shadow-xl z-20 overflow-hidden">
-                  {sortOptions.map((option) => (
-                    <button
-                      key={option.id}
-                      onClick={() => {
-                        setSortOrder(option.id);
-                        setIsDropdownOpen(false);
-                      }}
-                      className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white/5 transition-colors text-left ${
-                        sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-400'
-                      }`}
-                    >
-                      {option.icon}
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2 p-1 bg-gamingCard/50 border border-white/5 rounded-xl w-fit">
-          {platforms.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setPlatformFilter(p.id)}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-black uppercase tracking-widest transition-all duration-300 ${
-                platformFilter === p.id 
-                ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20' 
-                : 'text-gray-500 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              {p.icon}
-              {p.label}
-            </button>
-          ))}
         </div>
       </motion.header>
 
-      {!searchQuery && <TrendingNow games={games} />}
-      {!searchQuery && <RandomGame games={games} />}
+      {!searchQuery && (
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+          <div className="lg:col-span-3">
+            <TrendingNow games={games} />
+          </div>
+          <div className="lg:col-span-1">
+            <RandomGame games={games} />
+          </div>
+        </div>
+      )}
+
       {!searchQuery && <TrailerSection games={games} />}
 
       {visibleGames.length > 0 ? (

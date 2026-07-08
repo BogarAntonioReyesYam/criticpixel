@@ -18,34 +18,33 @@ const TrendingNow = ({ games }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="mb-10"
     >
-      <div className="flex items-center gap-2 mb-4">
-        <Flame className="w-5 h-5 text-gamingOrange" />
-        <h2 className={`text-lg font-black uppercase tracking-wider ${isLight ? 'text-gray-900' : 'text-white'}`}>
+      <div className="flex items-center gap-2 mb-3">
+        <Flame className="w-4 h-4 text-gamingOrange" />
+        <h2 className={`text-sm font-black uppercase tracking-wider ${isLight ? 'text-gray-900' : 'text-white'}`}>
           Lo Más Buscado
         </h2>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
         {trending.map((game, i) => (
           <Link
             key={game.id}
             to={`/game/${game.id}`}
-            className={`flex-shrink-0 flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 hover:-translate-y-0.5 min-w-[200px] ${
+            className={`flex-shrink-0 flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-300 hover:-translate-y-0.5 min-w-[180px] ${
               isLight
                 ? 'bg-white border border-gray-200 hover:shadow-md'
                 : 'bg-gamingCard/50 border border-white/5 hover:border-gamingOrange/30'
             }`}
           >
-            <span className="text-2xl font-black text-gamingOrange/30">#{i + 1}</span>
+            <img src={game.image} alt={game.title} className="w-10 h-12 rounded-lg object-cover flex-shrink-0" />
             <div className="min-w-0">
-              <h3 className={`font-bold text-sm truncate ${isLight ? 'text-gray-900' : 'text-white'}`}>
+              <h3 className={`font-bold text-xs truncate ${isLight ? 'text-gray-900' : 'text-white'}`}>
                 {game.title}
               </h3>
               <div className="flex items-center gap-1 mt-0.5">
-                <TrendingUp className="w-3 h-3 text-gamingOrange" />
-                <span className="text-xs text-gamingOrange font-bold">{game.globalScore}</span>
+                <TrendingUp className="w-2.5 h-2.5 text-gamingOrange" />
+                <span className="text-[10px] text-gamingOrange font-bold">{game.globalScore}</span>
               </div>
             </div>
           </Link>

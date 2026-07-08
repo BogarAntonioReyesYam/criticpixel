@@ -63,12 +63,12 @@ const GameDetails = () => {
         .eq('game_id', id);
 
       const { data: langsData } = await supabase
-        .from('game_languages')
+        .from('languages')
         .select('*')
         .eq('game_id', id);
 
       const { data: reviewsData } = await supabase
-        .from('game_reviews')
+        .from('reviews')
         .select('*')
         .eq('game_id', id);
 
@@ -84,7 +84,7 @@ const GameDetails = () => {
           desarrollador: gameData.developer,
           editor: gameData.publisher,
           genero: gameData.genre,
-          lanzamiento: gameData.release_date,
+          lanzamiento: gameData.release_year,
           multijugador: gameData.multiplayer,
           clasificación: gameData.rating
         },

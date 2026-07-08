@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Trophy, TrendingUp, Monitor, Gamepad2, Laptop, Disc } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
+import { useTheme } from '../context/ThemeContext';
 
 const rankingFilters = [
   { id: 'global', label: 'Global', icon: <Trophy className="w-4 h-4" /> },
@@ -34,6 +35,7 @@ const getRankBadge = (rank) => {
 const Rankings = () => {
   const [platformFilter, setPlatformFilter] = useState('global');
   const [genreFilter, setGenreFilter] = useState('Todos');
+  const { theme } = useTheme();
 
   const rankedGames = useMemo(() => {
     let filtered = [...mockGames];
@@ -56,7 +58,7 @@ const Rankings = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Link to="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gamingOrange transition-colors mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-gamingMuted hover:text-gamingOrange transition-colors mb-8">
           <ChevronLeft className="w-5 h-5" />
           Volver al catalogo
         </Link>
@@ -67,10 +69,10 @@ const Rankings = () => {
               <Trophy className="w-8 h-8 text-gamingOrange" />
             </div>
             <div>
-              <h1 className="text-4xl font-black italic tracking-tighter uppercase">
+              <h1 className="text-4xl font-black italic tracking-tighter uppercase text-gamingText dark:text-white">
                 Top <span className="text-gamingOrange">Rankings</span>
               </h1>
-              <p className="text-gray-500 dark:text-gray-400">Los juegos mejor calificados de nuestro catalogo.</p>
+              <p className="text-gamingMuted">Los juegos mejor calificados de nuestro catalogo.</p>
             </div>
           </div>
         </div>
@@ -84,8 +86,12 @@ const Rankings = () => {
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${
                 platformFilter === f.id
                   ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20'
-                  : 'bg-white dark:bg-[#1d1d1d] text-gray-500 hover:text-gamingOrange border border-gray-200 dark:border-white/5'
+                  : 'text-gamingMuted hover:text-gamingOrange'
               }`}
+              style={platformFilter !== f.id ? { 
+                backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
+                border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`
+              } : {}}
             >
               {f.icon}
               {f.label}
@@ -101,9 +107,13 @@ const Rankings = () => {
               onClick={() => setGenreFilter(g)}
               className={`px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all ${
                 genreFilter === g
-                  ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white border border-gray-300 dark:border-white/20'
-                  : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-400'
+                  ? 'bg-gamingOrange/10 text-gamingOrange border border-gamingOrange/30'
+                  : 'text-gamingMuted hover:text-gamingText dark:hover:text-white'
               }`}
+              style={genreFilter !== g ? { 
+                backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
+                border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`
+              } : {}}
             >
               {g}
             </button>
@@ -126,7 +136,12 @@ const Rankings = () => {
               >
                 <Link
                   to={`/game/${game.id}`}
-                  className="group flex items-center gap-4 bg-white dark:bg-[#1d1d1d] rounded-xl p-4 border border-gray-200 dark:border-white/5 hover:border-gamingOrange/30 transition-all duration-300 hover:-translate-y-0.5"
+                  className="group flex items-center gap-4 rounded-xl p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-gamingOrange/30"
+                  style={{ 
+                    backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
+                    border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`,
+                    boxShadow: theme === 'dark' ? '0 2px 8px rgba(0,0,0,0.2)' : '0 2px 8px rgba(0,0,0,0.04)'
+                  }}
                 >
                   {/* Rank */}
                   <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border ${badge.bg} ${badge.border}`}>
@@ -140,10 +155,13 @@ const Rankings = () => {
 
                   {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-gray-900 dark:text-white group-hover:text-gamingOrange transition-colors truncate">{game.title}</h3>
+                    <h3 className="font-bold group-hover:text-gamingOrange transition-colors truncate text-gamingText dark:text-white">{game.title}</h3>
                     <div className="flex items-center gap-2 mt-1">
                       {game.platforms?.slice(0, 3).map(p => (
-                        <span key={p} className="text-[8px] bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded text-gray-500 uppercase font-medium">
+                        <span key={p} className="text-[8px] px-1.5 py-0.5 rounded uppercase font-medium text-gamingMuted"
+                              style={{ 
+                                backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)'
+                              }}>
                           {p === 'Xbox Series X' ? 'XSX' : p}
                         </span>
                       ))}
@@ -156,7 +174,7 @@ const Rankings = () => {
                   {/* Score */}
                   <div className="flex-shrink-0 text-right">
                     <div className="text-2xl font-black" style={{ color }}>{game.globalScore}</div>
-                    <div className="text-[9px] text-gray-400 dark:text-gray-600 uppercase tracking-widest font-bold">/ 10</div>
+                    <div className="text-[9px] uppercase tracking-widest font-bold text-gamingMuted">/ 10</div>
                   </div>
                 </Link>
               </motion.div>
@@ -164,9 +182,13 @@ const Rankings = () => {
           })}
 
           {rankedGames.length === 0 && (
-            <div className="text-center py-20 bg-gray-50 dark:bg-white/5 rounded-3xl border border-dashed border-gray-200 dark:border-white/10">
-              <TrendingUp className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-500 text-lg font-bold italic">No hay juegos para estos filtros.</p>
+            <div className="text-center py-20 rounded-3xl"
+                 style={{ 
+                   backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
+                   border: `2px dashed ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`
+                 }}>
+              <TrendingUp className="w-12 h-12 mx-auto mb-4 text-gamingMuted opacity-50" />
+              <p className="text-lg font-bold italic text-gamingMuted">No hay juegos para estos filtros.</p>
             </div>
           )}
         </div>

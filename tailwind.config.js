@@ -9,25 +9,25 @@ export default {
     extend: {
       colors: {
         gamingBg: {
-          DEFAULT: "#121212",
-          light: "#f5f5f5",
+          DEFAULT: "#f8f9fa",
+          dark: "#121212",
         },
         gamingCard: {
-          DEFAULT: "#1d1d1d",
-          light: "#ffffff",
+          DEFAULT: "#ffffff",
+          dark: "#1d1d1d",
         },
         gamingOrange: "#ff6b00",
         gamingHeader: {
-          DEFAULT: "#1a1a1a",
-          light: "#ffffff",
+          DEFAULT: "#ffffff",
+          dark: "#1a1a1a",
         },
         gamingText: {
-          DEFAULT: "#ffffff",
-          light: "#1a1a1a",
+          DEFAULT: "#1a1a1a",
+          dark: "#ffffff",
         },
         gamingMuted: {
-          DEFAULT: "#999999",
-          light: "#666666",
+          DEFAULT: "#6c757d",
+          dark: "#999999",
         },
       },
       spacing: {
@@ -35,7 +35,15 @@ export default {
       },
       fontSize: {
         'xxs': '0.65rem',
-      }
+      },
+      boxShadow: {
+        'card': '0 2px 8px rgba(0, 0, 0, 0.08)',
+        'card-dark': '0 2px 8px rgba(0, 0, 0, 0.3)',
+        'card-hover': '0 8px 24px rgba(255, 107, 0, 0.15)',
+      },
+      borderColor: {
+        DEFAULT: 'var(--gaming-border)',
+      },
     },
   },
   plugins: [],

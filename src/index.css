@@ -2,52 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
+@layer base {
+  :root {
+    --gaming-bg: #f8f9fa;
+    --gaming-card: #ffffff;
+    --gaming-text: #1a1a1a;
+    --gaming-muted: #6c757d;
+    --gaming-border: #e9ecef;
+    --gaming-surface: #f1f3f5;
+    color-scheme: light;
+  }
+
+  .dark {
+    --gaming-bg: #121212;
+    --gaming-card: #1d1d1d;
+    --gaming-text: #ffffff;
+    --gaming-muted: #999999;
+    --gaming-border: rgba(255, 255, 255, 0.1);
+    --gaming-surface: rgba(255, 255, 255, 0.05);
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--gaming-bg);
+    color: var(--gaming-text);
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  * {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
 }
 
-.dark {
-  color-scheme: dark;
+@layer components {
+  .theme-card {
+    background-color: var(--gaming-card);
+    border-color: var(--gaming-border);
+  }
+
+  .theme-surface {
+    background-color: var(--gaming-surface);
+  }
 }
 
-body {
-  @apply bg-gray-100 text-gray-900 font-sans;
-  margin: 0;
-  min-height: 100vh;
-}
-
-.dark body,
-.dark {
-  @apply bg-[#121212] text-white;
-}
-
-/* Custom scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
-}
-
-.dark ::-webkit-scrollbar-track {
-  @apply bg-[#1a1a1a];
+  background: var(--gaming-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  @apply bg-[#444];
+  background: var(--gaming-muted);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  @apply bg-[#666];
+  background: var(--gaming-text);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -59,9 +76,6 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded;
-}
-
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-[#444];
+  background: var(--gaming-muted);
+  border-radius: 3px;
 }

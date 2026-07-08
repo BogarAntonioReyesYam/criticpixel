@@ -1,18 +1,19 @@
 import { useState, useCallback, createContext, useContext } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CheckCircle, X, Heart, HeartOff, Share2 } from 'lucide-react';
+import { CheckCircle, X, Heart, HeartOff } from 'lucide-react';
+import { useTheme } from './ThemeContext';
 
 const ToastContext = createContext();
 
 const icons = {
-  success: <CheckCircle className="w-4 h-4 text-green-400" />,
-  wishlist: <Heart className="w-4 h-4 text-red-400 fill-red-400" />,
-  unwishlist: <HeartOff className="w-4 h-4 text-gray-400" />,
-  share: <Share2 className="w-4 h-4 text-blue-400" />,
+  success: <CheckCircle className="w-4 h-4 text-green-500" />,
+  wishlist: <Heart className="w-4 h-4 text-red-500 fill-red-500" />,
+  unwishlist: <HeartOff className="w-4 h-4 text-gamingMuted" />,
 };
 
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
+  const { theme } = useTheme();
 
   const addToast = useCallback((message, type = 'success', duration = 2500) => {
     const id = Date.now() + Math.random();
@@ -38,13 +39,20 @@ export const ToastProvider = ({ children }) => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="pointer-events-auto bg-white dark:bg-[#1d1d1d] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 shadow-xl dark:shadow-2xl flex items-center gap-3 min-w-[220px]"
+              className="pointer-events-auto rounded-xl px-4 py-3 shadow-xl flex items-center gap-3 min-w-[220px]"
+              style={{ 
+                backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
+                border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)'}`,
+                boxShadow: theme === 'dark' 
+                  ? '0 8px 32px rgba(0,0,0,0.4)' 
+                  : '0 8px 32px rgba(0,0,0,0.12)'
+              }}
             >
               {icons[toast.type] || icons.success}
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{toast.message}</span>
+              <span className="text-sm font-medium text-gamingText dark:text-gray-200">{toast.message}</span>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="ml-auto text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors"
+                className="ml-auto text-gamingMuted hover:text-gamingOrange transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>

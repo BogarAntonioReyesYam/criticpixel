@@ -5,6 +5,7 @@ import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 import { GameGridSkeleton } from '../components/Skeletons';
+import { useTheme } from '../context/ThemeContext';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -17,6 +18,7 @@ const Home = ({ searchQuery }) => {
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loaderRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -140,14 +142,18 @@ const Home = ({ searchQuery }) => {
         <div className="mb-10 space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
-              <div className="h-10 w-64 bg-gray-200 dark:bg-white/5 rounded animate-pulse" />
-              <div className="h-5 w-80 bg-gray-200 dark:bg-white/5 rounded animate-pulse" />
+              <div className="h-10 w-64 rounded animate-pulse" 
+                   style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)' }} />
+              <div className="h-5 w-80 rounded animate-pulse" 
+                   style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)' }} />
             </div>
-            <div className="h-10 w-56 bg-gray-200 dark:bg-white/5 rounded-lg animate-pulse" />
+            <div className="h-10 w-56 rounded-lg animate-pulse" 
+                 style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)' }} />
           </div>
           <div className="flex gap-2">
             {[1,2,3,4,5].map(i => (
-              <div key={i} className="h-10 w-24 bg-gray-200 dark:bg-white/5 rounded-lg animate-pulse" />
+              <div key={i} className="h-10 w-24 rounded-lg animate-pulse" 
+                   style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)' }} />
             ))}
           </div>
         </div>
@@ -166,13 +172,13 @@ const Home = ({ searchQuery }) => {
       >
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2">
+            <h1 className="text-4xl font-black italic tracking-tighter uppercase mb-2 text-gamingText dark:text-white">
               Reseñas <span className="text-gamingOrange">Populares</span>
             </h1>
-            <p className="text-gray-500 dark:text-gray-400">Explora los títulos más destacados de la industria desde la nube.</p>
+            <p className="text-gamingMuted">Explora los títulos más destacados de la industria desde la nube.</p>
             {searchQuery && (
               <p className="text-sm text-gamingOrange font-bold mt-1">
-                {filteredAndSortedGames.length} resultado{filteredAndSortedGames.length !== 1 ? 's' : ''} para "<span className="text-gray-900 dark:text-white">{searchQuery}</span>"
+                {filteredAndSortedGames.length} resultado{filteredAndSortedGames.length !== 1 ? 's' : ''} para "<span className="text-gamingText dark:text-white">{searchQuery}</span>"
               </p>
             )}
           </div>
@@ -180,17 +186,26 @@ const Home = ({ searchQuery }) => {
           <div className="relative">
             <button 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-2 bg-white dark:bg-[#1d1d1d] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-lg hover:border-gamingOrange transition-colors min-w-[220px] justify-between"
+              className="flex items-center gap-2 rounded-lg px-4 py-2 transition-all min-w-[220px] justify-between"
+              style={{ 
+                backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
+                border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`,
+                boxShadow: theme === 'dark' ? '0 2px 8px rgba(0,0,0,0.2)' : '0 2px 8px rgba(0,0,0,0.06)'
+              }}
             >
-              <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">
+              <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gamingText dark:text-white">
                 {currentSortOption.icon}
                 {currentSortOption.label}
               </div>
-              <ChevronDown className={`w-4 h-4 transition-transform text-gray-500 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`w-4 h-4 transition-transform text-gamingMuted ${isDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-full bg-white dark:bg-[#1d1d1d] border border-gray-200 dark:border-white/10 rounded-lg shadow-xl z-20 overflow-hidden">
+              <div className="absolute right-0 mt-2 w-full rounded-lg shadow-xl z-20 overflow-hidden"
+                   style={{ 
+                     backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
+                     border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`
+                   }}>
                 {sortOptions.map((option) => (
                   <button
                     key={option.id}
@@ -198,9 +213,14 @@ const Home = ({ searchQuery }) => {
                       setSortOrder(option.id);
                       setIsDropdownOpen(false);
                     }}
-                    className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-left ${
-                      sortOrder === option.id ? 'text-gamingOrange' : 'text-gray-500 dark:text-gray-400'
+                    className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider transition-colors text-left ${
+                      sortOrder === option.id ? 'text-gamingOrange' : 'text-gamingMuted hover:text-gamingText dark:hover:text-white'
                     }`}
+                    style={{ 
+                      backgroundColor: sortOrder === option.id 
+                        ? (theme === 'dark' ? 'rgba(255,107,0,0.1)' : 'rgba(255,107,0,0.05)') 
+                        : 'transparent'
+                    }}
                   >
                     {option.icon}
                     {option.label}
@@ -211,7 +231,11 @@ const Home = ({ searchQuery }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 p-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-xl w-fit">
+        <div className="flex flex-wrap gap-2 p-1 rounded-xl w-fit"
+             style={{ 
+               backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)',
+               border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`
+             }}>
           {platforms.map((p) => (
             <button
               key={p.id}
@@ -219,8 +243,11 @@ const Home = ({ searchQuery }) => {
               className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-black uppercase tracking-widest transition-all duration-300 ${
                 platformFilter === p.id 
                 ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20' 
-                : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/5'
+                : 'text-gamingMuted hover:text-gamingText dark:hover:text-white'
               }`}
+              style={platformFilter !== p.id ? { 
+                backgroundColor: 'transparent'
+              } : {}}
             >
               {p.icon}
               {p.label}
@@ -248,20 +275,24 @@ const Home = ({ searchQuery }) => {
           )}
 
           {!hasMore && filteredAndSortedGames.length > ITEMS_PER_PAGE && (
-            <p className="text-center text-gray-400 dark:text-gray-600 text-xs py-6">Todos los juegos cargados</p>
+            <p className="text-center text-gamingMuted text-xs py-6">Todos los juegos cargados</p>
           )}
         </>
       ) : (
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-center py-20 bg-gray-50 dark:bg-white/5 rounded-3xl border border-dashed border-gray-300 dark:border-white/10"
+          className="text-center py-20 rounded-3xl"
+          style={{ 
+            backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
+            border: `2px dashed ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`
+          }}
         >
-          <SearchIcon className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+          <SearchIcon className="w-12 h-12 mx-auto mb-4 text-gamingMuted opacity-50" />
           {searchQuery ? (
-            <p className="text-gray-500 text-xl font-bold italic">No se encontraron resultados para "<span className="text-gamingOrange">{searchQuery}</span>".</p>
+            <p className="text-gamingMuted text-xl font-bold italic">No se encontraron resultados para "<span className="text-gamingOrange">{searchQuery}</span>".</p>
           ) : (
-            <p className="text-gray-500 text-xl font-bold italic">No hay juegos disponibles para esta plataforma.</p>
+            <p className="text-gamingMuted text-xl font-bold italic">No hay juegos disponibles para esta plataforma.</p>
           )}
         </motion.div>
       )}

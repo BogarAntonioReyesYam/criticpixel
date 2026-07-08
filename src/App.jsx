@@ -6,6 +6,9 @@ import Footer from './components/Footer';
 import Home from './views/Home';
 import GameDetails from './views/GameDetails';
 import Wishlist from './views/Wishlist';
+import About from './views/About';
+import Blog from './views/Blog';
+import Rankings from './views/Rankings';
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -43,6 +46,9 @@ function App() {
           <Route path="/" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
           <Route path="/game/:id" element={<PageTransition><GameDetails /></PageTransition>} />
           <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+          <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+          <Route path="/rankings" element={<PageTransition><Rankings /></PageTransition>} />
         </Routes>
       </AnimatePresence>
       <Footer />

@@ -26,8 +26,17 @@ const Footer = () => {
               <Link to="/" className="text-gray-500 hover:text-gamingOrange text-sm transition-colors">
                 Catalogo
               </Link>
+              <Link to="/rankings" className="text-gray-500 hover:text-gamingOrange text-sm transition-colors">
+                Rankings
+              </Link>
+              <Link to="/blog" className="text-gray-500 hover:text-gamingOrange text-sm transition-colors">
+                Blog & Noticias
+              </Link>
               <Link to="/wishlist" className="text-gray-500 hover:text-gamingOrange text-sm transition-colors">
                 Mi Lista de Deseados
+              </Link>
+              <Link to="/about" className="text-gray-500 hover:text-gamingOrange text-sm transition-colors">
+                Acerca de
               </Link>
             </nav>
           </div>

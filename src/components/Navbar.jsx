@@ -1,4 +1,4 @@
-import { Search, User, Gamepad2, Heart, X } from 'lucide-react';
+import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useWishlist } from '../context/WishlistContext';
@@ -88,7 +88,28 @@ const Navbar = ({ searchQuery, onSearch }) => {
         </form>
 
         {/* Acciones */}
-        <div className="flex items-center gap-2 md:gap-4">
+        <div className="flex items-center gap-1 md:gap-2">
+          <Link 
+            to="/rankings" 
+            className="p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block"
+            title="Rankings"
+          >
+            <Trophy className="w-5 h-5 text-gray-400 group-hover:text-gamingOrange transition-colors" />
+          </Link>
+          <Link 
+            to="/blog" 
+            className="p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block"
+            title="Blog"
+          >
+            <Newspaper className="w-5 h-5 text-gray-400 group-hover:text-gamingOrange transition-colors" />
+          </Link>
+          <Link 
+            to="/about" 
+            className="p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block"
+            title="Acerca de"
+          >
+            <Info className="w-5 h-5 text-gray-400 group-hover:text-gamingOrange transition-colors" />
+          </Link>
           <Link 
             to="/wishlist" 
             className="p-2 hover:bg-white/5 rounded-full transition-colors relative group"

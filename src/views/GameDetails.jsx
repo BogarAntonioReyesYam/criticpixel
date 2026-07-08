@@ -16,6 +16,7 @@ const GameDetails = () => {
   const [isLangModalOpen, setIsLangModalOpen] = useState(false);
   const [langSearch, setLangModalSearch] = useState('');
   const [selectedEditionId, setSelectedEditionId] = useState(null);
+  const [showAllReviews, setShowAllReviews] = useState(false);
   const { isWishlisted, toggleWishlist } = useWishlist();
   const { addToast } = useToast();
 
@@ -488,33 +489,45 @@ const GameDetails = () => {
               </div>
 
               <div className="space-y-4">
-                {game.reviews && game.reviews.length > 0 ? game.reviews.map((review) => (
-                  <div key={review.id} className="bg-gamingCard rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all shadow-lg group">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style={{ background: `linear-gradient(135deg, ${getScoreColor(review.score)}80, ${getScoreColor(review.score)})` }}>
-                          {review.user?.[0]?.toUpperCase() || '?'}
-                        </div>
-                        <div>
-                          <span className="font-bold text-white">{review.user}</span>
-                          <div className="flex items-center gap-1 mt-0.5">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`w-3 h-3 ${i < Math.round(review.score / 2) ? 'fill-gamingOrange text-gamingOrange' : 'text-gray-600'}`}
-                              />
-                            ))}
+                {game.reviews && game.reviews.length > 0 ? (
+                  <>
+                    {(showAllReviews ? game.reviews : game.reviews.slice(0, 3)).map((review) => (
+                      <div key={review.id} className="bg-gamingCard rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all shadow-lg group">
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style={{ background: `linear-gradient(135deg, ${getScoreColor(review.score)}80, ${getScoreColor(review.score)})` }}>
+                              {review.user?.[0]?.toUpperCase() || '?'}
+                            </div>
+                            <div>
+                              <span className="font-bold text-white">{review.user}</span>
+                              <div className="flex items-center gap-1 mt-0.5">
+                                {[...Array(5)].map((_, i) => (
+                                  <Star
+                                    key={i}
+                                    className={`w-3 h-3 ${i < Math.round(review.score / 2) ? 'fill-gamingOrange text-gamingOrange' : 'text-gray-600'}`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1.5 bg-gamingOrange/10 px-3 py-1.5 rounded-lg">
+                            <Star className="w-4 h-4 fill-gamingOrange text-gamingOrange" />
+                            <span className="font-black text-gamingOrange">{review.score}</span>
                           </div>
                         </div>
+                        <p className="text-gray-300 italic leading-relaxed">"{review.text}"</p>
                       </div>
-                      <div className="flex items-center gap-1.5 bg-gamingOrange/10 px-3 py-1.5 rounded-lg">
-                        <Star className="w-4 h-4 fill-gamingOrange text-gamingOrange" />
-                        <span className="font-black text-gamingOrange">{review.score}</span>
-                      </div>
-                    </div>
-                    <p className="text-gray-300 italic leading-relaxed">"{review.text}"</p>
-                  </div>
-                )) : (
+                    ))}
+                    {game.reviews.length > 3 && (
+                      <button
+                        onClick={() => setShowAllReviews(!showAllReviews)}
+                        className="w-full py-3 rounded-xl border border-white/10 text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-gamingOrange hover:border-gamingOrange/30 transition-all"
+                      >
+                        {showAllReviews ? 'Ver menos' : `Ver más reseñas (${game.reviews.length - 3} más)`}
+                      </button>
+                    )}
+                  </>
+                ) : (
                   <p className="text-gray-600 italic text-center py-10">Aún no hay reseñas para este título.</p>
                 )}
               </div>

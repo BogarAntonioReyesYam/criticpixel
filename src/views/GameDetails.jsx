@@ -100,6 +100,11 @@ const GameDetails = () => {
         })) || []
       };
 
+      const mockFallback = mockGames.find(g => g.id === parseInt(id));
+      if (mockFallback?.trailer) {
+        fullGame.trailer = mockFallback.trailer;
+      }
+
       setGame(fullGame);
       setSelectedEditionId(fullGame.editions?.[0]?.id);
 

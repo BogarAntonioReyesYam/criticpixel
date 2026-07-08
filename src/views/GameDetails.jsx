@@ -7,7 +7,6 @@ import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
-import { useTheme } from '../context/ThemeContext';
 import { GameDetailsSkeleton } from '../components/Skeletons';
 
 const GameDetails = () => {
@@ -20,7 +19,7 @@ const GameDetails = () => {
   const [showAllReviews, setShowAllReviews] = useState(false);
   const { isWishlisted, toggleWishlist } = useWishlist();
   const { addToast } = useToast();
-  const { theme } = useTheme();
+
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -140,8 +139,8 @@ const GameDetails = () => {
   if (!game) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <h2 className="text-2xl font-bold mb-4 text-gamingMuted italic">Este veredicto aún no ha sido escrito...</h2>
-        <Link to="/" className="bg-gamingOrange px-6 py-2 rounded-xl font-black uppercase tracking-widest hover:scale-105 transition-all text-white">Volver al Inicio</Link>
+        <h2 className="text-2xl font-bold mb-4 text-gray-400 italic">Este veredicto aún no ha sido escrito...</h2>
+        <Link to="/" className="bg-gamingOrange px-6 py-2 rounded-xl font-black uppercase tracking-widest hover:scale-105 transition-all">Volver al Inicio</Link>
       </div>
     );
   }
@@ -167,12 +166,6 @@ const GameDetails = () => {
   const circumference = 2 * Math.PI * 42;
   const scoreOffset = circumference - (game.globalScore / 10) * circumference;
 
-  const cardStyle = { 
-    backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
-    border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`,
-    boxShadow: theme === 'dark' ? '0 4px 20px rgba(0,0,0,0.3)' : '0 2px 12px rgba(0,0,0,0.06)'
-  };
-
   return (
     <div className="min-h-screen">
       {/* HERO SECTION */}
@@ -186,8 +179,8 @@ const GameDetails = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{ backgroundImage: `url(${game.image})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gamingBg dark:from-[#121212] via-gamingBg/60 dark:via-[#121212]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-gamingBg/80 dark:from-[#121212]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gamingBg via-gamingBg/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gamingBg/80 to-transparent" />
 
         <div className="relative h-full max-w-7xl mx-auto px-4 flex items-end pb-12">
           <div className="flex items-end gap-8 w-full">
@@ -195,7 +188,7 @@ const GameDetails = () => {
             <div className="hidden md:flex flex-shrink-0">
               <div className="relative w-28 h-28">
                 <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="42" stroke={theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} strokeWidth="6" fill="none" />
+                  <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
                   <circle
                     cx="50" cy="50" r="42"
                     stroke={getScoreColor(game.globalScore)}
@@ -209,33 +202,32 @@ const GameDetails = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-2xl font-black text-gamingText dark:text-white">{game.globalScore}</span>
-                  <span className="text-[8px] font-bold text-gamingMuted uppercase tracking-widest">/ 10</span>
+                  <span className="text-2xl font-black text-white">{game.globalScore}</span>
+                  <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest">/ 10</span>
                 </div>
               </div>
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="md:hidden bg-gamingOrange px-3 py-1 rounded-full font-black text-lg shadow-lg shadow-gamingOrange/20 text-white">
+                <span className="md:hidden bg-gamingOrange px-3 py-1 rounded-full font-black text-lg shadow-lg shadow-gamingOrange/20">
                   {game.globalScore}
                 </span>
                 <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full border" style={{ borderColor: getScoreColor(game.globalScore), color: getScoreColor(game.globalScore), backgroundColor: `${getScoreColor(game.globalScore)}15` }}>
                   {getScoreLabel(game.globalScore)}
                 </span>
                 {game.platforms?.map((p) => (
-                  <span key={p} className="text-[10px] backdrop-blur-sm px-3 py-1 rounded-md uppercase font-black text-gamingText dark:text-white"
-                        style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)' }}>
+                  <span key={p} className="text-[10px] bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-md uppercase font-black">
                     {p}
                   </span>
                 ))}
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-none mb-4 drop-shadow-2xl text-gamingText dark:text-white">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-none mb-4 drop-shadow-2xl">
                 {game.title}
               </h1>
 
-              <p className="text-lg leading-relaxed max-w-2xl drop-shadow-lg text-gamingMuted">
+              <p className="text-lg text-gray-300 leading-relaxed max-w-2xl drop-shadow-lg">
                 {game.description}
               </p>
             </div>
@@ -248,12 +240,11 @@ const GameDetails = () => {
                 className={`p-3 rounded-full backdrop-blur-sm border transition-all ${
                   isWishlisted(game.id)
                     ? 'bg-red-500/20 border-red-500/50'
-                    : 'border-white/20 hover:bg-white/20'
+                    : 'bg-white/10 border-white/20 hover:bg-white/20'
                 }`}
-                style={!isWishlisted(game.id) ? { backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)' } : {}}
                 title="Añadir a deseados"
               >
-                <Heart className={`w-5 h-5 ${isWishlisted(game.id) ? 'fill-red-500 text-red-500' : 'text-gamingText dark:text-white'}`} />
+                <Heart className={`w-5 h-5 ${isWishlisted(game.id) ? 'fill-red-500 text-red-500' : 'text-white'}`} />
               </motion.button>
             </div>
           </div>
@@ -271,11 +262,7 @@ const GameDetails = () => {
           {/* Columna Izquierda */}
           <div className="lg:col-span-1 space-y-8">
             {/* Imagen del juego */}
-            <div className="rounded-2xl overflow-hidden group"
-                 style={{ 
-                   boxShadow: theme === 'dark' ? '0 8px 32px rgba(0,0,0,0.4)' : '0 4px 20px rgba(0,0,0,0.1)',
-                   border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'}`
-                 }}>
+            <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 group">
               <img
                 src={game.image}
                 alt={game.title}
@@ -290,8 +277,7 @@ const GameDetails = () => {
 
             {/* Trailer */}
             {game.trailer && (
-              <div className="rounded-xl overflow-hidden"
-                   style={{ border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+              <div className="rounded-xl overflow-hidden border border-white/5">
                 <div className="aspect-video">
                   <iframe
                     src={`https://www.youtube.com/embed/${game.trailer}`}
@@ -306,8 +292,8 @@ const GameDetails = () => {
 
             {/* Selector de ediciones */}
             {game.editions && game.editions.length > 0 && (
-              <div className="rounded-2xl p-5 space-y-4" style={cardStyle}>
-                <h4 className="text-xs font-black uppercase tracking-tighter text-gamingMuted flex items-center gap-2">
+              <div className="bg-gamingCard rounded-2xl p-5 border border-white/5 space-y-4 shadow-2xl">
+                <h4 className="text-xs font-black uppercase tracking-tighter text-gray-500 flex items-center gap-2">
                   <Box className="w-3 h-3" /> Seleccionar Edición
                 </h4>
                 <div className="grid grid-cols-1 gap-2">
@@ -318,15 +304,11 @@ const GameDetails = () => {
                       className={`flex flex-col p-3 rounded-xl border transition-all duration-300 text-left ${
                         selectedEditionId === edition.id
                           ? 'bg-gamingOrange/10 border-gamingOrange shadow-lg shadow-gamingOrange/5'
-                          : 'hover:border-gamingOrange/30'
+                          : 'bg-white/5 border-white/5 hover:border-white/20'
                       }`}
-                      style={selectedEditionId !== edition.id ? { 
-                        backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
-                        borderColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'
-                      } : {}}
                     >
                       <div className="flex justify-between items-center w-full">
-                        <span className={`font-bold text-sm ${selectedEditionId === edition.id ? 'text-gamingOrange' : 'text-gamingText dark:text-white'}`}>
+                        <span className={`font-bold text-sm ${selectedEditionId === edition.id ? 'text-gamingOrange' : 'text-white'}`}>
                           {edition.name}
                         </span>
                         <span className="font-black text-xs text-gamingOrange bg-gamingOrange/10 px-2 py-0.5 rounded">
@@ -340,20 +322,18 @@ const GameDetails = () => {
             )}
 
             {/* Desglose técnico */}
-            <div className="rounded-2xl p-6 space-y-6" style={cardStyle}>
-              <h3 className="text-lg font-bold uppercase tracking-wider pb-4 italic text-gamingText dark:text-white"
-                  style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+            <div className="bg-gamingCard rounded-2xl p-6 space-y-6 shadow-2xl border border-white/5">
+              <h3 className="text-lg font-bold uppercase tracking-wider border-b border-white/5 pb-4 italic">
                 Puntaje Técnico
               </h3>
               <div className="space-y-5">
                 {Object.entries(game.breakdown).map(([key, value]) => (
                   <div key={key}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="capitalize text-xs font-bold text-gamingMuted uppercase tracking-widest">{key}</span>
+                      <span className="capitalize text-xs font-bold text-gray-400 uppercase tracking-widest">{key}</span>
                       <span className="text-sm font-black" style={{ color: getScoreColor(value) }}>{value}/10</span>
                     </div>
-                    <div className="w-full h-2.5 rounded-full overflow-hidden"
-                         style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)' }}>
+                    <div className="w-full bg-white/5 h-2.5 rounded-full overflow-hidden">
                       <div
                         className="h-full rounded-full transition-all duration-1000 ease-out"
                         style={{
@@ -369,26 +349,24 @@ const GameDetails = () => {
             </div>
 
             {/* Especificaciones */}
-            <div className="rounded-2xl p-6 space-y-5" style={cardStyle}>
-              <div className="flex items-center gap-2 text-lg font-bold uppercase tracking-wider pb-4 italic text-gamingText dark:text-white"
-                   style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+            <div className="bg-gamingCard rounded-2xl p-6 space-y-5 shadow-2xl border border-white/5">
+              <div className="flex items-center gap-2 text-lg font-bold uppercase tracking-wider border-b border-white/5 pb-4 italic">
                 <Settings className="w-4 h-4 text-gamingOrange" />
                 Especificaciones
               </div>
               <div className="space-y-3">
                 {Object.entries(game.specs).map(([key, value]) => (
-                  <div key={key} className="flex justify-between items-center text-sm pb-2 last:border-0"
-                       style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
-                    <span className="text-gamingMuted font-bold uppercase text-[10px] tracking-widest">{key}</span>
-                    <span className="font-medium text-gamingText dark:text-gray-200">{value || 'N/A'}</span>
+                  <div key={key} className="flex justify-between items-center text-sm border-b border-white/5 pb-2 last:border-0">
+                    <span className="text-gray-500 font-bold uppercase text-[10px] tracking-widest">{key}</span>
+                    <span className="text-gray-200 font-medium">{value || 'N/A'}</span>
                   </div>
                 ))}
 
                 <div className="flex justify-between items-center text-sm pt-2">
-                  <span className="text-gamingMuted font-bold uppercase text-[10px] tracking-widest">Idiomas</span>
+                  <span className="text-gray-500 font-bold uppercase text-[10px] tracking-widest">Idiomas</span>
                   <button
                     onClick={() => setIsLangModalOpen(true)}
-                    className="text-gamingOrange hover:text-gamingOrange/80 transition-colors font-bold flex items-center gap-1 group"
+                    className="text-gamingOrange hover:text-white transition-colors font-bold flex items-center gap-1 group"
                   >
                     Ver idiomas
                     <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
@@ -403,24 +381,22 @@ const GameDetails = () => {
             {/* Contenido de edición */}
             {selectedEdition && selectedEdition.perks && (
               <section className="space-y-5">
-                <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest pb-4 text-gamingText dark:text-white"
-                     style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+                <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                   <Box className="text-gamingOrange" />
                   Contenido de la {selectedEdition.name}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {selectedEdition.perks.map((perk, idx) => (
-                    <div key={idx} className="group p-5 rounded-2xl transition-all duration-300 hover:border-gamingOrange/50 hover:shadow-gamingOrange/5"
-                         style={{ ...cardStyle, boxShadow: 'none' }}>
+                    <div key={idx} className="group bg-gamingCard border border-white/5 p-5 rounded-2xl hover:border-gamingOrange/50 transition-all duration-300 shadow-lg hover:shadow-gamingOrange/5">
                       <div className="flex items-start gap-4">
                         <div className="bg-gamingOrange/10 p-2 rounded-lg mt-1 group-hover:bg-gamingOrange/20 transition-colors">
                           <Check className="text-gamingOrange w-5 h-5" />
                         </div>
                         <div>
-                          <h5 className="font-black uppercase tracking-tight text-lg mb-1 group-hover:text-gamingOrange transition-colors text-gamingText dark:text-white">
+                          <h5 className="font-black text-white uppercase tracking-tight text-lg mb-1 group-hover:text-gamingOrange transition-colors">
                             {perk.title}
                           </h5>
-                          <p className="text-sm leading-relaxed font-medium text-gamingMuted">
+                          <p className="text-gray-400 text-sm leading-relaxed font-medium">
                             {perk.description}
                           </p>
                         </div>
@@ -433,12 +409,11 @@ const GameDetails = () => {
 
             {/* Acerca de */}
             <section className="space-y-5">
-              <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest pb-4 text-gamingText dark:text-white"
-                   style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+              <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                 <Info className="text-gamingOrange" />
                 Acerca de este juego
               </div>
-              <p className="leading-relaxed text-lg whitespace-pre-wrap text-gamingMuted">
+              <p className="text-gray-300 leading-relaxed text-lg whitespace-pre-wrap">
                 {game.about}
               </p>
             </section>
@@ -446,8 +421,7 @@ const GameDetails = () => {
             {/* Mercado */}
             {game.marketPrices && game.marketPrices.length > 0 && (
               <section className="space-y-5">
-                <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest pb-4 text-gamingText dark:text-white"
-                     style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+                <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                   <ShoppingBag className="text-gamingOrange" />
                   Valor del Mercado
                 </div>
@@ -458,16 +432,15 @@ const GameDetails = () => {
                       href={market.url || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-5 rounded-xl flex justify-between items-center transition-all group hover:border-gamingOrange/50"
-                      style={{ ...cardStyle, boxShadow: 'none' }}
+                      className="bg-gamingCard border border-white/5 p-5 rounded-xl flex justify-between items-center hover:bg-white/5 hover:border-gamingOrange/50 transition-all group shadow-lg"
                     >
                       <div className="flex items-center gap-4">
                         <div className="bg-gamingOrange/10 p-2.5 rounded-lg group-hover:bg-gamingOrange/20 transition-colors">
                           <ExternalLink className="w-5 h-5 text-gamingOrange" />
                         </div>
                         <div>
-                          <div className="text-[10px] font-black uppercase mb-0.5 tracking-widest text-gamingMuted">{market.availability}</div>
-                          <div className="font-black text-lg group-hover:text-gamingOrange transition-colors uppercase italic text-gamingText dark:text-white">{market.store}</div>
+                          <div className="text-[10px] font-black text-gray-500 uppercase mb-0.5 tracking-widest">{market.availability}</div>
+                          <div className="font-black text-lg group-hover:text-gamingOrange transition-colors uppercase italic">{market.store}</div>
                         </div>
                       </div>
                       <div className="text-2xl font-black text-gamingOrange">
@@ -481,8 +454,7 @@ const GameDetails = () => {
 
             {/* Reseñas */}
             <section className="space-y-5">
-              <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest pb-4 text-gamingText dark:text-white"
-                   style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+              <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                 <MessageSquare className="text-gamingOrange" />
                 Reseñas de Usuarios
                 {game.reviews?.length > 0 && (
@@ -496,20 +468,19 @@ const GameDetails = () => {
                 {game.reviews && game.reviews.length > 0 ? (
                   <>
                     {(showAllReviews ? game.reviews : game.reviews.slice(0, 3)).map((review) => (
-                      <div key={review.id} className="rounded-2xl p-6 transition-all hover:border-gamingOrange/20"
-                           style={cardStyle}>
+                      <div key={review.id} className="bg-gamingCard rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all shadow-lg group">
                         <div className="flex justify-between items-start mb-4">
                           <div className="flex items-center gap-3">
                             <div className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style={{ background: `linear-gradient(135deg, ${getScoreColor(review.score)}80, ${getScoreColor(review.score)})` }}>
                               {review.user?.[0]?.toUpperCase() || '?'}
                             </div>
                             <div>
-                              <span className="font-bold text-gamingText dark:text-white">{review.user}</span>
+                              <span className="font-bold text-white">{review.user}</span>
                               <div className="flex items-center gap-1 mt-0.5">
                                 {[...Array(5)].map((_, i) => (
                                   <Star
                                     key={i}
-                                    className={`w-3 h-3 ${i < Math.round(review.score / 2) ? 'fill-gamingOrange text-gamingOrange' : 'text-gray-300 dark:text-gray-600'}`}
+                                    className={`w-3 h-3 ${i < Math.round(review.score / 2) ? 'fill-gamingOrange text-gamingOrange' : 'text-gray-600'}`}
                                   />
                                 ))}
                               </div>
@@ -520,24 +491,20 @@ const GameDetails = () => {
                             <span className="font-black text-gamingOrange">{review.score}</span>
                           </div>
                         </div>
-                        <p className="italic leading-relaxed text-gamingMuted">"{review.text}"</p>
+                        <p className="text-gray-300 italic leading-relaxed">"{review.text}"</p>
                       </div>
                     ))}
                     {game.reviews.length > 3 && (
                       <button
                         onClick={() => setShowAllReviews(!showAllReviews)}
-                        className="w-full py-3 rounded-xl text-sm font-bold uppercase tracking-widest text-gamingMuted hover:text-gamingOrange hover:border-gamingOrange/30 transition-all"
-                        style={{ 
-                          border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`,
-                          backgroundColor: 'transparent'
-                        }}
+                        className="w-full py-3 rounded-xl border border-white/10 text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-gamingOrange hover:border-gamingOrange/30 transition-all"
                       >
                         {showAllReviews ? 'Ver menos' : `Ver más reseñas (${game.reviews.length - 3} más)`}
                       </button>
                     )}
                   </>
                 ) : (
-                  <p className="italic text-center py-10 text-gamingMuted">Aún no hay reseñas para este título.</p>
+                  <p className="text-gray-600 italic text-center py-10">Aún no hay reseñas para este título.</p>
                 )}
               </div>
             </section>
@@ -545,8 +512,7 @@ const GameDetails = () => {
             {/* Juegos Similares */}
             {similarGames.length > 0 && (
               <section className="space-y-5">
-                <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest pb-4 text-gamingText dark:text-white"
-                     style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+                <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                   <Users className="text-gamingOrange" />
                   Juegos Similares
                 </div>
@@ -571,13 +537,12 @@ const GameDetails = () => {
               setLangModalSearch('');
             }}
           ></div>
-          <div className="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300"
-               style={cardStyle}>
-            <header className="p-6" style={{ borderBottom: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}` }}>
+          <div className="relative bg-gamingCard border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
+            <header className="p-6 border-b border-white/5">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
                   <Globe className="text-gamingOrange" />
-                  <h3 className="text-xl font-bold uppercase tracking-tighter italic text-gamingText dark:text-white">Idiomas Soportados</h3>
+                  <h3 className="text-xl font-bold uppercase tracking-tighter italic">Idiomas Soportados</h3>
                   <span className="bg-gamingOrange/10 text-gamingOrange text-[10px] font-black px-2 py-0.5 rounded-md">
                     {game.languages?.length || 0} TOTAL
                   </span>
@@ -587,24 +552,20 @@ const GameDetails = () => {
                     setIsLangModalOpen(false);
                     setLangModalSearch('');
                   }}
-                  className="p-2 rounded-full transition-colors text-gamingMuted hover:text-gamingOrange"
+                  className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gamingMuted" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
                   type="text"
                   placeholder="Buscar idioma..."
                   value={langSearch}
                   onChange={(e) => setLangModalSearch(e.target.value)}
-                  className="w-full rounded-xl py-3 pl-12 pr-4 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-gamingOrange/50 transition-all text-gamingText dark:text-white"
-                  style={{ 
-                    backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
-                    border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`
-                  }}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-sm font-bold focus:outline-none focus:border-gamingOrange transition-colors"
                 />
               </div>
             </header>
@@ -612,20 +573,18 @@ const GameDetails = () => {
             <div className="overflow-y-auto max-h-[60vh] custom-scrollbar">
               {filteredLanguages.length > 0 ? (
                 <table className="w-full text-left">
-                  <thead className="sticky top-0 z-10"
-                         style={{ backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff' }}>
-                    <tr className="text-[10px] uppercase font-black tracking-widest text-gamingMuted"
-                        style={{ backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.02)' }}>
+                  <thead className="sticky top-0 bg-gamingCard z-10">
+                    <tr className="bg-white/5 text-[10px] uppercase font-black tracking-widest text-gray-400">
                       <th className="px-6 py-4">Idioma</th>
                       <th className="px-6 py-4 text-center">Interfaz</th>
                       <th className="px-6 py-4 text-center">Voces</th>
                       <th className="px-6 py-4 text-center">Subtítulos</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-white/5">
                     {filteredLanguages.map((l, idx) => (
-                      <tr key={idx} className="transition-colors group hover:bg-gamingOrange/5">
-                        <td className="px-6 py-4 font-bold group-hover:text-gamingOrange transition-colors text-gamingText dark:text-gray-200">
+                      <tr key={idx} className="hover:bg-white/5 transition-colors group">
+                        <td className="px-6 py-4 font-bold text-gray-200 group-hover:text-gamingOrange transition-colors">
                           {l.lang}
                         </td>
                         <td className="px-6 py-4 text-center">
@@ -649,17 +608,13 @@ const GameDetails = () => {
                 </table>
               ) : (
                 <div className="py-20 text-center space-y-4">
-                  <Globe className="w-12 h-12 mx-auto text-gamingMuted opacity-50" />
-                  <p className="font-bold italic text-gamingMuted">No se encontró el idioma "{langSearch}"</p>
+                  <Globe className="w-12 h-12 text-gray-700 mx-auto" />
+                  <p className="text-gray-500 font-bold italic">No se encontró el idioma "{langSearch}"</p>
                 </div>
               )}
             </div>
 
-            <footer className="p-6 text-center text-[10px] text-gamingMuted font-black uppercase tracking-widest"
-                    style={{ 
-                      backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
-                      borderTop: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`
-                    }}>
+            <footer className="p-6 bg-white/5 text-center text-[10px] text-gray-500 font-black uppercase tracking-widest border-t border-white/5">
               * Base de datos sincronizada desde la nube
             </footer>
           </div>

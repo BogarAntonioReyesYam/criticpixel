@@ -2,11 +2,9 @@ import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useWishlist } from '../context/WishlistContext';
-import { useTheme } from '../context/ThemeContext';
 
 const GameCard = ({ game, index = 0 }) => {
   const { isWishlisted, toggleWishlist } = useWishlist();
-  const { theme } = useTheme();
   const wishlisted = isWishlisted(game.id);
 
   const handleToggle = (e) => {
@@ -23,14 +21,7 @@ const GameCard = ({ game, index = 0 }) => {
     >
       <Link 
         to={`/game/${game.id}`}
-        className="group relative rounded-xl overflow-hidden block transition-all duration-300 hover:-translate-y-1.5"
-        style={{ 
-          backgroundColor: theme === 'dark' ? '#1d1d1d' : '#ffffff',
-          boxShadow: theme === 'dark' 
-            ? '0 4px 20px rgba(0,0,0,0.4)' 
-            : '0 2px 12px rgba(0,0,0,0.08)',
-          border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`
-        }}
+        className="group relative bg-gamingCard rounded-xl shadow-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-gamingOrange/10 block border border-transparent hover:border-gamingOrange/30 overflow-hidden"
       >
         {/* Contenedor de Imagen */}
         <div className="aspect-[3/4] relative overflow-hidden">
@@ -63,19 +54,14 @@ const GameCard = ({ game, index = 0 }) => {
 
         {/* Información Compacta */}
         <div className="p-3 space-y-2">
-          <h3 className="font-bold text-sm leading-tight line-clamp-2 h-9 group-hover:text-gamingOrange transition-colors text-gamingText dark:text-white">
+          <h3 className="font-bold text-sm leading-tight line-clamp-2 h-9 group-hover:text-gamingOrange transition-colors">
             {game.title}
           </h3>
           
           <div className="flex items-center justify-between">
             <div className="flex gap-1">
               {game.platforms.slice(0, 2).map((p) => (
-                <span key={p} className="text-[9px] px-1.5 py-0.5 rounded-md uppercase font-medium transition-colors"
-                      style={{ 
-                        backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
-                        color: theme === 'dark' ? '#999' : '#666',
-                        border: `1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)'}`
-                      }}>
+                <span key={p} className="text-[9px] bg-white/5 px-1.5 py-0.5 rounded-md text-gamingMuted border border-white/5 uppercase font-medium">
                   {p === "Xbox Series X" ? "XSX" : p}
                 </span>
               ))}

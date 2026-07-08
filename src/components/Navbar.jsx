@@ -1,13 +1,15 @@
-import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info } from 'lucide-react';
+import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useWishlist } from '../context/WishlistContext';
+import { useTheme } from '../context/ThemeContext';
 
 const Navbar = ({ searchQuery, onSearch }) => {
   const [localQuery, setLocalQuery] = useState(searchQuery || '');
   const inputRef = useRef(null);
   const debounceRef = useRef(null);
   const { count } = useWishlist();
+  const { theme, toggleTheme } = useTheme();
 
   const debouncedSearch = useCallback((val) => {
     clearTimeout(debounceRef.current);
@@ -50,12 +52,13 @@ const Navbar = ({ searchQuery, onSearch }) => {
   }, []);
 
   return (
-    <nav className="bg-gamingBg/80 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 px-4 py-3">
+    <nav className="bg-gamingBg/80 dark:bg-gamingBg/80 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 px-4 py-3"
+         style={theme === 'light' ? { backgroundColor: 'rgba(255,255,255,0.9)', borderColor: 'rgba(0,0,0,0.08)' } : {}}>
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" onClick={clearSearch}>
           <Gamepad2 className="w-8 h-8 text-gamingOrange group-hover:rotate-12 transition-transform" />
-          <span className="text-xl font-bold tracking-tighter uppercase italic">
+          <span className={`text-xl font-bold tracking-tighter uppercase italic ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
             Pixel<span className="text-gamingOrange">Verdict</span>
           </span>
         </Link>
@@ -64,7 +67,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
         <form onSubmit={handleSubmit} className="flex-1 max-w-md relative hidden md:block">
           <button
             type="submit"
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gamingOrange transition-colors"
           >
             <Search className="w-4 h-4" />
           </button>
@@ -74,13 +77,17 @@ const Navbar = ({ searchQuery, onSearch }) => {
             value={localQuery}
             onChange={handleChange}
             placeholder="Buscar juegos... (/)"
-            className="w-full bg-gamingCard border border-white/5 rounded-lg py-2 pl-10 pr-10 focus:outline-none focus:border-gamingOrange transition-colors"
+            className={`w-full rounded-lg py-2 pl-10 pr-10 focus:outline-none focus:border-gamingOrange transition-colors ${
+              theme === 'light' 
+                ? 'bg-gray-100 border-gray-200 text-gray-900 placeholder-gray-500' 
+                : 'bg-gamingCard border-white/5 text-white'
+            }`}
           />
           {localQuery && (
             <button
               type="button"
               onClick={clearSearch}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gamingOrange transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -91,39 +98,50 @@ const Navbar = ({ searchQuery, onSearch }) => {
         <div className="flex items-center gap-1 md:gap-2">
           <Link 
             to="/rankings" 
-            className="p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block"
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
             title="Rankings"
           >
-            <Trophy className="w-5 h-5 text-gray-400 group-hover:text-gamingOrange transition-colors" />
+            <Trophy className={`w-5 h-5 group-hover:text-gamingOrange transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
           </Link>
           <Link 
             to="/blog" 
-            className="p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block"
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
             title="Blog"
           >
-            <Newspaper className="w-5 h-5 text-gray-400 group-hover:text-gamingOrange transition-colors" />
+            <Newspaper className={`w-5 h-5 group-hover:text-gamingOrange transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
           </Link>
           <Link 
             to="/about" 
-            className="p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block"
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors group hidden md:block ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
             title="Acerca de"
           >
-            <Info className="w-5 h-5 text-gray-400 group-hover:text-gamingOrange transition-colors" />
+            <Info className={`w-5 h-5 group-hover:text-gamingOrange transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
           </Link>
+          <button
+            onClick={toggleTheme}
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
+            title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-5 h-5 text-gray-400 hover:text-gamingOrange transition-colors" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-600 hover:text-gamingOrange transition-colors" />
+            )}
+          </button>
           <Link 
             to="/wishlist" 
-            className="p-2 hover:bg-white/5 rounded-full transition-colors relative group"
+            className={`p-2 hover:bg-white/5 rounded-full transition-colors relative group ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
             title="Mi lista de deseos"
           >
-            <Heart className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors" />
+            <Heart className={`w-6 h-6 group-hover:text-red-500 transition-colors ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`} />
             {count > 0 && (
               <span className="absolute -top-0.5 -right-0.5 bg-gamingOrange text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {count}
               </span>
             )}
           </Link>
-          <button className="p-2 hover:bg-white/5 rounded-full transition-colors">
-            <User className="w-6 h-6" />
+          <button className={`p-2 hover:bg-white/5 rounded-full transition-colors ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}>
+            <User className={`w-6 h-6 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
           </button>
         </div>
       </div>

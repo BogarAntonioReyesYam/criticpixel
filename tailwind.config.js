@@ -4,14 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Paleta exacta de Instant-Gaming
-        gamingBg: "#121212",      // Fondo ultra oscuro
-        gamingCard: "#1d1d1d",    // Tarjetas con contraste sutil
-        gamingOrange: "#ff6b00",  // Naranja vibrante de acción
-        gamingHeader: "#1a1a1a",  // Cabecera densa
+        gamingBg: "#121212",
+        gamingCard: "#1d1d1d",
+        gamingOrange: "#ff6b00",
+        gamingHeader: "#1a1a1a",
         gamingText: "#ffffff",
         gamingMuted: "#999999",
       },

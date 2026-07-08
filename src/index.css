@@ -6,8 +6,48 @@
   color-scheme: dark;
 }
 
+.light {
+  color-scheme: light;
+}
+
 body {
   @apply bg-gamingBg text-gamingText font-sans;
   margin: 0;
   min-height: 100vh;
 }
+
+.light body,
+.light {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+.light .bg-gamingBg { background-color: #ffffff; }
+.light .bg-gamingCard { background-color: #f9fafb; }
+.light .bg-gamingHeader { background-color: #ffffff; }
+.light .text-gamingText { color: #111827; }
+.light .text-gamingMuted { color: #6b7280; }
+
+.light .border-white\/5 { border-color: #e5e7eb; }
+.light .border-white\/10 { border-color: #e5e7eb; }
+.light .border-white\/20 { border-color: #d1d5db; }
+
+.light .bg-white\/5 { background-color: #f3f4f6; }
+.light .bg-white\/10 { background-color: #e5e7eb; }
+
+.light .text-white { color: #111827; }
+.light .text-gray-300 { color: #4b5563; }
+.light .text-gray-400 { color: #6b7280; }
+.light .text-gray-500 { color: #6b7280; }
+.light .text-gray-600 { color: #4b5563; }
+
+.light .hover\:bg-white\/5:hover { background-color: #f3f4f6; }
+.light .hover\:bg-white\/20:hover { background-color: #e5e7eb; }
+.light .hover\:text-white:hover { color: #111827; }
+
+.light .shadow-2xl { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.light .shadow-xl { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+.light ::-webkit-scrollbar-track { background: #f3f4f6; }
+.light ::-webkit-scrollbar-thumb { background: #d1d5db; }
+.light ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }

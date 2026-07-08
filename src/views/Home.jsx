@@ -1,17 +1,22 @@
-import { useState, useMemo, useEffect } from 'react';
-import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc, Search as SearchIcon } from 'lucide-react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
+import { ChevronDown, SortAsc, SortDesc, Type, LayoutGrid, Monitor, Laptop, Gamepad2, Disc, Search as SearchIcon, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
+import { GameGridSkeleton } from '../components/Skeletons';
+
+const ITEMS_PER_PAGE = 8;
 
 const Home = ({ searchQuery }) => {
-
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('score-desc');
   const [platformFilter, setPlatformFilter] = useState('all');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loaderRef = useRef(null);
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -91,12 +96,62 @@ const Home = ({ searchQuery }) => {
     });
   }, [sortOrder, platformFilter, games, searchQuery]);
 
+  const visibleGames = useMemo(() => {
+    return filteredAndSortedGames.slice(0, visibleCount);
+  }, [filteredAndSortedGames, visibleCount]);
+
+  const hasMore = visibleCount < filteredAndSortedGames.length;
+
+  const loadMore = useCallback(() => {
+    if (isLoadingMore || !hasMore) return;
+    setIsLoadingMore(true);
+    setTimeout(() => {
+      setVisibleCount(prev => prev + ITEMS_PER_PAGE);
+      setIsLoadingMore(false);
+    }, 400);
+  }, [isLoadingMore, hasMore]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [loadMore, hasMore]);
+
+  useEffect(() => {
+    setVisibleCount(ITEMS_PER_PAGE);
+  }, [searchQuery, platformFilter, sortOrder]);
+
   const currentSortOption = sortOptions.find(opt => opt.id === sortOrder);
 
   if (isLoading) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-gamingOrange shadow-[0_0_15px_rgba(255,107,0,0.4)]"></div>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="mb-10 space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-2">
+              <div className="h-10 w-64 bg-white/5 rounded animate-pulse" />
+              <div className="h-5 w-80 bg-white/5 rounded animate-pulse" />
+            </div>
+            <div className="h-10 w-56 bg-white/5 rounded-lg animate-pulse" />
+          </div>
+          <div className="flex gap-2">
+            {[1,2,3,4,5].map(i => (
+              <div key={i} className="h-10 w-24 bg-white/5 rounded-lg animate-pulse" />
+            ))}
+          </div>
+        </div>
+        <GameGridSkeleton count={8} />
       </div>
     );
   }
@@ -122,7 +177,6 @@ const Home = ({ searchQuery }) => {
             )}
           </div>
 
-          {/* Selector de Orden */}
           <div className="relative">
             <button 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -157,7 +211,6 @@ const Home = ({ searchQuery }) => {
           </div>
         </div>
 
-        {/* Filtros de Plataforma */}
         <div className="flex flex-wrap gap-2 p-1 bg-gamingCard/50 border border-white/5 rounded-xl w-fit">
           {platforms.map((p) => (
             <button
@@ -176,12 +229,28 @@ const Home = ({ searchQuery }) => {
         </div>
       </motion.header>
 
-      {filteredAndSortedGames.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredAndSortedGames.map((game, i) => (
-            <GameCard key={game.id} game={game} index={i} />
-          ))}
-        </div>
+      {visibleGames.length > 0 ? (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {visibleGames.map((game, i) => (
+              <GameCard key={game.id} game={game} index={i} />
+            ))}
+          </div>
+
+          {hasMore && (
+            <div ref={loaderRef} className="flex justify-center py-8">
+              {isLoadingMore ? (
+                <Loader2 className="w-6 h-6 text-gamingOrange animate-spin" />
+              ) : (
+                <div className="h-1" />
+              )}
+            </div>
+          )}
+
+          {!hasMore && filteredAndSortedGames.length > ITEMS_PER_PAGE && (
+            <p className="text-center text-gray-600 text-xs py-6">Todos los juegos cargados</p>
+          )}
+        </>
       ) : (
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}

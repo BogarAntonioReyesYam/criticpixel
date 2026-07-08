@@ -6,6 +6,7 @@ import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 import { useWishlist } from '../context/WishlistContext';
+import { GameGridSkeleton } from '../components/Skeletons';
 
 const Wishlist = () => {
   const { wishlistIds } = useWishlist();
@@ -48,8 +49,18 @@ const Wishlist = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-gamingOrange shadow-[0_0_15px_rgba(255,107,0,0.4)]"></div>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="mb-10 space-y-4">
+          <div className="h-5 w-40 bg-white/5 rounded animate-pulse" />
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 bg-white/5 rounded-2xl animate-pulse" />
+            <div className="space-y-2">
+              <div className="h-8 w-64 bg-white/5 rounded animate-pulse" />
+              <div className="h-4 w-48 bg-white/5 rounded animate-pulse" />
+            </div>
+          </div>
+        </div>
+        <GameGridSkeleton count={4} />
       </div>
     );
   }

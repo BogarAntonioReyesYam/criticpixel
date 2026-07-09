@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect } from 'react';
 import { Film, Play, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
 
@@ -14,16 +13,8 @@ const TrailersPage = () => {
   const isLight = theme === 'light';
 
   useEffect(() => {
-    const fetchGames = async () => {
-      const { data: supabaseGames, error } = await supabase.from('games').select('*');
-      if (!error && supabaseGames && supabaseGames.length > 0 && supabaseGames.some(g => g.trailer)) {
-        setGames(supabaseGames.map(g => ({ ...g, globalScore: parseFloat(g.global_score) || 0 })));
-      } else {
-        setGames(mockGames);
-      }
-      setIsLoading(false);
-    };
-    fetchGames();
+    setGames(mockGames);
+    setIsLoading(false);
   }, []);
 
   const gamesWithTrailers = useMemo(() => games.filter(g => g.trailer), [games]);

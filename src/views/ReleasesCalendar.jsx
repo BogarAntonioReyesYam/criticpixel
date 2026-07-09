@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, Clock, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
 import useSEO from '../hooks/useSEO';
@@ -20,25 +19,8 @@ const ReleasesCalendar = () => {
   const isLight = theme === 'light';
 
   useEffect(() => {
-    const fetchGames = async () => {
-      const { data: supabaseGames, error } = await supabase.from('games').select('*');
-      if (!error && supabaseGames && supabaseGames.length > 0 && supabaseGames.some(g => g.release_date)) {
-        const mockMap = new Map(mockGames.map(g => [g.id, g]));
-        setGames(supabaseGames.map(g => {
-          const mock = mockMap.get(g.id);
-          return {
-            ...mock,
-            ...g,
-            globalScore: parseFloat(g.global_score) || 0,
-            releaseDate: g.release_date || mock?.releaseDate || null,
-          };
-        }));
-      } else {
-        setGames(mockGames);
-      }
-      setIsLoading(false);
-    };
-    fetchGames();
+    setGames(mockGames);
+    setIsLoading(false);
   }, []);
 
   const months = [

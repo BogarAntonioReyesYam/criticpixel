@@ -645,7 +645,7 @@ export const mockGames = [
   {
     id: 50,
     title: "Ghost of Yōtei",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202409/2500/d2a7a44c68cb6a43e84db1b3e3b4a7a3e0a1e7c0b4d5f6a7b8c9d0e1f2a3b4c5.jpg",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2530880/header.jpg",
     globalScore: 9.2,
     platforms: ["PS5"],
     price: 1599,
@@ -675,7 +675,7 @@ export const mockGames = [
   {
     id: 51,
     title: "Marvel's Wolverine",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202109/0714/4xJ8XB3bi88QYF6XUjQDNcQ8.png",
+    image: "https://www.gematsu.com/wp-content/uploads/2025/09/Marvels-Wolverine_2025_09-24-25_001.jpg",
     globalScore: 9.0,
     platforms: ["PS5"],
     price: 1599,
@@ -859,7 +859,7 @@ export const mockGames = [
   {
     id: 57,
     title: "God of War Ragnarök",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi88QYF6XUjQDNcQ8.png",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg?t=1776465233",
     globalScore: 9.4,
     platforms: ["PS5", "PS4", "PC"],
     price: 1399,
@@ -981,7 +981,7 @@ export const mockGames = [
   {
     id: 61,
     title: "Stellar Blade",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202307/1714/PmM6lZQfGQWjPvFmFpFoXgqk.png",
+    image: "https://upload.wikimedia.org/wikipedia/en/b/b2/Stellar_Blade_cover_art.jpg",
     globalScore: 8.2,
     platforms: ["PS5"],
     price: 1399,

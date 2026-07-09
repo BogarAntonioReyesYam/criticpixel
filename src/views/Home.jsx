@@ -39,7 +39,7 @@ const Home = ({ searchQuery }) => {
       
       if (!error && data && data.length > 0) {
         const mockMap = new Map(mockGames.map(g => [g.id, g]));
-        const formattedData = data.map(g => {
+        const supabaseFormatted = data.map(g => {
           const mock = mockMap.get(g.id);
           return {
             ...mock,
@@ -50,7 +50,9 @@ const Home = ({ searchQuery }) => {
             price: g.price || mock?.price || 0,
           };
         });
-        setGames(formattedData);
+        const supabaseIds = new Set(data.map(g => g.id));
+        const additionalGames = mockGames.filter(g => !supabaseIds.has(g.id));
+        setGames([...supabaseFormatted, ...additionalGames]);
       } else {
         if (error) console.error('Supabase error:', error);
         setGames(mockGames);

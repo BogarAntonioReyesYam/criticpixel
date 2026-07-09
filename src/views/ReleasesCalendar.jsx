@@ -24,11 +24,19 @@ const ReleasesCalendar = () => {
       const { data: supabaseGames, error } = await supabase.from('games').select('*');
       let allGames = [];
       if (!error && supabaseGames && supabaseGames.length > 0) {
-        allGames = supabaseGames.map(g => ({ ...g, globalScore: parseFloat(g.global_score) || 0 }));
+        const mockMap = new Map(mockGames.map(g => [g.id, g]));
+        allGames = supabaseGames.map(g => {
+          const mock = mockMap.get(g.id);
+          return {
+            ...mock,
+            ...g,
+            globalScore: parseFloat(g.global_score) || (mock?.globalScore || 0),
+            releaseDate: g.release_date || mock?.releaseDate || null,
+          };
+        });
+      } else {
+        allGames = mockGames;
       }
-      const supabaseIds = new Set(allGames.map(g => g.id));
-      const mockOnly = mockGames.filter(g => !supabaseIds.has(g.id));
-      allGames = [...allGames, ...mockOnly];
       setGames(allGames);
       setIsLoading(false);
     };

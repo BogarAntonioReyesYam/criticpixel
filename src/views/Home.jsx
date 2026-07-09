@@ -38,10 +38,18 @@ const Home = ({ searchQuery }) => {
         .select('*');
       
       if (!error && data && data.length > 0) {
-        const formattedData = data.map(g => ({
-          ...g,
-          globalScore: parseFloat(g.global_score)
-        }));
+        const mockMap = new Map(mockGames.map(g => [g.id, g]));
+        const formattedData = data.map(g => {
+          const mock = mockMap.get(g.id);
+          return {
+            ...mock,
+            ...g,
+            globalScore: parseFloat(g.global_score) || (mock?.globalScore || 0),
+            releaseDate: g.release_date || mock?.releaseDate || null,
+            trailer: g.trailer || mock?.trailer || null,
+            price: g.price || mock?.price || 0,
+          };
+        });
         setGames(formattedData);
       } else {
         if (error) console.error('Supabase error:', error);

@@ -16,22 +16,11 @@ const TrailersPage = () => {
   useEffect(() => {
     const fetchGames = async () => {
       const { data: supabaseGames, error } = await supabase.from('games').select('*');
-      let allGames = [];
-      if (!error && supabaseGames && supabaseGames.length > 0) {
-        const mockMap = new Map(mockGames.map(g => [g.id, g]));
-        allGames = supabaseGames.map(g => {
-          const mock = mockMap.get(g.id);
-          return {
-            ...mock,
-            ...g,
-            globalScore: parseFloat(g.global_score) || (mock?.globalScore || 0),
-            trailer: g.trailer || mock?.trailer || null,
-          };
-        });
+      if (!error && supabaseGames && supabaseGames.length > 0 && supabaseGames.some(g => g.trailer)) {
+        setGames(supabaseGames.map(g => ({ ...g, globalScore: parseFloat(g.global_score) || 0 })));
       } else {
-        allGames = mockGames;
+        setGames(mockGames);
       }
-      setGames(allGames);
       setIsLoading(false);
     };
     fetchGames();

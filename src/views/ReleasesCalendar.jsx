@@ -22,22 +22,20 @@ const ReleasesCalendar = () => {
   useEffect(() => {
     const fetchGames = async () => {
       const { data: supabaseGames, error } = await supabase.from('games').select('*');
-      let allGames = [];
-      if (!error && supabaseGames && supabaseGames.length > 0) {
+      if (!error && supabaseGames && supabaseGames.length > 0 && supabaseGames.some(g => g.release_date)) {
         const mockMap = new Map(mockGames.map(g => [g.id, g]));
-        allGames = supabaseGames.map(g => {
+        setGames(supabaseGames.map(g => {
           const mock = mockMap.get(g.id);
           return {
             ...mock,
             ...g,
-            globalScore: parseFloat(g.global_score) || (mock?.globalScore || 0),
+            globalScore: parseFloat(g.global_score) || 0,
             releaseDate: g.release_date || mock?.releaseDate || null,
           };
-        });
+        }));
       } else {
-        allGames = mockGames;
+        setGames(mockGames);
       }
-      setGames(allGames);
       setIsLoading(false);
     };
     fetchGames();

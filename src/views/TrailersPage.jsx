@@ -1,19 +1,15 @@
 import { useState, useMemo } from 'react';
-import { Film, Play } from 'lucide-react';
+import { Film, Play, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
-import useSEO from '../hooks/useSEO';
 
 const TrailersPage = () => {
-  useSEO({
-    title: 'Tráilers Destacados',
-    description: 'Los tráilers más esperados de la industria gaming.'
-  });
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTrailer, setActiveTrailer] = useState(null);
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
@@ -51,13 +47,13 @@ const TrailersPage = () => {
       </motion.div>
 
       {isLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[1,2,3,4].map(i => (
+        <div className="space-y-8">
+          {[1,2,3].map(i => (
             <div key={i} className={`aspect-video rounded-2xl animate-pulse ${isLight ? 'bg-gray-100' : 'bg-gamingCard'}`} />
           ))}
         </div>
       ) : gamesWithTrailers.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-8">
           {gamesWithTrailers.map((game, i) => (
             <motion.div
               key={game.id}
@@ -65,36 +61,71 @@ const TrailersPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <Link
-                to={`/game/${game.id}`}
-                className={`group block rounded-2xl overflow-hidden border transition-all hover:-translate-y-1 ${
-                  isLight
-                    ? 'bg-white border-gray-200 hover:shadow-lg'
-                    : 'bg-gamingCard border-white/10 hover:border-gamingOrange/30'
-                }`}
-              >
+              <div className={`rounded-2xl overflow-hidden border ${
+                isLight ? 'bg-white border-gray-200' : 'bg-gamingCard border-white/10'
+              }`}>
+                {/* Video embed */}
                 <div className="relative aspect-video">
-                  <img
-                    src={game.image}
-                    alt={game.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-70"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-gamingOrange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-gamingOrange/30">
-                      <Play className="w-7 h-7 text-white ml-1" fill="white" />
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-black text-xl text-white">{game.title}</h3>
-                    <div className="flex items-center gap-3 mt-1">
-                      <span className="text-sm font-bold text-gamingOrange">{game.globalScore}/10</span>
-                      <span className="text-sm text-gray-300">{game.specs?.genero}</span>
-                    </div>
-                  </div>
+                  {activeTrailer === game.id ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${game.trailer}?autoplay=1&rel=0`}
+                      title={`${game.title} Trailer`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <>
+                      <img
+                        src={game.image}
+                        alt={game.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover opacity-60"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <button
+                        onClick={() => setActiveTrailer(game.id)}
+                        className="absolute inset-0 flex items-center justify-center group"
+                      >
+                        <div className="w-20 h-20 rounded-full bg-gamingOrange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl shadow-gamingOrange/30">
+                          <Play className="w-9 h-9 text-white ml-1" fill="white" />
+                        </div>
+                      </button>
+                    </>
+                  )}
                 </div>
-              </Link>
+
+                {/* Info bar */}
+                <div className={`flex items-center justify-between p-4 ${isLight ? 'bg-gray-50' : 'bg-white/5'}`}>
+                  <div className="flex items-center gap-4">
+                    <Link
+                      to={`/game/${game.id}`}
+                      className={`font-black text-lg hover:text-gamingOrange transition-colors ${isLight ? 'text-gray-900' : 'text-white'}`}
+                    >
+                      {game.title}
+                    </Link>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-bold text-gamingOrange">{game.globalScore}/10</span>
+                      {game.specs?.genero && (
+                        <span className={`text-xs ${isLight ? 'text-gray-500' : 'text-gamingMuted'}`}>
+                          · {game.specs.genero}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${game.trailer}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-1 text-xs font-bold transition-colors ${
+                      isLight ? 'text-gray-500 hover:text-red-600' : 'text-gamingMuted hover:text-red-400'
+                    }`}
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    YouTube
+                  </a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

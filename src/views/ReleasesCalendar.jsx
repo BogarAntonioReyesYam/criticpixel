@@ -5,8 +5,13 @@ import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
+import useSEO from '../hooks/useSEO';
 
 const ReleasesCalendar = () => {
+  useSEO({
+    title: 'Calendario de Lanzamientos',
+    description: 'No te pierdas ningún lanzamiento importante. Calendario de próximos videojuegos.'
+  });
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [games, setGames] = useState([]);
@@ -111,7 +116,7 @@ const ReleasesCalendar = () => {
                     : 'bg-gamingCard/50 border border-white/5 hover:border-gamingOrange/30'
                 }`}
               >
-                <img src={game.image} alt={game.title} className="w-14 h-14 rounded-lg object-cover" />
+                <img src={game.image} alt={game.title} loading="lazy" className="w-14 h-14 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <h3 className={`font-bold text-sm truncate group-hover:text-gamingOrange transition-colors ${isLight ? 'text-gray-900' : 'text-white'}`}>
                     {game.title}
@@ -177,7 +182,7 @@ const ReleasesCalendar = () => {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <img src={game.image} alt={game.title} className="w-16 h-20 rounded-lg object-cover" />
+                  <img src={game.image} alt={game.title} loading="lazy" className="w-16 h-20 rounded-lg object-cover" />
                   <div>
                     <h3 className={`font-bold text-sm group-hover:text-gamingOrange transition-colors ${isLight ? 'text-gray-900' : 'text-white'}`}>
                       {game.title}

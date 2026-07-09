@@ -78,6 +78,7 @@ const RandomGame = ({ games }) => {
                 <img
                   src={randomGame.image}
                   alt={randomGame.title}
+                  loading="lazy"
                   className="w-10 h-12 rounded-lg object-cover flex-shrink-0"
                 />
                 <div className="min-w-0 flex-1">

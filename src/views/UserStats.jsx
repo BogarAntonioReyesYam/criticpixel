@@ -5,8 +5,13 @@ import { useWishlist } from '../context/WishlistContext';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
+import useSEO from '../hooks/useSEO';
 
 const UserStats = () => {
+  useSEO({
+    title: 'Mis Estadísticas',
+    description: 'Resumen de tu actividad en PixelVerdict. Juegos, scores y plataformas.'
+  });
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { theme } = useTheme();

@@ -3,8 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Clock, Search } from 'lucide-react';
 import { mockArticles, categories } from '../data/mockArticles';
+import useSEO from '../hooks/useSEO';
 
 const Blog = () => {
+  useSEO({
+    title: 'Blog & Noticias',
+    description: 'Noticias, guías y análisis del mundo gaming.'
+  });
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -84,6 +89,7 @@ const Blog = () => {
                       <img
                         src={article.image}
                         alt={article.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gamingCard/80 hidden md:block" />

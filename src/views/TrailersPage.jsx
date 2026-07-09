@@ -5,8 +5,13 @@ import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
+import useSEO from '../hooks/useSEO';
 
 const TrailersPage = () => {
+  useSEO({
+    title: 'Tráilers Destacados',
+    description: 'Los tráilers más esperados de la industria gaming.'
+  });
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { theme } = useTheme();
@@ -73,6 +78,7 @@ const TrailersPage = () => {
                     src={game.image}
                     alt={game.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-70"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute inset-0 flex items-center justify-center">

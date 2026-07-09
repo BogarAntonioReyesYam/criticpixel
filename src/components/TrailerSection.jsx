@@ -40,6 +40,7 @@ const TrailerSection = ({ games }) => {
               src={game.image}
               alt={game.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-60"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center">

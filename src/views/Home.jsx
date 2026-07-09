@@ -10,10 +10,15 @@ import TrendingNow from '../components/TrendingNow';
 import RandomGame from '../components/RandomGame';
 import TrailerSection from '../components/TrailerSection';
 import { GameGridSkeleton } from '../components/Skeletons';
+import useSEO from '../hooks/useSEO';
 
 const ITEMS_PER_PAGE = 8;
 
 const Home = ({ searchQuery }) => {
+  useSEO({
+    title: 'Catálogo de Juegos',
+    description: 'Explora los títulos más destacados de la industria gaming. Reseñas honestas, scores reales.'
+  });
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('score-desc');

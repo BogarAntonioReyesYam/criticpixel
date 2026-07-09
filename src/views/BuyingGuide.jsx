@@ -1,6 +1,7 @@
 import { BookOpen, Star, DollarSign, Monitor, Gamepad2, Shield, Zap, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import useSEO from '../hooks/useSEO';
 
 const guides = [
   {
@@ -84,6 +85,10 @@ const guides = [
 ];
 
 const BuyingGuide = () => {
+  useSEO({
+    title: 'Guías de Compra',
+    description: 'Consejos y estrategias para sacar el máximo provecho a tu dinero en videojuegos.'
+  });
   const { theme } = useTheme();
   const isLight = theme === 'light';
 

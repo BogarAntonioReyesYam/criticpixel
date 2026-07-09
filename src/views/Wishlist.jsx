@@ -7,8 +7,13 @@ import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 import { useWishlist } from '../context/WishlistContext';
 import { GameGridSkeleton } from '../components/Skeletons';
+import useSEO from '../hooks/useSEO';
 
 const Wishlist = () => {
+  useSEO({
+    title: 'Mi Lista de Deseados',
+    description: 'Tus juegos favoritos guardados en un solo lugar.'
+  });
   const { wishlistIds } = useWishlist();
   const [wishlistGames, setWishlistGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

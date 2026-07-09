@@ -1,24 +1,35 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './views/Home';
-import GameDetails from './views/GameDetails';
-import Wishlist from './views/Wishlist';
-import About from './views/About';
-import Blog from './views/Blog';
-import Rankings from './views/Rankings';
-import ReleasesCalendar from './views/ReleasesCalendar';
-import BuyingGuide from './views/BuyingGuide';
-import UserStats from './views/UserStats';
-import TrailersPage from './views/TrailersPage';
+import { GameGridSkeleton } from './components/Skeletons';
+
+const Home = lazy(() => import('./views/Home'));
+const GameDetails = lazy(() => import('./views/GameDetails'));
+const Wishlist = lazy(() => import('./views/Wishlist'));
+const About = lazy(() => import('./views/About'));
+const Blog = lazy(() => import('./views/Blog'));
+const Rankings = lazy(() => import('./views/Rankings'));
+const ReleasesCalendar = lazy(() => import('./views/ReleasesCalendar'));
+const BuyingGuide = lazy(() => import('./views/BuyingGuide'));
+const UserStats = lazy(() => import('./views/UserStats'));
+const TrailersPage = lazy(() => import('./views/TrailersPage'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -12 },
 };
+
+const PageFallback = () => (
+  <div className="flex items-center justify-center min-h-[60vh]">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-8 h-8 border-2 border-gamingOrange border-t-transparent rounded-full animate-spin" />
+      <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Cargando...</p>
+    </div>
+  </div>
+);
 
 const PageTransition = ({ children }) => (
   <motion.div
@@ -46,7 +57,8 @@ function App() {
     <div className="min-h-screen bg-gamingBg text-gamingText">
       <Navbar searchQuery={searchQuery} onSearch={handleSearch} />
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
+        <Suspense fallback={<PageFallback />}>
+          <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
           <Route path="/game/:id" element={<PageTransition><GameDetails /></PageTransition>} />
           <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
@@ -58,6 +70,7 @@ function App() {
           <Route path="/stats" element={<PageTransition><UserStats /></PageTransition>} />
           <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
         </Routes>
+        </Suspense>
       </AnimatePresence>
       <Footer />
     </div>

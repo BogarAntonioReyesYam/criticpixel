@@ -11,6 +11,7 @@ import PriceAlert from '../components/PriceAlert';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
 import { GameDetailsSkeleton } from '../components/Skeletons';
+import useSEO from '../hooks/useSEO';
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const GameDetails = () => {
   const { isWishlisted, toggleWishlist } = useWishlist();
   const { addToast } = useToast();
 
+  useSEO({
+    title: game?.title || 'Cargando...',
+    description: game?.description || 'Reseña detallada del juego en PixelVerdict.'
+  });
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -276,6 +281,7 @@ const GameDetails = () => {
                   e.target.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop";
                 }}
                 className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
             </div>
 

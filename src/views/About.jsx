@@ -1,8 +1,14 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Gamepad2, Target, Users, Star, Zap } from 'lucide-react';
+import useSEO from '../hooks/useSEO';
 
 const About = () => {
+  useSEO({
+    title: 'Acerca de',
+    description: 'Conoce más sobre PixelVerdict. Reseñas honestas, scores reales para gamers.'
+  });
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <motion.div

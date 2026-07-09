@@ -59,7 +59,7 @@ const TrendingNow = ({ games }) => {
               >
                 {/* Imagen de fondo sutil */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <img src={game.image} alt="" className="w-full h-full object-cover" />
+                  <img src={game.image} alt="" loading="lazy" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
                 </div>
 

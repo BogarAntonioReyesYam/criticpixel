@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Trophy, TrendingUp, Monitor, Gamepad2, Laptop, Disc } from 'lucide-react';
 import { mockGames } from '../data/mockGames';
+import useSEO from '../hooks/useSEO';
 
 const rankingFilters = [
   { id: 'global', label: 'Global', icon: <Trophy className="w-4 h-4" /> },
@@ -32,6 +33,10 @@ const getRankBadge = (rank) => {
 };
 
 const Rankings = () => {
+  useSEO({
+    title: 'Top Rankings',
+    description: 'Los juegos mejor calificados de nuestro catálogo. Rankings globales y por plataforma.'
+  });
   const [platformFilter, setPlatformFilter] = useState('global');
   const [genreFilter, setGenreFilter] = useState('Todos');
 
@@ -135,7 +140,7 @@ const Rankings = () => {
 
                   {/* Imagen */}
                   <div className="flex-shrink-0 w-16 h-20 rounded-lg overflow-hidden">
-                    <img src={game.image} alt={game.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={game.image} alt={game.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
 
                   {/* Info */}

@@ -641,5 +641,402 @@ export const mockGames = [
       { id: 601, user: "Remedy_Scholar", text: "¡Arte! Una narrativa compleja y fascinante.", score: 9.5 },
       { id: 602, user: "Dark_Place_Fan", text: "Visualmente es lo más avanzado hoy.", score: 8.0 }
     ]
+  },
+  {
+    id: 50,
+    title: "Ghost of Yōtei",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202409/2500/d2a7a44c68cb6a43e84db1b3e3b4a7a3e0a1e7c0b4d5f6a7b8c9d0e1f2a3b4c5.jpg",
+    globalScore: 9.2,
+    platforms: ["PS5"],
+    price: 1599,
+    releaseDate: "2025-10-02",
+    genre: "Acción / Aventura",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,599.00', perks: [{ title: 'Juego Base', description: 'Explora el norte de Japón en el siglo XVII.' }] },
+      { id: 'dlx', name: 'Digital Deluxe', price: '$1,799.00', perks: [{ title: 'Armadura Oscura', description: 'Set exclusivo de armadura.' }, { title: 'Caballo Negro', description: 'Montura cosmética.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,599.00", availability: "PS5" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 10, historia: 9 },
+    description: "Una guerrera solitaria busca venganza en las tierras salvajes del monte Yōtei en el Japón del siglo XVII.",
+    about: "De los creadores de Ghost of Tsushima, Ghost of Yōtei te lleva al norte de Japón en 1603. Atsu, una guerrera que perdió a su familia, emprende un viaje de venganza contra los Seis Yotei, un grupo de bandidos enmascarados.",
+    specs: { desarrollador: "Sucker Punch Productions", editor: "Sony Interactive Entertainment", genero: "Acción / Mundo Abierto", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5001, user: "Samurai_Fan", text: "Mejor que Ghost of Tsushima en todo sentido.", score: 9.5 },
+      { id: 5002, user: "OpenWorld_Lover", text: "El mundo es hermoso y la historia te atrapa.", score: 9.0 }
+    ]
+  },
+  {
+    id: 51,
+    title: "Marvel's Wolverine",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202109/0714/4xJ8XB3bi88QYF6XUjQDNcQ8.png",
+    globalScore: 9.0,
+    platforms: ["PS5"],
+    price: 1599,
+    releaseDate: "2026-09-15",
+    genre: "Acción / Aventura",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,599.00', perks: [{ title: 'Juego Base', description: 'La historia definitiva de Wolverine.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,599.00", availability: "PS5" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 9, historia: 9 },
+    description: "Insomniac Games trae la historia definitiva de Logan con combate visceral y una narrativa intensa.",
+    about: "Marvel's Wolverine es un juego de acción y aventura desarrollado por Insomniac Games. Con una historia original, el juego explora la naturaleza violenta y el pasado misterioso de Logan.",
+    specs: { desarrollador: "Insomniac Games", editor: "Sony Interactive Entertainment", genero: "Acción / Aventura", lanzamiento: "2026", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5101, user: "MarvelFan_X", text: "El combate con las garras es adictivo.", score: 9.0 },
+      { id: 5102, user: "PS5_Owner", text: "Gráficos de otro nivel. Insomniac no falla.", score: 9.0 }
+    ]
+  },
+  {
+    id: 52,
+    title: "Resident Evil Requiem",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/3764200/header.jpg",
+    globalScore: 9.4,
+    platforms: ["PS5", "Xbox Series X", "PC", "Nintendo Switch 2"],
+    price: 1499,
+    releaseDate: "2026-02-27",
+    genre: "Survival Horror",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,499.00', perks: [{ title: 'Juego Base', description: 'Regresa a Raccoon City.' }] },
+      { id: 'dlx', name: 'Deluxe', price: '$1,699.00', perks: [{ title: 'Pack de Trajes', description: 'Cosméticos exclusivos.' }, { title: 'Armas Deluxe', description: 'Armas con skins especiales.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,499.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,499.00", availability: "Xbox Series X" },
+      { store: "Steam", price: "$1,399.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 10, historia: 9 },
+    description: "El nono juego principal de Resident Evil. Leon y Grace regresan a Raccoon City 30 años después.",
+    about: "Resident Evil Requiem es la novena entrega principal de la serie. Sigue a la analista del FBI Grace Ashcroft y al legendario agente Leon S. Kennedy mientras investigan muertes misteriosas vinculadas al Incidente de Raccoon City.",
+    specs: { desarrollador: "Capcom", editor: "Capcom", genero: "Survival Horror", lanzamiento: "2026", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true },
+      { lang: "Francés", interface: true, voices: true, subs: true },
+      { lang: "Alemán", interface: true, voices: true, subs: true },
+      { lang: "Italiano", interface: true, voices: true, subs: true },
+      { lang: "Portugués (Brasil)", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5201, user: "Horror_Gamer", text: "El mejor Resident Evil desde el 4. La vuelta a Raccoon City es perfecta.", score: 9.5 },
+      { id: 5202, user: "CapcomFan_99", text: "Leon sigue siendo el protagonista más cool de los videojuegos.", score: 9.0 }
+    ]
+  },
+  {
+    id: 53,
+    title: "Phantom Blade Zero",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/4115450/header.jpg",
+    globalScore: 9.0,
+    platforms: ["PS5", "PC"],
+    price: 1299,
+    releaseDate: "2026-10-29",
+    genre: "Acción / RPG",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Una aventura wuxia épica.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5" },
+      { store: "Steam", price: "$1,199.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 9, historia: 8 },
+    description: "Un action RPG wuxia con combate ultra rápido ambientado en una China oscura y ficticia.",
+    about: "Phantom Blade Zero es un action RPG de S-Game que fusiona el storytelling clásico wuxia con combate trepidante impulsado por Unreal Engine 5. Juegas como Soul, un guerrero que busca redención.",
+    specs: { desarrollador: "S-Game", editor: "S-Game", genero: "Acción / RPG", lanzamiento: "2026", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Chino simplificado", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5301, user: "Wuxia_Fan", text: "El combate es una obra de arte. Cada golpe se siente satisfactorio.", score: 9.0 },
+      { id: 5302, user: "ActionRPG_Lover", text: "Un MUST para los fans de Sekiro y Nioh.", score: 9.0 }
+    ]
+  },
+  {
+    id: 54,
+    title: "Nioh 3",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/3681010/header.jpg",
+    globalScore: 8.8,
+    platforms: ["PS5", "PC"],
+    price: 1399,
+    releaseDate: "2026-02-06",
+    genre: "Acción / RPG",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Conquista la Crucible.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
+      { store: "Steam", price: "$1,299.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 8, historia: 8 },
+    description: "Team NINJA regresa con una nueva aventura de samurái oscuro en el Japón feudal.",
+    about: "Nioh 3 es la tercera entrega de la serie de acción desafiante de Team NINJA. Explora un mundo abierto por primera vez en la serie mientras te conviertes en shogun.",
+    specs: { desarrollador: "Team NINJA", editor: "KOEI TECMO", genero: "Acción / RPG", lanzamiento: "2026", multijugador: "Sí (co-op hasta 3)", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Japonés", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5401, user: "SoulsLike_Pro", text: "Difícil como siempre, pero el mundo abierto le da un giro fresco.", score: 8.5 },
+      { id: 5402, user: "Samurai_Soul", text: "El combate es brillante. Team NINJA lo hizo de nuevo.", score: 9.0 }
+    ]
+  },
+  {
+    id: 55,
+    title: "The Outer Worlds 2",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1449110/header.jpg",
+    globalScore: 8.5,
+    platforms: ["PC", "PS5", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2025-10-29",
+    genre: "RPG / Ciencia Ficción",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Explora la colonia Arcadia.' }] },
+      { id: 'ult', name: 'Ultimate', price: '$1,799.00', perks: [{ title: 'Pase de DLC', description: '2 expansiones futuras.' }, { title: 'Arte conceptual', description: 'Libro digital y banda sonora.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X" },
+      { store: "Steam", price: "$1,299.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 8, gráficos: 8, historia: 9 },
+    description: "Obsidian regresa con la secuela de su RPG de ciencia ficción. Nuevas colonias, nuevas facciones, nuevas decisiones.",
+    about: "The Outer Worlds 2 es la secuela del aclamado RPG de Obsidian. Explora Arcadia, una colonia devastada por grietas dimensionales y guerras faccionales.",
+    specs: { desarrollador: "Obsidian Entertainment", editor: "Xbox Game Studios", genero: "RPG", lanzamiento: "2025", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5501, user: "RPG_Veteran", text: "Obsidian nunca decepciona. Las decisiones realmente importan.", score: 8.5 },
+      { id: 5502, user: "SpaceExplorer", text: "El humor dark sigue intacto. Muy divertido.", score: 8.5 }
+    ]
+  },
+  {
+    id: 56,
+    title: "Elden Ring: Nightreign",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2622380/header.jpg",
+    globalScore: 8.7,
+    platforms: ["PS5", "PS4", "Xbox Series X", "PC"],
+    price: 899,
+    releaseDate: "2025-05-30",
+    genre: "Acción / Co-op",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$899.00', perks: [{ title: 'Juego Base', description: 'Supervive en Limveld con hasta 3 jugadores.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$899.00", availability: "PS5" },
+      { store: "Steam", price: "$799.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 8, historia: 7 },
+    description: "Un spin-off co-op de FromSoftware que transforma Elden Ring en un juego de supervivencia cooperativo.",
+    about: "ELDEN RING NIGHTREIGN es un juego independiente de acción supervivencia cooperativa ambientado en el universo de ELDEN RING. Enfrenta desafíos con hasta 2 amigos en un mundo hostil y cambiante.",
+    specs: { desarrollador: "FromSoftware", editor: "Bandai Namco", genero: "Acción / Co-op", lanzamiento: "2025", multijugador: "Sí (co-op hasta 3)", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español", interface: true, voices: false, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5601, user: "Soulsborne_Addict", text: "No es Elden Ring 2, pero es una experiencia cooperativa brillante.", score: 8.5 },
+      { id: 5602, user: "CoopPlayer_42", text: "Con amigos es increíble. Muy adictivo.", score: 9.0 }
+    ]
+  },
+  {
+    id: 57,
+    title: "God of War Ragnarök",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi88QYF6XUjQDNcQ8.png",
+    globalScore: 9.4,
+    platforms: ["PS5", "PS4", "PC"],
+    price: 1399,
+    releaseDate: "2022-11-09",
+    genre: "Acción / Aventura",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'La conclusión de la saga nórdica.' }] },
+      { id: 'jtn', name: 'Jötnar Edition', price: '$2,499.00', perks: [{ title: 'Caja de acero', description: 'Estuche de colección.' }, { title: 'Anillo de Djupul', description: 'Réplica física.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
+      { store: "Steam", price: "$1,199.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 10, gráficos: 10, historia: 10 },
+    description: "Kratos y Atreus enfrentan el Ragnarök en la conclusión de la saga nórdica de Santa Monica Studio.",
+    about: "God of War Ragnarök es la continuación del aclamado God of War (2018). Kratos y su hijo Atreus deben enfrentar las profecías del Ragnarök mientras exploran los Nueve Reinos.",
+    specs: { desarrollador: "Santa Monica Studio", editor: "Sony Interactive Entertainment", genero: "Acción / Aventura", lanzamiento: "2022", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5701, user: "Kratos_Fan", text: "La mejor historia jamás contada en videojuegos. Una obra maestra.", score: 10 },
+      { id: 5702, user: "NorseMyth_Lover", text: "El combate evoluciona perfectamente. Ragnarök es épico.", score: 9.5 }
+    ]
+  },
+  {
+    id: 58,
+    title: "Hogwarts Legacy",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/990080/header.jpg",
+    globalScore: 8.6,
+    platforms: ["PS5", "PS4", "Xbox Series X", "PC", "Nintendo Switch"],
+    price: 1299,
+    releaseDate: "2023-02-10",
+    genre: "RPG / Mundo Abierto",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Vive tu experiencia en Hogwarts.' }] },
+      { id: 'dlx', name: 'Digital Deluxe', price: '$1,599.00', perks: [{ title: 'Mascota Thestral', description: 'Montura exclusiva.' }, { title: 'Pack de batalla', description: 'Armas y armaduras oscuras.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5" },
+      { store: "Steam", price: "$1,199.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 8, gráficos: 9, historia: 8 },
+    description: "Un RPG de mundo abierto ambientado en el universo de Harry Potter. Asiste a Hogwarts y forja tu propia leyenda.",
+    about: "Hogwarts Legacy te transporta al siglo XVIII del universo de Harry Potter. Como estudiante con habilidades únicas, exploras Hogwarts, Hogsmeade y los alrededores mientras descubres un secreto oscuro.",
+    specs: { desarrollador: "Avalanche Software", editor: "Warner Bros. Games", genero: "RPG / Mundo Abierto", lanzamiento: "2023", multijugador: "No", clasificación: "T (13+)" },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5801, user: "HarryPotter_Fan", text: "El sueño de todo fan de Harry Potter hecho realidad.", score: 9.0 },
+      { id: 5802, user: "RPG_Addict", text: "El combate con varitas es sorprendentemente divertido.", score: 8.5 }
+    ]
+  },
+  {
+    id: 59,
+    title: "Starfield",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1716740/header.jpg",
+    globalScore: 7.5,
+    platforms: ["PC", "Xbox Series X"],
+    price: 1399,
+    releaseDate: "2023-09-06",
+    genre: "RPG / Ciencia Ficción",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Explora el espacio profundo.' }] },
+      { id: 'cst', name: "Constellation Edition", price: '$2,499.00', perks: [{ title: 'Reproductor de vinilos', description: 'Banda sonora física.' }, { title: 'Art book', description: 'Libro de arte de 80 páginas.' }] }
+    ],
+    marketPrices: [
+      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X" },
+      { store: "Steam", price: "$1,199.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 7, gráficos: 8, historia: 7 },
+    description: "El RPG espacial de Bethesda. Explora más de 1,000 planetas en una aventura épica por la galaxia.",
+    about: "Starfield es el primer universo nuevo de Bethesda Game Studios en 25 años. Crea tu personaje y explora la galaxia mientras desentrañas el misterio más profundo de la humanidad.",
+    specs: { desarrollador: "Bethesda Game Studios", editor: "Bethesda Softworks", genero: "RPG", lanzamiento: "2023", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 5901, user: "SpaceExplorer_99", text: "La exploración espacial es genial, pero las loading screens cansan.", score: 7.5 },
+      { id: 5902, user: "BethesdaFan", text: "Es Skyrim en el espacio. Tiene sus defectos pero es divertido.", score: 7.0 }
+    ]
+  },
+  {
+    id: 60,
+    title: "Diablo IV",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2344520/header.jpg",
+    globalScore: 8.3,
+    platforms: ["PS5", "PS4", "Xbox Series X", "PC"],
+    price: 1399,
+    releaseDate: "2023-06-06",
+    genre: "ARPG / Hack and Slash",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'La oscuridad regresa a Sanctuary.' }] },
+      { id: 'ult', name: 'Ultimate Edition', price: '$1,899.00', perks: [{ title: 'Pase de Temporada', description: 'Acceso a 2 pases de batalla.' }, { title: 'Montura alada', description: 'Montura exclusiva de los cielos.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X" },
+      { store: "Battle.net", price: "$1,399.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 8, gráficos: 8, historia: 8 },
+    description: "Lilith regresa. Diablo IV trae el mundo oscuro y gótico de Sanctuary de vuelta con combate adictivo.",
+    about: "Diablo IV es la continuación del icónico ARPG de Blizzard. Explora un mundo compartido persistente donde Lilith ha sido invocada y amenaza con consumir Sanctuary.",
+    specs: { desarrollador: "Blizzard Entertainment", editor: "Blizzard Entertainment", genero: "ARPG", lanzamiento: "2023", multijugador: "Sí (MMO-lite)", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español (Latam)", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 6001, user: "Diablo_Veteran", text: "La mejor entrega desde Diablo II. El mundo oscuro es perfecto.", score: 8.5 },
+      { id: 6002, user: "LootGoblin", text: "El loot loop es adictivo. Horas y horas de diversión.", score: 8.0 }
+    ]
+  },
+  {
+    id: 61,
+    title: "Stellar Blade",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202307/1714/PmM6lZQfGQWjPvFmFpFoXgqk.png",
+    globalScore: 8.2,
+    platforms: ["PS5"],
+    price: 1399,
+    releaseDate: "2024-04-26",
+    genre: "Acción / RPG",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Sobrevive en la Tierra abandonada.' }] },
+      { id: 'dlx', name: 'Digital Deluxe', price: '$1,599.00', perks: [{ title: 'Traje de emperatriz', description: 'Skin exclusiva para Eve.' }, { title: 'Gafas de sol', description: 'Accesorio cosmético.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" }
+    ],
+    breakdown: { jugabilidad: 8, gráficos: 9, historia: 7 },
+    description: "Un action RPG de Shift Up con combate precioso y una protagonist que lucha contra alienígenas en una Tierra post-apocalíptica.",
+    about: "Stellar Blade es un action RPG que combina combate fluido con una narrativa de ciencia ficción. Eve, una guerrera de la división VII, debe salvar a la humanidad de los Naytibas.",
+    specs: { desarrollador: "Shift Up", editor: "Sony Interactive Entertainment", genero: "Acción / RPG", lanzamiento: "2024", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true },
+      { lang: "Coreano", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 6101, user: "ActionFan_X", text: "El combate es satisfactorio. Los jefes son épicos.", score: 8.5 },
+      { id: 6102, user: "PS5_Gamer", text: "Visualmente impresionante. Shift Up hizo un gran trabajo.", score: 8.0 }
+    ]
+  },
+  {
+    id: 62,
+    title: "Like a Dragon: Infinite Wealth",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2072450/header.jpg",
+    globalScore: 9.0,
+    platforms: ["PS5", "PS4", "Xbox Series X", "PC"],
+    price: 1399,
+    releaseDate: "2024-01-26",
+    genre: "RPG / Aventura",
+    editions: [
+      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'La aventura de Ichiban y Kiryu.' }] }
+    ],
+    marketPrices: [
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
+      { store: "Steam", price: "$1,199.00", availability: "PC" }
+    ],
+    breakdown: { jugabilidad: 9, gráficos: 8, historia: 9 },
+    description: "Ichiban Kasuga y Kazuma Kiryu se unen en una aventura global que los lleva de Japón a Hawái.",
+    about: "Like a Dragon: Infinite Wealth es la continuación del RPG de SEGA. Ichiban y Kiryu viajan a Hawái en busca de una conexión perdida mientras enfrentan amenazas de Yakuza.",
+    specs: { desarrollador: "Ryu Ga Gotoku Studio", editor: "SEGA", genero: "RPG", lanzamiento: "2024", multijugador: "No", clasificación: "M (17+)" },
+    languages: [
+      { lang: "Español", interface: true, voices: true, subs: true },
+      { lang: "Inglés", interface: true, voices: true, subs: true },
+      { lang: "Japonés", interface: true, voices: true, subs: true }
+    ],
+    reviews: [
+      { id: 6201, user: "YakuzaFan_42", text: "La mejor historia de la serie. Ichiban es un héroe increíble.", score: 9.0 },
+      { id: 6202, user: "RPG_Master", text: "El combate por turnos está perfecto. Horas de contenido.", score: 9.0 }
+    ]
   }
 ];

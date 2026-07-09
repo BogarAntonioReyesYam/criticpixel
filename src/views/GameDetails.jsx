@@ -116,6 +116,18 @@ const GameDetails = () => {
       if (mockFallback?.trailer) {
         fullGame.trailer = mockFallback.trailer;
       }
+      if ((!fullGame.reviews || fullGame.reviews.length === 0) && mockFallback?.reviews) {
+        fullGame.reviews = mockFallback.reviews;
+      }
+      if ((!fullGame.editions || fullGame.editions.length === 0) && mockFallback?.editions) {
+        fullGame.editions = mockFallback.editions;
+      }
+      if ((!fullGame.languages || fullGame.languages.length === 0) && mockFallback?.languages) {
+        fullGame.languages = mockFallback.languages;
+      }
+      if ((!fullGame.marketPrices || fullGame.marketPrices.length === 0) && mockFallback?.marketPrices) {
+        fullGame.marketPrices = mockFallback.marketPrices;
+      }
 
       setGame(fullGame);
       setSelectedEditionId(fullGame.editions?.[0]?.id);

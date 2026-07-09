@@ -64,7 +64,7 @@ const TrailersPage = () => {
           ))}
         </div>
       ) : gamesWithTrailers.length > 0 ? (
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {gamesWithTrailers.map((game, i) => (
             <motion.div
               key={game.id}
@@ -98,8 +98,8 @@ const TrailersPage = () => {
                         onClick={() => setActiveTrailer(game.id)}
                         className="absolute inset-0 flex items-center justify-center group"
                       >
-                        <div className="w-20 h-20 rounded-full bg-gamingOrange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl shadow-gamingOrange/30">
-                          <Play className="w-9 h-9 text-white ml-1" fill="white" />
+                        <div className="w-14 h-14 rounded-full bg-gamingOrange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl shadow-gamingOrange/30">
+                          <Play className="w-6 h-6 text-white ml-1" fill="white" />
                         </div>
                       </button>
                     </>

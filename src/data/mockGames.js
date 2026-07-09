@@ -7,7 +7,7 @@ export const mockGames = [
     trailer: "QdBZY2fkU-0",
     platforms: ["PS5", "Xbox Series X"],
     price: 1899,
-    releaseDate: "2026-09-17",
+    releaseDate: "2026-09-15",
     genre: "Mundo Abierto",
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,899.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia de Lucía y Jason.' }, { title: 'Bono de Reserva', description: 'Pack de dinero digital para el modo historia.' }] },
@@ -47,7 +47,7 @@ export const mockGames = [
     globalScore: 9.9,
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 1299,
-    releaseDate: "2023-08-03",
+    releaseDate: "2026-08-21",
     genre: "RPG",
     editions: [
       { id: 'std', name: 'Standard Edition', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'La experiencia completa de Baldur\'s Gate 3.' }] },
@@ -82,7 +82,7 @@ export const mockGames = [
     globalScore: 9.4,
     platforms: ["PC", "PS5"],
     price: 1299,
-    releaseDate: "2024-08-20",
+    releaseDate: "2026-01-30",
     genre: "Action RPG",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'La leyenda de Wukong.' }] },
@@ -113,7 +113,7 @@ export const mockGames = [
     globalScore: 9.8,
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 859,
-    releaseDate: "2024-06-21",
+    releaseDate: "2026-02-28",
     genre: "Action RPG",
     editions: [
       { id: 'std', name: 'Expansion', price: '$859.00', perks: [{ title: 'Shadow of the Erdtree', description: 'La mayor expansión de FromSoft.' }] },
@@ -144,7 +144,7 @@ export const mockGames = [
     globalScore: 9.5,
     platforms: ["PC", "PS5"],
     price: 1149,
-    releaseDate: "2024-10-08",
+    releaseDate: "2026-10-09",
     genre: "Horror",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,149.00', perks: [{ title: 'Juego Base', description: 'Regresa a Silent Hill.' }] },
@@ -175,7 +175,7 @@ export const mockGames = [
     globalScore: 9.7,
     platforms: ["PC"],
     price: 549,
-    releaseDate: "2024-05-06",
+    releaseDate: "2026-05-22",
     genre: "Roguelike",
     editions: [
       { id: 'std', name: 'Early Access', price: '$549.00', perks: [{ title: 'Game Access', description: 'Acceso inmediato al desarrollo.' }] }
@@ -204,7 +204,7 @@ export const mockGames = [
     globalScore: 9.7,
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 1299,
-    releaseDate: "2024-10-11",
+    releaseDate: "2026-11-06",
     genre: "JRPG",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Reclama el trono.' }] }
@@ -267,7 +267,7 @@ export const mockGames = [
     trailer: "unYFdcEjV9k",
     platforms: ["PS5"],
     price: 1399,
-    releaseDate: "2024-09-06",
+    releaseDate: "2026-08-07",
     genre: "Plataformas",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Aventura masiva de plataformas.' }] }
@@ -296,7 +296,7 @@ export const mockGames = [
     trailer: "a_wNFT4j6qI",
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 1549,
-    releaseDate: "2025-02-28",
+    releaseDate: "2026-01-22",
     genre: "Acción",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Caza en Tierras Prohibidas.' }] }
@@ -326,7 +326,7 @@ export const mockGames = [
     trailer: "mMAgmdR8jwU",
     platforms: ["Switch"],
     price: 1399,
-    releaseDate: "2025-12-04",
+    releaseDate: "2026-02-14",
     genre: "Aventura / FPS",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Samus Aran regresa.' , description: 'Samus Aran regresa.' }] }
@@ -355,7 +355,7 @@ export const mockGames = [
     trailer: "D4ZqHVfiA4M",
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 1399,
-    releaseDate: "2025-05-15",
+    releaseDate: "2026-03-20",
     genre: "Shooter",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Destrucción medieval masiva.' }] }
@@ -384,7 +384,7 @@ export const mockGames = [
     globalScore: 9.1,
     platforms: ["PC", "Xbox Series X"],
     price: 1399,
-    releaseDate: "2025-10-22",
+    releaseDate: "2026-04-10",
     genre: "RPG",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Regresa a Albion.' }] }
@@ -412,7 +412,7 @@ export const mockGames = [
     globalScore: 9.2,
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 1399,
-    releaseDate: "2025-09-12",
+    releaseDate: "2026-05-08",
     genre: "Shooter",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Looteo infinito.' }] }
@@ -440,7 +440,7 @@ export const mockGames = [
     globalScore: 9.6,
     platforms: ["PC", "Xbox Series X"],
     price: 1399,
-    releaseDate: "2026-03-15",
+    releaseDate: "2026-06-12",
     genre: "Shooter",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'El origen del horror.' }] }
@@ -469,7 +469,7 @@ export const mockGames = [
     trailer: "DNvGx4nAN2U",
     platforms: ["PS5"],
     price: 1549,
-    releaseDate: "2025-04-15",
+    releaseDate: "2026-07-18",
     genre: "Acción / Exploración",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Conecta de nuevo.' }] },
@@ -499,7 +499,7 @@ export const mockGames = [
     trailer: "gTMwx9-rKe8",
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 799,
-    releaseDate: "2023-03-24",
+    releaseDate: "2026-04-25",
     genre: "Survival Horror",
     editions: [
       { id: 'std', name: 'Estándar', price: '$799.00', perks: [{ title: 'Juego Base', description: 'Misión completa.' }] },
@@ -531,7 +531,7 @@ export const mockGames = [
     trailer: "uHGShqcAHlQ",
     platforms: ["Switch"],
     price: 1399,
-    releaseDate: "2023-05-12",
+    releaseDate: "2026-06-26",
     genre: "Aventura",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Hyrule completo.' , description: 'Hyrule completo.' }] }
@@ -561,7 +561,7 @@ export const mockGames = [
     trailer: "9fVYKsEmuRo",
     platforms: ["PS5"],
     price: 1549,
-    releaseDate: "2023-10-20",
+    releaseDate: "2026-10-23",
     genre: "Acción",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Doble de héroes.' }] }
@@ -590,7 +590,7 @@ export const mockGames = [
     trailer: "sJbexcm4Trk",
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 1299,
-    releaseDate: "2023-09-21",
+    releaseDate: "2026-11-20",
     genre: "RPG de Acción",
     editions: [
       { id: 'ult', name: 'Ultimate Edition', price: '$1,299.00', perks: [{ title: 'Phantom Liberty', description: 'Expansión de espionaje.' }, { title: 'Juego Base', description: 'Actualización 2.0.' }] }
@@ -620,7 +620,7 @@ export const mockGames = [
     trailer: "dlQ3FeNu5Yw",
     platforms: ["PC", "PS5", "Xbox Series X"],
     price: 949,
-    releaseDate: "2023-10-27",
+    releaseDate: "2026-12-04",
     genre: "Survival Horror / Misterio",
     editions: [
       { id: 'std', name: 'Estándar', price: '$949.00', perks: [{ title: 'Juego Base', description: 'Investiga la oscuridad.' }] }

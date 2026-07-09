@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Film, Play, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -13,14 +13,17 @@ const TrailersPage = () => {
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  useState(() => {
+  useEffect(() => {
     const fetchGames = async () => {
-      const { data, error } = await supabase.from('games').select('*');
-      if (!error && data && data.length > 0) {
-        setGames(data.map(g => ({ ...g, globalScore: parseFloat(g.global_score) })));
-      } else {
-        setGames(mockGames);
+      const { data: supabaseGames, error } = await supabase.from('games').select('*');
+      let allGames = [];
+      if (!error && supabaseGames && supabaseGames.length > 0) {
+        allGames = supabaseGames.map(g => ({ ...g, globalScore: parseFloat(g.global_score) || 0 }));
       }
+      const supabaseIds = new Set(allGames.map(g => g.id));
+      const mockOnly = mockGames.filter(g => !supabaseIds.has(g.id));
+      allGames = [...allGames, ...mockOnly];
+      setGames(allGames);
       setIsLoading(false);
     };
     fetchGames();

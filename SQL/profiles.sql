@@ -38,25 +38,5 @@ CREATE POLICY "Admins can update all profiles" ON profiles
     )
   );
 
--- Function to handle new user signup
-CREATE OR REPLACE FUNCTION handle_new_user()
-RETURNS TRIGGER AS $$
-BEGIN
-  INSERT INTO profiles (id, email, display_name, role)
-  VALUES (
-    NEW.id,
-    NEW.email,
-    COALESCE(NEW.raw_user_meta_data->>'display_name', NEW.email),
-    'user'
-  );
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Trigger for new user signup
-CREATE OR REPLACE TRIGGER on_auth_user_created
-  AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE FUNCTION handle_new_user();
-
 -- Make first user admin (run this after first signup)
 -- UPDATE profiles SET role = 'admin' WHERE email = 'YOUR_EMAIL';

@@ -29,11 +29,30 @@ export function AuthProvider({ children }) {
 
   async function loadProfile(userId) {
     try {
-      const { data } = await supabase
+      let { data } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single();
+
+      if (!data) {
+        const { user: u } = await supabase.auth.getUser();
+        const { error: insErr } = await supabase.from('profiles').upsert({
+          id: userId,
+          email: u?.email ?? '',
+          display_name: u?.user_metadata?.display_name ?? u?.email?.split('@')[0] ?? 'Usuario',
+          role: 'user',
+        }, { onConflict: 'id' });
+        if (!insErr) {
+          const { data: retry } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', userId)
+            .single();
+          data = retry;
+        }
+      }
+
       setProfile(data);
     } catch (e) {
       console.error('Profile load error:', e);
@@ -61,7 +80,8 @@ export function AuthProvider({ children }) {
       if (profileError) console.error('Profile upsert error:', profileError);
     }
 
-    return { data, error };
+    const needsConfirmation = !error && !data.session && data.user;
+    return { data, error, needsConfirmation };
   }
 
   async function signIn(email, password) {

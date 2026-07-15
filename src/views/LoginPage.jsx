@@ -19,6 +19,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [confirmMsg, setConfirmMsg] = useState(null);
 
   const { signIn, signUp, signInWithProvider } = useAuth();
   const navigate = useNavigate();
@@ -38,6 +39,9 @@ export default function LoginPage() {
 
       if (result.error) {
         setError(result.error.message);
+      } else if (result.needsConfirmation) {
+        setConfirmMsg('Cuenta creada. Revisa tu email para confirmar tu cuenta.');
+        setError(null);
       } else {
         navigate('/');
       }
@@ -76,6 +80,12 @@ export default function LoginPage() {
           {error && (
             <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
               {error}
+            </div>
+          )}
+
+          {confirmMsg && (
+            <div className="mb-4 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
+              {confirmMsg}
             </div>
           )}
 

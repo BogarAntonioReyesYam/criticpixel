@@ -17,8 +17,12 @@ export function AuthProvider({ children }) {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
-      if (session?.user) loadProfile(session.user.id);
-      else {
+      if (session?.user) {
+        loadProfile(session.user.id);
+        if (window.location.search) {
+          window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+        }
+      } else {
         setProfile(null);
         setLoading(false);
       }

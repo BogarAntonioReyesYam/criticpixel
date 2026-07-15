@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { ToastProvider } from './context/ToastContext'
+import { AuthProvider } from './context/AuthContext'
 import { WishlistProvider } from './context/WishlistContext'
 import App from './App'
 import './index.css'
@@ -14,9 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <HashRouter>
       <ThemeProvider>
         <ToastProvider>
-          <WishlistProvider>
-            <App />
-          </WishlistProvider>
+          <AuthProvider>
+            <WishlistProvider>
+              <App />
+            </WishlistProvider>
+          </AuthProvider>
         </ToastProvider>
       </ThemeProvider>
     </HashRouter>

@@ -15,6 +15,7 @@ const ReleasesCalendar = lazy(() => import('./views/ReleasesCalendar'));
 const BuyingGuide = lazy(() => import('./views/BuyingGuide'));
 const UserStats = lazy(() => import('./views/UserStats'));
 const TrailersPage = lazy(() => import('./views/TrailersPage'));
+const PriceAdmin = lazy(() => import('./views/PriceAdmin'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -69,6 +70,7 @@ function App() {
           <Route path="/guides" element={<PageTransition><BuyingGuide /></PageTransition>} />
           <Route path="/stats" element={<PageTransition><UserStats /></PageTransition>} />
           <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
+          <Route path="/admin/prices" element={<PageTransition><PriceAdmin /></PageTransition>} />
         </Routes>
         </Suspense>
       </AnimatePresence>

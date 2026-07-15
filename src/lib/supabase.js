@@ -7,4 +7,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.warn('⚠️ Falta configurar las variables de entorno de Supabase. La aplicación podría no cargar datos reales.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    storage: localStorage,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+  },
+});

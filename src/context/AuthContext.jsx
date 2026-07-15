@@ -51,15 +51,6 @@ export function AuthProvider({ children }) {
       },
     });
 
-    if (!error && data.user) {
-      await supabase.from('profiles').insert({
-        id: data.user.id,
-        email: data.user.email,
-        display_name: displayName,
-        role: 'user',
-      });
-    }
-
     return { data, error };
   }
 

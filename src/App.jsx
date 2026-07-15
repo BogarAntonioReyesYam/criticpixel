@@ -1,4 +1,4 @@
-import { useState, useCallback, lazy, Suspense } from 'react';
+import { useState, useCallback, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -50,6 +50,13 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    if (window.location.search && window.location.search.includes('code=')) {
+      window.history.replaceState({}, '', '/#/' + window.location.hash.replace('#', ''));
+      navigate('/', { replace: true });
+    }
+  }, []);
 
   const handleSearch = useCallback((q) => {
     setSearchQuery(q);

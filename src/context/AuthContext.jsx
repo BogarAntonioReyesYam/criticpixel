@@ -17,12 +17,8 @@ export function AuthProvider({ children }) {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
-      if (session?.user) {
-        loadProfile(session.user.id);
-        if (window.location.search) {
-          window.history.replaceState({}, '', window.location.pathname + window.location.hash);
-        }
-      } else {
+      if (session?.user) loadProfile(session.user.id);
+      else {
         setProfile(null);
         setLoading(false);
       }
@@ -32,14 +28,18 @@ export function AuthProvider({ children }) {
   }, []);
 
   async function loadProfile(userId) {
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
-
-    setProfile(data);
-    setLoading(false);
+    try {
+      const { data } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+      setProfile(data);
+    } catch (e) {
+      console.error('Profile load error:', e);
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function signUp(email, password, displayName) {

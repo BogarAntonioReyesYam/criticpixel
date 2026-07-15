@@ -35,12 +35,14 @@ export function AuthProvider({ children }) {
         .eq('id', userId)
         .single();
 
+      const { data: userData } = await supabase.auth.getUser();
+      const meta = userData?.user?.user_metadata || {};
+
       if (!data) {
-        const { user: u } = await supabase.auth.getUser();
         const { error: insErr } = await supabase.from('profiles').upsert({
           id: userId,
-          email: u?.email ?? '',
-          display_name: u?.user_metadata?.display_name ?? u?.email?.split('@')[0] ?? 'Usuario',
+          email: userData?.user?.email ?? '',
+          display_name: meta.display_name || userData?.user?.email?.split('@')[0] || 'Usuario',
           role: 'user',
         }, { onConflict: 'id' });
         if (!insErr) {
@@ -51,6 +53,9 @@ export function AuthProvider({ children }) {
             .single();
           data = retry;
         }
+      } else if (!data.display_name && meta.display_name) {
+        await supabase.from('profiles').update({ display_name: meta.display_name }).eq('id', userId);
+        data = { ...data, display_name: meta.display_name };
       }
 
       setProfile(data);

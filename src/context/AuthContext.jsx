@@ -51,6 +51,16 @@ export function AuthProvider({ children }) {
       },
     });
 
+    if (!error && data.user) {
+      const { error: profileError } = await supabase.from('profiles').upsert({
+        id: data.user.id,
+        email: data.user.email,
+        display_name: displayName,
+        role: 'user',
+      }, { onConflict: 'id' });
+      if (profileError) console.error('Profile upsert error:', profileError);
+    }
+
     return { data, error };
   }
 

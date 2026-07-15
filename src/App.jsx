@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, lazy, Suspense } from 'react';
+import { useState, useCallback, lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -18,6 +18,7 @@ const UserStats = lazy(() => import('./views/UserStats'));
 const TrailersPage = lazy(() => import('./views/TrailersPage'));
 const PriceAdmin = lazy(() => import('./views/PriceAdmin'));
 const LoginPage = lazy(() => import('./views/LoginPage'));
+const ProfilePage = lazy(() => import('./views/ProfilePage'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -51,13 +52,6 @@ function App() {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    if (window.location.search && window.location.search.includes('code=')) {
-      window.history.replaceState({}, '', '/#/' + window.location.hash.replace('#', ''));
-      navigate('/', { replace: true });
-    }
-  }, []);
-
   const handleSearch = useCallback((q) => {
     setSearchQuery(q);
     if (q) navigate('/');
@@ -81,6 +75,7 @@ function App() {
               <Route path="/stats" element={<PageTransition><UserStats /></PageTransition>} />
               <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
               <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
+              <Route path="/profile" element={<PageTransition><ProfilePage /></PageTransition>} />
               <Route path="/admin/prices" element={
                 <ProtectedRoute requireAdmin>
                   <PageTransition><PriceAdmin /></PageTransition>

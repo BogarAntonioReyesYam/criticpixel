@@ -189,7 +189,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
                       <p className="text-xs text-gray-500 truncate">{user.email}</p>
                     </div>
                     <Link
-                      to="/stats"
+                      to="/profile"
                       onClick={() => setShowUserMenu(false)}
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
                     >

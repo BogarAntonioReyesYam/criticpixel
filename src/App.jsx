@@ -76,6 +76,7 @@ function App() {
               <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
               <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
               <Route path="/profile" element={<PageTransition><ProfilePage /></PageTransition>} />
+              <Route path="*" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
               <Route path="/admin/prices" element={
                 <ProtectedRoute requireAdmin>
                   <PageTransition><PriceAdmin /></PageTransition>

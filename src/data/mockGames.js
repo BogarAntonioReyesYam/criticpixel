@@ -6,17 +6,17 @@ export const mockGames = [
     globalScore: 10,
     trailer: "QdBZY2fkU-0",
     platforms: ["PS5", "Xbox Series X"],
-    price: 1899,
+    price: 1499,
     releaseDate: "2026-11-19",
     genre: "Mundo Abierto",
     editions: [
-      { id: 'std', name: 'Standard Edition', price: '$1,899.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia de Lucía y Jason.' }, { title: 'Bono de Reserva', description: 'Pack de dinero digital para el modo historia.' }] },
-      { id: 'dlx', name: 'Deluxe Edition', price: '$2,299.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia principal.' }, { title: 'Pack de Ropa Vice', description: 'Conjuntos exclusivos inspirados en los años 80.' }, { title: '500k GTA Online', description: 'Impulso económico inmediato para tu imperio criminal.' }] },
-      { id: 'ult', name: 'Ultimate Edition', price: '$2,799.00', perks: [{ title: 'Todo lo anterior', description: 'Incluye beneficios de las ediciones Standard y Deluxe.' }, { title: 'Acceso anticipado', description: 'Juega 3 días antes del lanzamiento oficial.' }, { title: 'Pase de Temporada', description: 'Acceso a los primeros 3 DLCs de historia planeados.' }] }
+      { id: 'std', name: 'Standard Edition', price: '$1,499.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia de Lucía y Jason.' }, { title: 'Bono de Reserva', description: 'Pack de dinero digital para el modo historia.' }] },
+      { id: 'dlx', name: 'Deluxe Edition', price: '$1,879.00', perks: [{ title: 'Juego Base', description: 'Acceso completo a la historia principal.' }, { title: 'Pack de Ropa Vice', description: 'Conjuntos exclusivos inspirados en los años 80.' }, { title: '500k GTA Online', description: 'Impulso económico inmediato para tu imperio criminal.' }] },
+      { id: 'ult', name: 'Ultimate Edition', price: '$2,100.00', perks: [{ title: 'Todo lo anterior', description: 'Incluye beneficios de las ediciones Standard y Deluxe.' }, { title: 'Acceso anticipado', description: 'Juega 3 días antes del lanzamiento oficial.' }, { title: 'Pase de Temporada', description: 'Acceso a los primeros 3 DLCs de historia planeados.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,899.00", availability: "PS5" },
-      { store: "Microsoft Store", price: "$1,899.00", availability: "Xbox Series X" }
+      { store: "PlayStation Store", price: "$1,700.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$1,499.00", availability: "Xbox Series X" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 10, historia: 10 },
     description: "La culminación de una década de espera. GTA VI no es solo un juego; es el simulador definitivo de la vida moderna y el crimen organizado.",
@@ -295,15 +295,15 @@ export const mockGames = [
     globalScore: 9.6,
     trailer: "a_wNFT4j6qI",
     platforms: ["PC", "PS5", "Xbox Series X"],
-    price: 1549,
+    price: 1199,
     releaseDate: "2025-02-28",
     genre: "Acción",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Caza en Tierras Prohibidas.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,199.00', perks: [{ title: 'Juego Base', description: 'Caza en Tierras Prohibidas.' }] }
     ],
     marketPrices: [
-      { store: "Steam", price: "$1,549.00", availability: "PC" },
-      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
+      { store: "Steam", price: "$1,199.00", availability: "PC" },
+      { store: "PlayStation Store", price: "$1,293.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 9.8, gráficos: 9.7, historia: 8.2 },
     description: "La evolución definitiva de la cacería de monstruos en ecosistemas dinámicos.",
@@ -560,14 +560,14 @@ export const mockGames = [
     globalScore: 9.3,
     trailer: "9fVYKsEmuRo",
     platforms: ["PS5"],
-    price: 1549,
+    price: 1225,
     releaseDate: "2023-10-20",
     genre: "Acción",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,549.00', perks: [{ title: 'Juego Base', description: 'Doble de héroes.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,225.00', perks: [{ title: 'Juego Base', description: 'Doble de héroes.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,549.00", availability: "PS5" }
+      { store: "PlayStation Store", price: "$1,225.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 9.5, gráficos: 9.8, historia: 9.0 },
     description: "La aventura definitiva del trepamuros con Peter Parker y Miles Morales.",
@@ -648,15 +648,16 @@ export const mockGames = [
     image: "https://cdn.akamai.steamstatic.com/steam/apps/2530880/header.jpg",
     globalScore: 9.2,
     platforms: ["PS5"],
-    price: 1599,
+    price: 1499,
     releaseDate: "2025-10-02",
     genre: "Acción / Aventura",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,599.00', perks: [{ title: 'Juego Base', description: 'Explora el norte de Japón en el siglo XVII.' }] },
-      { id: 'dlx', name: 'Digital Deluxe', price: '$1,799.00', perks: [{ title: 'Armadura Oscura', description: 'Set exclusivo de armadura.' }, { title: 'Caballo Negro', description: 'Montura cosmética.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,499.00', perks: [{ title: 'Juego Base', description: 'Explora el norte de Japón en el siglo XVII.' }] },
+      { id: 'dlx', name: 'Digital Deluxe', price: '$1,699.00', perks: [{ title: 'Armadura Oscura', description: 'Set exclusivo de armadura.' }, { title: 'Caballo Negro', description: 'Montura cosmética.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,599.00", availability: "PS5" }
+      { store: "PlayStation Store", price: "$1,499.00", availability: "PS5", editionName: "Estándar" },
+      { store: "PlayStation Store", price: "$1,699.00", availability: "PS5", editionName: "Digital Deluxe" }
     ],
     breakdown: { jugabilidad: 9, gráficos: 10, historia: 9 },
     description: "Una guerrera solitaria busca venganza en las tierras salvajes del monte Yōtei en el Japón del siglo XVII.",
@@ -678,14 +679,14 @@ export const mockGames = [
     image: "https://www.gematsu.com/wp-content/uploads/2025/09/Marvels-Wolverine_2025_09-24-25_001.jpg",
     globalScore: 9.0,
     platforms: ["PS5"],
-    price: 1599,
+    price: 1499,
     releaseDate: "2026-09-15",
     genre: "Acción / Aventura",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,599.00', perks: [{ title: 'Juego Base', description: 'La historia definitiva de Wolverine.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,499.00', perks: [{ title: 'Juego Base', description: 'La historia definitiva de Wolverine.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,599.00", availability: "PS5" }
+      { store: "PlayStation Store", price: "$1,499.00", availability: "PS5" }
     ],
     breakdown: { jugabilidad: 9, gráficos: 9, historia: 9 },
     description: "Insomniac Games trae la historia definitiva de Logan con combate visceral y una narrativa intensa.",
@@ -706,17 +707,20 @@ export const mockGames = [
     image: "https://cdn.akamai.steamstatic.com/steam/apps/3764200/header.jpg",
     globalScore: 9.4,
     platforms: ["PS5", "Xbox Series X", "PC", "Nintendo Switch 2"],
-    price: 1499,
+    price: 1319,
     releaseDate: "2026-02-27",
     genre: "Survival Horror",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,499.00', perks: [{ title: 'Juego Base', description: 'Regresa a Raccoon City.' }] },
-      { id: 'dlx', name: 'Deluxe', price: '$1,699.00', perks: [{ title: 'Pack de Trajes', description: 'Cosméticos exclusivos.' }, { title: 'Armas Deluxe', description: 'Armas con skins especiales.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,319.00', perks: [{ title: 'Juego Base', description: 'Regresa a Raccoon City.' }] },
+      { id: 'dlx', name: 'Deluxe', price: '$1,507.00', perks: [{ title: 'Pack de Trajes', description: 'Cosméticos exclusivos.' }, { title: 'Armas Deluxe', description: 'Armas con skins especiales.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,499.00", availability: "PS5" },
-      { store: "Microsoft Store", price: "$1,499.00", availability: "Xbox Series X" },
-      { store: "Steam", price: "$1,399.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$1,225.00", availability: "PS5", editionName: "Estándar" },
+      { store: "PlayStation Store", price: "$1,507.00", availability: "PS5", editionName: "Deluxe" },
+      { store: "Microsoft Store", price: "$1,319.00", availability: "Xbox Series X", editionName: "Estándar" },
+      { store: "Microsoft Store", price: "$1,507.00", availability: "Xbox Series X", editionName: "Deluxe" },
+      { store: "Steam", price: "$1,399.00", availability: "PC", editionName: "Estándar" },
+      { store: "Steam", price: "$1,507.00", availability: "PC", editionName: "Deluxe" }
     ],
     breakdown: { jugabilidad: 9, gráficos: 10, historia: 9 },
     description: "El nono juego principal de Resident Evil. Leon y Grace regresan a Raccoon City 30 años después.",
@@ -742,15 +746,15 @@ export const mockGames = [
     image: "https://cdn.akamai.steamstatic.com/steam/apps/4115450/header.jpg",
     globalScore: 9.0,
     platforms: ["PS5", "PC"],
-    price: 1299,
+    price: 1099,
     releaseDate: "2026-10-29",
     genre: "Acción / RPG",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,299.00', perks: [{ title: 'Juego Base', description: 'Una aventura wuxia épica.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,099.00', perks: [{ title: 'Juego Base', description: 'Una aventura wuxia épica.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5" },
-      { store: "Steam", price: "$1,199.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$1,099.00", availability: "PS5" },
+      { store: "Steam", price: "$1,082.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 9, gráficos: 9, historia: 8 },
     description: "Un action RPG wuxia con combate ultra rápido ambientado en una China oscura y ficticia.",
@@ -772,15 +776,15 @@ export const mockGames = [
     image: "https://cdn.akamai.steamstatic.com/steam/apps/3681010/header.jpg",
     globalScore: 8.8,
     platforms: ["PS5", "PC"],
-    price: 1399,
+    price: 999,
     releaseDate: "2026-02-06",
     genre: "Acción / RPG",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Conquista la Crucible.' }] }
+      { id: 'std', name: 'Estándar', price: '$999.00', perks: [{ title: 'Juego Base', description: 'Conquista la Crucible.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
-      { store: "Steam", price: "$1,299.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$700.00", availability: "PS5" },
+      { store: "Steam", price: "$650.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 9, gráficos: 8, historia: 8 },
     description: "Team NINJA regresa con una nueva aventura de samurái oscuro en el Japón feudal.",
@@ -809,9 +813,12 @@ export const mockGames = [
       { id: 'ult', name: 'Ultimate', price: '$1,799.00', perks: [{ title: 'Pase de DLC', description: '2 expansiones futuras.' }, { title: 'Arte conceptual', description: 'Libro digital y banda sonora.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
-      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X" },
-      { store: "Steam", price: "$1,299.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5", editionName: "Estándar" },
+      { store: "PlayStation Store", price: "$1,799.00", availability: "PS5", editionName: "Ultimate" },
+      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X", editionName: "Estándar" },
+      { store: "Microsoft Store", price: "$1,799.00", availability: "Xbox Series X", editionName: "Ultimate" },
+      { store: "Steam", price: "$1,299.00", availability: "PC", editionName: "Estándar" },
+      { store: "Steam", price: "$1,599.00", availability: "PC", editionName: "Ultimate" }
     ],
     breakdown: { jugabilidad: 8, gráficos: 8, historia: 9 },
     description: "Obsidian regresa con la secuela de su RPG de ciencia ficción. Nuevas colonias, nuevas facciones, nuevas decisiones.",
@@ -832,15 +839,16 @@ export const mockGames = [
     image: "https://cdn.akamai.steamstatic.com/steam/apps/2622380/header.jpg",
     globalScore: 8.7,
     platforms: ["PS5", "PS4", "Xbox Series X", "PC"],
-    price: 899,
+    price: 829,
     releaseDate: "2025-05-30",
     genre: "Acción / Co-op",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$899.00', perks: [{ title: 'Juego Base', description: 'Supervive en Limveld con hasta 3 jugadores.' }] }
+      { id: 'std', name: 'Estándar', price: '$829.00', perks: [{ title: 'Juego Base', description: 'Supervive en Limveld con hasta 3 jugadores.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$899.00", availability: "PS5" },
-      { store: "Steam", price: "$799.00", availability: "PC" }
+      { store: "Microsoft Store", price: "$829.00", availability: "Xbox" },
+      { store: "PlayStation Store", price: "$849.00", availability: "PS5" },
+      { store: "Steam", price: "$700.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 9, gráficos: 8, historia: 7 },
     description: "Un spin-off co-op de FromSoftware que transforma Elden Ring en un juego de supervivencia cooperativo.",
@@ -862,16 +870,18 @@ export const mockGames = [
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg?t=1776465233",
     globalScore: 9.4,
     platforms: ["PS5", "PS4", "PC"],
-    price: 1399,
+    price: 999,
     releaseDate: "2022-11-09",
     genre: "Acción / Aventura",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'La conclusión de la saga nórdica.' }] },
+      { id: 'std', name: 'Estándar', price: '$999.00', perks: [{ title: 'Juego Base', description: 'La conclusión de la saga nórdica.' }] },
       { id: 'jtn', name: 'Jötnar Edition', price: '$2,499.00', perks: [{ title: 'Caja de acero', description: 'Estuche de colección.' }, { title: 'Anillo de Djupul', description: 'Réplica física.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
-      { store: "Steam", price: "$1,199.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$999.00", availability: "PS5", editionName: "Estándar" },
+      { store: "PlayStation Store", price: "$2,499.00", availability: "PS5", editionName: "Jötnar Edition" },
+      { store: "Steam", price: "$1,199.00", availability: "PC", editionName: "Estándar" },
+      { store: "Steam", price: "$2,499.00", availability: "PC", editionName: "Jötnar Edition" }
     ],
     breakdown: { jugabilidad: 10, gráficos: 10, historia: 10 },
     description: "Kratos y Atreus enfrentan el Ragnarök en la conclusión de la saga nórdica de Santa Monica Studio.",
@@ -901,8 +911,10 @@ export const mockGames = [
       { id: 'dlx', name: 'Digital Deluxe', price: '$1,599.00', perks: [{ title: 'Mascota Thestral', description: 'Montura exclusiva.' }, { title: 'Pack de batalla', description: 'Armas y armaduras oscuras.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5" },
-      { store: "Steam", price: "$1,199.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5", editionName: "Estándar" },
+      { store: "PlayStation Store", price: "$1,599.00", availability: "PS5", editionName: "Digital Deluxe" },
+      { store: "Steam", price: "$1,199.00", availability: "PC", editionName: "Estándar" },
+      { store: "Steam", price: "$1,499.00", availability: "PC", editionName: "Digital Deluxe" }
     ],
     breakdown: { jugabilidad: 8, gráficos: 9, historia: 8 },
     description: "Un RPG de mundo abierto ambientado en el universo de Harry Potter. Asiste a Hogwarts y forja tu propia leyenda.",
@@ -928,11 +940,11 @@ export const mockGames = [
     genre: "RPG / Ciencia Ficción",
     editions: [
       { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Explora el espacio profundo.' }] },
-      { id: 'cst', name: "Constellation Edition", price: '$2,499.00', perks: [{ title: 'Reproductor de vinilos', description: 'Banda sonora física.' }, { title: 'Art book', description: 'Libro de arte de 80 páginas.' }] }
+      { id: 'cst', name: "Constellation Edition", price: '$2,299.00', perks: [{ title: 'Reproductor de vinilos', description: 'Banda sonora física.' }, { title: 'Art book', description: 'Libro de arte de 80 páginas.' }] }
     ],
     marketPrices: [
-      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X" },
-      { store: "Steam", price: "$1,199.00", availability: "PC" }
+      { store: "Microsoft Store", price: "$1,699.00", availability: "Xbox Series X" },
+      { store: "Steam", price: "$875.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 7, gráficos: 8, historia: 7 },
     description: "El RPG espacial de Bethesda. Explora más de 1,000 planetas en una aventura épica por la galaxia.",
@@ -953,17 +965,17 @@ export const mockGames = [
     image: "https://cdn.akamai.steamstatic.com/steam/apps/2344520/header.jpg",
     globalScore: 8.3,
     platforms: ["PS5", "PS4", "Xbox Series X", "PC"],
-    price: 1399,
+    price: 999,
     releaseDate: "2023-06-06",
     genre: "ARPG / Hack and Slash",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'La oscuridad regresa a Sanctuary.' }] },
-      { id: 'ult', name: 'Ultimate Edition', price: '$1,899.00', perks: [{ title: 'Pase de Temporada', description: 'Acceso a 2 pases de batalla.' }, { title: 'Montura alada', description: 'Montura exclusiva de los cielos.' }] }
+      { id: 'std', name: 'Estándar', price: '$999.00', perks: [{ title: 'Juego Base', description: 'La oscuridad regresa a Sanctuary.' }] },
+      { id: 'ult', name: 'Ultimate Edition', price: '$1,599.00', perks: [{ title: 'Pase de Temporada', description: 'Acceso a 2 pases de batalla.' }, { title: 'Montura alada', description: 'Montura exclusiva de los cielos.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" },
-      { store: "Microsoft Store", price: "$1,399.00", availability: "Xbox Series X" },
-      { store: "Battle.net", price: "$1,399.00", availability: "PC" }
+      { store: "PlayStation Store", price: "$999.00", availability: "PS5" },
+      { store: "Microsoft Store", price: "$999.00", availability: "Xbox Series X" },
+      { store: "Battle.net", price: "$999.00", availability: "PC" }
     ],
     breakdown: { jugabilidad: 8, gráficos: 8, historia: 8 },
     description: "Lilith regresa. Diablo IV trae el mundo oscuro y gótico de Sanctuary de vuelta con combate adictivo.",
@@ -984,15 +996,16 @@ export const mockGames = [
     image: "https://upload.wikimedia.org/wikipedia/en/b/b2/Stellar_Blade_cover_art.jpg",
     globalScore: 8.2,
     platforms: ["PS5"],
-    price: 1399,
+    price: 1029,
     releaseDate: "2024-04-26",
     genre: "Acción / RPG",
     editions: [
-      { id: 'std', name: 'Estándar', price: '$1,399.00', perks: [{ title: 'Juego Base', description: 'Sobrevive en la Tierra abandonada.' }] },
-      { id: 'dlx', name: 'Digital Deluxe', price: '$1,599.00', perks: [{ title: 'Traje de emperatriz', description: 'Skin exclusiva para Eve.' }, { title: 'Gafas de sol', description: 'Accesorio cosmético.' }] }
+      { id: 'std', name: 'Estándar', price: '$1,029.00', perks: [{ title: 'Juego Base', description: 'Sobrevive en la Tierra abandonada.' }] },
+      { id: 'dlx', name: 'Digital Deluxe', price: '$1,299.00', perks: [{ title: 'Traje de emperatriz', description: 'Skin exclusiva para Eve.' }, { title: 'Gafas de sol', description: 'Accesorio cosmético.' }] }
     ],
     marketPrices: [
-      { store: "PlayStation Store", price: "$1,399.00", availability: "PS5" }
+      { store: "PlayStation Store", price: "$1,029.00", availability: "PS5", editionName: "Estándar" },
+      { store: "PlayStation Store", price: "$1,299.00", availability: "PS5", editionName: "Digital Deluxe" }
     ],
     breakdown: { jugabilidad: 8, gráficos: 9, historia: 7 },
     description: "Un action RPG de Shift Up con combate precioso y una protagonist que lucha contra alienígenas en una Tierra post-apocalíptica.",

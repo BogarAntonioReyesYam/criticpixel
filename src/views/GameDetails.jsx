@@ -107,8 +107,10 @@ const GameDetails = () => {
         marketPrices: marketData?.map(m => ({
           store: m.store,
           price: new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(m.price),
+          rawPrice: m.price,
           availability: m.platform,
-          url: m.store_url
+          url: m.store_url,
+          editionName: m.edition_name || 'Standard'
         })) || []
       };
 
@@ -126,7 +128,10 @@ const GameDetails = () => {
         fullGame.languages = mockFallback.languages;
       }
       if ((!fullGame.marketPrices || fullGame.marketPrices.length === 0) && mockFallback?.marketPrices) {
-        fullGame.marketPrices = mockFallback.marketPrices;
+        fullGame.marketPrices = mockFallback.marketPrices.map(m => ({
+          ...m,
+          editionName: m.editionName || 'Standard'
+        }));
       }
 
       setGame(fullGame);
@@ -151,6 +156,20 @@ const GameDetails = () => {
       .filter(g => g.id !== game.id && g.platforms?.some(p => game.platforms?.includes(p)))
       .slice(0, 4);
   }, [game]);
+
+  const selectedEditionName = game?.editions?.find(e => e.id === selectedEditionId)?.name || game?.editions?.[0]?.name || 'Standard';
+
+  const filteredMarketPrices = useMemo(() => {
+    console.log('=== FILTER DEBUG ===');
+    console.log('selectedEditionId:', selectedEditionId, typeof selectedEditionId);
+    console.log('selectedEditionName:', selectedEditionName);
+    console.log('all marketPrices:', game?.marketPrices?.map(m => ({ name: m.name, editionName: m.editionName })));
+    
+    if (!game?.marketPrices) return [];
+    const filtered = game.marketPrices.filter(m => m.editionName === selectedEditionName);
+    console.log('filtered result:', filtered.length, 'items');
+    return filtered;
+  }, [game, selectedEditionName, selectedEditionId]);
 
   if (isLoading) {
     return <GameDetailsSkeleton />;
@@ -445,32 +464,34 @@ const GameDetails = () => {
             </section>
 
             {/* Mercado */}
-            {game.marketPrices && game.marketPrices.length > 0 && (
+            {filteredMarketPrices && filteredMarketPrices.length > 0 && (
               <section className="space-y-5">
                 <div className="flex items-center gap-2 text-xl font-bold uppercase italic tracking-widest border-b border-white/5 pb-4">
                   <ShoppingBag className="text-gamingOrange" />
-                  Valor del Mercado
+                  Valor del Mercado - {selectedEditionName}
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {game.marketPrices.map((market, idx) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {filteredMarketPrices.map((market, idx) => (
                     <a
                       key={idx}
                       href={market.url || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gamingCard border border-white/5 p-5 rounded-xl flex justify-between items-center hover:bg-white/5 hover:border-gamingOrange/50 transition-all group shadow-lg"
+                      className="group bg-gamingCard border border-white/5 p-5 rounded-2xl hover:border-gamingOrange/50 transition-all duration-300 shadow-lg hover:shadow-gamingOrange/5"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="bg-gamingOrange/10 p-2.5 rounded-lg group-hover:bg-gamingOrange/20 transition-colors">
-                          <ExternalLink className="w-5 h-5 text-gamingOrange" />
+                        <div className="bg-gamingOrange/10 p-2 rounded-lg mt-1 group-hover:bg-gamingOrange/20 transition-colors">
+                          <ExternalLink className="text-gamingOrange w-5 h-5" />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <div className="text-[10px] font-black text-gray-500 uppercase mb-0.5 tracking-widest">{market.availability}</div>
-                          <div className="font-black text-lg group-hover:text-gamingOrange transition-colors uppercase italic">{market.store}</div>
+                          <h5 className="font-black text-white uppercase tracking-tight text-lg group-hover:text-gamingOrange transition-colors">
+                            {market.store}
+                          </h5>
                         </div>
-                      </div>
-                      <div className="text-2xl font-black text-gamingOrange">
-                        {market.price}
+                        <div className="text-2xl font-black text-gamingOrange">
+                          {market.price}
+                        </div>
                       </div>
                     </a>
                   ))}

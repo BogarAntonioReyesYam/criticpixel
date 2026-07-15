@@ -16,7 +16,7 @@ const UserStats = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { theme } = useTheme();
   const isLight = theme === 'light';
-  const { items: wishlistItems } = useWishlist();
+  const { wishlistIds } = useWishlist();
 
   useState(() => {
     const fetchGames = async () => {
@@ -51,7 +51,7 @@ const UserStats = () => {
       });
       return acc;
     }, {});
-    const wishlistCount = wishlistItems?.length || 0;
+    const wishlistCount = wishlistIds?.length || 0;
 
     return {
       totalGames,
@@ -61,7 +61,7 @@ const UserStats = () => {
       gamesByPlatform,
       wishlistCount,
     };
-  }, [games, wishlistItems]);
+  }, [games, wishlistIds]);
 
   const statCards = [
     { label: 'Juegos en Catálogo', value: stats.totalGames, icon: <Gamepad2 className="w-5 h-5" />, color: 'text-blue-500' },

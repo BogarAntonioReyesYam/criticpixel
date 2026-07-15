@@ -3,7 +3,8 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { GameGridSkeleton } from './components/Skeletons';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const Home = lazy(() => import('./views/Home'));
 const GameDetails = lazy(() => import('./views/GameDetails'));
@@ -16,6 +17,7 @@ const BuyingGuide = lazy(() => import('./views/BuyingGuide'));
 const UserStats = lazy(() => import('./views/UserStats'));
 const TrailersPage = lazy(() => import('./views/TrailersPage'));
 const PriceAdmin = lazy(() => import('./views/PriceAdmin'));
+const LoginPage = lazy(() => import('./views/LoginPage'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -55,27 +57,34 @@ function App() {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-gamingBg text-gamingText">
-      <Navbar searchQuery={searchQuery} onSearch={handleSearch} />
-      <AnimatePresence mode="wait">
-        <Suspense fallback={<PageFallback />}>
-          <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
-          <Route path="/game/:id" element={<PageTransition><GameDetails /></PageTransition>} />
-          <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
-          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-          <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
-          <Route path="/rankings" element={<PageTransition><Rankings /></PageTransition>} />
-          <Route path="/releases" element={<PageTransition><ReleasesCalendar /></PageTransition>} />
-          <Route path="/guides" element={<PageTransition><BuyingGuide /></PageTransition>} />
-          <Route path="/stats" element={<PageTransition><UserStats /></PageTransition>} />
-          <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
-          <Route path="/admin/prices" element={<PageTransition><PriceAdmin /></PageTransition>} />
-        </Routes>
-        </Suspense>
-      </AnimatePresence>
-      <Footer />
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen bg-gamingBg text-gamingText">
+        <Navbar searchQuery={searchQuery} onSearch={handleSearch} />
+        <AnimatePresence mode="wait">
+          <Suspense fallback={<PageFallback />}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
+              <Route path="/game/:id" element={<PageTransition><GameDetails /></PageTransition>} />
+              <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+              <Route path="/rankings" element={<PageTransition><Rankings /></PageTransition>} />
+              <Route path="/releases" element={<PageTransition><ReleasesCalendar /></PageTransition>} />
+              <Route path="/guides" element={<PageTransition><BuyingGuide /></PageTransition>} />
+              <Route path="/stats" element={<PageTransition><UserStats /></PageTransition>} />
+              <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
+              <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
+              <Route path="/admin/prices" element={
+                <ProtectedRoute requireAdmin>
+                  <PageTransition><PriceAdmin /></PageTransition>
+                </ProtectedRoute>
+              } />
+            </Routes>
+          </Suspense>
+        </AnimatePresence>
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 

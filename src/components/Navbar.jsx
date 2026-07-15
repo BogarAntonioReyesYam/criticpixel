@@ -1,15 +1,30 @@
-import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, BarChart3, BookOpen, Film } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, BarChart3, BookOpen, Film, LogOut, Shield, Settings } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useWishlist } from '../context/WishlistContext';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = ({ searchQuery, onSearch }) => {
   const [localQuery, setLocalQuery] = useState(searchQuery || '');
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const inputRef = useRef(null);
   const debounceRef = useRef(null);
+  const menuRef = useRef(null);
   const { count } = useWishlist();
   const { theme, toggleTheme } = useTheme();
+  const { user, profile, isAdmin, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setShowUserMenu(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const debouncedSearch = useCallback((val) => {
     clearTimeout(debounceRef.current);
@@ -154,9 +169,73 @@ const Navbar = ({ searchQuery, onSearch }) => {
               </span>
             )}
           </Link>
-          <button className={`p-2 hover:bg-white/5 rounded-full transition-colors ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}>
-            <User className={`w-6 h-6 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
-          </button>
+          <div className="relative" ref={menuRef}>
+            {user ? (
+              <>
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className={`p-2 hover:bg-white/5 rounded-full transition-colors flex items-center gap-2 ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
+                >
+                  <div className="w-7 h-7 rounded-full bg-gamingOrange/20 flex items-center justify-center">
+                    <span className="text-xs font-bold text-gamingOrange">
+                      {(profile?.display_name || user.email)?.[0]?.toUpperCase()}
+                    </span>
+                  </div>
+                </button>
+                {showUserMenu && (
+                  <div className="absolute right-0 top-full mt-2 w-56 bg-gamingCard border border-white/10 rounded-xl shadow-2xl py-2 z-50">
+                    <div className="px-4 py-2 border-b border-white/10">
+                      <p className="font-bold text-white text-sm truncate">{profile?.display_name || 'Usuario'}</p>
+                      <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                    </div>
+                    <Link
+                      to="/stats"
+                      onClick={() => setShowUserMenu(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <User className="w-4 h-4" />
+                      Mi perfil
+                    </Link>
+                    <Link
+                      to="/wishlist"
+                      onClick={() => setShowUserMenu(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Heart className="w-4 h-4" />
+                      Mi lista de deseos
+                    </Link>
+                    {isAdmin && (
+                      <Link
+                        to="/admin/prices"
+                        onClick={() => setShowUserMenu(false)}
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gamingOrange hover:bg-gamingOrange/10 transition-colors"
+                      >
+                        <Shield className="w-4 h-4" />
+                        Admin de Precios
+                      </Link>
+                    )}
+                    <div className="border-t border-white/10 mt-1 pt-1">
+                      <button
+                        onClick={() => { signOut(); setShowUserMenu(false); navigate('/'); }}
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors w-full"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Cerrar sesión
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className={`p-2 hover:bg-white/5 rounded-full transition-colors ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
+                title="Iniciar sesión"
+              >
+                <User className={`w-6 h-6 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </nav>

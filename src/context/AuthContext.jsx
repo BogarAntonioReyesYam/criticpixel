@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
       else setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
       if (session?.user) loadProfile(session.user.id);
       else {
@@ -97,7 +97,7 @@ export function AuthProvider({ children }) {
     return supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/#/`,
+        redirectTo: window.location.origin,
       },
     });
   }

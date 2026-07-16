@@ -18,6 +18,7 @@ const TrailersPage = lazy(() => import('./views/TrailersPage'));
 const PriceAdmin = lazy(() => import('./views/PriceAdmin'));
 const LoginPage = lazy(() => import('./views/LoginPage'));
 const ProfilePage = lazy(() => import('./views/ProfilePage'));
+const AuthCallback = lazy(() => import('./views/AuthCallback'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -74,6 +75,7 @@ function App() {
             <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
             <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
             <Route path="/profile" element={<PageTransition><ProfilePage /></PageTransition>} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="*" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
             <Route path="/admin/prices" element={
               <ProtectedRoute requireAdmin>

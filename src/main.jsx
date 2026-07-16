@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { ToastProvider } from './context/ToastContext'
 import { AuthProvider } from './context/AuthContext'
+import { NotificationProvider } from './context/NotificationContext'
 import { WishlistProvider } from './context/WishlistContext'
 import App from './App'
 import './index.css'
@@ -16,9 +17,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ThemeProvider>
         <ToastProvider>
           <AuthProvider>
-            <WishlistProvider>
-              <App />
-            </WishlistProvider>
+            <NotificationProvider>
+              <WishlistProvider>
+                <App />
+              </WishlistProvider>
+            </NotificationProvider>
           </AuthProvider>
         </ToastProvider>
       </ThemeProvider>

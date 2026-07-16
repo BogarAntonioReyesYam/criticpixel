@@ -25,8 +25,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className={`text-xs font-bold uppercase tracking-widest ${isLight ? 'text-gray-400' : 'text-gamingMuted'}`}>Navegacion</h4>
             <nav className="flex flex-col gap-2">
-              {['Catálogo', 'Rankings', 'Blog & Noticias', 'Mi Lista de Deseados', 'Calendario', 'Guías', 'Tráilers', 'Estadísticas', 'Acerca de'].map((item, i) => {
-                const paths = ['/', '/rankings', '/blog', '/wishlist', '/releases', '/guides', '/trailers', '/stats', '/about'];
+              {['Todos los Juegos', 'Catálogo', 'Rankings', 'Blog & Noticias', 'Mi Lista de Deseados', 'Calendario', 'Guías', 'Tráilers', 'Estadísticas', 'Acerca de'].map((item, i) => {
+                const paths = ['/games', '/', '/rankings', '/blog', '/wishlist', '/releases', '/guides', '/trailers', '/stats', '/about'];
                 return (
                   <Link key={item} to={paths[i]} className={`text-sm transition-colors hover:text-gamingOrange ${isLight ? 'text-gray-500' : 'text-gamingMuted'}`}>
                     {item}

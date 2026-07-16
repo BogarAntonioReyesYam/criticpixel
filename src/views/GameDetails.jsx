@@ -8,6 +8,7 @@ import GameCard from '../components/GameCard';
 import ShareButtons from '../components/ShareButtons';
 import EditionCompare from '../components/EditionCompare';
 import PriceAlert from '../components/PriceAlert';
+import ReviewForm from '../components/ReviewForm';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
 import { GameDetailsSkeleton } from '../components/Skeletons';
@@ -510,6 +511,8 @@ const GameDetails = () => {
                   </span>
                 )}
               </div>
+
+              <ReviewForm gameId={id} onReviewAdded={() => window.location.reload()} />
 
               <div className="space-y-4">
                 {game.reviews && game.reviews.length > 0 ? (

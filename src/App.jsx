@@ -19,6 +19,9 @@ const PriceAdmin = lazy(() => import('./views/PriceAdmin'));
 const LoginPage = lazy(() => import('./views/LoginPage'));
 const ProfilePage = lazy(() => import('./views/ProfilePage'));
 const AuthCallback = lazy(() => import('./views/AuthCallback'));
+const AllGames = lazy(() => import('./views/AllGames'));
+const SearchResults = lazy(() => import('./views/SearchResults'));
+const AdminDashboard = lazy(() => import('./views/AdminDashboard'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -54,7 +57,7 @@ function App() {
 
   const handleSearch = useCallback((q) => {
     setSearchQuery(q);
-    if (q) navigate('/');
+    if (q) navigate('/search?q=' + encodeURIComponent(q));
   }, [navigate]);
 
   return (
@@ -64,6 +67,7 @@ function App() {
         <Suspense fallback={<PageFallback />}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
+            <Route path="/games" element={<PageTransition><AllGames /></PageTransition>} />
             <Route path="/game/:id" element={<PageTransition><GameDetails /></PageTransition>} />
             <Route path="/wishlist" element={<PageTransition><Wishlist /></PageTransition>} />
             <Route path="/about" element={<PageTransition><About /></PageTransition>} />
@@ -75,13 +79,19 @@ function App() {
             <Route path="/trailers" element={<PageTransition><TrailersPage /></PageTransition>} />
             <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
             <Route path="/profile" element={<PageTransition><ProfilePage /></PageTransition>} />
+            <Route path="/search" element={<PageTransition><SearchResults /></PageTransition>} />
             <Route path="/auth/callback" element={<AuthCallback />} />
-            <Route path="*" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
+            <Route path="/admin" element={
+              <ProtectedRoute requireAdmin>
+                <PageTransition><AdminDashboard /></PageTransition>
+              </ProtectedRoute>
+            } />
             <Route path="/admin/prices" element={
               <ProtectedRoute requireAdmin>
                 <PageTransition><PriceAdmin /></PageTransition>
               </ProtectedRoute>
             } />
+            <Route path="*" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
           </Routes>
         </Suspense>
       </AnimatePresence>

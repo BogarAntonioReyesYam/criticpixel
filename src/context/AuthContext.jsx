@@ -10,14 +10,12 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log('[Auth] getSession:', session?.user?.email ?? 'no session');
       setUser(session?.user ?? null);
       if (session?.user) loadProfile(session.user.id);
       else setLoading(false);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('[Auth] onAuthStateChange:', event, session?.user?.email ?? 'no session');
       setUser(session?.user ?? null);
       if (session?.user) loadProfile(session.user.id);
       else {

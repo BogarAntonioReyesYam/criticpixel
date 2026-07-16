@@ -7,30 +7,24 @@ export default function AuthCallback() {
   const [status, setStatus] = useState('Procesando autenticación...');
 
   useEffect(() => {
-    console.log('[AuthCallback] Mounted, URL:', window.location.href);
     const handleCallback = async () => {
       try {
         const { data: { session }, error } = await supabase.auth.getSession();
-        console.log('[AuthCallback] session:', session, 'error:', error);
 
         if (error) {
-          console.error('[AuthCallback] Session error:', error);
-          setStatus(`Error: ${error.message}. Redirigiendo...`);
-          setTimeout(() => navigate('/login', { replace: true }), 3000);
+          setStatus('Error al obtener sesión. Redirigiendo...');
+          setTimeout(() => navigate('/login', { replace: true }), 2000);
           return;
         }
 
         if (session) {
-          console.log('[AuthCallback] Session found, redirecting to /');
           navigate('/', { replace: true });
         } else {
-          console.log('[AuthCallback] No session, redirecting to /login');
           navigate('/login', { replace: true });
         }
       } catch (err) {
-        console.error('[AuthCallback] Unexpected error:', err);
-        setStatus(`Error inesperado: ${err.message}. Redirigiendo...`);
-        setTimeout(() => navigate('/login', { replace: true }), 3000);
+        setStatus('Error inesperado. Redirigiendo...');
+        setTimeout(() => navigate('/login', { replace: true }), 2000);
       }
     };
 

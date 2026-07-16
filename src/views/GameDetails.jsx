@@ -9,10 +9,13 @@ import ShareButtons from '../components/ShareButtons';
 import EditionCompare from '../components/EditionCompare';
 import PriceAlert from '../components/PriceAlert';
 import ReviewForm from '../components/ReviewForm';
+import ReviewVotes from '../components/ReviewVotes';
+import PriceHistory from '../components/PriceHistory';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
 import { GameDetailsSkeleton } from '../components/Skeletons';
 import useSEO from '../hooks/useSEO';
+import usePageView from '../hooks/usePageView';
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -29,6 +32,8 @@ const GameDetails = () => {
     title: game?.title || 'Cargando...',
     description: game?.description || 'Reseña detallada del juego en PixelVerdict.'
   });
+
+  usePageView(id);
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -420,6 +425,9 @@ const GameDetails = () => {
                 </div>
               </div>
             </div>
+
+            {/* Historial de Precios */}
+            <PriceHistory gameId={parseInt(id)} />
           </div>
 
           {/* Columna Derecha */}
@@ -542,6 +550,13 @@ const GameDetails = () => {
                           </div>
                         </div>
                         <p className="text-gray-300 italic leading-relaxed">"{review.text}"</p>
+                        <div className="mt-4 pt-4 border-t border-white/5">
+                          <ReviewVotes
+                            reviewId={review.id}
+                            likesCount={review.likes_count || 0}
+                            dislikesCount={review.dislikes_count || 0}
+                          />
+                        </div>
                       </div>
                     ))}
                     {game.reviews.length > 3 && (

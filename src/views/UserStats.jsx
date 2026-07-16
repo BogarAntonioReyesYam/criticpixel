@@ -5,6 +5,7 @@ import { useWishlist } from '../context/WishlistContext';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
+import Achievements from '../components/Achievements';
 import useSEO from '../hooks/useSEO';
 
 const UserStats = () => {
@@ -140,6 +141,16 @@ const UserStats = () => {
               </div>
             ))}
         </div>
+      </motion.div>
+
+      {/* Achievements */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className={`rounded-2xl border p-6 mb-10 ${isLight ? 'bg-white border-gray-200' : 'bg-gamingCard/50 border-white/10'}`}
+      >
+        <Achievements />
       </motion.div>
 
       {/* Quick Actions */}

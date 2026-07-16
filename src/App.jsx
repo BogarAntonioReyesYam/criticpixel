@@ -22,6 +22,9 @@ const AuthCallback = lazy(() => import('./views/AuthCallback'));
 const AllGames = lazy(() => import('./views/AllGames'));
 const SearchResults = lazy(() => import('./views/SearchResults'));
 const AdminDashboard = lazy(() => import('./views/AdminDashboard'));
+const GameCrud = lazy(() => import('./views/GameCrud'));
+const UserManagement = lazy(() => import('./views/UserManagement'));
+const Analytics = lazy(() => import('./views/Analytics'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -86,9 +89,24 @@ function App() {
                 <PageTransition><AdminDashboard /></PageTransition>
               </ProtectedRoute>
             } />
+            <Route path="/admin/games" element={
+              <ProtectedRoute requireAdmin>
+                <PageTransition><GameCrud /></PageTransition>
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/users" element={
+              <ProtectedRoute requireAdmin>
+                <PageTransition><UserManagement /></PageTransition>
+              </ProtectedRoute>
+            } />
             <Route path="/admin/prices" element={
               <ProtectedRoute requireAdmin>
                 <PageTransition><PriceAdmin /></PageTransition>
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/analytics" element={
+              <ProtectedRoute requireAdmin>
+                <PageTransition><Analytics /></PageTransition>
               </ProtectedRoute>
             } />
             <Route path="*" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />

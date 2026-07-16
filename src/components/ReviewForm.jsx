@@ -35,6 +35,36 @@ const ReviewForm = ({ gameId, onReviewAdded }) => {
 
       if (error) throw error;
 
+      // Check and award achievements
+      const { count: reviewCount } = await supabase
+        .from('reviews')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', user.id);
+
+      const achievementChecks = [
+        { key: 'first_review', condition: reviewCount >= 1 },
+        { key: 'five_reviews', condition: reviewCount >= 5 },
+        { key: 'ten_reviews', condition: reviewCount >= 10 },
+        { key: 'twenty_five_reviews', condition: reviewCount >= 25 },
+      ];
+
+      for (const check of achievementChecks) {
+        if (check.condition) {
+          const { data: achievement } = await supabase
+            .from('achievements')
+            .select('id')
+            .eq('key', check.key)
+            .single();
+
+          if (achievement) {
+            await supabase.from('user_achievements').upsert({
+              user_id: user.id,
+              achievement_id: achievement.id,
+            }, { onConflict: 'user_id,achievement_id' });
+          }
+        }
+      }
+
       addToast('¡Reseña publicada!', 'success');
       setIsOpen(false);
       setScore(0);

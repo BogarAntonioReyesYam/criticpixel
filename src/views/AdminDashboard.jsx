@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, MessageSquare, Heart, Gamepad2, TrendingUp, ArrowLeft, Shield } from 'lucide-react';
+import { Users, MessageSquare, Heart, Gamepad2, TrendingUp, ArrowLeft, Shield, BarChart3, Settings, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import useSEO from '../hooks/useSEO';
@@ -156,35 +156,33 @@ const AdminDashboard = () => {
               Acciones Rápidas
             </h3>
           </div>
-          <div className="p-4 space-y-3">
-            <Link
-              to="/admin/prices"
-              className="flex items-center gap-3 p-4 rounded-xl bg-gamingOrange/10 border border-gamingOrange/20 hover:bg-gamingOrange/20 transition-colors"
-            >
+          <div className="p-4 space-y-2">
+            <Link to="/admin/games" className="flex items-center gap-3 p-3 rounded-xl bg-gamingOrange/10 border border-gamingOrange/20 hover:bg-gamingOrange/20 transition-colors">
+              <span className="text-lg">🎮</span>
+              <div>
+                <p className="font-bold text-white text-sm">Gestionar Juegos</p>
+                <p className="text-xs text-gray-500">Crear, editar, eliminar juegos</p>
+              </div>
+            </Link>
+            <Link to="/admin/users" className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-lg">👥</span>
+              <div>
+                <p className="font-bold text-white text-sm">Gestionar Usuarios</p>
+                <p className="text-xs text-gray-500">Roles, baneos, perfil</p>
+              </div>
+            </Link>
+            <Link to="/admin/prices" className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
               <span className="text-lg">💰</span>
               <div>
                 <p className="font-bold text-white text-sm">Administrar Precios</p>
                 <p className="text-xs text-gray-500">Gestiona precios del mercado</p>
               </div>
             </Link>
-            <Link
-              to="/games"
-              className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-            >
-              <span className="text-lg">🎮</span>
-              <div>
-                <p className="font-bold text-white text-sm">Ver Catálogo</p>
-                <p className="text-xs text-gray-500">Explora todos los juegos</p>
-              </div>
-            </Link>
-            <Link
-              to="/stats"
-              className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-            >
+            <Link to="/admin/analytics" className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
               <span className="text-lg">📊</span>
               <div>
-                <p className="font-bold text-white text-sm">Estadísticas</p>
-                <p className="text-xs text-gray-500">Métricas de tu perfil</p>
+                <p className="font-bold text-white text-sm">Analytics</p>
+                <p className="text-xs text-gray-500">Gráficas de tráfico</p>
               </div>
             </Link>
           </div>

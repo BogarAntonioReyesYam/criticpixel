@@ -224,8 +224,8 @@ const GameDetails = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{ backgroundImage: `url(${game.image})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
 
         <div className="relative h-full max-w-7xl mx-auto px-4 flex items-end pb-12">
           <div className="flex items-end gap-8 w-full">
@@ -268,11 +268,11 @@ const GameDetails = () => {
                 ))}
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-none mb-4 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-none mb-4" style={{ color: '#ffffff', textShadow: '0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.5)' }}>
                 {game.title}
               </h1>
 
-              <p className="text-lg text-white/80 leading-relaxed max-w-2xl drop-shadow-lg">
+              <p className="text-lg leading-relaxed max-w-2xl" style={{ color: 'rgba(255,255,255,0.85)', textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>
                 {game.description}
               </p>
             </div>

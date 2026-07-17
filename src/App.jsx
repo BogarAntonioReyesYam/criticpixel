@@ -32,6 +32,7 @@ const Articles = lazy(() => import('./views/Articles'));
 const Guides = lazy(() => import('./views/Guides'));
 const Screenshots = lazy(() => import('./views/Screenshots'));
 const LeaderboardPage = lazy(() => import('./views/LeaderboardPage'));
+const Forum = lazy(() => import('./views/Forum'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -117,6 +118,7 @@ function App() {
               </ProtectedRoute>
             } />
             <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
+            <Route path="/forum" element={<PageTransition><Forum /></PageTransition>} />
             <Route path="/forum/:id" element={<PageTransition><ForumThread /></PageTransition>} />
             <Route path="/groups" element={<PageTransition><Groups /></PageTransition>} />
             <Route path="/groups/:slug" element={<PageTransition><Groups /></PageTransition>} />

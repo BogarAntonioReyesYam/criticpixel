@@ -179,19 +179,19 @@ DO $$
 DECLARE
   v_user_id UUID;
   v_game_title TEXT;
-  v_game_slug TEXT;
+  v_game_id_text TEXT;
 BEGIN
   SELECT id INTO v_user_id FROM profiles LIMIT 1;
-  SELECT title, slug INTO v_game_title, v_game_slug FROM games LIMIT 1;
+  SELECT title, id::TEXT INTO v_game_title, v_game_id_text FROM games LIMIT 1;
 
   IF v_user_id IS NOT NULL THEN
     INSERT INTO activity_feed (user_id, action, target_type, target_id, metadata) VALUES
-      (v_user_id, 'review', 'game', v_game_slug, jsonb_build_object('game_title', v_game_title, 'game_slug', v_game_slug, 'score', 9.5)),
-      (v_user_id, 'wishlist', 'game', v_game_slug, jsonb_build_object('game_title', v_game_title, 'game_slug', v_game_slug)),
+      (v_user_id, 'review', 'game', v_game_id_text, jsonb_build_object('game_title', v_game_title, 'game_slug', v_game_id_text, 'score', 9.5)),
+      (v_user_id, 'wishlist', 'game', v_game_id_text, jsonb_build_object('game_title', v_game_title, 'game_slug', v_game_id_text)),
       (v_user_id, 'forum_post', 'thread', 'test', jsonb_build_object('thread_title', '¿Cuál es el mejor build para el boss final?')),
       (v_user_id, 'guide', 'guide', 'test', jsonb_build_object('guide_title', 'Guía completa de coleccionables')),
       (v_user_id, 'screenshot', 'screenshot', 'test', jsonb_build_object('caption', 'Mi setup para jugar')),
       (v_user_id, 'achievement', 'achievement', 'first_review', jsonb_build_object('achievement_name', 'Primera Reseña')),
-      (v_user_id, 'review', 'game', v_game_slug, jsonb_build_object('game_title', v_game_title, 'game_slug', v_game_slug, 'score', 7.0));
+      (v_user_id, 'review', 'game', v_game_id_text, jsonb_build_object('game_title', v_game_title, 'game_slug', v_game_id_text, 'score', 7.0));
   END IF;
 END $$;

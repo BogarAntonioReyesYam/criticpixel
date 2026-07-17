@@ -645,7 +645,7 @@ export const mockGames = [
   {
     id: 50,
     title: "Ghost of Yōtei",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202406/0500/hmHFXPRB1720172919742.jpg",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202504/2116/050bb77f895515e0b0e906b0b9d75b6174b37eece097b462.png",
     globalScore: 9.2,
     platforms: ["PS5"],
     price: 1499,

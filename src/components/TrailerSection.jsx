@@ -25,7 +25,7 @@ const TrailerSection = ({ games }) => {
         </h2>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-carousel">
         {gamesWithTrailers.slice(0, 6).map((game, i) => (
           <Link
             key={game.id}

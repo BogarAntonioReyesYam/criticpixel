@@ -48,6 +48,19 @@ body {
 .light .shadow-2xl { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 .light .shadow-xl { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
 
+/* Dark mode scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.3); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,107,0,0.5); }
+
+/* Light mode scrollbars */
 .light ::-webkit-scrollbar-track { background: #f3f4f6; }
-.light ::-webkit-scrollbar-thumb { background: #d1d5db; }
+.light ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 999px; }
 .light ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Carousel horizontal scrollbar — thin + styled */
+.scrollbar-carousel::-webkit-scrollbar { height: 6px; }
+.scrollbar-carousel::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 999px; }
+.scrollbar-carousel::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.4); border-radius: 999px; }
+.scrollbar-carousel::-webkit-scrollbar-thumb:hover { background: rgba(255,107,0,0.7); }

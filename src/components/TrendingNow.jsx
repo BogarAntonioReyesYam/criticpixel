@@ -35,7 +35,7 @@ const TrendingNow = ({ games }) => {
         <div className="flex-1 h-px bg-gradient-to-r from-gamingOrange/30 to-transparent ml-2" />
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-carousel">
         {trending.map((game, i) => {
           const isTop3 = i < 3;
           const style = isTop3 ? rankStyles[i] : null;

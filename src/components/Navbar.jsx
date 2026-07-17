@@ -1,4 +1,4 @@
-import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, BarChart3, BookOpen, Film, LogOut, Shield, Settings, Bell, Menu, ChevronRight } from 'lucide-react';
+import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, BarChart3, BookOpen, Film, LogOut, Shield, Settings, Bell, Menu, ChevronRight, Users } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useWishlist } from '../context/WishlistContext';
@@ -73,6 +73,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
 
   const navLinks = [
     { to: '/games', label: 'Juegos', icon: Gamepad2 },
+    { to: '/community', label: 'Comunidad', icon: Users },
     { to: '/rankings', label: 'Rankings', icon: Trophy },
     { to: '/blog', label: 'Blog', icon: Newspaper },
     { to: '/releases', label: 'Calendario', icon: Calendar },

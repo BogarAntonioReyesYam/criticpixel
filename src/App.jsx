@@ -25,6 +25,13 @@ const AdminDashboard = lazy(() => import('./views/AdminDashboard'));
 const GameCrud = lazy(() => import('./views/GameCrud'));
 const UserManagement = lazy(() => import('./views/UserManagement'));
 const Analytics = lazy(() => import('./views/Analytics'));
+const Community = lazy(() => import('./views/Community'));
+const ForumThread = lazy(() => import('./views/ForumThread'));
+const Groups = lazy(() => import('./views/Groups'));
+const Articles = lazy(() => import('./views/Articles'));
+const Guides = lazy(() => import('./views/Guides'));
+const Screenshots = lazy(() => import('./views/Screenshots'));
+const LeaderboardPage = lazy(() => import('./views/LeaderboardPage'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -109,6 +116,16 @@ function App() {
                 <PageTransition><Analytics /></PageTransition>
               </ProtectedRoute>
             } />
+            <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
+            <Route path="/forum/:id" element={<PageTransition><ForumThread /></PageTransition>} />
+            <Route path="/groups" element={<PageTransition><Groups /></PageTransition>} />
+            <Route path="/groups/:slug" element={<PageTransition><Groups /></PageTransition>} />
+            <Route path="/articles" element={<PageTransition><Articles /></PageTransition>} />
+            <Route path="/articles/:slug" element={<PageTransition><Articles /></PageTransition>} />
+            <Route path="/community-guides" element={<PageTransition><Guides /></PageTransition>} />
+            <Route path="/guides/:slug" element={<PageTransition><Guides /></PageTransition>} />
+            <Route path="/screenshots" element={<PageTransition><Screenshots /></PageTransition>} />
+            <Route path="/leaderboard" element={<PageTransition><LeaderboardPage /></PageTransition>} />
             <Route path="*" element={<PageTransition><Home searchQuery={searchQuery} /></PageTransition>} />
           </Routes>
         </Suspense>

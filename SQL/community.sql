@@ -3,6 +3,10 @@
 -- Ejecutar en Supabase SQL Editor
 -- ============================================================
 
+-- Asegurar que reviews tenga las columnas necesarias
+ALTER TABLE reviews ADD COLUMN IF NOT EXISTS likes_count INTEGER DEFAULT 0;
+ALTER TABLE reviews ADD COLUMN IF NOT EXISTS dislikes_count INTEGER DEFAULT 0;
+
 -- ============================================================
 -- 1. FORO DE DISCUSIÓN POR JUEGO
 -- ============================================================
@@ -465,7 +469,6 @@ SELECT
   (SELECT COUNT(*) FROM follows WHERE following_id = p.id) AS followers,
   (SELECT COUNT(*) FROM follows WHERE follower_id = p.id) AS following,
   (SELECT COUNT(*) FROM reviews WHERE user_id = p.id) AS total_reviews,
-  (SELECT COALESCE(SUM(r.likes_count), 0) FROM reviews r WHERE r.user_id = p.id) AS total_likes,
   (SELECT COUNT(*) FROM user_achievements WHERE user_id = p.id) AS total_achievements
 FROM profiles p
 WHERE p.is_banned = false OR p.is_banned IS NULL

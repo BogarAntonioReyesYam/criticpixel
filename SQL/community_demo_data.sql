@@ -54,9 +54,9 @@ BEGIN
   -- ============================================================
   
   IF NOT EXISTS (SELECT 1 FROM reviews LIMIT 1) THEN
-    INSERT INTO reviews (game_id, user_id, user_name, text, score, likes_count, dislikes_count) VALUES
-      (v_game_id, v_user_id, 'Bary', 'Una obra maestra del gaming. Los gráficos son impresionantes y la historia te atrapa desde el primer minuto. El combate es satisfactorio y hay cientos de horas de contenido.', 9.5, 15, 1),
-      (v_game_id, v_user_id, 'Bary', 'Buen juego pero con algunos problemas de rendimiento. La historia es buena pero los side quests son repetitivos. Vale la pena si lo consigues en oferta.', 7.0, 8, 2);
+    INSERT INTO reviews (game_id, user_id, user_name, text, score) VALUES
+      (v_game_id, v_user_id, 'Bary', 'Una obra maestra del gaming. Los gráficos son impresionantes y la historia te atrapa desde el primer minuto. El combate es satisfactorio y hay cientos de horas de contenido.', 9.5),
+      (v_game_id, v_user_id, 'Bary', 'Buen juego pero con algunos problemas de rendimiento. La historia es buena pero los side quests son repetitivos. Vale la pena si lo consigues en oferta.', 7.0);
   END IF;
 
   -- Obtener ID de reseña

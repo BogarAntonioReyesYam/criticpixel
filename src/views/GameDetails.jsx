@@ -224,8 +224,8 @@ const GameDetails = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
           style={{ backgroundImage: `url(${game.image})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gamingBg via-gamingBg/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-gamingBg/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
 
         <div className="relative h-full max-w-7xl mx-auto px-4 flex items-end pb-12">
           <div className="flex items-end gap-8 w-full">
@@ -247,8 +247,8 @@ const GameDetails = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-2xl font-black text-white">{game.globalScore}</span>
-                  <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest">/ 10</span>
+                  <span className="text-2xl font-black text-white drop-shadow-lg">{game.globalScore}</span>
+                  <span className="text-[8px] font-bold text-white/70 uppercase tracking-widest drop-shadow">/ 10</span>
                 </div>
               </div>
             </div>
@@ -262,17 +262,17 @@ const GameDetails = () => {
                   {getScoreLabel(game.globalScore)}
                 </span>
                 {game.platforms?.map((p) => (
-                  <span key={p} className="text-[10px] bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-md uppercase font-black">
+                  <span key={p} className="text-[10px] bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-md uppercase font-black drop-shadow">
                     {p}
                   </span>
                 ))}
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-none mb-4 drop-shadow-2xl">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-none mb-4 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
                 {game.title}
               </h1>
 
-              <p className="text-lg text-gray-300 leading-relaxed max-w-2xl drop-shadow-lg">
+              <p className="text-lg text-white/80 leading-relaxed max-w-2xl drop-shadow-lg">
                 {game.description}
               </p>
             </div>

@@ -704,7 +704,7 @@ export const mockGames = [
   {
     id: 52,
     title: "Resident Evil Requiem",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/3764200/header.jpg",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202512/1205/79661d7a2bdb9784749b4e57e1456ca89f7ac7bed8615aee.png",
     globalScore: 9.4,
     platforms: ["PS5", "Xbox Series X", "PC", "Nintendo Switch 2"],
     price: 1319,
@@ -743,7 +743,7 @@ export const mockGames = [
   {
     id: 53,
     title: "Phantom Blade Zero",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/4115450/header.jpg",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4115450/5930310dc5f043a1df400d9dc70ddb43843480fc/header.jpg",
     globalScore: 9.0,
     platforms: ["PS5", "PC"],
     price: 1099,
@@ -773,7 +773,7 @@ export const mockGames = [
   {
     id: 54,
     title: "Nioh 3",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/3681010/header.jpg",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202509/0401/835b207c01d1b02c29229e73fba0da13b914148c8b8bd4ed.png",
     globalScore: 8.8,
     platforms: ["PS5", "PC"],
     price: 999,

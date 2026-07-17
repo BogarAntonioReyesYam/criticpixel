@@ -20,9 +20,18 @@ const Articles = () => {
   useEffect(() => { fetchArticles(); }, [filter]);
 
   const fetchArticles = async () => {
-    let query = supabase.from('articles').select('*, profiles:user_id(display_name, avatar_url)').eq('published', true).order('created_at', { ascending: false });
+    let query = supabase.from('articles').select('*').eq('published', true).order('created_at', { ascending: false });
     if (filter !== 'all') query = query.eq('category', filter);
-    const { data } = await query;
+    const { data, error } = await query;
+    if (error) { console.error('Articles fetch error:', error); setIsLoading(false); return; }
+
+    if (data && data.length > 0) {
+      const userIds = [...new Set(data.map(a => a.user_id))];
+      const { data: profiles } = userIds.length ? await supabase.from('profiles').select('id, display_name, avatar_url').in('id', userIds) : { data: [] };
+      const profilesMap = Object.fromEntries((profiles || []).map(p => [p.id, p]));
+      data.forEach(a => { a.profiles = profilesMap[a.user_id] || null; });
+    }
+
     setArticles(data || []);
     setIsLoading(false);
   };

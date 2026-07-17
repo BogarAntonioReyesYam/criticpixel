@@ -7,9 +7,68 @@
 ALTER TABLE reviews ADD COLUMN IF NOT EXISTS likes_count INTEGER DEFAULT 0;
 ALTER TABLE reviews ADD COLUMN IF NOT EXISTS dislikes_count INTEGER DEFAULT 0;
 
--- ============================================================
--- 1. FORO DE DISCUSIÓN POR JUEGO
--- ============================================================
+-- Asegurar que profiles tenga las columnas necesarias
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS is_banned BOOLEAN DEFAULT FALSE;
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS banned_at TIMESTAMPTZ;
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS banned_reason TEXT;
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS reputation INTEGER DEFAULT 0;
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS rank_title TEXT DEFAULT 'Novato';
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS review_count INTEGER DEFAULT 0;
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS follower_count INTEGER DEFAULT 0;
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS following_count INTEGER DEFAULT 0;
+
+-- Tabla review_votes (de features_v2)
+CREATE TABLE IF NOT EXISTS review_votes (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  review_id INTEGER REFERENCES reviews(id) ON DELETE CASCADE,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  vote_type TEXT NOT NULL CHECK (vote_type IN ('like', 'dislike')),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(review_id, user_id)
+);
+
+ALTER TABLE review_votes ENABLE ROW LEVEL SECURITY;
+DO $$ BEGIN
+  CREATE POLICY "review_votes_select_public" ON review_votes FOR SELECT USING (true);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "review_votes_insert_auth" ON review_votes FOR INSERT WITH CHECK (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "review_votes_delete_own" ON review_votes FOR DELETE USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+
+-- Tabla achievements (de features_v2)
+CREATE TABLE IF NOT EXISTS achievements (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  key TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT NOT NULL,
+  icon TEXT DEFAULT '🏆',
+  category TEXT DEFAULT 'general'
+);
+
+-- Tabla user_achievements (de features_v2)
+CREATE TABLE IF NOT EXISTS user_achievements (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  achievement_id UUID REFERENCES achievements(id) ON DELETE CASCADE,
+  unlocked_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(user_id, achievement_id)
+);
+
+ALTER TABLE user_achievements ENABLE ROW LEVEL SECURITY;
+DO $$ BEGIN
+  CREATE POLICY "user_achievements_select_own" ON user_achievements FOR SELECT USING (auth.uid() = user_id);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+DO $$ BEGIN
+  CREATE POLICY "user_achievements_insert_system" ON user_achievements FOR INSERT WITH CHECK (true);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 CREATE TABLE IF NOT EXISTS forum_threads (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,

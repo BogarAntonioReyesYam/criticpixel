@@ -20,9 +20,23 @@ const Guides = () => {
   useEffect(() => { fetchGuides(); }, [filter]);
 
   const fetchGuides = async () => {
-    let query = supabase.from('guides').select('*, profiles:user_id(display_name, avatar_url), games:game_id(title, slug)').eq('published', true).order('created_at', { ascending: false });
+    let query = supabase.from('guides').select('*').eq('published', true).order('created_at', { ascending: false });
     if (filter !== 'all') query = query.eq('difficulty', filter);
-    const { data } = await query;
+    const { data, error } = await query;
+    if (error) { console.error('Guides fetch error:', error); setIsLoading(false); return; }
+
+    if (data && data.length > 0) {
+      const userIds = [...new Set(data.map(g => g.user_id))];
+      const gameIds = [...new Set(data.map(g => g.game_id).filter(Boolean))];
+      const [{ data: profiles }, { data: games }] = await Promise.all([
+        userIds.length ? supabase.from('profiles').select('id, display_name, avatar_url').in('id', userIds) : { data: [] },
+        gameIds.length ? supabase.from('games').select('id, title, slug').in('id', gameIds) : { data: [] },
+      ]);
+      const profilesMap = Object.fromEntries((profiles || []).map(p => [p.id, p]));
+      const gamesMap = Object.fromEntries((games || []).map(g => [g.id, g]));
+      data.forEach(g => { g.profiles = profilesMap[g.user_id] || null; g.games = gamesMap[g.game_id] || null; });
+    }
+
     setGuides(data || []);
     setIsLoading(false);
   };

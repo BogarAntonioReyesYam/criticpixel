@@ -15,11 +15,25 @@ const Forum = () => {
   useEffect(() => { fetchThreads(); }, []);
 
   const fetchThreads = async () => {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('forum_threads')
-      .select('*, profiles:user_id(display_name, avatar_url), games:game_id(title, id)')
+      .select('*')
       .order('is_pinned', { ascending: false })
       .order('last_reply_at', { ascending: false });
+    if (error) { console.error('Forum fetch error:', error); setIsLoading(false); return; }
+
+    if (data && data.length > 0) {
+      const userIds = [...new Set(data.map(t => t.user_id))];
+      const gameIds = [...new Set(data.map(t => t.game_id).filter(Boolean))];
+      const [{ data: profiles }, { data: games }] = await Promise.all([
+        userIds.length ? supabase.from('profiles').select('id, display_name, avatar_url').in('id', userIds) : { data: [] },
+        gameIds.length ? supabase.from('games').select('id, title').in('id', gameIds) : { data: [] },
+      ]);
+      const profilesMap = Object.fromEntries((profiles || []).map(p => [p.id, p]));
+      const gamesMap = Object.fromEntries((games || []).map(g => [g.id, g]));
+      data.forEach(t => { t.profiles = profilesMap[t.user_id] || null; t.games = gamesMap[t.game_id] || null; });
+    }
+
     setThreads(data || []);
     setIsLoading(false);
   };

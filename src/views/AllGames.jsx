@@ -1,7 +1,7 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, SortDesc, LayoutGrid, List, Monitor, Gamepad2, Laptop, Disc } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, SortDesc, LayoutGrid, List, Monitor, Gamepad2, Laptop, Disc, ChevronDown, ArrowUpDown, ArrowUpAZ, ArrowDownZA, ArrowUpNarrowWide, ArrowDownWideNarrow, DollarSign } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
@@ -22,6 +22,17 @@ const AllGames = () => {
   const [sortOrder, setSortOrder] = useState('score-desc');
   const [platformFilter, setPlatformFilter] = useState('all');
   const [viewMode, setViewMode] = useState('grid');
+  const [showSortMenu, setShowSortMenu] = useState(false);
+  const sortRef = useRef(null);
+
+  const sortOptions = [
+    { id: 'score-desc', label: 'Mayor Puntaje', icon: ArrowUpNarrowWide },
+    { id: 'score-asc', label: 'Menor Puntaje', icon: ArrowDownWideNarrow },
+    { id: 'alpha-asc', label: 'A-Z', icon: ArrowUpAZ },
+    { id: 'alpha-desc', label: 'Z-A', icon: ArrowDownZA },
+    { id: 'price-asc', label: 'Menor Precio', icon: DollarSign },
+    { id: 'price-desc', label: 'Mayor Precio', icon: DollarSign },
+  ];
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -92,6 +103,12 @@ const AllGames = () => {
     setCurrentPage(1);
   }, [platformFilter, sortOrder]);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => { if (sortRef.current && !sortRef.current.contains(e.target)) setShowSortMenu(false); };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const getScoreColor = (score) => {
     if (score >= 9) return '#ff6b00';
     if (score >= 7) return '#facc15';
@@ -148,18 +165,36 @@ const AllGames = () => {
           ))}
         </div>
 
-        <select
-          value={sortOrder}
-          onChange={(e) => setSortOrder(e.target.value)}
-          className="bg-gamingCard border border-white/10 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400 focus:outline-none focus:border-gamingOrange"
-        >
-          <option value="score-desc">Mayor Puntaje</option>
-          <option value="score-asc">Menor Puntaje</option>
-          <option value="alpha-asc">A-Z</option>
-          <option value="alpha-desc">Z-A</option>
-          <option value="price-asc">Menor Precio</option>
-          <option value="price-desc">Mayor Precio</option>
-        </select>
+        <div ref={sortRef} className="relative">
+          <button onClick={() => setShowSortMenu(!showSortMenu)}
+            className="flex items-center gap-2 bg-gamingCard border border-white/10 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400 hover:border-gamingOrange/40 hover:text-gamingOrange transition-colors focus:outline-none">
+            <ArrowUpDown className="w-3.5 h-3.5" />
+            {sortOptions.find(o => o.id === sortOrder)?.label}
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showSortMenu ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence>
+            {showSortMenu && (
+              <motion.div initial={{ opacity: 0, y: -8, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="absolute top-full left-0 mt-1 w-52 bg-gamingCard border border-white/10 rounded-xl shadow-2xl shadow-black/40 z-50 overflow-hidden">
+                {sortOptions.map((opt) => {
+                  const Icon = opt.icon;
+                  return (
+                    <button key={opt.id} onClick={() => { setSortOrder(opt.id); setShowSortMenu(false); }}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-xs font-bold transition-colors ${
+                        sortOrder === opt.id
+                          ? 'bg-gamingOrange/10 text-gamingOrange'
+                          : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      }`}>
+                      <Icon className="w-4 h-4" />
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         <div className="flex items-center gap-0.5 bg-gamingCard/50 border border-white/5 rounded-lg p-0.5 ml-auto">
           <button

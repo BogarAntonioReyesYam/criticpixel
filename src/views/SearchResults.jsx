@@ -1,7 +1,7 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Search, SlidersHorizontal, X } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Search, SlidersHorizontal, X, ChevronDown, ArrowUpDown, ArrowUpNarrowWide, ArrowDownWideNarrow, ArrowUpAZ, DollarSign, Target } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
@@ -16,6 +16,19 @@ const SearchResults = () => {
   const [viewMode, setViewMode] = useState('grid');
   const [sortBy, setSortBy] = useState('relevance');
   const [selectedGenre, setSelectedGenre] = useState('all');
+  const [showSortMenu, setShowSortMenu] = useState(false);
+  const [showGenreMenu, setShowGenreMenu] = useState(false);
+  const sortRef = useRef(null);
+  const genreRef = useRef(null);
+
+  const sortOptions = [
+    { id: 'relevance', label: 'Relevancia', icon: Target },
+    { id: 'score-desc', label: 'Mayor Puntaje', icon: ArrowUpNarrowWide },
+    { id: 'score-asc', label: 'Menor Puntaje', icon: ArrowDownWideNarrow },
+    { id: 'price-asc', label: 'Menor Precio', icon: DollarSign },
+    { id: 'price-desc', label: 'Mayor Precio', icon: DollarSign },
+    { id: 'alpha', label: 'A-Z', icon: ArrowUpAZ },
+  ];
 
   useSEO({
     title: `Resultados: ${query}`,
@@ -46,6 +59,15 @@ const SearchResults = () => {
       setIsLoading(false);
     };
     fetchGames();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (sortRef.current && !sortRef.current.contains(e.target)) setShowSortMenu(false);
+      if (genreRef.current && !genreRef.current.contains(e.target)) setShowGenreMenu(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const genres = useMemo(() => {
@@ -105,28 +127,58 @@ const SearchResults = () => {
       </motion.div>
 
       <div className="flex flex-wrap items-center gap-3 mb-6">
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="bg-gamingCard border border-white/10 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400 focus:outline-none focus:border-gamingOrange"
-        >
-          <option value="relevance">Relevancia</option>
-          <option value="score-desc">Mayor Puntaje</option>
-          <option value="score-asc">Menor Puntaje</option>
-          <option value="price-asc">Menor Precio</option>
-          <option value="price-desc">Mayor Precio</option>
-          <option value="alpha">A-Z</option>
-        </select>
+        <div ref={sortRef} className="relative">
+          <button onClick={() => setShowSortMenu(!showSortMenu)}
+            className="flex items-center gap-2 bg-gamingCard border border-white/10 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400 hover:border-gamingOrange/40 hover:text-gamingOrange transition-colors">
+            <ArrowUpDown className="w-3.5 h-3.5" />
+            {sortOptions.find(o => o.id === sortBy)?.label}
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showSortMenu ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence>
+            {showSortMenu && (
+              <motion.div initial={{ opacity: 0, y: -8, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="absolute top-full left-0 mt-1 w-48 bg-gamingCard border border-white/10 rounded-xl shadow-2xl shadow-black/40 z-50 overflow-hidden">
+                {sortOptions.map((opt) => {
+                  const Icon = opt.icon;
+                  return (
+                    <button key={opt.id} onClick={() => { setSortBy(opt.id); setShowSortMenu(false); }}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-xs font-bold transition-colors ${
+                        sortBy === opt.id ? 'bg-gamingOrange/10 text-gamingOrange' : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      }`}>
+                      <Icon className="w-4 h-4" /> {opt.label}
+                    </button>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
-        <select
-          value={selectedGenre}
-          onChange={(e) => setSelectedGenre(e.target.value)}
-          className="bg-gamingCard border border-white/10 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400 focus:outline-none focus:border-gamingOrange"
-        >
-          {genres.map(g => (
-            <option key={g} value={g}>{g === 'all' ? 'Todos los géneros' : g}</option>
-          ))}
-        </select>
+        <div ref={genreRef} className="relative">
+          <button onClick={() => setShowGenreMenu(!showGenreMenu)}
+            className="flex items-center gap-2 bg-gamingCard border border-white/10 rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400 hover:border-gamingOrange/40 hover:text-gamingOrange transition-colors">
+            <SlidersHorizontal className="w-3.5 h-3.5" />
+            {selectedGenre === 'all' ? 'Todos los géneros' : selectedGenre}
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showGenreMenu ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence>
+            {showGenreMenu && (
+              <motion.div initial={{ opacity: 0, y: -8, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="absolute top-full left-0 mt-1 w-48 bg-gamingCard border border-white/10 rounded-xl shadow-2xl shadow-black/40 z-50 overflow-hidden max-h-60 overflow-y-auto">
+                {genres.map((g) => (
+                  <button key={g} onClick={() => { setSelectedGenre(g); setShowGenreMenu(false); }}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-xs font-bold text-left transition-colors ${
+                      selectedGenre === g ? 'bg-gamingOrange/10 text-gamingOrange' : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                    }`}>
+                    {g === 'all' ? 'Todos los géneros' : g}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       {isLoading ? (

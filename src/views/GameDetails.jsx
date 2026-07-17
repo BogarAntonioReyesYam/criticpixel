@@ -247,8 +247,8 @@ const GameDetails = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-2xl font-black text-white drop-shadow-lg">{game.globalScore}</span>
-                  <span className="text-[8px] font-bold text-white/70 uppercase tracking-widest drop-shadow">/ 10</span>
+                  <span className="text-2xl font-black drop-shadow-lg" style={{ color: '#ffffff', textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}>{game.globalScore}</span>
+                  <span className="text-[8px] font-bold uppercase tracking-widest drop-shadow" style={{ color: 'rgba(255,255,255,0.8)', textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}>/ 10</span>
                 </div>
               </div>
             </div>

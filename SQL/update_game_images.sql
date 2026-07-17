@@ -1,0 +1,22 @@
+-- Actualizar imágenes de cada juego (IDs de Supabase)
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778580/header.jpg' WHERE id = 1;
+UPDATE games SET image = 'https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg' WHERE id = 3;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg' WHERE id = 5;
+UPDATE games SET image = 'https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg' WHERE id = 6;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/header.jpg' WHERE id = 7;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg' WHERE id = 8;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg' WHERE id = 9;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/header.jpg' WHERE id = 11;
+UPDATE games SET image = 'https://www.igrandtheftauto.com/content/images/large/gta-vi-key-3840x2160.jpg' WHERE id = 12;
+UPDATE games SET image = 'https://press.cdn.cdpr.app/news/e84f93bf4a4c3d451282614323ccc7942d0e5250_q90_900x900.jpeg' WHERE id = 15;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg' WHERE id = 21;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2124490/header.jpg' WHERE id = 23;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2124800/header.jpg' WHERE id = 24;
+UPDATE games SET image = 'https://upload.wikimedia.org/wikipedia/en/a/a9/Astro_Bot_cover_art.jpg' WHERE id = 26;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg' WHERE id = 27;
+UPDATE games SET image = 'https://upload.wikimedia.org/wikipedia/en/4/48/Metroid_Prime_4_Beyond_cover_art.png' WHERE id = 28;
+UPDATE games SET image = 'https://upload.wikimedia.org/wikipedia/en/5/5e/Doom_The_Dark_Ages_key_art.jpg' WHERE id = 29;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1616430/header.jpg' WHERE id = 31;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2235701/header.jpg' WHERE id = 33;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2350780/header.jpg' WHERE id = 35;
+UPDATE games SET image = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/header.jpg' WHERE id = 40;

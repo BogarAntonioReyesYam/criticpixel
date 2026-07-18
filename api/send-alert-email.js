@@ -24,37 +24,52 @@ export default async function handler(req, res) {
     <!DOCTYPE html>
     <html>
     <head><meta charset="utf-8"></head>
-    <body style="margin:0;padding:0;background:#0a0a0a;font-family:'Segoe UI',Tahoma,sans-serif;">
-      <div style="max-width:600px;margin:0 auto;padding:40px 20px;">
-        <div style="text-align:center;margin-bottom:30px;">
-          <h1 style="color:#ff6b00;font-size:28px;margin:0;">🕹️ CriticPixel</h1>
+    <body style="margin:0;padding:0;background:#111;font-family:'Segoe UI',Tahoma,sans-serif;">
+      <div style="max-width:600px;margin:0 auto;padding:0;">
+        <div style="background:linear-gradient(135deg,#ff6b00,#ff9500);padding:32px 24px;text-align:center;">
+          <h1 style="color:#fff;font-size:26px;margin:0 0 4px;font-weight:800;letter-spacing:-0.5px;">🎮 CriticPixel</h1>
+          <p style="color:rgba(255,255,255,0.85);margin:0;font-size:13px;">Tu fuente de reseñas gaming</p>
         </div>
-        <div style="background:#1a1a1a;border-radius:16px;padding:30px;border:1px solid #333;">
-          <div style="text-align:center;margin-bottom:20px;">
-            <span style="background:#ff6b00;color:#000;padding:6px 16px;border-radius:20px;font-weight:bold;font-size:14px;">
-              ⚡ ¡El precio bajó!
-            </span>
-          </div>
-          ${gameImage ? `<div style="text-align:center;margin-bottom:20px;"><img src="${gameImage}" alt="${gameTitle}" style="max-width:100%;border-radius:12px;" /></div>` : ''}
-          <h2 style="color:#fff;font-size:22px;text-align:center;margin:0 0 8px;">${gameTitle}</h2>
+
+        <div style="background:#1a1a1a;padding:32px 24px;">
           <div style="text-align:center;margin-bottom:24px;">
-            <span style="color:#666;text-decoration:line-through;font-size:18px;">$${oldPrice.toLocaleString('es-MX')} MXN</span>
-            <span style="color:#ff6b00;font-size:28px;font-weight:bold;margin-left:12px;">$${newPrice.toLocaleString('es-MX')} MXN</span>
+            <div style="display:inline-block;background:#ff6b00;color:#000;padding:8px 20px;border-radius:24px;font-weight:bold;font-size:13px;letter-spacing:0.5px;">
+              🔔 ALERTA DE PRECIO
+            </div>
           </div>
-          <div style="background:#0d3d0d;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
-            <span style="color:#4ade80;font-size:16px;font-weight:bold;">
-              Ahorras $${savings.toLocaleString('es-MX')} MXN (${percent}% off)
-            </span>
+
+          ${gameImage ? `
+          <div style="text-align:center;margin-bottom:24px;">
+            <img src="${gameImage}" alt="${gameTitle}" style="width:100%;max-width:540px;border-radius:12px;display:block;margin:0 auto;" />
+          </div>` : ''}
+
+          <h2 style="color:#fff;font-size:24px;text-align:center;margin:0 0 24px;font-weight:700;">${gameTitle}</h2>
+
+          <div style="background:#222;border-radius:12px;padding:20px;margin-bottom:20px;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:12px;">
+              <tr>
+                <td style="color:#888;font-size:14px;text-decoration:line-through;">$${oldPrice.toLocaleString('es-MX')} MXN</td>
+                <td style="text-align:right;color:#ff6b00;font-size:26px;font-weight:800;">$${newPrice.toLocaleString('es-MX')} MXN</td>
+              </tr>
+            </table>
+            <div style="border-top:1px solid #333;padding-top:12px;text-align:center;">
+              <span style="color:#22c55e;font-size:14px;font-weight:600;">✦ Ahorras $${savings.toLocaleString('es-MX')} MXN (${percent}% de descuento) ✦</span>
+            </div>
           </div>
-          <div style="text-align:center;">
-            <a href="${gameUrl}" style="display:inline-block;background:#ff6b00;color:#000;padding:14px 32px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:16px;">
-              Ver en CriticPixel →
+
+          <div style="text-align:center;margin-bottom:8px;">
+            <a href="${gameUrl}" style="display:inline-block;background:#ff6b00;color:#000;padding:16px 40px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:15px;letter-spacing:0.3px;">
+              Ver ahora →
             </a>
           </div>
         </div>
-        <p style="color:#555;text-align:center;font-size:12px;margin-top:24px;">
-          Recibiste esto porque activaste una alerta de precio en CriticPixel.
-        </p>
+
+        <div style="background:#111;padding:20px 24px;text-align:center;">
+          <p style="color:#555;font-size:11px;margin:0;line-height:1.6;">
+            Recibiste esta alerta porque activaste notificaciones de precio en CriticPixel.<br>
+            <a href="https://criticpixel.vercel.app" style="color:#ff6b00;text-decoration:none;">criticpixel.vercel.app</a>
+          </p>
+        </div>
       </div>
     </body>
     </html>
@@ -70,7 +85,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'CriticPixel <onboarding@resend.dev>',
         to: email,
-        subject: `⚡ ¡${gameTitle} bajó de precio!`,
+        subject: `🔔 ¡${gameTitle} bajó de precio!`,
         html,
       }),
     });

@@ -60,7 +60,7 @@ export default async function handler(req, res) {
           .from('notifications')
           .insert({
             user_id: alert.user_id,
-            title: '⚡ ¡El precio bajó!',
+            title: '🔔 ¡El precio bajó!',
             message: `${game.title} ahora está en $${currentPrice.toLocaleString('es-MX')} MXN (antes $${targetPrice.toLocaleString('es-MX')} MXN)`,
             type: 'price_alert',
             link: `/game/${game.id}`,

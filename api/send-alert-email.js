@@ -27,12 +27,12 @@ export default async function handler(req, res) {
     <body style="margin:0;padding:0;background:#0a0a0a;font-family:'Segoe UI',Tahoma,sans-serif;">
       <div style="max-width:600px;margin:0 auto;padding:40px 20px;">
         <div style="text-align:center;margin-bottom:30px;">
-          <h1 style="color:#ff6b00;font-size:28px;margin:0;">🎮 CriticPixel</h1>
+          <h1 style="color:#ff6b00;font-size:28px;margin:0;">🕹️ CriticPixel</h1>
         </div>
         <div style="background:#1a1a1a;border-radius:16px;padding:30px;border:1px solid #333;">
           <div style="text-align:center;margin-bottom:20px;">
             <span style="background:#ff6b00;color:#000;padding:6px 16px;border-radius:20px;font-weight:bold;font-size:14px;">
-              🔔 ¡El precio bajó!
+              ⚡ ¡El precio bajó!
             </span>
           </div>
           ${gameImage ? `<div style="text-align:center;margin-bottom:20px;"><img src="${gameImage}" alt="${gameTitle}" style="max-width:100%;border-radius:12px;" /></div>` : ''}
@@ -70,7 +70,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'CriticPixel <onboarding@resend.dev>',
         to: email,
-        subject: `🔔 ¡${gameTitle} bajó de precio!`,
+        subject: `⚡ ¡${gameTitle} bajó de precio!`,
         html,
       }),
     });

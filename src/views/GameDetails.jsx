@@ -30,7 +30,7 @@ const GameDetails = () => {
 
   useSEO({
     title: game?.title || 'Cargando...',
-    description: game?.description || 'Reseña detallada del juego en PixelVerdict.'
+    description: game?.description || 'Reseña detallada del juego en CriticPixel.'
   });
 
   usePageView(id);

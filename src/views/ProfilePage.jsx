@@ -9,7 +9,7 @@ import useSEO from '../hooks/useSEO';
 export default function ProfilePage() {
   useSEO({
     title: 'Mi Perfil',
-    description: 'Administra tu perfil de PixelVerdict.'
+    description: 'Administra tu perfil de CriticPixel.'
   });
 
   const { user, profile, updateProfile, isAdmin } = useAuth();

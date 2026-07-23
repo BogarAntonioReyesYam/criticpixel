@@ -89,7 +89,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
         <Link to="/" className="flex items-center gap-2 group" onClick={clearSearch}>
           <Gamepad2 className="w-8 h-8 text-gamingOrange group-hover:rotate-12 transition-transform" />
           <span className={`text-xl font-bold tracking-tighter uppercase italic ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
-            Pixel<span className="text-gamingOrange">Verdict</span>
+            Critic<span className="text-gamingOrange">Pixel</span>
           </span>
         </Link>
 

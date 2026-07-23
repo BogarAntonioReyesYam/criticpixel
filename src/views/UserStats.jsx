@@ -11,7 +11,7 @@ import useSEO from '../hooks/useSEO';
 const UserStats = () => {
   useSEO({
     title: 'Mis Estadísticas',
-    description: 'Resumen de tu actividad en PixelVerdict. Juegos, scores y plataformas.'
+    description: 'Resumen de tu actividad en CriticPixel. Juegos, scores y plataformas.'
   });
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -86,7 +86,7 @@ const UserStats = () => {
           </h1>
         </div>
         <p className={`text-sm ${isLight ? 'text-gray-500' : 'text-gamingMuted'}`}>
-          Resumen de tu actividad en PixelVerdict
+          Resumen de tu actividad en CriticPixel
         </p>
       </motion.div>
 

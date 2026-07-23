@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const useSEO = ({ title, description }) => {
   useEffect(() => {
-    const fullTitle = title ? `${title} — PixelVerdict` : 'PixelVerdict — Reseñas honestas de videojuegos';
+    const fullTitle = title ? `${title} — CriticPixel` : 'CriticPixel — Reseñas honestas de videojuegos';
     document.title = fullTitle;
 
     let meta = document.querySelector('meta[name="description"]');

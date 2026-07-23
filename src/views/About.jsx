@@ -6,7 +6,7 @@ import useSEO from '../hooks/useSEO';
 const About = () => {
   useSEO({
     title: 'Acerca de',
-    description: 'Conoce más sobre PixelVerdict. Reseñas honestas, scores reales para gamers.'
+    description: 'Conoce más sobre CriticPixel. Reseñas honestas, scores reales para gamers.'
   });
 
   return (
@@ -27,7 +27,7 @@ const About = () => {
             <Gamepad2 className="w-12 h-12 text-gamingOrange" />
           </div>
           <h1 className="text-5xl font-black italic tracking-tighter uppercase">
-            Sobre <span className="text-gamingOrange">PixelVerdict</span>
+            Sobre <span className="text-gamingOrange">CriticPixel</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Resenas honestas, scores reales. Tu guia definitiva para elegir el proximo juego.

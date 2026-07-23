@@ -25,7 +25,7 @@ const StatCard = ({ icon: Icon, label, value, color, delay }) => (
 );
 
 const AdminDashboard = () => {
-  useSEO({ title: 'Admin Dashboard', description: 'Panel de administración de PixelVerdict' });
+  useSEO({ title: 'Admin Dashboard', description: 'Panel de administración de CriticPixel' });
 
   const [stats, setStats] = useState({
     totalGames: 0,

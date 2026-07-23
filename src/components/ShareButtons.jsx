@@ -10,7 +10,7 @@ const ShareButtons = ({ game }) => {
   const isLight = theme === 'light';
 
   const shareUrl = `${window.location.origin}/game/${game.id}`;
-  const shareText = `¡Mira esta reseña de ${game.title} en PixelVerdict! Score: ${game.globalScore}/10`;
+  const shareText = `¡Mira esta reseña de ${game.title} en CriticPixel! Score: ${game.globalScore}/10`;
 
   const handleCopyLink = async () => {
     try {

@@ -14,7 +14,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-2 group">
               <Gamepad2 className="w-7 h-7 text-gamingOrange group-hover:rotate-12 transition-transform" />
               <span className={`text-lg font-bold tracking-tighter uppercase italic ${isLight ? 'text-gray-900' : 'text-white'}`}>
-                Pixel<span className="text-gamingOrange">Verdict</span>
+                Critic<span className="text-gamingOrange">Pixel</span>
               </span>
             </Link>
             <p className={`text-sm leading-relaxed max-w-xs ${isLight ? 'text-gray-500' : 'text-gamingMuted'}`}>
@@ -39,7 +39,7 @@ const Footer = () => {
 
         <div className={`mt-10 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4 ${isLight ? 'border-gray-200' : 'border-white/5'}`}>
           <p className={`text-xs ${isLight ? 'text-gray-400' : 'text-gamingMuted'}`}>
-            &copy; 2026 PixelVerdict. Todos los derechos reservados.
+            &copy; 2026 CriticPixel. Todos los derechos reservados.
           </p>
           <p className={`text-xs flex items-center gap-1 ${isLight ? 'text-gray-400' : 'text-gamingMuted'}`}>
             Hecho con <Heart className="w-3 h-3 text-red-500 fill-red-500" /> para gamers

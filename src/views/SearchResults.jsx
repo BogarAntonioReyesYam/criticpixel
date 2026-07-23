@@ -32,7 +32,7 @@ const SearchResults = () => {
 
   useSEO({
     title: `Resultados: ${query}`,
-    description: `Resultados de búsqueda para "${query}" en PixelVerdict.`
+    description: `Resultados de búsqueda para "${query}" en CriticPixel.`
   });
 
   useEffect(() => {

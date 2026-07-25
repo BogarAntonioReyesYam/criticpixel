@@ -9,10 +9,6 @@ const ReviewTags = ({ reviewId }) => {
   const [tags, setTags] = useState([]);
   const [userVotes, setUserVotes] = useState([]);
 
-  useEffect(() => {
-    fetchTags();
-  }, [reviewId]);
-
   const fetchTags = async () => {
     const { data: allTags } = await supabase.from('review_tags').select('*');
     const { data: votes } = await supabase
@@ -24,6 +20,10 @@ const ReviewTags = ({ reviewId }) => {
     setUserVotes(votedIds);
     setTags(allTags || []);
   };
+
+  useEffect(() => {
+    fetchTags();
+  }, [reviewId]);
 
   const toggleTag = async (tagId) => {
     if (!user) return;

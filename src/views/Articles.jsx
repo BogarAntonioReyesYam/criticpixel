@@ -17,8 +17,6 @@ const Articles = () => {
     title: '', excerpt: '', content: '', category: 'news', tags: '', cover_image: '',
   });
 
-  useEffect(() => { fetchArticles(); }, [filter]);
-
   const fetchArticles = async () => {
     let query = supabase.from('articles').select('*').eq('published', true).order('created_at', { ascending: false });
     if (filter !== 'all') query = query.eq('category', filter);
@@ -35,6 +33,8 @@ const Articles = () => {
     setArticles(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => { fetchArticles(); }, [filter]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

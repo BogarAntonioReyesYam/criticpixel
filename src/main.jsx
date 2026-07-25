@@ -9,8 +9,6 @@ import { WishlistProvider } from './context/WishlistContext'
 import App from './App'
 import './index.css'
 
-console.log('CriticPixel: App Initializing...');
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HashRouter>

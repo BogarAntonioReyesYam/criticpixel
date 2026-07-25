@@ -6,16 +6,11 @@ import { mockGames } from '../data/mockGames';
 import { useTheme } from '../context/ThemeContext';
 
 const TrailersPage = () => {
-  const [games, setGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [games] = useState(() => mockGames);
+  const [isLoading] = useState(false);
   const [activeTrailer, setActiveTrailer] = useState(null);
   const { theme } = useTheme();
   const isLight = theme === 'light';
-
-  useEffect(() => {
-    setGames(mockGames);
-    setIsLoading(false);
-  }, []);
 
   const gamesWithTrailers = useMemo(() => games.filter(g => g.trailer), [games]);
 

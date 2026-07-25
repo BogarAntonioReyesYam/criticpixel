@@ -12,10 +12,6 @@ const ForumThreadList = ({ gameId }) => {
   const [newThread, setNewThread] = useState({ title: '', content: '' });
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchThreads();
-  }, [gameId]);
-
   const fetchThreads = async () => {
     const { data } = await supabase
       .from('forum_threads')
@@ -26,6 +22,10 @@ const ForumThreadList = ({ gameId }) => {
     setThreads(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchThreads();
+  }, [gameId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

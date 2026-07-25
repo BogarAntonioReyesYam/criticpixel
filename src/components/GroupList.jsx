@@ -10,10 +10,6 @@ const GroupList = ({ type }) => {
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchGroups();
-  }, [type]);
-
   const fetchGroups = async () => {
     let query = supabase.from('groups').select('*').order('member_count', { ascending: false });
     if (type) query = query.eq('type', type);
@@ -21,6 +17,10 @@ const GroupList = ({ type }) => {
     setGroups(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchGroups();
+  }, [type]);
 
   const joinGroup = async (groupId) => {
     if (!user) return;

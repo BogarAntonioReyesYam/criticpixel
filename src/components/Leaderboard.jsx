@@ -19,10 +19,6 @@ const Leaderboard = ({ sortBy = 'reputation', limit = 20 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSort, setActiveSort] = useState(sortBy);
 
-  useEffect(() => {
-    fetchLeaderboard();
-  }, [activeSort]);
-
   const fetchLeaderboard = async () => {
     const sortMap = {
       reputation: 'reputation',
@@ -40,6 +36,10 @@ const Leaderboard = ({ sortBy = 'reputation', limit = 20 }) => {
     setUsers(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchLeaderboard();
+  }, [activeSort]);
 
   const getMedalIcon = (index) => {
     if (index === 0) return <Crown className="w-5 h-5 text-yellow-400" />;

@@ -14,10 +14,6 @@ const Analytics = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [period, setPeriod] = useState('7d');
 
-  useEffect(() => {
-    fetchAnalytics();
-  }, [period]);
-
   const fetchAnalytics = async () => {
     setIsLoading(true);
 
@@ -71,6 +67,10 @@ const Analytics = () => {
     });
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchAnalytics();
+  }, [period]);
 
   const maxDailyViews = Math.max(...(stats.viewsByDay.map(d => d.count) || [1]));
 

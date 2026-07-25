@@ -30,16 +30,16 @@ const GameCrud = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  useEffect(() => {
-    fetchGames();
-  }, []);
-
   const fetchGames = async () => {
     setIsLoading(true);
     const { data } = await supabase.from('games').select('*').order('title');
     setGames(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchGames();
+  }, []);
 
   const filteredGames = games.filter(g =>
     g.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||

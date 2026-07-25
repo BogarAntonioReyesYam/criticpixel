@@ -16,8 +16,6 @@ const Screenshots = () => {
   const [preview, setPreview] = useState(null);
   const [form, setForm] = useState({ image_url: '', caption: '', game_id: '' });
 
-  useEffect(() => { fetchScreenshots(); }, []);
-
   const fetchScreenshots = async () => {
     const { data, error } = await supabase
       .from('screenshots')
@@ -41,6 +39,8 @@ const Screenshots = () => {
     setScreenshots(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => { fetchScreenshots(); }, []);
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];

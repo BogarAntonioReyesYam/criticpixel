@@ -14,10 +14,10 @@ export async function fetchXboxPrice(productId, storeUrl) {
 
     const html = await res.text();
 
-    const priceMatch = html.match(/\"price\":\s*\"?(\d+\.?\d*)\"?/i) ||
-                      html.match(/\"listPrice\":\s*\"?(\d+\.?\d*)\"?/i) ||
-                      html.match(/\"msrp\":\s*\"?(\d+\.?\d*)\"?/i) ||
-                      html.match(/\"Price\":\s*\"?(\d+\.?\d*)\"?/i);
+    const priceMatch = html.match(/"price":\s*"?(\d+\.?\d*)"?/i) ||
+                      html.match(/"listPrice":\s*"?(\d+\.?\d*)"?/i) ||
+                      html.match(/"msrp":\s*"?(\d+\.?\d*)"?/i) ||
+                      html.match(/"Price":\s*"?(\d+\.?\d*)"?/i);
 
     if (priceMatch) {
       return {

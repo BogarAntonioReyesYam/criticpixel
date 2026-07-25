@@ -12,8 +12,6 @@ const Forum = () => {
   const [threads, setThreads] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => { fetchThreads(); }, []);
-
   const fetchThreads = async () => {
     const { data, error } = await supabase
       .from('forum_threads')
@@ -37,6 +35,8 @@ const Forum = () => {
     setThreads(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => { fetchThreads(); }, []);
 
   const timeAgo = (date) => {
     const diff = Date.now() - new Date(date).getTime();

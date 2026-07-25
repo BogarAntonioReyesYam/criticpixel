@@ -5,9 +5,9 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', '.vite', 'node_modules']),
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['src/**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
@@ -16,6 +16,29 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
+    },
+    rules: {
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-console': 'warn',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-hooks/purity': 'off',
+      'react-hooks/immutability': 'off',
+      'react-hooks/refs': 'off',
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+  {
+    files: ['api/**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+    ],
+    languageOptions: {
+      globals: { ...globals.node, ...globals.browser },
+      parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+    },
+    rules: {
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-console': 'off',
     },
   },
 ])

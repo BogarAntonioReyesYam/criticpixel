@@ -8,13 +8,6 @@ const FollowButton = ({ targetUserId, onFollowChange }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [followerCount, setFollowerCount] = useState(0);
 
-  useEffect(() => {
-    if (user && targetUserId) {
-      checkFollow();
-      fetchFollowerCount();
-    }
-  }, [user, targetUserId]);
-
   const checkFollow = async () => {
     const { data } = await supabase
       .from('follows')
@@ -32,6 +25,13 @@ const FollowButton = ({ targetUserId, onFollowChange }) => {
       .eq('following_id', targetUserId);
     setFollowerCount(count || 0);
   };
+
+  useEffect(() => {
+    if (user && targetUserId) {
+      checkFollow();
+      fetchFollowerCount();
+    }
+  }, [user, targetUserId]);
 
   const toggleFollow = async () => {
     if (!user) return;

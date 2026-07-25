@@ -18,10 +18,6 @@ const ActivityFeed = ({ userId, limit = 20 }) => {
   const [activities, setActivities] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchActivities();
-  }, [userId]);
-
   const fetchActivities = async () => {
     let query = supabase
       .from('activity_feed')
@@ -37,6 +33,10 @@ const ActivityFeed = ({ userId, limit = 20 }) => {
     setActivities(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchActivities();
+  }, [userId]);
 
   const timeAgo = (date) => {
     const diff = Date.now() - new Date(date).getTime();

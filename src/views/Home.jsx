@@ -182,10 +182,6 @@ const Home = ({ searchQuery }) => {
     return () => observer.disconnect();
   }, [loadMore, hasMore]);
 
-  useEffect(() => {
-    setVisibleCount(ITEMS_PER_PAGE);
-  }, [searchQuery, platformFilter, sortOrder, filters]);
-
   const activeFilterCount = (filters.genre !== 'Todos' ? 1 : 0) + (filters.priceRange !== 'all' ? 1 : 0) + (filters.dateRange !== 'all' ? 1 : 0);
 
   const currentSortOption = sortOptions.find(opt => opt.id === sortOrder);

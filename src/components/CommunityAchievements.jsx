@@ -7,10 +7,6 @@ const CommunityAchievements = () => {
   const [achievements, setAchievements] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchAchievements();
-  }, []);
-
   const fetchAchievements = async () => {
     const { data } = await supabase
       .from('community_achievements')
@@ -19,6 +15,10 @@ const CommunityAchievements = () => {
     setAchievements(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchAchievements();
+  }, []);
 
   if (isLoading) {
     return (

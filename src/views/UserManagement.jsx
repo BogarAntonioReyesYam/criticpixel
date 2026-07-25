@@ -11,10 +11,6 @@ const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [updatingUser, setUpdatingUser] = useState(null);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   const fetchUsers = async () => {
     setIsLoading(true);
     const { data } = await supabase
@@ -24,6 +20,10 @@ const UserManagement = () => {
     setUsers(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   const filteredUsers = users.filter(u =>
     u.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||

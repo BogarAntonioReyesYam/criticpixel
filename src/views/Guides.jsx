@@ -17,8 +17,6 @@ const Guides = () => {
     title: '', excerpt: '', content: '', difficulty: 'beginner', tags: '', cover_image: '', game_id: '',
   });
 
-  useEffect(() => { fetchGuides(); }, [filter]);
-
   const fetchGuides = async () => {
     let query = supabase.from('guides').select('*').eq('published', true).order('created_at', { ascending: false });
     if (filter !== 'all') query = query.eq('difficulty', filter);
@@ -40,6 +38,8 @@ const Guides = () => {
     setGuides(data || []);
     setIsLoading(false);
   };
+
+  useEffect(() => { fetchGuides(); }, [filter]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

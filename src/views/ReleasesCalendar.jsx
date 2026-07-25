@@ -13,15 +13,10 @@ const ReleasesCalendar = () => {
   });
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-  const [games, setGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [games] = useState(() => mockGames);
+  const [isLoading] = useState(false);
   const { theme } = useTheme();
   const isLight = theme === 'light';
-
-  useEffect(() => {
-    setGames(mockGames);
-    setIsLoading(false);
-  }, []);
 
   const months = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',

@@ -19,10 +19,6 @@ const ForumThread = () => {
     description: thread?.content?.substring(0, 160) || 'Discusión en el foro de CriticPixel',
   });
 
-  useEffect(() => {
-    fetchThread();
-  }, [id]);
-
   const fetchThread = async () => {
     const { data: threadData } = await supabase
       .from('forum_threads')
@@ -44,6 +40,10 @@ const ForumThread = () => {
     setReplies(repliesData || []);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchThread();
+  }, [id]);
 
   const handleReply = async (e) => {
     e.preventDefault();

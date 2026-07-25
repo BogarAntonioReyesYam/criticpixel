@@ -11,10 +11,6 @@ const ReviewComments = ({ reviewId }) => {
   const [newComment, setNewComment] = useState('');
   const [replyTo, setReplyTo] = useState(null);
 
-  useEffect(() => {
-    fetchComments();
-  }, [reviewId]);
-
   const fetchComments = async () => {
     const { data } = await supabase
       .from('review_comments')
@@ -23,6 +19,10 @@ const ReviewComments = ({ reviewId }) => {
       .order('created_at', { ascending: true });
     setComments(data || []);
   };
+
+  useEffect(() => {
+    fetchComments();
+  }, [reviewId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

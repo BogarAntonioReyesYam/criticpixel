@@ -50,8 +50,6 @@ const GameDetails = () => {
         if (fallback) {
           setGame(fallback);
           setSelectedEditionId(fallback.editions?.[0]?.id);
-          const wishlist = JSON.parse(localStorage.getItem('pixelVerdict_wishlist') || '[]');
-          setIsWishlisted(wishlist.includes(fallback.id));
         }
         setIsLoading(false);
         return;
@@ -166,15 +164,8 @@ const GameDetails = () => {
   const selectedEditionName = game?.editions?.find(e => e.id === selectedEditionId)?.name || game?.editions?.[0]?.name || 'Standard';
 
   const filteredMarketPrices = useMemo(() => {
-    console.log('=== FILTER DEBUG ===');
-    console.log('selectedEditionId:', selectedEditionId, typeof selectedEditionId);
-    console.log('selectedEditionName:', selectedEditionName);
-    console.log('all marketPrices:', game?.marketPrices?.map(m => ({ name: m.name, editionName: m.editionName })));
-    
     if (!game?.marketPrices) return [];
-    const filtered = game.marketPrices.filter(m => m.editionName === selectedEditionName);
-    console.log('filtered result:', filtered.length, 'items');
-    return filtered;
+    return game.marketPrices.filter(m => m.editionName === selectedEditionName);
   }, [game, selectedEditionName, selectedEditionId]);
 
   if (isLoading) {

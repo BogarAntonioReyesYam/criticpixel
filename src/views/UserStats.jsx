@@ -14,7 +14,6 @@ const UserStats = () => {
     description: 'Resumen de tu actividad en CriticPixel. Juegos, scores y plataformas.'
   });
   const [games, setGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { theme } = useTheme();
   const isLight = theme === 'light';
   const { wishlistIds } = useWishlist();
@@ -27,7 +26,6 @@ const UserStats = () => {
       } else {
         setGames(mockGames);
       }
-      setIsLoading(false);
     };
     fetchGames();
   }, []);

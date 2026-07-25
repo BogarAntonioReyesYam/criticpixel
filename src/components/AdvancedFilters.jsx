@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SlidersHorizontal, X, ChevronDown, DollarSign, Calendar, Tag } from 'lucide-react';
+import { SlidersHorizontal, X, DollarSign, Calendar, Tag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 

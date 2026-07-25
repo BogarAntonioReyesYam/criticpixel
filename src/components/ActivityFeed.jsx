@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Star, Heart, Users, MessageSquare, BookOpen, Camera, Award, Clock } from 'lucide-react';
+import { Star, Heart, Users, MessageSquare, BookOpen, Camera, Award, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 
@@ -36,7 +36,7 @@ const ActivityFeed = ({ userId, limit = 20 }) => {
 
   useEffect(() => {
     fetchActivities();
-  }, [userId]);
+  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const timeAgo = (date) => {
     const diff = Date.now() - new Date(date).getTime();

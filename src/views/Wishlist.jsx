@@ -29,7 +29,7 @@ const Wishlist = () => {
       }
 
       // Intentar cargar desde Supabase
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('games')
         .select('*')
         .in('id', wishlistIds);

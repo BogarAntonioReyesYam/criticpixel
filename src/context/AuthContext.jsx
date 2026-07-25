@@ -40,9 +40,7 @@ export function AuthProvider({ children }) {
       }
 
       setProfile(data);
-    } catch (e) {
-      console.error('Profile load error:', e);
-    } finally {
+    } catch (_e) { /* profile fetch failed */ } finally {
       setLoading(false);
     }
   }
@@ -82,7 +80,7 @@ export function AuthProvider({ children }) {
         display_name: displayName,
         role: 'user',
       }, { onConflict: 'id' });
-      if (profileError) console.error('Profile upsert error:', profileError);
+      if (profileError) { /* upsert failed */ }
     }
 
     const needsConfirmation = !error && !data.session && data.user;

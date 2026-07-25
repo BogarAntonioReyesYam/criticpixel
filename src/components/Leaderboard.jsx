@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Trophy, Medal, Star, MessageSquare, Heart, Award, Crown } from 'lucide-react';
+import { Medal, Star, MessageSquare, Heart, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 
@@ -39,7 +39,7 @@ const Leaderboard = ({ sortBy = 'reputation', limit = 20 }) => {
 
   useEffect(() => {
     fetchLeaderboard();
-  }, [activeSort]);
+  }, [activeSort]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getMedalIcon = (index) => {
     if (index === 0) return <Crown className="w-5 h-5 text-yellow-400" />;

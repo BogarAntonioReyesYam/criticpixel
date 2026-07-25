@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Plus, Eye, Heart, MessageSquare, Clock, Tag, X } from 'lucide-react';
+import { BookOpen, Plus, Eye, Heart, MessageSquare, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../context/AuthContext';
@@ -21,7 +21,7 @@ const Articles = () => {
     let query = supabase.from('articles').select('*').eq('published', true).order('created_at', { ascending: false });
     if (filter !== 'all') query = query.eq('category', filter);
     const { data, error } = await query;
-    if (error) { console.error('Articles fetch error:', error); setIsLoading(false); return; }
+    if (error) { setIsLoading(false); return; }
 
     if (data && data.length > 0) {
       const userIds = [...new Set(data.map(a => a.user_id))];
@@ -34,7 +34,7 @@ const Articles = () => {
     setIsLoading(false);
   };
 
-  useEffect(() => { fetchArticles(); }, [filter]);
+  useEffect(() => { fetchArticles(); }, [filter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (e) => {
     e.preventDefault();

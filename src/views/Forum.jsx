@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MessageSquare, Plus, Pin, Lock, Eye, Clock, ChevronRight, Gamepad2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { MessageSquare, Pin, Lock, Eye, Clock, ChevronRight, Gamepad2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../context/AuthContext';
 import useSEO from '../hooks/useSEO';
 
 const Forum = () => {
   useSEO({ title: 'Foro', description: 'Foro de discusión de CriticPixel' });
-  const { user } = useAuth();
   const [threads, setThreads] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,7 +15,7 @@ const Forum = () => {
       .select('*')
       .order('is_pinned', { ascending: false })
       .order('last_reply_at', { ascending: false });
-    if (error) { console.error('Forum fetch error:', error); setIsLoading(false); return; }
+    if (error) { setIsLoading(false); return; }
 
     if (data && data.length > 0) {
       const userIds = [...new Set(data.map(t => t.user_id))];

@@ -70,8 +70,7 @@ const ReviewForm = ({ gameId, onReviewAdded }) => {
       setScore(0);
       setText('');
       onReviewAdded?.();
-    } catch (err) {
-      console.error('Error posting review:', err);
+    } catch (_e) {
       addToast('Error al publicar reseña', 'error');
     } finally {
       setIsSubmitting(false);

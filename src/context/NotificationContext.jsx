@@ -16,7 +16,6 @@ export function NotificationProvider({ children }) {
       setUnreadCount(0);
       return;
     }
-
     try {
       const { data, error } = await supabase
         .from('notifications')
@@ -24,14 +23,11 @@ export function NotificationProvider({ children }) {
         .eq('user_id', user.id)
         .order('created_at', { ascending: false })
         .limit(20);
-
       if (!error && data) {
         setNotifications(data);
         setUnreadCount(data.filter(n => !n.read).length);
       }
-    } catch (err) {
-      console.error('Error fetching notifications:', err);
-    }
+    } catch (_e) { /* fetch failed */ }
   }, [user]);
 
   useEffect(() => {
@@ -40,123 +36,60 @@ export function NotificationProvider({ children }) {
 
   useEffect(() => {
     if (!user) return;
-
     const channel = supabase
       .channel('notifications-changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'notifications',
-          filter: `user_id=eq.${user.id}`,
-        },
-        () => {
-          fetchNotifications();
-        }
-      )
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'notifications', filter: `user_id=eq.${user.id}` }, () => { fetchNotifications(); })
       .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    return () => { supabase.removeChannel(channel); };
   }, [user, fetchNotifications]);
 
   const markAsRead = useCallback(async (notificationId) => {
     if (!user) return;
-
     try {
-      await supabase
-        .from('notifications')
-        .update({ read: true })
-        .eq('id', notificationId)
-        .eq('user_id', user.id);
-
-      setNotifications(prev =>
-        prev.map(n => n.id === notificationId ? { ...n, read: true } : n)
-      );
+      await supabase.from('notifications').update({ read: true }).eq('id', notificationId).eq('user_id', user.id);
+      setNotifications(prev => prev.map(n => n.id === notificationId ? { ...n, read: true } : n));
       setUnreadCount(prev => Math.max(0, prev - 1));
-    } catch (err) {
-      console.error('Error marking notification as read:', err);
-    }
+    } catch (_e) { /* mark failed */ }
   }, [user]);
 
   const markAllAsRead = useCallback(async () => {
     if (!user) return;
-
     try {
-      await supabase
-        .from('notifications')
-        .update({ read: true })
-        .eq('user_id', user.id)
-        .eq('read', false);
-
+      await supabase.from('notifications').update({ read: true }).eq('user_id', user.id).eq('read', false);
       setNotifications(prev => prev.map(n => ({ ...n, read: true })));
       setUnreadCount(0);
-    } catch (err) {
-      console.error('Error marking all as read:', err);
-    }
+    } catch (_e) { /* mark all failed */ }
   }, [user]);
 
   const addNotification = useCallback(async (title, message, type = 'info', link = null) => {
     if (!user) return;
-
     try {
       const { data, error } = await supabase
         .from('notifications')
-        .insert({
-          user_id: user.id,
-          title,
-          message,
-          type,
-          link,
-        })
+        .insert({ user_id: user.id, title, message, type, link })
         .select()
         .single();
-
       if (!error && data) {
         setNotifications(prev => [data, ...prev]);
         setUnreadCount(prev => prev + 1);
       }
-    } catch (err) {
-      console.error('Error adding notification:', err);
-    }
+    } catch (_e) { /* add failed */ }
   }, [user]);
 
   const deleteNotification = useCallback(async (notificationId) => {
     if (!user) return;
-
     try {
-      await supabase
-        .from('notifications')
-        .delete()
-        .eq('id', notificationId)
-        .eq('user_id', user.id);
-
+      await supabase.from('notifications').delete().eq('id', notificationId).eq('user_id', user.id);
       setNotifications(prev => prev.filter(n => n.id !== notificationId));
       setUnreadCount(prev => {
         const wasUnread = notifications.find(n => n.id === notificationId && !n.read);
         return wasUnread ? Math.max(0, prev - 1) : prev;
       });
-    } catch (err) {
-      console.error('Error deleting notification:', err);
-    }
+    } catch (_e) { /* delete failed */ }
   }, [user, notifications]);
 
   return (
-    <NotificationContext.Provider
-      value={{
-        notifications,
-        unreadCount,
-        isOpen,
-        setIsOpen,
-        markAsRead,
-        markAllAsRead,
-        addNotification,
-        deleteNotification,
-        refreshNotifications: fetchNotifications,
-      }}
-    >
+    <NotificationContext.Provider value={{ notifications, unreadCount, isOpen, setIsOpen, markAsRead, markAllAsRead, addNotification, deleteNotification, refreshNotifications: fetchNotifications }}>
       {children}
     </NotificationContext.Provider>
   );

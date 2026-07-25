@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Crown, Shield, UserPlus, UserMinus, ChevronRight } from 'lucide-react';
+import { Users, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../context/AuthContext';
 
 const GroupList = ({ type }) => {
-  const { user } = useAuth();
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,19 +18,7 @@ const GroupList = ({ type }) => {
 
   useEffect(() => {
     fetchGroups();
-  }, [type]);
-
-  const joinGroup = async (groupId) => {
-    if (!user) return;
-    await supabase.from('group_members').insert({ group_id: groupId, user_id: user.id });
-    fetchGroups();
-  };
-
-  const leaveGroup = async (groupId) => {
-    if (!user) return;
-    await supabase.from('group_members').delete().eq('group_id', groupId).eq('user_id', user.id);
-    fetchGroups();
-  };
+  }, [type]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (isLoading) {
     return (

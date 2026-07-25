@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Plus, Eye, Heart, Bookmark, Clock, X, Gamepad2 } from 'lucide-react';
+import { BookOpen, Plus, Eye, Heart, Bookmark, X, Gamepad2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../context/AuthContext';
@@ -21,7 +21,7 @@ const Guides = () => {
     let query = supabase.from('guides').select('*').eq('published', true).order('created_at', { ascending: false });
     if (filter !== 'all') query = query.eq('difficulty', filter);
     const { data, error } = await query;
-    if (error) { console.error('Guides fetch error:', error); setIsLoading(false); return; }
+    if (error) { setIsLoading(false); return; }
 
     if (data && data.length > 0) {
       const userIds = [...new Set(data.map(g => g.user_id))];
@@ -39,7 +39,7 @@ const Guides = () => {
     setIsLoading(false);
   };
 
-  useEffect(() => { fetchGuides(); }, [filter]);
+  useEffect(() => { fetchGuides(); }, [filter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, BarChart3, BookOpen, Film, LogOut, Shield, Settings, Bell, Menu, ChevronRight, Users } from 'lucide-react';
+import { Search, User, Gamepad2, Heart, X, Trophy, Newspaper, Info, Sun, Moon, Calendar, Film, LogOut, Shield, Bell, Menu, ChevronRight, Users } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useWishlist } from '../context/WishlistContext';

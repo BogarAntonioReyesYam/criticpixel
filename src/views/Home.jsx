@@ -54,7 +54,6 @@ const Home = ({ searchQuery }) => {
         const additionalGames = mockGames.filter(g => !supabaseIds.has(g.id));
         setGames([...supabaseFormatted, ...additionalGames]);
       } else {
-        if (error) console.error('Supabase error:', error);
         setGames(mockGames);
       }
       setIsLoading(false);

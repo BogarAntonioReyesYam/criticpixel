@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 const shimmer = 'animate-pulse bg-white/5';
 
 export const GameCardSkeleton = () => (

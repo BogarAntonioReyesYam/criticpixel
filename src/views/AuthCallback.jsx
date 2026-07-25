@@ -22,7 +22,7 @@ export default function AuthCallback() {
         } else {
           navigate('/login', { replace: true });
         }
-      } catch (err) {
+      } catch (_err) {
         setStatus('Error inesperado. Redirigiendo...');
         setTimeout(() => navigate('/login', { replace: true }), 2000);
       }

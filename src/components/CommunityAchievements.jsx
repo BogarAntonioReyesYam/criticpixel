@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Trophy, Target, Users, MessageSquare, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 

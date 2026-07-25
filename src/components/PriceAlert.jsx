@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Bell, BellRing, X, Check } from 'lucide-react';
+import { Bell, BellRing, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import { usePriceAlerts } from '../hooks/usePriceAlerts';

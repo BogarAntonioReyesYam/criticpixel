@@ -1,19 +1,18 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Users } from 'lucide-react';
+import { Star, MessageSquare, ShoppingBag, Info, Settings, Globe, Check, X, Box, Search, Heart, ExternalLink, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
 import GameCard from '../components/GameCard';
 import ShareButtons from '../components/ShareButtons';
 import EditionCompare from '../components/EditionCompare';
+import { GameDetailsSkeleton } from '../components/Skeletons';
 import PriceAlert from '../components/PriceAlert';
 import ReviewForm from '../components/ReviewForm';
 import ReviewVotes from '../components/ReviewVotes';
 import PriceHistory from '../components/PriceHistory';
 import { useWishlist } from '../context/WishlistContext';
-import { useToast } from '../context/ToastContext';
-import { GameDetailsSkeleton } from '../components/Skeletons';
 import useSEO from '../hooks/useSEO';
 import usePageView from '../hooks/usePageView';
 
@@ -26,7 +25,6 @@ const GameDetails = () => {
   const [selectedEditionId, setSelectedEditionId] = useState(null);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const { isWishlisted, toggleWishlist } = useWishlist();
-  const { addToast } = useToast();
 
   useSEO({
     title: game?.title || 'Cargando...',
@@ -166,7 +164,7 @@ const GameDetails = () => {
   const filteredMarketPrices = useMemo(() => {
     if (!game?.marketPrices) return [];
     return game.marketPrices.filter(m => m.editionName === selectedEditionName);
-  }, [game, selectedEditionName, selectedEditionId]);
+  }, [game, selectedEditionName]);
 
   if (isLoading) {
     return <GameDetailsSkeleton />;

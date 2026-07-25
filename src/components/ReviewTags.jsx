@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Tag } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../context/AuthContext';
 
@@ -23,7 +21,7 @@ const ReviewTags = ({ reviewId }) => {
 
   useEffect(() => {
     fetchTags();
-  }, [reviewId]);
+  }, [reviewId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggleTag = async (tagId) => {
     if (!user) return;

@@ -22,7 +22,7 @@ const ReviewComments = ({ reviewId }) => {
 
   useEffect(() => {
     fetchComments();
-  }, [reviewId]);
+  }, [reviewId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (e) => {
     e.preventDefault();

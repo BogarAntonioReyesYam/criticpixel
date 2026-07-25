@@ -4,7 +4,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('⚠️ Falta configurar las variables de entorno de Supabase. La aplicación podría no cargar datos reales.');
+  // env vars missing — app will fall back to mock data
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

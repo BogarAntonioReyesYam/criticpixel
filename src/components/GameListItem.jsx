@@ -1,15 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Heart, Star, Monitor, Gamepad2, Disc } from 'lucide-react';
+import { Heart, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useWishlist } from '../context/WishlistContext';
 import { useTheme } from '../context/ThemeContext';
-
-const platformIcons = {
-  PC: <Monitor className="w-3 h-3" />,
-  PS5: <Gamepad2 className="w-3 h-3" />,
-  Switch: <Disc className="w-3 h-3" />,
-  'Xbox Series X': <Monitor className="w-3 h-3" />,
-};
 
 const GameListItem = ({ game, index = 0 }) => {
   const { isWishlisted, toggleWishlist } = useWishlist();

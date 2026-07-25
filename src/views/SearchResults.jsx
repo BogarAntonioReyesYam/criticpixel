@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
-import { Search, SlidersHorizontal, X, ChevronDown, ArrowUpDown, ArrowUpNarrowWide, ArrowDownWideNarrow, ArrowUpAZ, DollarSign, Target } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { Search, SlidersHorizontal, ChevronDown, ArrowUpDown, ArrowUpNarrowWide, ArrowDownWideNarrow, ArrowUpAZ, DollarSign, Target } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
@@ -9,11 +9,11 @@ import GameListItem from '../components/GameListItem';
 import useSEO from '../hooks/useSEO';
 
 const SearchResults = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [viewMode, setViewMode] = useState('grid');
+  const [viewMode] = useState('grid');
   const [sortBy, setSortBy] = useState('relevance');
   const [selectedGenre, setSelectedGenre] = useState('all');
   const [showSortMenu, setShowSortMenu] = useState(false);

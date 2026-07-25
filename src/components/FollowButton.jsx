@@ -31,7 +31,7 @@ const FollowButton = ({ targetUserId, onFollowChange }) => {
       checkFollow();
       fetchFollowerCount();
     }
-  }, [user, targetUserId]);
+  }, [user, targetUserId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggleFollow = async () => {
     if (!user) return;

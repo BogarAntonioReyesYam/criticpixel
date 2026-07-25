@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { Shield } from 'lucide-react';
 
 export default function ProtectedRoute({ children, requireAdmin = false }) {
-  const { user, profile, loading, isAdmin } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
 
   if (loading) {
     return (

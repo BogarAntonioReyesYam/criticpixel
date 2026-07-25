@@ -62,7 +62,7 @@ const EditionCompare = ({ editions }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {allPerks.map((perk, i) => (
+                  {allPerks.map((perk, _i) => (
                     <tr key={perk} className={`border-t ${isLight ? 'border-gray-100' : 'border-white/5'}`}>
                       <td className={`text-xs p-3 ${isLight ? 'text-gray-600' : 'text-gray-400'}`}>
                         {perk}

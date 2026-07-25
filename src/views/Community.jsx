@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, MessageSquare, BookOpen, Camera, Trophy, Star, ArrowRight } from 'lucide-react';
+import { Users, MessageSquare, BookOpen, Camera, Trophy, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ActivityFeed from '../components/ActivityFeed';
 import Leaderboard from '../components/Leaderboard';

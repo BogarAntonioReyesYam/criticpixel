@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { Settings, Save, RefreshCw, Trash2, Plus, ExternalLink } from 'lucide-react';
+import { Settings, RefreshCw, Trash2, Plus, ExternalLink } from 'lucide-react';
 
 export default function PriceAdmin() {
   const [marketPrices, setMarketPrices] = useState([]);

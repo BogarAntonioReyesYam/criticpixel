@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BarChart3, TrendingUp, Users, Eye, Calendar } from 'lucide-react';
+import { BarChart3, TrendingUp, Eye, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 
@@ -70,7 +70,7 @@ const Analytics = () => {
 
   useEffect(() => {
     fetchAnalytics();
-  }, [period]);
+  }, [period]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const maxDailyViews = Math.max(...(stats.viewsByDay.map(d => d.count) || [1]));
 

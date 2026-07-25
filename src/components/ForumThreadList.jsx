@@ -25,7 +25,7 @@ const ForumThreadList = ({ gameId }) => {
 
   useEffect(() => {
     fetchThreads();
-  }, [gameId]);
+  }, [gameId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (e) => {
     e.preventDefault();

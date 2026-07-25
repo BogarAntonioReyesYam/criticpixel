@@ -1,5 +1,5 @@
-import { useState, useMemo, useEffect } from 'react';
-import { Calendar, ChevronLeft, ChevronRight, Clock, MapPin } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Calendar, ChevronLeft, ChevronRight, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { mockGames } from '../data/mockGames';
@@ -92,7 +92,7 @@ const ReleasesCalendar = () => {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {upcomingGames.map((game, i) => (
+            {upcomingGames.map((game, _i) => (
               <Link
                 key={game.id}
                 to={`/game/${game.id}`}

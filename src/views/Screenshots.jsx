@@ -22,7 +22,7 @@ const Screenshots = () => {
       .select('*')
       .order('created_at', { ascending: false })
       .limit(50);
-    if (error) { console.error('Screenshots fetch error:', error); setIsLoading(false); return; }
+    if (error) { setIsLoading(false); return; }
 
     if (data && data.length > 0) {
       const userIds = [...new Set(data.map(s => s.user_id))];
@@ -61,7 +61,7 @@ const Screenshots = () => {
       const ext = form._file.name.split('.').pop();
       const path = `${user.id}/${Date.now()}.${ext}`;
       const { error: uploadError } = await supabase.storage.from('screenshots').upload(path, form._file);
-      if (uploadError) { console.error('Upload error:', uploadError); setUploading(false); return; }
+      if (uploadError) { setUploading(false); return; }
       const { data: urlData } = supabase.storage.from('screenshots').getPublicUrl(path);
       imageUrl = urlData.publicUrl;
     }

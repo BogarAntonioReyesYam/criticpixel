@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, SortDesc, LayoutGrid, List, Monitor, Gamepad2, Laptop, Disc, ChevronDown, ArrowUpDown, ArrowUpAZ, ArrowDownZA, ArrowUpNarrowWide, ArrowDownWideNarrow, DollarSign } from 'lucide-react';
+import { ChevronLeft, ChevronRight, LayoutGrid, List, Monitor, Gamepad2, Laptop, Disc, ChevronDown, ArrowUpDown, ArrowUpAZ, ArrowDownZA, ArrowUpNarrowWide, ArrowDownWideNarrow, DollarSign } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { mockGames } from '../data/mockGames';
@@ -108,13 +107,6 @@ const AllGames = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const getScoreColor = (score) => {
-    if (score >= 9) return '#ff6b00';
-    if (score >= 7) return '#facc15';
-    if (score >= 5) return '#f97316';
-    return '#ef4444';
-  };
 
   if (isLoading) {
     return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Users, Search, Shield, Ban, CheckCircle, XCircle, Mail } from 'lucide-react';
+import { Users, Search, Shield, Ban, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useToast } from '../context/ToastContext';

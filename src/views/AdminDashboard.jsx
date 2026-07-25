@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, MessageSquare, Heart, Gamepad2, TrendingUp, ArrowLeft, Shield, BarChart3, Settings, Star, DollarSign } from 'lucide-react';
+import { Users, MessageSquare, Heart, Gamepad2, TrendingUp, Shield, BarChart3, DollarSign } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import useSEO from '../hooks/useSEO';

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, Gamepad2, Target, Users, Star, Zap } from 'lucide-react';
+import { ChevronLeft, Gamepad2, Target, Users, Zap } from 'lucide-react';
 import useSEO from '../hooks/useSEO';
 
 const About = () => {

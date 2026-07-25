@@ -13,7 +13,7 @@ const usePageView = (gameId = null) => {
           game_id: gameId ? parseInt(gameId) : null,
           created_at: new Date().toISOString(),
         });
-      } catch (err) {
+      } catch (_err) {
         // Silent fail for analytics
       }
     };

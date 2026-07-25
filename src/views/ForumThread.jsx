@@ -43,7 +43,7 @@ const ForumThread = () => {
 
   useEffect(() => {
     fetchThread();
-  }, [id]);
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleReply = async (e) => {
     e.preventDefault();

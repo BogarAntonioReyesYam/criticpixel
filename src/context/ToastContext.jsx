@@ -1,6 +1,6 @@
 import { useState, useCallback, createContext, useContext } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CheckCircle, X, Heart, HeartOff, Share2 } from 'lucide-react';
+import { CheckCircle, X, Heart, HeartOff } from 'lucide-react';
 
 const ToastContext = createContext();
 
@@ -8,7 +8,6 @@ const icons = {
   success: <CheckCircle className="w-4 h-4 text-green-400" />,
   wishlist: <Heart className="w-4 h-4 text-red-400 fill-red-400" />,
   unwishlist: <HeartOff className="w-4 h-4 text-gray-400" />,
-  share: <Share2 className="w-4 h-4 text-blue-400" />,
 };
 
 export const ToastProvider = ({ children }) => {

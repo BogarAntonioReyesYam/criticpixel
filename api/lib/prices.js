@@ -9,7 +9,7 @@ export async function updateAllPrices() {
 
   const { data: marketPrices, error } = await supabase
     .from('market_prices')
-    .select('id, game_id, store, platform, store_url, edition_name, price');
+    .select('id, game_id, store, platform, store_url, price');
 
   if (error) {
     console.error('Error fetching market prices:', error.message);

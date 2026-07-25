@@ -272,7 +272,7 @@ const GameDetails = () => {
             <div className="flex-shrink-0 flex gap-3">
               <motion.button
                 whileTap={{ scale: 0.85 }}
-                onClick={() => toggleWishlist(game.id)}
+                onClick={() => toggleWishlist(game.id, game.title)}
                 className={`p-3 rounded-full backdrop-blur-sm border transition-all ${
                   isWishlisted(game.id)
                     ? 'bg-red-500/20 border-red-500/50'

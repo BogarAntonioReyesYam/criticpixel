@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem('pixelVerdict_theme') || 'dark';
+      return localStorage.getItem('criticpixel_theme') || 'dark';
     } catch {
       return 'dark';
     }
@@ -20,7 +20,7 @@ export const ThemeProvider = ({ children }) => {
       root.classList.remove('light');
       root.classList.add('dark');
     }
-    localStorage.setItem('pixelVerdict_theme', theme);
+    localStorage.setItem('criticpixel_theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

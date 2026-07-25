@@ -2,10 +2,9 @@ import { createContext, useContext, useState, useCallback, useEffect } from 'rea
 import { useToast } from './ToastContext';
 import { useAuth } from './AuthContext';
 import { supabase } from '../lib/supabase';
-import { mockGames } from '../data/mockGames';
 
 const WishlistContext = createContext();
-const STORAGE_KEY = 'pixelVerdict_wishlist';
+const STORAGE_KEY = 'criticpixel_wishlist';
 
 export const WishlistProvider = ({ children }) => {
   const { addToast } = useToast();
@@ -66,10 +65,9 @@ export const WishlistProvider = ({ children }) => {
     }
   }, [wishlistIds, user, loaded]);
 
-  const toggleWishlist = useCallback(async (gameId) => {
+  const toggleWishlist = useCallback(async (gameId, gameName) => {
     const isRemoving = wishlistIds.includes(gameId);
-    const game = mockGames.find(g => g.id === gameId);
-    const name = game?.title || 'Juego';
+    const name = gameName || 'Juego';
 
     if (user) {
       if (isRemoving) {

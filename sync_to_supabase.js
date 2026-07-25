@@ -88,7 +88,7 @@ async function sync() {
         voices: l.voices,
         subs: l.subs
       }));
-      await supabase.from('game_languages').upsert(langsToInsert);
+      await supabase.from('languages').upsert(langsToInsert);
     }
 
     // 5. Insertar Reseñas
@@ -99,7 +99,7 @@ async function sync() {
         text: r.text,
         score: r.score
       }));
-      await supabase.from('game_reviews').upsert(reviewsToInsert);
+      await supabase.from('reviews').upsert(reviewsToInsert);
     }
   }
 

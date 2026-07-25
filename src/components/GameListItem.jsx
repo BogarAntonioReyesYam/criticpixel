@@ -20,7 +20,7 @@ const GameListItem = ({ game, index = 0 }) => {
   const handleToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleWishlist(game.id);
+    toggleWishlist(game.id, game.title);
   };
 
   return (

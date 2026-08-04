@@ -131,37 +131,37 @@ const Rankings = () => {
               >
                 <Link
                   to={`/game/${game.id}`}
-                  className="group flex items-center gap-4 bg-gamingCard rounded-xl p-4 border border-white/5 hover:border-gamingOrange/30 transition-all duration-300 hover:-translate-y-0.5"
+                  className="group flex items-center gap-3 sm:gap-4 bg-gamingCard rounded-xl p-3 sm:p-4 border border-white/5 hover:border-gamingOrange/30 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   {/* Rank */}
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border ${badge.bg} ${badge.border}`}>
-                    <span className={`text-lg font-black ${badge.text}`}>{rank}</span>
+                  <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center border ${badge.bg} ${badge.border}`}>
+                    <span className={`text-base sm:text-lg font-black ${badge.text}`}>{rank}</span>
                   </div>
 
                   {/* Imagen */}
-                  <div className="flex-shrink-0 w-16 h-20 rounded-lg overflow-hidden">
+                  <div className="flex-shrink-0 w-16 h-20 sm:w-20 sm:h-24 rounded-lg overflow-hidden">
                     <img src={game.image} alt={game.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
 
                   {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold group-hover:text-gamingOrange transition-colors truncate">{game.title}</h3>
-                    <div className="flex items-center gap-2 mt-1">
+                    <h3 className="font-bold text-sm sm:text-base group-hover:text-gamingOrange transition-colors line-clamp-2">{game.title}</h3>
+                    <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                       {game.platforms?.slice(0, 3).map(p => (
-                        <span key={p} className="text-[8px] bg-white/5 px-1.5 py-0.5 rounded text-gray-500 uppercase font-medium">
+                        <span key={p} className="text-[8px] sm:text-[9px] bg-white/5 px-1.5 py-0.5 rounded text-gray-500 uppercase font-medium">
                           {p === 'Xbox Series X' ? 'XSX' : p}
                         </span>
                       ))}
                       {game.specs?.genero && (
-                        <span className="text-[8px] text-gamingOrange font-bold uppercase">{game.specs.genero}</span>
+                        <span className="text-[8px] sm:text-[9px] text-gamingOrange font-bold uppercase">{game.specs.genero}</span>
                       )}
                     </div>
                   </div>
 
                   {/* Score */}
                   <div className="flex-shrink-0 text-right">
-                    <div className="text-2xl font-black" style={{ color }}>{game.globalScore}</div>
-                    <div className="text-[9px] text-gray-600 uppercase tracking-widest font-bold">/ 10</div>
+                    <div className="text-xl sm:text-2xl font-black" style={{ color }}>{game.globalScore}</div>
+                    <div className="text-[8px] sm:text-[9px] text-gray-600 uppercase tracking-widest font-bold">/ 10</div>
                   </div>
                 </Link>
               </motion.div>

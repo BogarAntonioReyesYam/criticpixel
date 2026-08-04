@@ -26,7 +26,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
     function handleClickOutside(e) {
       if (menuRef.current && !menuRef.current.contains(e.target)) setShowUserMenu(false);
       if (notifRef.current && !notifRef.current.contains(e.target)) setShowNotifications(false);
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) setShowMobileMenu(false);
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target) && !e.target.closest('[data-hamburger]')) setShowMobileMenu(false);
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -268,10 +268,15 @@ const Navbar = ({ searchQuery, onSearch }) => {
 
           {/* Mobile hamburger */}
           <button
+            data-hamburger
             onClick={() => setShowMobileMenu(!showMobileMenu)}
             className={`p-2 hover:bg-white/5 rounded-full transition-colors lg:hidden ${theme === 'light' ? 'hover:bg-gray-100' : ''}`}
           >
-            <Menu className={`w-6 h-6 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
+            {showMobileMenu ? (
+              <X className={`w-6 h-6 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
+            ) : (
+              <Menu className={`w-6 h-6 ${theme === 'light' ? 'text-gray-600' : 'text-white'}`} />
+            )}
           </button>
         </div>
       </div>

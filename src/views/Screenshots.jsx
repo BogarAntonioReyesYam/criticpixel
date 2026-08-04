@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Camera, Heart, Plus, X, Gamepad2, Upload, Image as ImageIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
@@ -87,6 +88,9 @@ const Screenshots = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <Link to="/community" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gamingOrange transition-colors mb-6">
+        ← Volver a Comunidad
+      </Link>
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
           <Camera className="w-6 h-6 text-gamingOrange" />

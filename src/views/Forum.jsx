@@ -46,6 +46,9 @@ const Forum = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <Link to="/community" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gamingOrange transition-colors mb-6">
+        ← Volver a Comunidad
+      </Link>
       <div className="flex items-center gap-3 mb-8">
         <MessageSquare className="w-6 h-6 text-gamingOrange" />
         <h1 className="text-3xl font-black italic tracking-tighter uppercase">Foro <span className="text-gamingOrange">Discusión</span></h1>

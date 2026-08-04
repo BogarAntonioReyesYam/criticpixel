@@ -68,7 +68,7 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
             <h1 className="text-3xl font-black uppercase tracking-wider">
-              <span className="text-gamingOrange">Pixel</span>Verdict
+              <span className="text-gamingOrange">Critic</span>Pixel
             </h1>
           </Link>
           <p className="text-gray-500 mt-2 text-sm">

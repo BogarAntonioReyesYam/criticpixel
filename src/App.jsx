@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './components/ScrollToTop';
 
 const Home = lazy(() => import('./views/Home'));
 const GameDetails = lazy(() => import('./views/GameDetails'));
@@ -73,6 +74,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gamingBg text-gamingText">
+      <ScrollToTop />
       <Navbar searchQuery={searchQuery} onSearch={handleSearch} />
       <AnimatePresence mode="wait">
         <Suspense fallback={<PageFallback />}>

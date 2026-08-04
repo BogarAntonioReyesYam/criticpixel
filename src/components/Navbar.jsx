@@ -173,7 +173,7 @@ const Navbar = ({ searchQuery, onSearch }) => {
               </button>
 
               {showNotifications && (
-                <div className="absolute right-0 top-full mt-2 w-80 bg-gamingCard border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden">
+                <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 bg-gamingCard border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden">
                   <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
                     <span className="font-bold text-white text-sm">Notificaciones</span>
                     {unreadCount > 0 && (

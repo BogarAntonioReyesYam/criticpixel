@@ -64,3 +64,7 @@ body {
 .scrollbar-carousel::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 999px; }
 .scrollbar-carousel::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.4); border-radius: 999px; }
 .scrollbar-carousel::-webkit-scrollbar-thumb:hover { background: rgba(255,107,0,0.7); }
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

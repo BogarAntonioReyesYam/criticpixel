@@ -139,13 +139,13 @@ const AllGames = () => {
         <p className="text-gray-400 text-sm">{filteredGames.length} juegos en el catálogo</p>
       </motion.div>
 
-      <div className="flex flex-wrap items-center gap-3 mb-6">
-        <div className="flex flex-wrap gap-2 p-1.5 bg-gamingCard/50 border border-white/5 rounded-2xl">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="flex gap-2 p-1.5 bg-gamingCard/50 border border-white/5 rounded-2xl overflow-x-auto scrollbar-hide max-w-full">
           {platforms.map((p) => (
             <button
               key={p.id}
               onClick={() => setPlatformFilter(p.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap flex-shrink-0 ${
                 platformFilter === p.id
                   ? 'bg-gamingOrange text-white shadow-lg shadow-gamingOrange/20'
                   : 'text-gray-500 hover:text-white hover:bg-white/5'
